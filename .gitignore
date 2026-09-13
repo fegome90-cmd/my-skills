@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Backups & Temp files
+*.bak
+*.tmp
+*.swp
+*~
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs & Raw Audits
+*.log
+audits/audit-run-*/

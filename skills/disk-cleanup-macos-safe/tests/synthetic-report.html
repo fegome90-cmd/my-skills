@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>macOS Storage Audit v4</title>
+<style>
+:root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+body { max-width: 1180px; margin: 0 auto; padding: 32px; line-height: 1.45; }
+h1, h2 { letter-spacing: -0.02em; }
+.notice { border: 2px solid currentColor; padding: 14px 16px; border-radius: 10px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 12px; }
+.card { border: 1px solid color-mix(in srgb, currentColor 25%, transparent); padding: 14px; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent); vertical-align: top; }
+code { overflow-wrap: anywhere; }
+svg { width: 100%; min-height: 120px; }
+.bar { fill: currentColor; opacity: .72; }
+.chart-label, .chart-value { fill: currentColor; font-size: 13px; }
+.small { opacity: .75; font-size: .9rem; }
+</style>
+</head>
+<body>
+<h1>macOS Storage Audit v4</h1>
+<p class="notice"><strong>Read-only evidence.</strong> Size, activity, cloud residency, and tool reports are diagnostic signals. Nothing here authorizes deletion, pruning, snapshot removal, or emptying Trash.</p>
+<div class="grid">
+  <div class="card"><strong>Generated</strong><br>2026-07-16T00:00:00+00:00</div>
+  <div class="card"><strong>Mode</strong><br>synthetic</div>
+  <div class="card"><strong>Scopes</strong><br>1</div>
+  <div class="card"><strong>Partial measurements</strong><br>2</div>
+  <div class="card"><strong>Raw stream cap</strong><br>2.0 MiB</div>
+</div>
+
+<h2>Volume capacity views</h2>
+<p class="small">System and Data views can belong to the same APFS volume group. Ordinary, important-usage, and opportunistic capacity are distinct, non-additive metrics and are not guaranteed reclaimable bytes.</p>
+<h3>System/root view</h3><svg viewBox="0 0 920 98" role="img" aria-label="Storage bar chart"><text x="0" y="39" class="chart-label">Used (df)</text><rect x="320" y="24" width="455" height="20" rx="3" class="bar"/><text x="783" y="39" class="chart-value">400.0 GiB</text><text x="0" y="73" class="chart-label">Available (df)</text><rect x="320" y="58" width="113" height="20" rx="3" class="bar"/><text x="441" y="73" class="chart-value">100.0 GiB</text></svg>
+<table><thead><tr><th>View</th><th>Volume</th><th>Mount</th><th>Device</th><th>Used (df)</th><th>Available (df)</th><th>Important usage</th><th>Opportunistic</th><th>Read-only</th></tr></thead>
+<tbody><tr><td>System/root view</td><td>Macintosh HD</td><td>/</td><td>disk3s1s1</td><td>400.0 GiB</td><td>100.0 GiB</td><td>130.0 GiB</td><td>80.0 GiB</td><td>yes</td></tr></tbody></table>
+
+<h2>Per-device attribution</h2>
+<p class="small">“Unattributed/outside scopes” means filesystem used bytes minus complete measurements under selected scope children. It includes everything outside the scopes and measurement differences; it is not “system junk”.</p>
+<table><thead><tr><th>Device</th><th>Mount</th><th>Used</th><th>Measured complete</th><th>Outside scopes/unattributed</th><th>Partial records</th></tr></thead>
+<tbody><tr><td>1</td><td>/System/Volumes/Data</td><td>400.0 GiB</td><td>100.0 GiB</td><td>300.0 GiB</td><td>1</td></tr></tbody></table>
+
+<h2>Largest measured directories</h2>
+<svg viewBox="0 0 920 64" role="img" aria-label="Storage bar chart"><text x="0" y="39" class="chart-label">/Users/demo/Library/Caches/App</text><rect x="320" y="24" width="455" height="20" rx="3" class="bar"/><text x="783" y="39" class="chart-value">8.0 GiB</text></svg>
+<p class="small">Only complete `du` measurements are suitable for accounting. APFS clones, snapshots, sparse files, hard links, package boundaries, and permissions still prevent an exact reclaim estimate.</p>
+
+<h2>Cache candidates</h2>
+<table><thead><tr><th>Path</th><th>Allocated</th><th>Delta</th><th>Newest observed activity</th><th>Activity</th><th>Measurement</th><th>Package</th><th>Status</th></tr></thead>
+<tbody><tr><td>/Users/demo/Library/Caches/App</td><td>8.0 GiB</td><td>+1.0 KiB</td><td>1970-01-01T00:00:00+00:00</td><td>measurement-partial</td><td>partial</td><td>no</td><td>Candidate only; ownership and regeneration unproven</td></tr></tbody></table>
+
+<h2>Large-item candidates</h2>
+<table><thead><tr><th>Path</th><th>Logical</th><th>Allocated</th><th>Delta</th><th>Modified</th><th>Source</th><th>Cloud state</th></tr></thead>
+<tbody><tr><td>/Users/demo/Library/Mobile Documents/example.mov</td><td>20.0 GiB</td><td>0.0 B</td><td>—</td><td>1970-01-01T00:00:00+00:00</td><td>spotlight-verified</td><td>ubiquitous=yes, downloaded=no, uploading=no, conflicts=no</td></tr></tbody></table>
+
+<h2>Native command evidence</h2>
+<table><thead><tr><th>Name</th><th>Status</th><th>Command</th><th>Original stdout/stderr</th><th>Output</th></tr></thead>
+<tbody></tbody></table>
+
+<h2>Required next step</h2>
+<p>Resolve partial coverage, verify Spotlight and cloud-sync state, identify exact owners, and select candidates for a separate immutable cleanup manifest. Any cloud upload/conflict, package boundary, unknown ownership, or incomplete measurement remains R2/R3.</p>
+</body></html>
