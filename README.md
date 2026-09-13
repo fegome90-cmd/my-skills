@@ -53,7 +53,7 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 
 ---
 
-## 🧭 Catálogo de Skills (32 Skills Canónicas)
+## 🧭 Catálogo de Skills (33 Skills Canónicas)
 
 ### 🖥️ 1. Arquitectura de Estación de Trabajo y macOS (6 skills)
 
@@ -102,10 +102,11 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 | **[`skill-vetting`](skills/skill-vetting/SKILL.md)** | Escáner estático de seguridad (`scan.py`) contra prompt injections, ejecución de código malicioso (`eval`, `exec`, reverse shells) y auditoría de riesgo en skills de terceros. | `SKILL.md`<br>`scripts/`<br>`references/` | *"vetting skill", "auditar skill", "escanear skill", "analizar seguridad skill"* |
 | **[`template-skill`](skills/template-skill/SKILL.md)** | Scaffold y boilerplate canónico estándar para generar nuevas agent skills con frontmatter y estructura de carpetas preconfigurada. | `SKILL.md` | *"template skill", "plantilla skill", "scaffold skill", "crear starter skill"* |
 
-### 🏗️ 6. Arquitectura de Software, Calidad y Planificación (8 skills)
+### 🏗️ 6. Arquitectura de Software, Calidad y Planificación (9 skills)
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
+| **[`authority-flow-audit`](skills/authority-flow-audit/SKILL.md)** | Auditoría de arquitectura operativa, flujo de control y mutación de estado: mapeo de superficies (T1-T3), detección de doble-escritura (H1-H13), conflictos de pipeline y verificación estricta de SSOT. | `SKILL.md`<br>`resources/` | *"authority", "flow audit", "responsibility map", "SSOT", "double writer", "repo audit", "change audit"* |
 | **[`quality-plan-loop`](skills/quality-plan-loop/SKILL.md)** | Quality Plan Loop (QPL) — Ciclo iterativo de convergencia Planificador ↔ Auditor independiente con presupuestos acotados y stop conditions formales. | `SKILL.md`<br>`templates/`<br>`examples/` | *"quality plan loop", "iterar plan", "auditar plan de arquitectura", "planificador auditor"* |
 | **[`real-world-bug-hunter`](skills/real-world-bug-hunter/SKILL.md)** | Orquestación paralela de agentes adversariales (`ripper`, `walker`, `sniper`) para cazar bugs reales en CLIs y SDKs en ejecución viva, consolidando reportes con severidad. | `SKILL.md`<br>`resources/`<br>`scripts/` | *"bug hunt", "hunt bugs", "real world testing", "adversarial CLI testing", "cazador de bugs"* |
 | **[`work-closeout`](skills/work-closeout/SKILL.md)** | Cierre higiénico de unidades de trabajo: clasificación de residuo con evidencia (R7), cuarentena reversible y emisión de recibos de verificación. | `SKILL.md`<br>`references/`<br>`templates/` | *"close out", "limpiar temporales", "work closeout", "receipt clean reset"* |
@@ -134,6 +135,7 @@ my-skills/
 └── skills/
     ├── agy-agent/                        # Invocación headless de Antigravity CLI
     ├── anchoring-tasks/                  # Preservación de boundaries con ANCHOR.yaml
+    ├── authority-flow-audit/             # Auditoría de autoridad, flujo y doble-escritura
     ├── code-path-cartographer/           # Cartografía de rutas de código y dependencias
     ├── codex-agent/                      # Invocación headless de Codex CLI con sandbox
     ├── color-theory-engine/              # Motor de teoría del color y accesibilidad
