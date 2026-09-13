@@ -53,7 +53,7 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 
 ---
 
-## 🧭 Catálogo de Skills (30 Skills Canónicas)
+## 🧭 Catálogo de Skills (31 Skills Canónicas)
 
 ### 🖥️ 1. Arquitectura de Estación de Trabajo y macOS (6 skills)
 
@@ -66,12 +66,13 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 | **[`starship-nix-manager`](skills/starship-nix-manager/SKILL.md)** | Configuración y gestión de Starship en Nix: escaping multilínea (`''${...}`) y módulos para hardware Apple Silicon (`ioreg` GPU/RAM). | `SKILL.md` | *"starship nix", "starship apple silicon", "escapar variables starship"* |
 | **[`starship-prompt`](skills/starship-prompt/SKILL.md)** | Arquitectura y guía visual de diseño para prompts cross-shell: statusline, glyphs Nerd Fonts, y paletas visuales (Catppuccin, Kanagawa). | `SKILL.md`<br>`assets/`<br>`references/` | *"customizar starship", "prompt terminal", "powerline glyphs", "paleta starship"* |
 
-### 🤖 2. Invocación y Orquestación Headless de Agentes CLI (5 skills)
+### 🤖 2. Invocación y Orquestación de Agentes CLI y Subagentes (6 skills)
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
 | **[`agy-agent`](skills/agy-agent/SKILL.md)** | Invocación no interactiva de Antigravity CLI (`agy --print`) con selección obligatoria de modelo, captura atómica a archivo y política de lectura libre con aviso de escritura. | `SKILL.md` | *"agy", "agy --print", "correr tarea con agy", "headless agy"* |
 | **[`codex-agent`](skills/codex-agent/SKILL.md)** | Invocación headless de Codex CLI (`codex exec`) con modelo explícito, sandbox granular (`-s read-only` / `workspace-write`) y redirección segura de stdin. | `SKILL.md` | *"codex", "codex exec", "correr tarea con codex", "headless codex"* |
+| **[`interagent-dispatch`](skills/interagent-dispatch/SKILL.md)** | Estructuración de contratos tipados de ejecución (`BASIC`, `CONTROLLED`, `GOVERNED`, `FULL_ANTIDRIFT`) y recibos estructurados (`result_receipt`) para delegación y subagentes. | `SKILL.md`<br>`resources/` | *"subagent dispatch", "task delegation", "worker contracts", "result receipt"* |
 | **[`muse-agent`](skills/muse-agent/SKILL.md)** | Invocación headless de Muse CLI (`muse exec`) con workspace obligatorio, modelo explícito, flag `--disable-write` para solo lectura y control estricto de aprobaciones. | `SKILL.md` | *"muse", "muse exec", "correr tarea con muse", "headless muse"* |
 | **[`opencode-agent`](skills/opencode-agent/SKILL.md)** | Invocación headless de OpenCode CLI (`opencode run`) con modelo obligatorio (`-m`), captura atómica a archivo y prohibición de bypass de permisos sin aviso. | `SKILL.md` | *"opencode", "opencode run", "correr tarea con opencode", "headless opencode"* |
 | **[`pi-agent`](skills/pi-agent/SKILL.md)** | Invocación headless de Pi CLI (`pi --print`) con modelo explícito (`--model`), catálogo de solo lectura (`--tools read,grep,find,ls`) y timeout acotado. | `SKILL.md` | *"pi", "pi --print", "solo lectura con pi", "inspeccionar repo con pi"* |
@@ -142,6 +143,7 @@ my-skills/
     ├── fish-shell-config/                # Configuración de Fish 4.3 y testing de funciones
     ├── grill-me-dual-herdr/              # Entrevista socrática adversarial dual con Herdr
     ├── herdr-worktrunk/                  # Gestión aislada de git worktrees y hooks
+    ├── interagent-dispatch/              # Contratos tipados de ejecución y recibos A2A
     ├── learned-ssh-agent-vm-bootstrap/   # Diagnóstico SSH en 5 capas para VMs Linux
     ├── muse-agent/                       # Invocación headless de Muse CLI
     ├── nix-fish-homemanager/             # Arquitectura Darwin Nix Flakes + Home Manager
