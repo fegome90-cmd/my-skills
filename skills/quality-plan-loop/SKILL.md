@@ -122,7 +122,10 @@ Crear `LOOP-CONTROL.md` en el directorio de trabajo con:
 }
 ```
 
-## 5. Comandos operativos (herdr)
+## 5. Local Deployment Example — Non-Normative (Herdr / Multi-Agent)
+
+> [!NOTE]
+> Este bloque ilustra una instanciación concreta en la estación de trabajo local usando Herdr, Pi y OpenCode. Es un ejemplo de referencia no normativo; el contrato central de QPL es agnóstico del multiplexor, CLI y modelos utilizados.
 
 ```bash
 # Auditor fresco (por iteración)

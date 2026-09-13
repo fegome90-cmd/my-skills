@@ -34,12 +34,13 @@ class EvidenceResult:
 
 ## Registered Adapters
 
-| Adapter | MCP Tools | Priority | When to Use |
-|---------|-----------|----------|-------------|
-| PubMed | `pubmed__pubmed_search_articles`, `pubmed__pubmed_fetch_articles` | 1 | Biomedical, clinical, oncology claims |
-| Papers | `papers__search_papers`, `papers__fetch_paper` | 2 | Broad academic, multi-platform |
-| Local Corpus | `grep_search`, `wiki_search` | 3 | Project-specific context |
-| Memory | `engram__mem_search`, `memory_recall` | 4 | Prior decisions, past audits |
+Universal local text and code search is the primary default baseline. External MCP adapters (academic search, PubMed, or memory) are optional domain-specific boosters when configured in the environment.
+
+| Adapter | Tools | Priority | When to Use |
+|---------|-------|----------|-------------|
+| Local Codebase & Docs | `grep_search`, local file inspection | 1 (Default) | Project-specific architecture, code references, and local docs |
+| Memory (Optional) | `engram__mem_search`, `memory_recall` | 2 (Optional) | Prior decisions, historical architecture logs if MCP enabled |
+| Academic / Domain (Optional) | `pubmed_*`, `papers_*` | 3 (Domain) | External scientific/biomedical claims when domain MCPs present |
 
 ## Step 3.1 Procedure
 

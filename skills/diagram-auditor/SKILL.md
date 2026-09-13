@@ -94,7 +94,7 @@ For elements tagged 🟡 INFERRED or 🟠 ASSUMED, query external evidence sourc
 
 ### Step 4: Generate Audit Report
 
-Produce structured report with verdict, tag summary, findings by severity, and questions for stakeholders. Persist via `memory_save`.
+Produce structured report with verdict, tag summary, findings by severity, and questions for stakeholders. Optionally persist to memory if memory tools are available.
 
 → Full template: `resources/audit-report-template.md`
 

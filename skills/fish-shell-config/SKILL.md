@@ -85,8 +85,7 @@ is genuinely wanted.
 
 - **Scope:** a `set -l` at the top level of a script is INVISIBLE inside functions it calls. In test harnesses
   pass context with `set -g` or env vars, never top-level `set -l`.
-- **No word splitting:** `$var` and `"$var"` are identical lists; quoting is never needed to prevent splitting.
-  Command substitution splits on newlines only.
+- **No word splitting, but quoting joins lists:** fish does not split variable elements on whitespace, so quoting is not needed to prevent word splitting. However, `$var` expands elements into separate arguments, whereas `"$var"` joins all elements into a single string argument. Command substitution splits on newlines only.
 - **`pi update --extensions`** (plural) updates all packages; `pi update --extension <source>` updates one.
   `piup` (in `functions/`) depends on this distinction.
 - **Two Node version managers coexist:** nvm.fish plugin (fisher) and fnm (in `fish_user_paths`). PATH order

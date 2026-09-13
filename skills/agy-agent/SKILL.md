@@ -58,6 +58,7 @@ EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ] || grep -qi "error: invalid model selection" "$OUT"; then
   echo "FAIL: agy execution error" >&2
   cat "$OUT" >&2
+  exit 1
 fi
 ```
 

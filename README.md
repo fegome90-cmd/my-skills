@@ -24,25 +24,25 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
                                       │
                                       ▼
                   ┌────────────────────────────────────────┐
-                  │       FASE 2: MANIFIESTO INMUTABLE     │
+                  │       FASE 2: CLASIFICACIÓN DE RIESGO  │
                   │   (R0-R3, Caches R1 vs R2/R3 Críticos) │
                   └───────────────────┬────────────────────┘
                                       │
                                       ▼
                   ┌────────────────────────────────────────┐
-                  │       FASE 3: APROBACIÓN HITL          │
-                  │    (Human-In-The-Loop, non-sticky)     │
+                  │     FASE 3: REPORTE Y PROPUESTA        │
+                  │ (Deltas Medidos, Candidatos Explícitos)│
                   └───────────────────┬────────────────────┘
                                       │
                                       ▼
                   ┌────────────────────────────────────────┐
-                  │          FASE 4: EJECUCIÓN             │
-                  │ (Active-Owner Gate, 0 Sockets Vivos)   │
+                  │    FASE 4: TRASPASO MANUAL AL HUMANO   │
+                  │ (Comandos Copy-Paste, 0 Mutación AI)   │
                   └────────────────────────────────────────┘
 ```
 
-1. **Gestión Segura de Almacenamiento (Fail-Closed):**
-   - La recuperación de disco nunca es un script ciego (`rm -rf` o `prune` global). Separa diagnóstico, clasificación de riesgo (R0 a R3), aprobación explícita y ejecución atómica.
+1. **Gestión Segura de Almacenamiento (Diagnóstico Estricto y Propuesta):**
+   - La recuperación de disco nunca es un script ciego (`rm -rf` o `prune` global) ni otorga autoridad destructiva autónoma a los agentes de IA. Separa diagnóstico estricto de solo lectura, clasificación rigurosa de riesgo (R0 a R3), detección de descriptores abiertos y sockets UNIX (`pi-intercom`, `marksman`), y genera propuestas con comandos copy-pasteables explícitos para ejecución manual y soberana por parte del operador humano.
    - **Active-Owner Gate:** Protección de descriptores abiertos, sockets UNIX (`pi-intercom`, `marksman`) y procesos MCP vivos (`uv`, `npm/_npx`) para evitar caídas en caliente.
 2. **Inmutabilidad y Límites Declarativos (Nix + Darwin):**
    - Delimitación estricta entre el store inmutable de solo lectura (`/nix/store`) y los directorios mutables de usuario (`~/.config/fish/functions/`, `conf.d/`).

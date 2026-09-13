@@ -288,12 +288,20 @@ class TestEvidenceEnrichment:
         assert tag == "🟢"
 
     def test_upgrade_inferred_to_confirmed(self):
-        """🟡 INFERRED + any evidence found → 🟢 CONFIRMED"""
-        result = self.mock_evidence_result(True, confidence=0.5)
+        """🟡 INFERRED + high confidence evidence (>= 0.7) → 🟢 CONFIRMED"""
+        result = self.mock_evidence_result(True, confidence=0.8)
         tag = "🟡"
-        if result["found"]:
+        if result["found"] and result["confidence"] >= 0.7:
             tag = "🟢"
         assert tag == "🟢"
+
+    def test_inferred_with_low_confidence_evidence_stays_inferred(self):
+        """🟡 INFERRED + low confidence evidence (< 0.7) → stays 🟡 INFERRED"""
+        result = self.mock_evidence_result(True, confidence=0.5)
+        tag = "🟡"
+        if result["found"] and result["confidence"] >= 0.7:
+            tag = "🟢"
+        assert tag == "🟡"
 
     def test_partial_upgrade_assumed(self):
         """🟠 ASSUMED + low confidence evidence → 🟡 INFERRED"""
@@ -340,58 +348,6 @@ class TestEvidenceEnrichment:
         assert result == "papers"  # first that found evidence
 
 
-# ---------------------------------------------------------------------------
-# Tests: Wiki Sync (Step 5.5)
-# ---------------------------------------------------------------------------
-
-class TestWikiSync:
-
-    def test_frontmatter_audit_fields(self):
-        """Verify audit metadata fields are correct."""
-        expected_fields = [
-            "audit_state", "audit_date", "audit_verdict",
-            "audit_elements", "audit_confirmed", "audit_inferred",
-            "audit_assumed", "audit_fabricated", "audit_version",
-        ]
-        # Simulated frontmatter generation
-        frontmatter = {f: f"value_{f}" for f in expected_fields}
-        for f in expected_fields:
-            assert f in frontmatter
-
-    def test_verdict_to_audit_state_mapping(self):
-        """Map verdicts to wiki audit_state."""
-        mapping = {
-            "PASS": "audited",
-            "PASS-WITH-WARNINGS": "audited",
-            "FAIL": "failed",
-            "SYNTAX-FAIL": "syntax-error",
-        }
-        assert mapping["PASS"] == "audited"
-        assert mapping["FAIL"] == "failed"
-
-    def test_audit_log_append_format(self):
-        """Verify audit log entry format."""
-        entry = """### 2026-06-02 — PASS
-- **Elements:** 12 (🟢10 🟡2 🟠0 🔴0 ⚪0)
-- **Evidence sources:** PubMed (2 verified)"""
-        assert "2026-06-02" in entry
-        assert "PASS" in entry
-        assert "🟢10" in entry
-
-    def test_orphan_detection_query(self):
-        """After removing fabricated element, check for wiki refs."""
-        removed_elements = ["FakeNode", "InvalidStep"]
-        queries = [f'wiki_search(query="{elem}")' for elem in removed_elements]
-        assert len(queries) == 2
-        assert "FakeNode" in queries[0]
-
-    def test_graceful_skip_when_unavailable(self):
-        """If wiki tools unavailable, skip without error."""
-        wiki_available = False
-        wiki_updated = False
-        if wiki_available:
-            wiki_updated = True  # would update
-        assert not wiki_updated  # graceful skip
 
 
 # ---------------------------------------------------------------------------

@@ -71,10 +71,10 @@ class ColorEngine:
             
             result = ContrastResult(
                 ratio=r_ratio,
-                passes_AA_normal=r_ratio >= 4.5,
-                passes_AA_large=r_ratio >= 3.0,
-                passes_AAA_normal=r_ratio >= 7.0,
-                passes_AAA_large=r_ratio >= 4.5
+                passes_AA_normal=ratio >= 4.5,
+                passes_AA_large=ratio >= 3.0,
+                passes_AAA_normal=ratio >= 7.0,
+                passes_AAA_large=ratio >= 4.5
             )
             return result._asdict()
         except Exception as e:

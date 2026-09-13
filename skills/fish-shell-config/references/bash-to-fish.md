@@ -80,8 +80,8 @@ end
 
 ## Quoting
 
-- Single quotes: literal, no expansion. Double quotes: variables and `(...)`/`(...)` expand, **no word splitting**.
-- `"$var"` and `$var` are identical — quote only to glue text (`"prefix$var"`).
+- Single quotes: literal, no expansion. Double quotes: variables and `(...)` expand, **no word splitting**.
+- `"$var"` and `$var` are NOT identical: `$var` expands elements as separate arguments, while `"$var"` joins them with spaces into a single string argument. Neither does word splitting on spaces within elements. Quote only when you need a single string or to glue text (`"prefix$var"`).
 - Apostrophes inside single-quoted descriptions: `--description '... agent\'s ...'` is valid and
   `fish_indent`-clean, but keep descriptions on one line.
 

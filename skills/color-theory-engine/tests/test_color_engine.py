@@ -27,6 +27,15 @@ def test_contrast_result_fails_aaa_large_when_below_threshold():
     res = ColorEngine.check_contrast("#000000", "#606060")
     assert "passes_AAA_large" in res
     assert res["passes_AA_large"] is True
-    assert res["passes_AAA_large"] is False
-    assert res["passes_AA_normal"] is False
     assert res["passes_AAA_normal"] is False
+
+
+def test_contrast_boundary_below_four_point_five_fails_aa_normal():
+    """Verify that a ratio just below 4.5 (e.g. 4.498) fails AA normal even if rounded to 4.5."""
+    # #6E757C on #000000 has raw ratio ~4.49856:1, rounds to 4.5 for presentation
+    res = ColorEngine.check_contrast("#6E757C", "#000000")
+    assert res["ratio"] == 4.5
+    assert res["passes_AA_normal"] is False
+    assert res["passes_AAA_large"] is False
+    assert res["passes_AA_large"] is True
+

@@ -41,7 +41,7 @@ metadata:
 
 | Subsystem | Managed Scope | Update Command | Fallback / Rollback |
 |---|---|---|---|
-| **Nix Flakes** | Declarative CLI tools, shells, fonts | `nix flake update && home-manager switch` | Activate `/nix/store/<hash>-.../activate` |
+| **Nix Flakes** | Declarative CLI tools, shells, fonts | `nix flake update && home-manager build && home-manager switch` | Activate `/nix/store/<hash>-.../activate` |
 | **Homebrew** | macOS casks, window managers (`nehir`), daemons | `brew update && brew upgrade` | `brew install <pkg>@<ver>` |
 | **Bun** | JavaScript/TypeScript fast runtime | `bun upgrade` | Inspect official installer script before running |
 | **uv** | Python toolchains & virtualenvs | `uv self update` | Inspect official installer script before running |
@@ -121,8 +121,8 @@ git log -n 5 --oneline flake.lock
 # Restore the exact known-good commit:
 git checkout <recorded-good-commit> -- flake.lock
 
-# 2. Re-switch Home Manager
-home-manager switch --flake .#gentleman
+# 2. Build-gate and re-switch Home Manager
+home-manager build --flake .#gentleman && home-manager switch --flake .#gentleman
 ```
 
 ### Scenario C: Corrupted Standalone Runtime (Bun / uv)

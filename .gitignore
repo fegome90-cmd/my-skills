@@ -16,3 +16,6 @@ __pycache__/
 # Logs & Raw Audits
 *.log
 audits/audit-run-*/
+# Local Pi runtime state
+.atl/
+_ctx/

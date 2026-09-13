@@ -19,7 +19,8 @@ Safely evaluate third-party skills for security risks and practical utility.
 # Download and verify checksum before unpacking
 cd /tmp
 curl -L -o skill.zip "https://example.com/path/to/skill.zip"
-# Verify SHA-256 hash against expected source release digest
+# If an independently published digest exists, verify against it.
+# Otherwise, record SHA-256 as a provenance fingerprint (not authenticity verification):
 shasum -a 256 skill.zip
 
 mkdir skill-inspect && cd skill-inspect
@@ -35,12 +36,15 @@ cat scripts/*.py
 
 ## Vetting Workflow
 
-### 1. Download to /tmp & Verify Hash (Never Workspace)
+### 1. Download to /tmp & Record/Verify Hash (Never Workspace)
 
 ```bash
 cd /tmp
 curl -L -o skill.zip "https://clawhub.ai/api/v1/download?slug=SLUG"
-# Mandatory pre-extraction check: verify SHA-256 digest
+# Provenance fingerprinting:
+# If an upstream published digest is provided, verify against it:
+#   echo "<expected-sha256>  skill.zip" | shasum -a 256 --check
+# Otherwise, record SHA-256 as a provenance fingerprint (never label local hashing as authenticity verification).
 shasum -a 256 skill.zip
 
 mkdir skill-NAME && cd skill-NAME

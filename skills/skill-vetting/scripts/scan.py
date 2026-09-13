@@ -73,6 +73,7 @@ class SkillScanner:
     def __init__(self, skill_path: str):
         self.skill_path = Path(skill_path)
         self.findings: List[Dict] = []
+        self.scan_errors: List[str] = []
         
     def scan(self) -> Tuple[List[Dict], int]:
         """Scan all files in skill directory"""
@@ -85,7 +86,7 @@ class SkillScanner:
             if file_path.is_file() and self._is_text_file(file_path):
                 self._scan_file(file_path)
         
-        return self.findings, 0 if len(self.findings) == 0 else 1
+        return self.findings, 0 if (len(self.findings) == 0 and len(self.scan_errors) == 0) else 1
     
     def _is_text_file(self, path: Path) -> bool:
         """Check if file is likely a text file - scan everything except known binaries"""
@@ -145,22 +146,36 @@ class SkillScanner:
                             'match': match.group(0)[:50],  # truncate long matches
                         })
         except Exception as e:
-            print(f"Warning: Could not scan {file_path}: {e}", file=sys.stderr)
+            err_msg = f"Could not scan {file_path}: {e}"
+            self.scan_errors.append(err_msg)
+            print(f"Warning: {err_msg}", file=sys.stderr)
     
     def print_report(self, format='text'):
         """Print findings in specified format"""
+        inspection_complete = len(self.scan_errors) == 0
+        clean = (len(self.findings) == 0 and inspection_complete)
         if format == 'json':
             output = {
                 'total_findings': len(self.findings),
                 'findings': self.findings,
-                'clean': len(self.findings) == 0
+                'scan_errors': self.scan_errors,
+                'inspection_complete': inspection_complete,
+                'clean': clean
             }
             print(json.dumps(output, indent=2))
             return
         
         # Text format (default)
+        if self.scan_errors:
+            print(f"⚠️ Scan incomplete: {len(self.scan_errors)} file(s) could not be inspected:", file=sys.stderr)
+            for err in self.scan_errors:
+                print(f"  - {err}", file=sys.stderr)
+
         if not self.findings:
-            print("✅ No security issues detected")
+            if inspection_complete:
+                print("✅ No security issues detected (inspection complete)")
+            else:
+                print("❌ Scan inconclusive: No pattern findings, but inspection incomplete due to read errors")
             return
         
         # ANSI color codes
