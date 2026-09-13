@@ -39,8 +39,8 @@ Sources are domain-specific — pick the right kind:
 | News/current | Primary records, official statements, wire services, archives |
 | Product/marketing | Spec sheets, datasheets, regulatory filings, official docs |
 
-- Fire `web_search`/`web_fetch` **in parallel** for the highest-risk claims.
-- **Query narrowly** to avoid over-return. A full 50KB document dump floods context. Prefer tight queries (`"MASCC score 21 low risk"` not `"IDSA febrile neutropenia guideline"`) or `web_fetch` on a specific section.
+- Consultar fuentes autorizadas (búsqueda web, consulta de documentación oficial o fetch de fuentes) **en paralelo** para las afirmaciones de mayor riesgo.
+- **Consultar con precisión acotada** para evitar sobrecarga de contexto. Un volcado documental masivo inunda el contexto. Preferir consultas puntuales (`"MASCC score 21 low risk"`, no `"IDSA febrile neutropenia guideline"`) o lectura de la sección específica.
 - Cite the **primary source**, not a secondary one citing it (a blog citing IDSA ≠ IDSA; a tutorial citing RFC 2616 ≠ RFC 2616).
 - **KEY TACTIC — prefer the authority the AUDIENCE recognizes**: if presenting to a local/regional/expert audience, ground contested claims in the authority *they* defer to. Examples: regional medical consensus (SOCHINF for Chile, SEOM for Spain), the jurisdiction's own statute, the team's canonical spec, the field's seminal paper. The recognized authority often phrases the claim the same way the doc does — converting a debatable claim into a bulletproof one for that audience.
 

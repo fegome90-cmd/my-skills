@@ -1,6 +1,6 @@
 ---
 name: prompt-doctor
-description: "Use when creating, repairing, or auditing pi prompt templates. Covers frontmatter validation, YAML quoting rules, discovery debugging, and progressive disclosure. Triggers for prompt creation, prompt not appearing, /command missing, frontmatter error, YAML parse error. Do NOT use for skill creation (use skill-create) or general documentation."
+description: "Use when creating, repairing, or auditing pi prompt templates. Covers frontmatter validation, YAML quoting rules, discovery debugging, and progressive disclosure. Triggers for prompt creation, prompt not appearing, /command missing, frontmatter error, YAML parse error. Do NOT use for skill creation (use template-skill or skill-onboarding) or general documentation."
 search_hints: prompt template frontmatter YAML quoting discovery autocomplete command repair audit
 metadata:
   triggers:
@@ -23,7 +23,7 @@ Create, repair, and audit pi prompt templates. Covers frontmatter validation, YA
 
 | Use | Don't Use |
 |-----|-----------|
-| Create new `/command` prompts | Create skills (use `skill-create`) |
+| Create new `/command` prompts | Create skills (use `template-skill` or `skill-onboarding`) |
 | Fix prompts not appearing in TUI | General documentation |
 | Audit existing prompts for quality | Write extension code |
 | Validate frontmatter YAML | Debug pi internals |

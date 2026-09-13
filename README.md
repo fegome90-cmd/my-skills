@@ -4,7 +4,7 @@ Este repositorio guarda skills creadas y curadas para agentes, bajo control de v
 
 ## Qué guarda este repositorio
 
-Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus necesidades, también puede incluir recursos locales como `scripts/`, `tests/`, `references/`, `resources/`, `templates/`, `assets/`, `evals/` o ejemplos. Este README es el mapa general, pero el archivo `skills/<nombre>/SKILL.md` de cada paquete es la autoridad sobre su alcance, requisitos y forma de uso.
+Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus necesidades, también puede incluir recursos locales como `scripts/`, `tests/`, `references/`, `resources/`, `templates/`, `assets/`, `evals/` o ejemplos. Este README es el mapa general, pero el archivo `skills/<nombre>/SKILL.md` de cada paquete es la autoridad sobre su alcance, requisitos y forma de uso. El inventario actual reúne 39 paquetes de skills versionados.
 
 ## Inventario
 
@@ -23,15 +23,15 @@ Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus nec
 - [`fish-shell-config`](skills/fish-shell-config/SKILL.md): documenta los límites entre configuración Fish administrada y editable, junto con sus comprobaciones.
 - [`learned-ssh-agent-vm-bootstrap`](skills/learned-ssh-agent-vm-bootstrap/SKILL.md): separa el diagnóstico SSH hacia una VM en capas de configuración, autenticación, runtime, transporte y protocolo.
 - [`nix-fish-homemanager`](skills/nix-fish-homemanager/SKILL.md): reúne criterios para gestionar Fish, Nix Flakes y Home Manager en macOS.
-- [`pi-extension-builder`](skills/pi-extension-builder/SKILL.md): diseña, implementa y audita extensiones TypeScript para el agente Pi mediante packs verificados y modularizados.
+- [`pi-extension-builder`](skills/pi-extension-builder/SKILL.md): reúne referencias y plantillas para diseñar, implementar y revisar extensiones TypeScript para Pi.
 - [`pi-startup-diagnostics`](skills/pi-startup-diagnostics/SKILL.md): diagnostica arranques fallidos de Pi por extensiones duplicadas, herramientas en conflicto o puertos ocupados.
-- [`prompt-doctor`](skills/prompt-doctor/SKILL.md): crea, diagnostica y repara templates de comandos y frontmatter YAML en el ecosistema de prompts de Pi.
+- [`prompt-doctor`](skills/prompt-doctor/SKILL.md): crea y diagnostica plantillas de prompts de Pi, incluidos frontmatter YAML, descubrimiento y expansión de argumentos.
 - [`starship-nix-manager`](skills/starship-nix-manager/SKILL.md): cubre configuración de Starship desplegada mediante Nix y Home Manager, incluido el escaping propio de Nix.
 - [`starship-prompt`](skills/starship-prompt/SKILL.md): guía el diseño y ajuste de prompts Starship en distintos shells y en Home Manager.
 
 ### Ciclo de vida de skills
 
-- [`learned-progressive-disclosure`](skills/learned-progressive-disclosure/SKILL.md): especifica el patrón orquestador + resources/ para refactorizar skills complejas y prevenir la contaminación de contexto del LLM.
+- [`learned-progressive-disclosure`](skills/learned-progressive-disclosure/SKILL.md): separa una skill extensa en un punto de entrada breve y recursos específicos por fase.
 - [`skill-import-untrusted`](skills/skill-import-untrusted/SKILL.md): enruta la incorporación de skills no confiables a revisión estática y onboarding transaccional.
 - [`skill-onboarding`](skills/skill-onboarding/SKILL.md): define un flujo transaccional para importar, normalizar, verificar y promover skills existentes.
 - [`skill-vetting`](skills/skill-vetting/SKILL.md): combina escaneo estático y revisión manual para evaluar skills de terceros antes de adoptarlas.
@@ -39,13 +39,13 @@ Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus nec
 
 ### Coordinación y control del trabajo
 
-- [`ai-work-prompting-gates`](skills/ai-work-prompting-gates/SKILL.md): estructura prompts de trabajo con compuertas ejecutables (autoridad, runtime discovery, staging/rollback) impidiendo reclamos de estabilidad sin evidencia.
+- [`ai-work-prompting-gates`](skills/ai-work-prompting-gates/SKILL.md): es una guía y lista de chequeo de referencia para prompts con separación de audiencias, compuertas ejecutables, staging/rollback y disciplina de evidencia.
 - [`anchoring-tasks`](skills/anchoring-tasks/SKILL.md): conserva los límites de intención, resultado esperado y exclusiones de una tarea.
-- [`claude-md-optimizer`](skills/claude-md-optimizer/SKILL.md): analiza, optimiza y aplica buenas prácticas y plantillas para archivos CLAUDE.md según el stack del proyecto.
+- [`claude-md-optimizer`](skills/claude-md-optimizer/SKILL.md): analiza `CLAUDE.md` y propone cambios usando las plantillas incluidas para programación funcional en Python y Clean Architecture en TypeScript.
 - [`grill-me-dual-herdr`](skills/grill-me-dual-herdr/SKILL.md): organiza una entrevista adversarial alternada entre dos agentes sobre un plan o diseño.
 - [`herdr-worktrunk`](skills/herdr-worktrunk/SKILL.md): gestiona worktrees aislados mediante Herdr y Worktrunk, incluidos sus hooks de ciclo de vida.
 - [`interagent-dispatch`](skills/interagent-dispatch/SKILL.md): estructura contratos tipados y recibos para delegar trabajo entre agentes.
-- [`learned-pr-feedback-resolution`](skills/learned-pr-feedback-resolution/SKILL.md): categoriza feedback masivo de bots de revisión (CodeRabbit, Copilot) organizando su resolución en WorkOrders con commits atómicos.
+- [`learned-pr-feedback-resolution`](skills/learned-pr-feedback-resolution/SKILL.md): organiza feedback automatizado de CodeRabbit y Copilot por severidad y WorkOrders.
 - [`quality-plan-loop`](skills/quality-plan-loop/SKILL.md): define un ciclo acotado entre planificación y auditoría independiente de planes.
 - [`tmux-plan-auditor`](skills/tmux-plan-auditor/SKILL.md): audita planes en paralelo desde cuatro perspectivas y produce un handoff en JSON.
 - [`work-closeout`](skills/work-closeout/SKILL.md): inspecciona y clasifica residuos de trabajo sin realizar limpieza destructiva.
@@ -56,9 +56,9 @@ Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus nec
 - [`code-path-cartographer`](skills/code-path-cartographer/SKILL.md): rastrea entrypoints, referencias y alcanzabilidad sin emitir veredictos de autoridad.
 - [`color-theory-engine`](skills/color-theory-engine/SKILL.md): genera y analiza paletas, armonías y relaciones de contraste para interfaces.
 - [`diagram-auditor`](skills/diagram-auditor/SKILL.md): contrasta diagramas con evidencia y clasifica sus afirmaciones antes de entregarlos.
-- [`learned-accuracy-fallacy-audit`](skills/learned-accuracy-fallacy-audit/SKILL.md): audita contenido declarativo separando inconsistencia interna, inexactitud factual externa contra autoridades reconocidas y cacería de falacias lógicas.
-- [`learned-keynote-to-mp4-pipeline`](skills/learned-keynote-to-mp4-pipeline/SKILL.md): documenta y ejecuta un pipeline reproducible de Keynote a PDF, PNG y MP4 sincronizado con ffmpeg ante limitaciones de AppleScript.
-- [`learned-structured-review`](skills/learned-structured-review/SKILL.md): provee un marco de revisión estructurada por severidad (BLOCK/WARN/SUGGEST) asociando cada issue con una corrección concreta.
+- [`learned-accuracy-fallacy-audit`](skills/learned-accuracy-fallacy-audit/SKILL.md): audita afirmaciones separando consistencia interna, verificación factual externa y errores de razonamiento.
+- [`learned-keynote-to-mp4-pipeline`](skills/learned-keynote-to-mp4-pipeline/SKILL.md): documenta un pipeline específico de macOS: Keynote → PDF/imágenes → MP4 sincronizado con audio.
+- [`learned-structured-review`](skills/learned-structured-review/SKILL.md): estructura revisiones con hallazgos numerados, severidades BLOCK/WARN/SUGGEST y correcciones concretas.
 - [`scripting-technical-presentations`](skills/scripting-technical-presentations/SKILL.md): redacta o audita guiones, notas y esquemas de presentaciones técnicas preservando evidencia y límites.
 - [`wiki-starter`](skills/wiki-starter/SKILL.md): prepara la estructura inicial de una wiki mantenida por LLM y su flujo de enriquecimiento progresivo.
 

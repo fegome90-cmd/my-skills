@@ -29,9 +29,9 @@ This workflow ensures systematic resolution with atomic commits and clear docume
 
 ## Workflow
 
-### Phase 1: Extract and Categorize
+### Phase 1: Extract, Verify, and Categorize
 
-**Extract bot comments:**
+**1. Extract bot comments:**
 ```bash
 # Get reviews from bot accounts
 gh api repos/<owner>/<repo>/pulls/<pr>/reviews \
@@ -42,7 +42,14 @@ gh api repos/<owner>/<repo>/pulls/<pr>/comments \
   --jq '.[] | select(.user.login | test("coderabbit|copilot|bot"; "i")) | {file: .path, line: .line, body: .body}'
 ```
 
-**Categorize by severity (process in this order):**
+**2. Verify findings before implementation (CRITICAL):**
+
+> **Rule: Bot feedback ≠ verified defect.** Automated reviewers (CodeRabbit, Copilot) frequently produce false positives, misunderstand architectural intent, or hallucinate non-existent issues.
+> - **VERIFIED**: Confirmed genuine defect or risk against code reality → schedule in WorkOrder.
+> - **DISMISSED**: False positive, invalid assumption, or harmful rewrite → document dismissal rationale.
+> - **QUESTION**: Ambiguous intent → pause and ask the human author.
+
+**3. Categorize verified issues by severity:**
 
 | Priority | Category | Examples | Why First |
 |----------|----------|----------|-----------|
@@ -103,49 +110,54 @@ git commit -m "fix(logic): race conditions and null checks"
 - Each commit is a logical unit
 - Bisect-friendly if issues arise later
 
-### Phase 4: Validate and Push
+### Phase 4: Validate Locally
 
 ```bash
-# Run project-specific test/lint validation before push (e.g. npm/bun test, pytest, cargo test)
+# Run project-specific test/lint validation before pushing (e.g. npm/bun test, pytest, cargo test)
 npm test && npm run lint
 
 # Fix any formatting issues (e.g. prettier, ruff, biome)
 npx prettier --write <modified-files>
-
-# Push all commits
-git push
 ```
 
-### Phase 5: Document Resolution
+### Phase 5: Proposal & Document Resolution (Gated Push)
 
-Post a checklist comment so reviewers can verify all issues were addressed:
+Prepare the checklist table for operator review. **Do not push or comment automatically.** Present the result and ask for human confirmation before publishing.
 
 ```bash
-gh pr comment <pr> --body "$(cat <<'EOF'
+# Preview commits and status
+git status
+git log -n <N> --oneline
+
+# Generate checklist markdown proposal:
+cat <<'EOF'
 ## Review Feedback Resolution
 
-| # | File | Issue | Priority | Status | Commit |
-|---|------|-------|----------|--------|--------|
+| # | File | Issue | Priority | Status | Commit / Rationale |
+|---|------|-------|----------|--------|---------------------|
 | 1 | shell.ts | Command injection | CRITICAL | Fixed | abc1234 |
 | 2 | file-utils.ts | Path traversal | CRITICAL | Fixed | abc1234 |
-| 3 | config.ts | Hardcoded secret | CRITICAL | Fixed | abc1234 |
-| 4 | async-handler.ts | Race condition | HIGH | Fixed | def5678 |
-| 5 | parser.ts | Missing null check | HIGH | Fixed | def5678 |
+| 3 | parser.ts | Supposed race condition | HIGH | Dismissed | False positive: single-threaded runtime |
 | ... | ... | ... | ... | ... | ... |
 
-All 13 issues resolved across 3 WorkOrders.
+All issues resolved or dismissed with rationale.
 EOF
-)"
+
+# Upon explicit human approval only:
+# git push origin <branch>
+# gh pr comment <pr> --body "<checklist>"
 ```
 
 ## Common Pitfalls
 
 | Pitfall | Solution |
 |---------|----------|
+| Blindly trusting bot comments | Verify against code reality first; dismiss hallucinations |
 | Mixing categories in one commit | One commit per WO category |
-| Skipping local tests | Always run `bun test` before commit |
-| Forgetting to format | Run prettier/biome before push |
-| Not documenting resolution | Post checklist comment |
+| Skipping local tests | Always run local tests before commit |
+| Pushing without human gate | Always present local validation to operator before `git push` |
+| Forgetting to format | Run linter/formatter before push |
+| Not documenting dismissal | Record explicit technical rationale for dismissed findings |
 
 ## Example: Full Workflow
 
@@ -155,13 +167,13 @@ PR #22 received 13 comments (12 CodeRabbit + 1 Copilot):
 # 1. Extract
 gh api repos/owner/repo/pulls/22/comments --jq '.[] | select(.user.login | contains("coderabbit"))'
 
-# 2. Create plan: .pi/plan/pr22-review-feedback-fix.md
-#    WO-001: Security (3 issues)
-#    WO-002: Logic (4 issues)
-#    WO-003: Docs (5 issues)
-#    WO-004: CI fixes (1 issue)
+# 2. Verify against codebase & create plan
+#    WO-001: Security (3 issues verified)
+#    WO-002: Logic (3 verified, 1 dismissed as false positive)
+#    WO-003: Docs (5 issues verified)
+#    WO-004: CI fixes (1 issue verified)
 
-# 3. Execute
+# 3. Execute with atomic commits
 git commit -m "fix(security): ..."
 git commit -m "fix(logic): ..."
 git commit -m "fix(docs): ..."
@@ -170,9 +182,10 @@ git commit -m "fix(ci): formatting and linter config"
 # 4. Validate
 npm test && npm run lint
 
-# 5. Push and document
-git push
-gh pr comment 22 --body "## Review Feedback Resolution..."
+# 5. Hand off to human operator for review & push approval
+git status
+git log -n 4 --oneline
+# Operator confirms -> push & post resolution comment
 ```
 
 ## Quality Checklist

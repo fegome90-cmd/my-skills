@@ -6,7 +6,9 @@ metadata:
   triggers:
     - "structured feedback"
     - "structured review"
-    - "revisar"
+    - "revisión estructurada"
+    - "BLOCK WARN SUGGEST"
+    - "revisar con severidad"
     - "PR review"
     - "code review"
     - "documentation review"
@@ -14,7 +16,6 @@ metadata:
     - "design review"
     - "architecture review"
     - "revisalo como si fuera código"
-    - "mejorar contenido"
     - "review with severity"
   role: specialist
   scope: review
@@ -140,11 +141,11 @@ Summary: 1 BLOCK, 1 WARN, 1 SUGGEST.
 
 ## Relationship to Other Review Skills
 
-This skill provides the **output format** and **severity framework**. Pair it with domain-specific skills for the actual review content:
+This skill provides the **output format** and **severity framework**. Pair it with domain-specific skills in this repo or generic domain analysis:
 
 | If reviewing... | Pair with |
 |----------------|-----------|
-| Code | `code-review-guide`, `secure-coding` |
-| Prose / docs | `writing-guidelines`, `article-writing` |
-| Architecture | `architecture-designer` |
-| Security | `security-auditor`, `devsec-check` |
+| Code / Security | `skill-vetting`, `quality-plan-loop`, or repo test suite |
+| Architecture / Authority | `authority-flow-audit`, `diagram-auditor` |
+| Declarative prose / claims | `learned-accuracy-fallacy-audit` |
+| Technical scripts | `scripting-technical-presentations` |

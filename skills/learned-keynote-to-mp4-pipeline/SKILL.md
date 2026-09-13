@@ -33,6 +33,23 @@ Keynote's own export to video can work, but if slides have embedded audio from t
 
 A 4-step pipeline using open-source tools (`ffmpeg`, `poppler`, built-in macOS scripting):
 
+### Preflight Diagnostics
+
+Before running the pipeline, verify required tooling and slide aspect ratio:
+
+```bash
+# 1. Verify required CLI tools
+command -v ffmpeg >/dev/null 2>&1 || { echo "ERROR: ffmpeg is required (install via package manager)" >&2; exit 1; }
+command -v pdftoppm >/dev/null 2>&1 || { echo "ERROR: pdftoppm (poppler) is required" >&2; exit 1; }
+
+# 2. Verify Keynote.app is accessible
+osascript -e 'id of application "Keynote"' >/dev/null 2>&1 || { echo "ERROR: Keynote.app not accessible via AppleScript" >&2; exit 1; }
+
+# 3. Identify slide aspect ratio:
+# - Standard 4:3 (Keynote default): use scale=1440:1080:flags=lanczos
+# - Widescreen 16:9: use scale=1920:1080:flags=lanczos
+```
+
 ### Step 1: Export slides as vector PDF
 
 ```bash
@@ -147,8 +164,8 @@ Strategy B was verified to fix audio dropouts that occurred with strategy A (sym
 Generating the first 3 slides of a medical presentation, 1440×1080:
 
 ```bash
-# Prerequisites
-brew install ffmpeg poppler
+# Verify prerequisites (ffmpeg, pdftoppm) are installed before starting:
+command -v ffmpeg >/dev/null 2>&1 && command -v pdftoppm >/dev/null 2>&1 || exit 1
 
 # 1. Export Keynote → PDF
 osascript -e 'tell application "Keynote" to export front document to ¬

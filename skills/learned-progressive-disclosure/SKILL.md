@@ -21,10 +21,10 @@ version: 1.0.0
 When a skill becomes too large, it contaminates the LLM context and becomes harder to maintain. Skills with multiple phases or variants are especially prone to bloat.
 
 ## Problem
-- Skills >300 lines load unnecessary context
-- Multi-phase skills require different instructions at different times
-- Mixing orchestration with details creates maintenance burden
-- Evals/workspace in skill directory add noise
+- Monolithic instruction files load unnecessary context and crowd out active reasoning
+- Multi-phase skills require different instructions at different execution phases
+- Mixing orchestration with low-level details creates high maintenance burden
+- Temporary workspace scratchpads and untracked runtime state pollute skill directories
 
 ## Solution
 
@@ -32,12 +32,12 @@ When a skill becomes too large, it contaminates the LLM context and becomes hard
 
 ```text
 skills/<skill-name>/
-├── SKILL.md           # Orchestrator (~150 lines max)
-├── resources/         # Detailed instructions (loaded as needed)
+├── SKILL.md           # Orchestrator (concise entry point, ideally ~100-200 lines)
+├── resources/         # Detailed instructions and reference materials
 │   ├── phase-1.md
 │   ├── phase-2.md
 │   └── variant-a.md
-└── scripts/           # Optional executable helpers
+└── scripts/           # Optional small executable helpers
 ```
 
 ### SKILL.md (Orchestrator)
@@ -81,25 +81,24 @@ Each file ~100-200 lines with:
 
 ### Directory Hygiene
 
-**DO NOT** mix in skill directory:
+**DO NOT** leave runtime garbage or temporary session state in the skill package:
 ```text
 ❌ skills/my-skill/
    ├── SKILL.md
-   ├── evals/           # NO - put in skill-evals/
-   ├── workspace/       # NO - put in skill-evals/
-   └── *.json           # NO - artifacts go elsewhere
+   ├── .DS_Store / *.swp / *~ # NO - editor/OS noise
+   ├── workspace/             # NO - temporary agent scratchpads go to /tmp or scratch
+   ├── __pycache__/ / *.pyc   # NO - runtime build artifacts
+   └── audit-run-*/           # NO - transient run logs belong in gitignore
 ```
 
-**Correct structure:**
+**Allowed package structure:**
 ```text
 ✅ skills/my-skill/
-   ├── SKILL.md
-   ├── resources/
-   └── scripts/
-
-✅ skill-evals/my-skill/
-   ├── evals.json
-   └── workspace/
+   ├── SKILL.md               # Entry point and index
+   ├── resources/             # Deep reference materials and templates
+   ├── scripts/               # Optional small executable helpers
+   ├── tests/                 # Optional verification test suite
+   └── evals/                 # Optional evaluation datasets/fixtures (when needed)
 ```
 
 ## Example
@@ -134,19 +133,18 @@ Context loaded: ~300 lines max (orchestrator + 1 resource)
 
 ## Activation Signals
 
-- Skill exceeds 300 lines
-- Skill has 3+ distinct phases
-- Skill has variants (e.g., by language, by framework)
-- User complains skill is "too long" or "hard to navigate"
-- Skill mixes orchestration with implementation details
+- Skill exceeds ~250-300 lines without clear internal separation
+- Skill has 3+ distinct execution phases
+- Skill has distinct variants (e.g., by language, by framework, by toolchain)
+- Skill mixes high-level orchestration with low-level reference detail
 
 ## Quality Checklist
 
-- [ ] SKILL.md < 200 lines
-- [ ] Each resource < 250 lines
+- [ ] SKILL.md acts as a concise entry point and index (semantic clarity wins over strict line counting)
+- [ ] Each resource file is focused on a single topic, phase, or variant
 - [ ] Index table in SKILL.md points to all resources
-- [ ] No evals/workspace in skill directory
-- [ ] Resources are independently loadable
+- [ ] No temporary workspace scratchpads, cache files, or runtime logs in the package
+- [ ] Resources are independently loadable and self-contained
 - [ ] Markdown quality gate passed (see `skills/skill-onboarding/resources/markdown-quality.md`)
 
 ## Learned From

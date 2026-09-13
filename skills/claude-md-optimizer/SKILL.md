@@ -1,7 +1,7 @@
 ---
 disable-model-invocation: true
 name: claude-md-optimizer
-description: "Use when creating or optimizing CLAUDE.md files for Claude Code based on expert research and anti-patterns, detecting project type and applying templates. Do NOT use for AGENTS.md scope migration (use agents-md-optimizer) or strategic 4-layer onboarding positioning (use agent-onboarding-docs)."
+description: "Use when creating or optimizing CLAUDE.md files for Claude Code based on expert research and anti-patterns, detecting project type and applying templates. Do NOT use for general skill creation or prompt templates outside Claude Code."
 search_hints: CLAUDE.md optimize anti-patterns templates project-type progressive disclosure Claude Code
 ---
 
@@ -21,8 +21,9 @@ Generates optimized CLAUDE.md files by:
 
 ## When NOT to Use
 
-- AGENTS.md scope/multi-scope design or CLAUDE.md→AGENTS.md migration → use `agents-md-optimizer`
-- Strategic 4-layer onboarding with warning symbols → use `agent-onboarding-docs`
+- General skill authoring or onboarding → use `skill-onboarding` or `template-skill`
+- Prompt engineering for commands/agents → use `prompt-doctor` or `ai-work-prompting-gates`
+- Repository-wide documentation not governed by CLAUDE.md guidelines
 
 ## Process
 
@@ -54,9 +55,9 @@ Archivos encontrados:
 ### Step 2: Analyze Existing CLAUDE.md
 
 If CLAUDE.md exists, check for anti-patterns:
-- File length > 150 lines
+- File length exceeding conciseness heuristic (~60-150 lines without progressive disclosure)
 - Code style guidelines (should use linters)
-- Verbose command documentation (should use npm scripts)
+- Verbose command documentation (should use npm/task runner scripts)
 - Long narrative paragraphs
 - Task-specific instructions (not universal)
 
@@ -81,7 +82,7 @@ Show proposal and ask: "¿Aplicar estos cambios? (y/n)"
 ## Anti-Patterns to Avoid
 
 ❌ Code style guidelines → Use linters (ESLint, Prettier, ruff)
-❌ Files > 150 lines → Use progressive disclosure
+❌ Unfocused monoliths (>150 lines without seams) → Use progressive disclosure
 ❌ Verbose commands → Create npm/py scripts
 ❌ Long paragraphs → Use bullets
 ❌ Negative-only constraints → Always provide alternatives
@@ -89,7 +90,7 @@ Show proposal and ask: "¿Aplicar estos cambios? (y/n)"
 
 ## Best Practices
 
-✅ Keep < 150 lines (HumanLayer: <60, experts: <150)
+✅ Aim for conciseness (~60-150 lines heuristic; prefer semantic clarity over strict counting)
 ✅ Progressive disclosure → External docs
 ✅ Simple commands → npm/py scripts
 ✅ Bullets > paragraphs
