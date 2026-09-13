@@ -19,3 +19,4 @@ audits/audit-run-*/
 # Local Pi runtime state
 .atl/
 _ctx/
+.pi/
