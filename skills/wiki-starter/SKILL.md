@@ -20,22 +20,26 @@ Follows Karpathy's LLM Wiki pattern with proven structural additions.
 
 ## Quick Start
 
-```
-create-wiki <domain-name> <path>
+Create the wiki directory skeleton directly using filesystem commands:
+
+```bash
+mkdir -p "<path>/raw" "<path>/wiki"/{summaries,concepts,entities,syntheses,journal}
+touch "<path>/raw/.gitkeep"
 ```
 
-This creates the full directory skeleton and all starter files.
+## Directory Skeleton & Conventions
 
-## Directory Skeleton
+- `raw/`: **Immutable source documents (by convention)** — original files are preserved unmodified as ground truth.
+- `wiki/log.md`: **Append-only log (by convention)** — record all ingestions, updates, and audits chronologically.
 
 ```
 <wiki-root>/
 ├── CLAUDE.md              # Schema — LLM instructions (or WIKI-SCHEMA.md)
-├── raw/                   # Immutable source documents
+├── raw/                   # Immutable source documents (convention)
 │   └── .gitkeep
 ├── wiki/
 │   ├── index.md           # Master catalog (read first on every query)
-│   ├── log.md             # Append-only activity log
+│   ├── log.md             # Append-only activity log (convention)
 │   ├── dashboard.md       # Dataview live queries (optional, Obsidian)
 │   ├── analytics.md       # Charts visualization (optional, Obsidian)
 │   ├── flashcards.md      # Spaced repetition cards (optional, Obsidian)

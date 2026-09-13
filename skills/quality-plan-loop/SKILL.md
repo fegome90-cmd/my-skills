@@ -7,26 +7,26 @@ metadata:
   version: "1.0.0"
 ---
 
-# Quality Plan Loop (QPL) — Generar planes de calidad con convergencia garantizada
+# Bounded Plan Review Loop (QPL) — Ciclo de revisión iterativa de planes acotado
 
 > **Autor:** Felipe Gonzalez (2026-08-02)
-> **Proveniencia:** ciclo real planificador↔auditor que convergió PLAN-CIERRE-0B (8 iters → APPROVE) y PLAN-W1 (6 iters → APPROVE, 2/3 del presupuesto).
-> **Principio rector:** un plan es "de calidad" cuando un auditor independiente lo aprueba — no cuando el planificador lo declara completo. La calidad se DEMUESTRA, no se declara.
+> **Principio rector:** un plan es "de calidad" cuando un auditor independiente verifica sus supuestos — no cuando el planificador lo declara completo. La calidad se DEMUESTRA, no se declara.
+> **Límites de convergencia:** el ciclo es acotado por presupuestos y stop conditions explícitas para evitar bucles infinitos; no existe "convergencia garantizada" a priori.
 
 ## Cuándo usar
 
 - Planes de arquitectura/implementación que van a ejecutar agentes (fases, gates, criterios de aceptación).
 - Cambios con múltiples dependencias, contratos o restricciones duras (código congelado, dirs read-only).
-- Cualquier plan donde un error de diseño costaría horas de ejecución (mejor pagar ~$1-2 de auditoría que rehacer implementación).
+- Cualquier plan donde un error de diseño costaría horas de ejecución (mejor pagar una breve pasada de auditoría que rehacer implementación).
 - NO usar para: tareas triviales, cambios de una línea, o cuando el plan es ejecutable de inmediato sin riesgo.
 
 ## Arquitectura del ciclo
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                 QUALITY PLAN LOOP (QPL)                      │
+│             BOUNDED PLAN REVIEW LOOP (QPL)                  │
 │                                                             │
-│  PLANIFICADOR (GLM-5.2)          AUDITOR (GPT-5.6 Sol)      │
+│  PLANIFICADOR (Agente planificador) AUDITOR INDEPENDIENTE   │
 │  ┌──────────────────┐            ┌──────────────────────┐   │
 │  │ Lee hallazgos    │            │ Lee plan vN          │   │
 │  │ Escribe PLAN-vN  │  ──►       │ Verifica vs código   │   │
@@ -42,8 +42,8 @@ metadata:
 ```
 
 **Roles:**
-- **Planificador** (GLM-5.2 vía herdr/opencode, pane dedicado): produce `PLAN-vN.md`. Corrige SOLO los hallazgos de la última auditoría. Nunca reabre temas ya resueltos.
-- **Auditor** (GPT-5.6 Sol vía pi, **fresco por iteración**): produce `auditoria-vN.json` con veredicto. Verifica el plan contra el **código real** (no contra lo que el plan afirma).
+- **Planificador** (agente de planificación en contexto dedicado): produce `PLAN-vN.md`. Corrige SOLO los hallazgos de la última auditoría. Nunca reabre temas ya resueltos.
+- **Auditor** (agente auditor independiente, **fresco por iteración**): produce `auditoria-vN.json` con veredicto. Verifica el plan contra el **código real** (no contra lo que el plan afirma).
 - **Orquestador (tú, el agente principal)**: crea el contrato, lanza iteraciones, evalúa stop conditions, escala al humano. Es COORDINADOR, no ejecutor del contenido.
 
 ## 1. Preflight — Contrato del loop (obligatorio antes de iterar)
@@ -51,37 +51,36 @@ metadata:
 Crear `LOOP-CONTROL.md` en el directorio de trabajo con:
 
 ### Scope
-- **In Scope**: iterar hasta APPROVE; artefactos `PLAN-vN.md` + `auditoria-vN.json` + contrato.
+- **In Scope**: iterar hasta APPROVE o límite de budget; artefactos `PLAN-vN.md` + `auditoria-vN.json` + contrato.
 - **Out of Scope (hard stop)**: no reabrir trabajo ya cerrado; no ampliar alcance a features nuevas no pedidas por el auditor; no tocar código congelado/read-only.
 
-### Budgets (límites duros, estilo gentle-ai SDD)
+### Budgets (límites duros)
 
 | Recurso | Límite sugerido | Regla |
 |---|---|---|
 | Iteraciones máximas | 3-5 | Al agotarse sin APPROVE → escalar |
-| Tamaño del plan | ≤ 20 KB / ~450 líneas | Criterio sdd-propose: no crecer indefinidamente |
+| Tamaño del plan | ≤ 20 KB / ~450 líneas | Criterio de concisión: no crecer indefinidamente |
 | Tamaño del veredicto | ≤ 6 KB / ~80 líneas JSON | Salidas infladas = señal de ruido |
-| Costo máx | $8-12 por loop | ~$1-2 Sol + ~$0.1 GLM por iteración |
-| Timeout auditor | 15 min / prompt | Sol con contexto >60% se cuelga |
+| Timeout auditor | 15 min / corrida | Evitar cuelgues de contexto saturado |
 
 ### Stop conditions (evaluadas en orden, DESPUÉS de cada auditoría)
-1. **APPROVE** → fin del loop, autorizada la ejecución del plan.
+1. **APPROVE** → fin del loop de revisión de calidad (significa que no restan bloqueos de diseño o inconsistencias detectadas; NO constituye autoridad autónoma para ejecutar mutaciones destructivas sin validación humana/orquestadora).
 2. **Iteraciones agotadas** → STOP, escalar con tabla de hallazgos pendientes.
 3. **Convergencia estancada**: 2 auditorías consecutivas con los MISMOS hallazgos no resueltos → STOP (problema estructural, no de edición).
 4. **Budget de tamaño violado** → STOP, escalar.
-5. **Costo excedido** → STOP, escalar.
+5. **Presupuesto de tiempo/tokens excedido** → STOP, escalar.
 
 ## 2. Protocolo por iteración (orden fijo)
 
 ```
-1. Auditor FRESCO (tab/pane nuevo, pi + gpt-5.6-sol)
+1. Auditor FRESCO (contexto limpio por corrida)
    → prompt con PLAN-vN + auditorías previas + reglas (ver plantilla)
 2. Leer auditoria-vN.json (escrito a archivo, no impreso)
 3. Evaluar stop conditions 1-5
 4. Si REVIEW/REJECT y quedan iteraciones:
-   Planificador (GLM-5.2) ← brief con BLOCKs/WARNs de la auditoría vN
+   Planificador ← brief con BLOCKs/WARNs de la auditoría vN
    → PLAN-v(N+1).md (verificar ≤ budget, verificar que corrige SOLO los hallazgos)
-5. Registrar en memoria diaria + Engram (trayectoria + lección)
+5. Registrar estado en registro de ejecución
 ```
 
 ## 3. Reglas de oro (lecciones validadas en producción)

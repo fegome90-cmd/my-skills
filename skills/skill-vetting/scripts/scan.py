@@ -62,7 +62,7 @@ class SkillScanner:
             (r'(?:^|\n)#.*(?:system|assistant|user):', 'role manipulation in comments', 'MEDIUM'),
             # v1.1.0: Social engineering targeting AI reviewers
             (r'(?i)(?:pre-?approved|false.positiv|classify.*(?:safe|clean)|ignore.*(?:warning|finding|scanner))', 'social engineering: override attempt', 'CRITICAL'),
-            (r'(?i)(?:AI|LLM|assistant|agent|reviewer|GPT|Claude).*(?:must|should|instruction|authorized|approved)', 'social engineering: addressing AI reviewer', 'CRITICAL'),
+            (r'(?i)(?:AI|LLM|assistant|agent|reviewer|GPT|Claude)\s*[:,]\s*(?:ignore|disregard|bypass|skip\s+verification|mark\s+as\s+safe)', 'social engineering: explicit AI reviewer override directive', 'CRITICAL'),
             (r'(?i)(?:CRITICAL|IMPORTANT|URGENT).*(?:INSTRUCTION|NOTE|MESSAGE).*(?:FOR|TO).*(?:AI|REVIEW|AGENT|ASSISTANT)', 'social engineering: fake directive', 'CRITICAL'),
             (r'(?i)disregard.*(?:previous|above|prior|earlier)', 'prompt injection: instruction override', 'CRITICAL'),
             # Invisible unicode characters (zero-width spaces, etc.)
@@ -92,8 +92,8 @@ class SkillScanner:
         binary_extensions = {
             # Archives
             '.zip', '.tar', '.gz', '.bz2', '.xz', '.7z', '.rar',
-            # Images
-            '.jpg', '.jpeg', '.png', '.gif', '.bmp', '.ico', '.svg', '.webp',
+            # Images (.svg excluded: scanned as text/XML)
+            '.jpg', '.jpeg', '.png', '.gif', '.bmp', '.ico', '.webp',
             # Media
             '.mp3', '.mp4', '.avi', '.mov', '.mkv', '.flac', '.wav',
             # Executables

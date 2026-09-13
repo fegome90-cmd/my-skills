@@ -27,18 +27,6 @@ Systematic evidence-based audit for diagrams and flowcharts. Every node, label, 
 
 ## Audit Process (Steps 0–5)
 
-### Step -1: Diagram Generation (when no diagram exists yet)
-
-**Trigger:** Stakeholder provides raw data (transcription, notes, prose) but no diagram.
-
-**Read:** `skills/diagram-maker-plus/SKILL.md`
-
-**Protocol:**
-1. Analyze stakeholder data → identify nodes, edges, phases
-2. Use diagram-maker-plus to generate Mermaid/SVG/HTML
-3. Output goes into Step 0 of this audit pipeline
-4. Generated diagrams are always DRAFT — audit is mandatory before delivery
-
 ---
 
 ## Step 0: Syntax Validation (Mermaid + SVG)
@@ -134,14 +122,6 @@ If the stakeholder is available in the session, **resolve questions interactivel
 
 Apply visual cues to the diagram source. → See `resources/annotation-convention.md`
 
-### Step 5.5: Wiki Sync
-
-Persist audit results to the wiki for durability.
-
-→ Full protocol: `resources/wiki-sync.md`
-
-**Summary:** Update diagram page frontmatter with audit metadata. Append audit log entry. Detect orphan references from removed 🔴 elements.
-
 ## Step 6: Batch Audit (optional)
 
 When auditing multiple diagrams in one session (thesis, wiki, project review), use batch mode.
@@ -149,27 +129,6 @@ When auditing multiple diagrams in one session (thesis, wiki, project review), u
 → Full protocol: `resources/batch-mode.md`
 
 **Summary:** Glob → individual audit per diagram → cross-diagram consistency check → aggregate rollup report.
-
-## Step 5.8: Design Polish (for HTML/SVG diagrams)
-
-After audit fixes are applied, apply the design polish checklist to ensure presentation quality.
-
-**Trigger:** Output is `.html` or `.svg` AND diagram will be shown to stakeholders.
-
-**Apply these checks to the diagram:**
-
-1. **Design Direction** — Personality right for audience? (medical = Sophistication & Trust)
-2. **Color for Meaning Only** — Gray builds structure? Accent for one semantic meaning only?
-3. **4px Grid** — All spacing on grid? Symmetrical padding?
-4. **Contrast Hierarchy** — 4 levels (foreground → secondary → muted → faint) consistent?
-5. **Typography** — System fonts? Headlines 600? Monospace for data/PMID?
-6. **Border Radius** — Consistent system (not mixing sharp and soft)?
-7. **Depth Strategy** — One approach only (not mixed)?
-8. **Anti-patterns** — No thick borders (>1.2px)? No gradients? No asymmetric padding?
-9. **Dark Mode** — CSS media query inverts correctly?
-10. **Print** — White background, no decorative color?
-
-**If checks fail:** Fix in-place before delivery. Clinically accurate + bad design = undermined credibility.
 
 ---
 
@@ -189,13 +148,11 @@ After audit fixes are applied, apply the design polish checklist to ensure prese
 3. **Every step verified against stakeholder or docs.** Not "how it usually works" — how it works HERE.
 4. **>50% elements 🟡 or worse → DRAFT** (configurable, default 50%).
 5. **Stakeholder corrections = 🟢 immediately.**
-6. **Register audit results in project wiki.**
-7. **Persist audit state.** `memory_save` type `pattern`, topic_key `audit/diagram-{name}`.
 
 ## When Not to Use
 
 - **Visual design review** → use UI/UX skills instead
-- **Diagram generation** → this skill audits, does not create (use `diagram-maker-plus`)
+- **Diagram generation** → this skill audits existing diagrams, does not create them
 - **Mermaid syntax-only checks** → use `scripts/validate_mermaid.py` or Mermaid CLI directly
 - **Code flow analysis** → use `authority-flow-audit` or code review workflows
 
@@ -205,19 +162,6 @@ After audit fixes are applied, apply the design polish checklist to ensure prese
 |-------|----------|-------------|
 | Diagram source | Yes | `.mmd` file, embedded Mermaid in `.md`, SVG/HTML, or prose description |
 | Stakeholder (user) | No | If present → Step 4.5 Grill Phase activates for interactive resolution |
-| Prior audit | Auto | Skill checks `memory_search` for previous audits of same diagram |
-
-## Step 7: Stakeholder Deck (optional)
-
-**Trigger:** Diagram needs to be presented in a formal meeting (board, committee, external partner).
-
-**Read:** `skills/scripting-technical-presentations/SKILL.md`
-
-**Protocol:**
-1. Build structured deck using 10-20-30 framework + Pyramid Principle
-2. Diagram becomes one or more slides with context
-3. Include: purpose, audience analysis, evidence summary, key decisions, next steps
-4. Deck follows Duarte storytelling arc
 
 ---
 
@@ -226,16 +170,14 @@ After audit fixes are applied, apply the design polish checklist to ensure prese
 | File | Purpose | When to Load |
 |------|---------|-------------|
 | `scripts/validate_mermaid.py` | Standalone Mermaid syntax validator | Step 0 |
-| `resources/audit-report-template.md` | Full report template + memory_save format | Step 4 |
+| `resources/audit-report-template.md` | Full report template | Step 4 |
 | `resources/grill-phase.md` | Interactive stakeholder interrogation protocol | Step 4.5 |
-| `resources/annotation-convention.md` | Visual cues (SVG/Mermaid) + wiki integration | Step 5 |
+| `resources/annotation-convention.md` | Visual cues (SVG/Mermaid) | Step 5 |
 | `resources/example-clinical-audit.md` | Complete clinical nutrition referral audit example | On demand |
 | `resources/mermaid-extract.md` | Extraction patterns for embedded Mermaid blocks | Step 0 |
 | `resources/svg-extract.md` | Automated SVG element extraction (nodes, connectors, validation) | Step 0-1 |
 | `resources/batch-mode.md` | Multi-diagram audit with cross-diagram consistency | Step 6 |
 | `resources/evidence-sources.md` | External evidence adapters (PubMed, Papers MCP) for tag upgrades | Step 3.1 |
-| `resources/wiki-sync.md` | Persist audit results to wiki + orphan detection | Step 5.5 |
-| `skills/diagram-maker-plus/SKILL.md` | Diagram generation from raw data | Step -1 |
 
 ## Key Distinctions
 

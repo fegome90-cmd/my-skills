@@ -1,29 +1,30 @@
 ---
 disable-model-invocation: true
 name: disk-cleanup-macos-safe
-description: Use when diagnosing or reclaiming storage on macOS, including unexplained growth, low free space, large or inactive directories, application caches, repositories, Git worktrees, Docker data, build artifacts, snapshots, cloud-backed files, or temporary directories.
+description: Use when diagnosing storage usage or identifying space reclamation candidates on macOS (read-only diagnosis, risk classification, and candidate discovery only; autonomous destructive execution is strictly prohibited).
 compatibility: macOS; POSIX shell. Python 3 and Swift are optional but recommended for the included local observability helpers. Tool-specific CLIs are used only when installed.
 license: MIT
 metadata:
   author: Felipe Gonzalez
   version: "4.0.0"
+  scope: read-only-diagnosis
 ---
 
-# Safe macOS Storage Diagnosis and Cleanup
+# Safe macOS Storage Diagnosis and Candidate Discovery
 
-## Core contract
+## Core contract (Read-Only Diagnosis & Proposal Only)
 
-Disk cleanup is destructive maintenance. **Diagnosis, candidate selection, approval, and execution are separate transactions.** Default to local, read-only evidence and fail closed.
+This skill is strictly a **read-only diagnostic, discovery, and proposal engine**. Autonomous destructive execution by AI agents is strictly prohibited by contract.
 
-1. Explain the storage system before proposing cleanup: physical storage, APFS container, System/Data volume group, snapshots, per-device capacity, scoped allocation, tool-owned data, cloud residency, and unresolved gaps.
-2. Never collapse `df`, Foundation available capacity, logical size, allocated size, APFS snapshot size, Docker virtual size, and expected reclaim into one number.
-3. Discovery produces candidates only. A later immutable manifest selects exact actions.
-4. HITL approval must bind exact canonical targets, action, arguments, backup evidence, precondition fingerprint, and plan digest. Any drift invalidates approval.
-5. Never use sticky approval, globs, implicit path expansion, broad prune commands, or privilege escalation for destructive work.
+1. **Diagnostic & Advisory Scope Only:** This skill discovers storage consumers, calculates APFS capacity models, classifies risk, and generates a structured cleanup proposal. It NEVER executes autonomous deletions, prunes, or mutations.
+2. Explain the storage system before proposing cleanup: physical storage, APFS container, System/Data volume group, snapshots, per-device capacity, scoped allocation, tool-owned data, cloud residency, and unresolved gaps.
+3. Never collapse `df`, Foundation available capacity, logical size, allocated size, APFS snapshot size, Docker virtual size, and expected reclaim into one number.
+4. Discovery produces candidates and proposals only. All destructive actions must be performed manually and intentionally by the human user outside agent workflows.
+5. Never use globs, implicit path expansion, or broad prune commands.
 6. Unknown, old, large, under `Caches`, or absent from recent-use metadata is not safe.
 7. Keep reports local and private. They may expose patient names, projects, usernames, and cloud paths.
 
-## Risk classes
+## Risk classes (Diagnostic Classification)
 
 | Class | Meaning | Default |
 |---|---|---|
@@ -267,39 +268,13 @@ Required report semantics:
 
 **Reference:** Read `references/macos-storage-observability.md` before interpreting the report.
 
-## Cleanup manifest and HITL
+## Human Manual Execution Handoff
 
-For every proposed target record:
+This skill is strictly diagnostic and read-only. AI agents MUST NOT autonomously delete, trash, move, or mutate files.
 
-- stable target ID, lexical and resolved path;
-- type/package/cloud state, owner, permissions, device, inode, mount;
-- logical and allocated size plus conservative reclaim range;
-- complete/partial evidence and conflicts;
-- open-process and sync status;
-- recoverability and verified backup;
-- exact action and arguments;
-- precondition fingerprint and plan digest.
+When candidate items for cleanup are identified:
+1. Present the candidate list to the human operator with lexical and resolved paths, allocated sizes, risk tiers, and verified owner/subsystem context.
+2. Provide exact copy-pasteable manual shell or Finder commands for the human operator to inspect and execute at their discretion.
+3. Explicitly advise the human operator to verify current backups (Time Machine or off-disk) before executing destructive operations.
+4. If capacity must be re-measured after manual human cleanup, run the diagnostic audit script again to observe updated allocation deltas.
 
-Approval must name plan and targets, for example:
-
-```text
-Approve plan 8f3c… targets D01,D02 via Finder Trash.
-```
-
-A generic “yes”, approval for another command, or approval before a cloud/package/measurement warning is resolved is invalid.
-
-## Controlled execution
-
-Immediately before each action, re-read path, type, package/cloud status, device, inode, mount, size range, open handles, backup, and plan digest. Any mismatch stops the operation and invalidates approval.
-
-Execute one target at a time and verify measured postconditions. Trash on the same volume does not reclaim capacity until emptied; emptying Trash is a separate irreversible action with new approval. Snapshot management, cloud eviction, Docker volumes, databases, Git worktrees, and application libraries require their dedicated owner-specific protocols.
-
-## Deployment gate
-
-Do not deploy this draft as autonomous cleanup until:
-
-1. pressure scenarios pass with independent agents;
-2. Python logic tests pass;
-3. the Swift probe is compiled and exercised on supported macOS versions;
-4. fixtures cover System/Data APFS, snapshots, TCC denial, Spotlight disabled/rebuilding, iCloud states, package libraries, external volumes, Docker shared layers, repos/worktrees, and near-full output conditions;
-5. destructive tools enforce immutable per-call HITL outside the prose skill.
