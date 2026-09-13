@@ -1,0 +1,11 @@
+__pycache__/
+.DS_Store
+*.pyc
+.pi-lens/
+.pi/
+.atl/
+.mypy_cache/
+.ruff_cache/
+_ctx/
+**/__pycache__/
+**/.DS_Store

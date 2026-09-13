@@ -1,0 +1,19 @@
+{
+  "skill_name": "color-theory-engine",
+  "evals": [
+    {
+      "id": 0,
+      "name": "corporate-saas-triadic",
+      "prompt": "Diseña una paleta para una aplicación de finanzas corporativa (corporate_saas). Usa el color base #1E40AF. Genera una armonía triádica usando el motor de Python y valida si el texto blanco tiene suficiente contraste con el color de éxito sugerido por el motor.",
+      "expected_output": "Paleta triádica calculada matemáticamente, siguiendo el patrón corporate_saas, con veredicto de contraste WCAG AA/AAA.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "accessibility-fix",
+      "prompt": "Un cliente usa texto #999999 sobre fondo #FFFFFF. Analiza el ratio actual usando el motor y propón un ajuste de luminancia que cumpla con WCAG AAA para texto normal.",
+      "expected_output": "Análisis de ratio fallido (~2.84:1) y propuesta de nuevo color con ratio >= 7.0:1.",
+      "files": []
+    }
+  ]
+}

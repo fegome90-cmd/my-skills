@@ -1,0 +1,26 @@
+# Security workflow rules
+# Focus: sensitive data, auth, input validation, and permissions.
+
+logic:
+  rules:
+    - pattern: "\\bsecreto\\b|\\bsecret\\b|\\btoken\\b|\\bkey\\b|\\bapi-key\\b"
+      severity: Alta
+      title: "Manejo de secretos en plan detectado"
+      risk: "exposición de secretos en el plan"
+      recommendation: "Asegurar que se usen variables de entorno o un secret manager."
+
+code_quality:
+  rules:
+    - pattern: "\\binput\\b|\\bentrada\\b|\\bparámetro\\b|\\bvalidación\\b"
+      severity: Media
+      title: "Validación de entrada crítica"
+      risk: "riesgo de inyección o entrada malformada"
+      recommendation: "Validar con Pydantic/Zod en los puntos de entrada."
+
+silent_failure:
+  rules:
+    - pattern: "\\bpermiso\\b|\\brautentic\\b|\\brautorizac\\b"
+      severity: Alta
+      title: "Afecta autenticación/autorización"
+      risk: "posible bypass de seguridad"
+      recommendation: "Verificar mapeo de roles y permisos en endpoints críticos."

@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Semantic Color Patterns",
+  "description": "Standardized semantic color definitions with built-in accessibility constraints.",
+  "patterns": {
+    "corporate_saas": {
+      "description": "High-trust, clean interface typical of financial or software software.",
+      "tokens": {
+        "primary": {
+          "semantic_meaning": "Brand identity, primary actions",
+          "hue_range": [200, 240],
+          "saturation_range": [60, 90],
+          "wcag_requirements": {
+            "on_white": "AA_Large",
+            "text_color_on_primary": "#FFFFFF"
+          }
+        },
+        "success": {
+          "semantic_meaning": "Positive confirmation, completion",
+          "hue_range": [130, 150],
+          "saturation_range": [50, 80]
+        },
+        "danger": {
+          "semantic_meaning": "Destructive actions, critical errors",
+          "hue_range": [0, 15],
+          "saturation_range": [70, 95]
+        }
+      }
+    },
+    "creative_studio": {
+      "description": "Bold, high-energy palettes for agencies or studios.",
+      "tokens": {
+        "primary": {
+          "hue_range": [260, 290],
+          "saturation_range": [70, 100]
+        }
+      }
+    }
+  }
+}

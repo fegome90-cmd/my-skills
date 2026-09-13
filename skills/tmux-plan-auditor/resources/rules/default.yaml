@@ -1,0 +1,77 @@
+# Default detection rules for tmux-plan-auditor
+# These can be overridden by creating .pi/auditor-rules.yaml in your project
+
+# Logic agent rules
+logic:
+  rules:
+    - pattern: "\\bdefinir\\b|\\bpendiente\\b|\\bTODO\\b|\\bfuturo\\b"
+      severity: Media
+      title: "Ambigüedad de alcance"
+      risk: "puede bloquear implementación"
+      recommendation: "Aterrizar criterio exacto y responsable por fase."
+
+    - pattern: "\\bcriterios de aceptación\\b"
+      severity: Baja
+      title: "Validación presente"
+      risk: "ninguno"
+      recommendation: "Mantener criterios medibles por endpoint/entregable."
+
+    - pattern: "\\bfuera de alcance\\b"
+      severity: Baja
+      title: "Delimitación presente"
+      risk: "scope creep reducido"
+      recommendation: "Confirmar exclusiones con el usuario."
+
+# Code quality agent rules
+code_quality:
+  rules:
+    - pattern: "\\brefactor\\b|\\breescritura\\b"
+      severity: Media
+      title: "Riesgo de cambios amplios"
+      risk: "incremento de riesgo de regresión"
+      recommendation: "Dividir en cambios pequeños y verificables."
+
+    - pattern: "\\bsimplific\\b|\\bhelper\\b|\\bduplic\\b"
+      severity: Baja
+      title: "Señal de simplificación"
+      risk: "ninguno"
+      recommendation: "Extraer utilidades compartidas y reducir duplicación."
+
+    - pattern: "\\barquitect\\b|\\bestructural\\b"
+      severity: Media
+      title: "Cambio estructural potencial"
+      risk: "desviación del alcance mínimo"
+      recommendation: "Priorizar fixes críticos antes de mejoras estructurales."
+
+# Silent failure agent rules
+silent_failure:
+  rules:
+    - pattern: "\\bsilent\\b|\\bfalla silenciosa\\b"
+      severity: Alta
+      title: "Riesgo explícito de silent failure"
+      risk: "errores podrían pasar como éxito"
+      recommendation: "Definir contrato de error explícito y mecanismos de detección."
+
+    - pattern: "\\bstatus\\b|\\berror\\b|\\bobservab\\b|\\blog\\b"
+      severity: Media
+      title: "Necesidad de observabilidad y semántica HTTP"
+      risk: "detección tardía de incidentes"
+      recommendation: "Agregar checklist de errores y logs estructurados."
+      is_proposal: false
+      applies_to: ["web-api"]
+
+    - pattern: "\\bfallback\\b|\\bdegrad\\b"
+      severity: Media
+      title: "Riesgo de degradación ambigua"
+      risk: "cliente puede interpretar estado incorrecto"
+      recommendation: "Explicitar mapeo estado lógico -> HTTP."
+      applies_to: ["web-api"]
+
+# Testing static agent rules
+testing_static:
+  rules:
+    - pattern: "\\btest\\b|\\bcoverage\\b|\\bcobertura\\b|\\blint\\b|\\btypecheck\\b|\\bcontrato\\b|\\bsmoke\\b|\\bassert\\b"
+      severity: Baja
+      title: "Referencia a testing/quality gates"
+      risk: "ninguno"
+      recommendation: "Mantener pruebas mínimas por ruta crítica."

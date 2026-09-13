@@ -53,9 +53,9 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 
 ---
 
-## 🧭 Catálogo de Skills (15 Skills)
+## 🧭 Catálogo de Skills (31 Skills)
 
-### 🖥️ 1. Arquitectura de Estación de Trabajo y macOS
+### 🖥️ 1. Arquitectura de Estación de Trabajo y macOS (6 skills)
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
@@ -66,7 +66,7 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 | **[`starship-nix-manager`](skills/starship-nix-manager/SKILL.md)** | Configuración y gestión de Starship en Nix: escaping multilínea (`''${...}`) y módulos para hardware Apple Silicon (`ioreg` GPU/RAM). | `SKILL.md` | *"starship nix", "starship apple silicon", "escapar variables starship"* |
 | **[`starship-prompt`](skills/starship-prompt/SKILL.md)** | Arquitectura y guía visual de diseño para prompts cross-shell: statusline, glyphs Nerd Fonts, y paletas visuales (Catppuccin, Kanagawa). | `SKILL.md`<br>`assets/`<br>`references/` | *"customizar starship", "prompt terminal", "powerline glyphs", "paleta starship"* |
 
-### 🛡️ 2. Ciclo de Vida, Seguridad y Onboarding de Skills
+### 🛡️ 2. Ciclo de Vida, Seguridad y Onboarding de Skills (4 skills)
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
@@ -75,7 +75,7 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 | **[`skill-vetting`](skills/skill-vetting/SKILL.md)** | Escáner estático de seguridad (`scan.py`) contra prompt injections, ejecución de código malicioso (`eval`, `exec`, reverse shells) y auditoría de riesgo en skills de terceros. | `SKILL.md`<br>`scripts/`<br>`references/` | *"vetting skill", "auditar skill", "escanear skill", "analizar seguridad skill"* |
 | **[`template-skill`](skills/template-skill/SKILL.md)** | Scaffold y boilerplate canónico estándar para generar nuevas agent skills con frontmatter y estructura de carpetas preconfigurada. | `SKILL.md` | *"template skill", "plantilla skill", "scaffold skill", "crear starter skill"* |
 
-### 🏗️ 3. Arquitectura de Software, Calidad y Desarrollo
+### 🏗️ 3. Arquitectura de Software, Calidad y Planificación (5 skills)
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
@@ -84,6 +84,37 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 | **[`diagram-maker-plus`](skills/diagram-maker-plus/SKILL.md)** | Generador multi-motor de diagramas técnicos de alta fidelidad: Live HTML interactivo (Plannotator B2 / Open Design), Archify JSON-IR, Mermaid.js y SVG. | `SKILL.md`<br>`resources/`<br>`scripts/` | *"crear diagrama", "diagrama interactivo", "archify router", "plannotator b2", "diagrama mermaid"* |
 | **[`diagram-auditor`](skills/diagram-auditor/SKILL.md)** | Auditoría sistemática basada en evidencia para diagramas y flujogramas: clasificación estricta de afirmaciones en confirmadas, inferidas o fabricadas. | `SKILL.md`<br>`resources/`<br>`tests/` | *"audita el diagrama", "lint flowchart", "verifica diagrama contra evidencia"* |
 | **[`code-path-cartographer`](skills/code-path-cartographer/SKILL.md)** | Cartografía de rutas de código: rastreo de entrypoints, llamadas entrantes/salientes, detección de símbolos huérfanos y diagramas de conectividad. | `SKILL.md`<br>`resources/` | *"mapear rutas", "code connectivity", "call paths", "buscar simbolos huerfanos"* |
+
+### 🤖 4. Orquestación Multi-Agente y Supervisión (4 skills)
+
+| Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
+|---|---|---|---|
+| **[`fork-pilot`](skills/fork-pilot/SKILL.md)** | Orquestación multi-agente en tmux con separación estricta de roles: el orquestador planifica y monitorea; los agentes de fork ejecutan tareas en paralelo. | `SKILL.md`<br>`resources/` | *"fork pilot", "lanzar agentes en paralelo", "orquestar con fork", "tmux fork"* |
+| **[`herdr`](skills/herdr/SKILL.md)** | Control y supervisión de terminal multiplexer para agentes de código: gestión de workspaces, tabs, paneles y captura de telemetría de ejecución. | `SKILL.md`<br>`resources/` | *"herdr", "controlar paneles", "herdr inspect", "terminal layout"* |
+| **[`tmux-plan-auditor`](skills/tmux-plan-auditor/SKILL.md)** | Auditoría paralela de planes de arquitectura ejecutando 4 agentes concurrentes: lógica, calidad de código, fallos silenciosos y estrategia de testing. | `SKILL.md`<br>`resources/`<br>`scripts/`<br>`tests/` | *"auditar plan en paralelo", "tmux plan auditor", "auditoria 4 agentes"* |
+| **[`picoclaw-expert`](skills/picoclaw-expert/SKILL.md)** | Base de conocimiento, patrones arquitectónicos y directrices operativas del asistente hardened de estudio PicoClaw y su runtime de ejecución. | `SKILL.md` | *"picoclaw", "hardened agent", "picoclaw patterns", "picoclaw architecture"* |
+
+### 🧠 5. Grafos de Conocimiento, Wikis y Memoria (3 skills)
+
+| Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
+|---|---|---|---|
+| **[`wiki-starter`](skills/wiki-starter/SKILL.md)** | Bootstrap de bases de conocimiento LLM-maintained desde cero siguiendo el patrón Karpathy con enriquecimiento progresivo y scaffolding determinista. | `SKILL.md`<br>`resources/` | *"create wiki", "start wiki", "bootstrap wiki", "nueva wiki"* |
+| **[`wiki-keeper`](skills/wiki-keeper/SKILL.md)** | Fachada y router del pipeline decomposed F0–F7 para mantenimiento, ingesta, lint y registry centralizado de wikis activas del sistema. | `SKILL.md`<br>`resources/` | *"maintain wiki", "lint wiki", "wiki health", "wiki keeper", "ingest into wiki"* |
+| **[`engram-memory`](skills/engram-memory/SKILL.md)** | Protocolo de hidratación y memoria persistente en 2 pasos (`mem_search` → `mem_get_observation`) para retención durable de decisiones y descubrimientos. | `SKILL.md`<br>`scripts/` | *"engram", "guardar memoria", "mem_search", "memoria persistente"* |
+
+### 🔬 6. Investigación Autónoma, Redacción y Herramientas Especializadas (9 skills)
+
+| Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
+|---|---|---|---|
+| **[`literature-search`](skills/literature-search/SKILL.md)** | Búsqueda sistemática de literatura académica y científica con filtrado riguroso por relevancia, scoring y deduplicación basada en benchmarks. | `SKILL.md`<br>`resources/`<br>`scripts/` | *"buscar papers", "literature search", "revisión bibliográfica", "buscar evidencia"* |
+| **[`pi-autoresearch`](skills/pi-autoresearch/SKILL.md)** | Motor de investigación autónoma iterativa en terminal: matrices de riesgo, procedimientos de gate y protocolos de experimentación controlada. | `SKILL.md`<br>`resources/` | *"pi autoresearch", "investigacion autonoma", "bucle autoresearch"* |
+| **[`scientific-writing`](skills/scientific-writing/SKILL.md)** | Redacción de manuscritos científicos, tesis y papers con estructura IMRAD y pautas de reporte formal (CONSORT, STROBE, PRISMA). | `SKILL.md`<br>`resources/` | *"escribir paper", "scientific writing", "manuscrito", "redaccion cientifica"* |
+| **[`paper-writer-cli`](skills/paper-writer-cli/SKILL.md)** | Herramienta CLI para automatización y particionamiento modular de secciones en redacción de artículos científicos extensos. | `SKILL.md`<br>`resources/` | *"paper writer cli", "seccionar paper", "redactar seccion"* |
+| **[`strategic-partnership-toolkit`](skills/strategic-partnership-toolkit/SKILL.md)** | Framework integral para alianzas estratégicas, auditorías de claims comerciales/técnicos, y matrices de evaluación de propuestas. | `SKILL.md`<br>`resources/`<br>`scripts/` | *"alianza estrategica", "partnership toolkit", "auditar claims", "propuesta institucional"* |
+| **[`tts-lab`](skills/tts-lab/SKILL.md)** | Laboratorio de clonación y síntesis de voz a partir de audio de referencia con modelos Qwen3-TTS y creación de perfiles acústicos. | `SKILL.md`<br>`resources/` | *"tts lab", "clonar voz", "qwen3 tts", "sintesis de voz", "speaker profile"* |
+| **[`presentation-builder`](skills/presentation-builder/SKILL.md)** | Diseñador de presentaciones técnicas, estructuras de diapositivas de alto impacto y frameworks conceptuales para conferencias o defensas. | `SKILL.md`<br>`resources/` | *"crear presentacion", "presentation builder", "slides tecnicos", "diapositivas"* |
+| **[`color-theory-engine`](skills/color-theory-engine/SKILL.md)** | Motor determinista de teoría del color: generación de paletas accesibles (WCAG AAA), matrices de contraste y esquemas cromáticos UI. | `SKILL.md`<br>`scripts/`<br>`reference/` | *"teoria del color", "color engine", "generar paleta", "contraste accesible"* |
+| **[`mcp-trifecta-server`](skills/mcp-trifecta-server/SKILL.md)** | Servidor MCP para integración de memoria, contexto de proyecto y herramientas en entornos multi-agente. | `SKILL.md`<br>`scripts/` | *"mcp trifecta", "servidor mcp", "trifecta memory"* |
 
 ---
 
@@ -95,21 +126,37 @@ my-skills/
 ├── LICENSE
 ├── README.md
 └── skills/
-    ├── code-path-cartographer/     # Cartografía de rutas de código y dependencias
-    ├── diagram-auditor/            # Auditoría de diagramas contra evidencia
-    ├── diagram-maker-plus/         # Generador de diagramas Live HTML, Archify y SVG
-    ├── disk-cleanup-macos-safe/    # Recuperación y auditoría de almacenamiento APFS
-    ├── dots-maintenance/          # Mantenimiento de 7 subsistemas de workstation
-    ├── fish-shell-config/          # Configuración de Fish 4.3 y testing de funciones
-    ├── nix-fish-homemanager/       # Arquitectura Darwin Nix Flakes + Home Manager
-    ├── quality-plan-loop/          # Ciclo Planificador ↔ Auditor de convergencia
-    ├── skill-import-untrusted/     # Cuarentena y promoción atómica de skills externas
-    ├── skill-onboarding/           # Motor transaccional de onboarding y overlay
-    ├── skill-vetting/              # Escáner estático de seguridad para skills
-    ├── starship-nix-manager/       # Escaping Nix y hardware Apple Silicon
-    ├── starship-prompt/            # Diseño visual cross-shell y statuslines
-    ├── template-skill/             # Scaffold estándar para nuevas skills
-    └── work-closeout/              # Cierre higiénico de tareas y reset de workbench
+    ├── code-path-cartographer/        # Cartografía de rutas de código y dependencias
+    ├── color-theory-engine/           # Motor de teoría del color y accesibilidad
+    ├── diagram-auditor/               # Auditoría de diagramas contra evidencia
+    ├── diagram-maker-plus/            # Generador de diagramas Live HTML, Archify y SVG
+    ├── disk-cleanup-macos-safe/       # Recuperación y auditoría de almacenamiento APFS
+    ├── dots-maintenance/             # Mantenimiento de 7 subsistemas de workstation
+    ├── engram-memory/                 # Memoria persistente y registro de decisiones
+    ├── fish-shell-config/             # Configuración de Fish 4.3 y testing de funciones
+    ├── fork-pilot/                    # Orquestación multi-agente en tmux
+    ├── herdr/                         # Control de multiplexer de terminal para agentes
+    ├── literature-search/             # Búsqueda y deduplicación de literatura científica
+    ├── mcp-trifecta-server/           # Servidor MCP de contexto y herramientas
+    ├── nix-fish-homemanager/          # Arquitectura Darwin Nix Flakes + Home Manager
+    ├── paper-writer-cli/              # Automatización CLI de redacción académica
+    ├── pi-autoresearch/               # Motor de investigación autónoma en terminal
+    ├── picoclaw-expert/               # Directrices de arquitectura del agente PicoClaw
+    ├── presentation-builder/          # Diseñador de diapositivas y estructuras técnicas
+    ├── quality-plan-loop/             # Ciclo Planificador ↔ Auditor de convergencia
+    ├── scientific-writing/            # Redacción formal de papers y estructura IMRAD
+    ├── skill-import-untrusted/        # Cuarentena y promoción atómica de skills externas
+    ├── skill-onboarding/              # Motor transaccional de onboarding y overlay
+    ├── skill-vetting/                 # Escáner estático de seguridad para skills
+    ├── starship-nix-manager/          # Escaping Nix y hardware Apple Silicon
+    ├── starship-prompt/               # Diseño visual cross-shell y statuslines
+    ├── strategic-partnership-toolkit/ # Framework de alianzas y auditoría de claims
+    ├── template-skill/                # Scaffold estándar para nuevas skills
+    ├── tmux-plan-auditor/             # Auditoría paralela de planes con 4 agentes
+    ├── tts-lab/                       # Síntesis y clonación de voz con Qwen3-TTS
+    ├── wiki-keeper/                   # Fachada y router del pipeline decomposed F0-F7
+    ├── wiki-starter/                  # Bootstrap de bases de conocimiento LLM
+    └── work-closeout/                 # Cierre higiénico de tareas y reset de workbench
 ```
 
 ---

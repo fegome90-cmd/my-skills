@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PubMedPipelineState",
+  "description": "Schema de validación para el archivo de estado del pipeline PubMed en memory/pubmed-pipeline-state.json",
+  "type": "object",
+  "required": [
+    "lastRun",
+    "lastAction",
+    "currentIndex",
+    "completedPages",
+    "attemptedPages",
+    "pendingPages",
+    "skippedPages",
+    "cleanedHallucinated",
+    "stats",
+    "notes"
+  ],
+  "properties": {
+    "lastRun": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Fecha de la última ejecución en formato YYYY-MM-DD"
+    },
+    "lastAction": {
+      "type": "string",
+      "description": "Nombre de la última acción o job ejecutado"
+    },
+    "currentIndex": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Índice de progreso del procesamiento"
+    },
+    "completedPages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Lista de páginas procesadas en la historia o ciclo actual"
+    },
+    "attemptedPages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pendingPages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "skippedPages": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Mapeo de páginas omitidas y su justificación"
+    },
+    "cleanedHallucinated": {
+      "type": "object",
+      "required": ["from_wiki", "standalone_deleted"],
+      "properties": {
+        "from_wiki": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "standalone_deleted": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "required": [
+        "totalSearches",
+        "articlesFound",
+        "articlesIntegrated",
+        "pagesUpdated",
+        "pmidsVerified",
+        "pmidsHallucinated",
+        "pmidsCleaned",
+        "pagesSkipped_noRelevant"
+      ],
+      "properties": {
+        "totalSearches": { "type": "integer", "minimum": 0 },
+        "articlesFound": { "type": "integer", "minimum": 0 },
+        "articlesIntegrated": { "type": "integer", "minimum": 0 },
+        "pagesUpdated": { "type": "integer", "minimum": 0, "description": "Contador acumulado histórico de operaciones de actualización de página" },
+        "pmidsVerified": { "type": "integer", "minimum": 0 },
+        "pmidsHallucinated": { "type": "integer", "minimum": 0 },
+        "pmidsCleaned": { "type": "integer", "minimum": 0 },
+        "pagesSkipped_noRelevant": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "notes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Resúmenes de actualización por página"
+    }
+  },
+  "additionalProperties": true
+}

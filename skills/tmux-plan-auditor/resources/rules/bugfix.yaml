@@ -1,0 +1,26 @@
+# Bugfix workflow rules
+# Focus: side effects, regression, and scope of fix.
+
+logic:
+  rules:
+    - pattern: "\\bside effect\\b|\\befecto colateral\\b|\\bregresión\\b"
+      severity: Alta
+      title: "Riesgo de regresión detectado"
+      risk: "el fix puede romper funcionalidad existente"
+      recommendation: "Añadir plan de rollback y pruebas de regresión automatizadas."
+
+code_quality:
+  rules:
+    - pattern: "\\bminimal\\b|\\bmínimo\\b"
+      severity: Baja
+      title: "Enfoque en cambio mínimo"
+      risk: "ninguno"
+      recommendation: "Verificar que el fix no incluya refactors fuera de alcance."
+
+silent_failure:
+  rules:
+    - pattern: "\\broot cause\\b|\\bcausa raíz\\b"
+      severity: Baja
+      title: "Análisis de causa raíz presente"
+      risk: "ninguno"
+      recommendation: "Validar que el fix realmente ataque la causa raíz y no el síntoma."

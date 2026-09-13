@@ -1,0 +1,24 @@
+# Refactor workflow rules
+# Focus: simplification, technical debt, and modularity.
+
+code_quality:
+  rules:
+    - pattern: "\\bsimplific\\b|\\bhelper\\b|\\bduplic\\b|\\bclean\\b"
+      severity: Baja
+      title: "Oportunidad de simplificación detectada"
+      risk: "ninguno"
+      recommendation: "Asegurar que el refactor reduzca la complejidad ciclomática real."
+
+    - pattern: "\\bdeuda técnica\\b|\\btechnical debt\\b"
+      severity: Media
+      title: "Reducción de deuda técnica detectada"
+      risk: "ninguno"
+      recommendation: "Validar que el refactor no introduzca nueva deuda por sobre-ingeniería."
+
+testing_static:
+  rules:
+    - pattern: "\\bcobertura\\b|\\bcoverage\\b"
+      severity: Alta
+      title: "Requerimiento de cobertura estricto"
+      risk: "el refactor podría no estar bien probado"
+      recommendation: "Mantener o aumentar la cobertura de pruebas actual post-refactor."
