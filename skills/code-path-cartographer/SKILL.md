@@ -56,7 +56,7 @@ Default: `local-target` if a target is specified, `entrypoint-reachability` othe
 - Target file or symbol (for local-target)
 - `--depth N` — max traversal depth (default: unlimited for local-target)
 - `--include-tests` — include test files in scan (default: exclude)
-- `--segment PATH` — Trifecta segment override
+- `--scope PATH` — optional directory or module path to restrict scan scope
 
 ## Confidence Model
 
@@ -72,7 +72,7 @@ Default: `local-target` if a target is specified, `entrypoint-reachability` othe
 
 1. **Detect language** from file extensions and project structure
 2. **Select adapter** based on language and tool availability (see resources/adapters.md)
-3. **Index** the codebase (Trifecta graph index or rg scan)
+3. **Scan / Index** the codebase using fast regex (`rg`) or native AST parsing
 4. **Execute mode procedure** (load the matching resource file)
 5. **Generate report** using resources/report-template.md
 
@@ -82,11 +82,11 @@ See `resources/adapters.md` for full details.
 
 | Priority | Adapter | Languages | Command |
 |---|---|---|---|
-| 1 | Trifecta graph | Python | `trifecta graph callers/callees/index` |
-| 2 | Trifecta AST | Python | `trifecta ast symbols/hover` |
-| 3 | rg + git grep | All | `rg`, `git grep` |
-| 4 | Trifecta ctx_search | All (semantic) | `trifecta ctx_search` |
-| 5 | Neovim headless | LSP-capable | `nvim --headless` (optional) |
+| 1 | `rg` + `git grep` | All | `rg`, `git grep` |
+| 2 | Language AST / Parsers | Python, TS/JS, Go, Rust | `python3 -m ast`, `tsc`, `go doc`, tree-sitter |
+| 3 | LSP / Language Server | LSP-capable | Language server references / definition |
+| 4 | Optional Graph Indexers | All (opt-in) | MCP Graphify or local graph tools if present |
+
 
 ## Report Sections
 

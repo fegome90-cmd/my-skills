@@ -13,7 +13,7 @@ The reference is a direct, verifiable call in source code.
 - Static function/method call: `auth_service.login()`
 - Direct import used: `from auth import login`
 - Explicit reference: `obj.method_name()`
-- Adapter resolved the call chain end-to-end (e.g., Trifecta graph)
+- Adapter resolved the call chain end-to-end (e.g., static call trace via AST/rg)
 
 **Allowed language:**
 - "is connected to"

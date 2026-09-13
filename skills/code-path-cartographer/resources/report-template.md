@@ -50,7 +50,7 @@ Raw data backing each finding. One entry per notable finding.
 
 - CLI path: main() → CLI.login() → AuthService.login() [HIGH, static call]
 - API path: app.route("/login") → Router.dispatch() → AuthMiddleware → AuthService.login() [HIGH, static call]
-- Adapter: trifecta graph callers
+- Adapter: ripgrep static trace (or language-ast)
 ```
 
 ## 5. Dead/Unwired Candidates

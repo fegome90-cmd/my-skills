@@ -38,7 +38,7 @@ class EvidenceResult:
 |---------|-----------|----------|-------------|
 | PubMed | `pubmed__pubmed_search_articles`, `pubmed__pubmed_fetch_articles` | 1 | Biomedical, clinical, oncology claims |
 | Papers | `papers__search_papers`, `papers__fetch_paper` | 2 | Broad academic, multi-platform |
-| Local Corpus | `trifecta__ctx_search`, `wiki_search` | 3 | Project-specific context |
+| Local Corpus | `grep_search`, `wiki_search` | 3 | Project-specific context |
 | Memory | `engram__mem_search`, `memory_recall` | 4 | Prior decisions, past audits |
 
 ## Step 3.1 Procedure
@@ -73,7 +73,7 @@ papers__search_papers(
 )
 
 # For project-specific
-trifecta__ctx_search(query="[element_label]")
+grep_search(query="[element_label]", path=".")
 ```
 
 ### Tag Upgrade Table

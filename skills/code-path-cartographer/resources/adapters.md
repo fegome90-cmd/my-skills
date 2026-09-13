@@ -1,57 +1,26 @@
 # Adapters
 
 Tool selection strategy. Pick the highest-priority adapter that works for the
-current language and codebase state.
+current language and codebase state, prioritizing universal tools over proprietary ones.
 
 ## Priority Chain
 
-### 1. Trifecta Graph (Python — primary)
+### 1. ripgrep + git grep (Universal Primary — All Languages)
 
-**Prerequisite:** `trifecta graph index` must have been run on the segment.
-
-```bash
-# Index (once per session or after code changes)
-trifecta graph index --segment .
-
-# Callers of a symbol
-trifecta graph callers --symbol "func_name" --json
-
-# Callees of a symbol
-trifecta graph callees --symbol "func_name" --json
-```
-
-**When to use:** Python codebases with Trifecta installed and graph indexed.
-
-**Limitation:** Python only (AST-based). If symbol not in graph, fall through.
-
-### 2. Trifecta AST (Python — symbol extraction)
-
-```bash
-# Extract all symbols from a module
-trifecta ast symbols "sym://python/mod|type/all"
-
-# LSP hover for type info
-trifecta ast hover --uri "file:///path/to/file.py:42:10"
-```
-
-**When to use:** Building symbol inventory for Python, getting type context.
-
-### 3. ripgrep + git grep (All languages — backbone fallback)
-
-Always available. Use for symbol discovery and reference counting.
+Always available, fast, and multi-language. Use for symbol discovery, caller/callee tracing, and reference counting across repositories.
 
 ```bash
 # Find symbol definitions
 rg "^(def |class |func |export )(TARGET)" --type <lang>
 
-# Find all references
-rg "TARGET" --type <lang> -n
+# Find all references (callers / consumers)
+rg "\bTARGET\b" --type <lang> -n
 
 # Find imports
 rg "import TARGET|from .* import TARGET" --type <lang>
 
-# Cross-file reference search
-git grep "TARGET" -- <path>
+# Cross-file reference search with git
+git grep "\bTARGET\b" -- <path>
 ```
 
 **Language hints for entrypoint detection:**
@@ -59,61 +28,81 @@ git grep "TARGET" -- <path>
 | Extension | Entrypoint patterns |
 |-----------|-------------------|
 | `.go` | `func main()`, `package main` |
-| `.py` | `if __name__`, `@app.route`, `click`, `argparse` |
-| `.ts`/`.js` | `export default`, `app.get/post`, `router.` |
-| `.sh` | Any executable shell script |
+| `.py` | `if __name__`, `@app.route`, `click`, `argparse`, `typer` |
+| `.ts`/`.js` | `export default`, `app.get/post`, `router.`, `main()` |
+| `.sh` | Any executable shell script, `main "$@"` |
 | `.rs` | `fn main()` |
 
-### 4. Trifecta ctx_search (All languages — semantic boost)
+### 2. Language-Native AST & Parsers (High-Precision Syntax Trace)
+
+When regex patterns are ambiguous due to symbol shadowing, method overloading, or deep scope nesting, use the language's native AST parser or standard CLI tools.
 
 ```bash
-trifecta ctx_search "authentication middleware" --k 10
+# Python: inspect AST directly with standard library
+python3 -c "import ast, sys; tree=ast.parse(open('file.py').read()); print([n.name for n in ast.walk(tree) if isinstance(n, (ast.FunctionDef, ast.ClassDef))])"
+
+# TypeScript / JavaScript: extract AST / types via compiler or tree-sitter
+npx tsc --noEmit
+# or tree-sitter CLI if installed
+tree-sitter parse file.ts 2>/dev/null
+
+# Go: inspect package AST and symbols
+go doc -all ./...
 ```
 
-**When to use:** When rg misses references due to renaming, aliasing, or
-conceptual relationships. Semantic search catches what grep cannot.
+**When to use:** Resolving precise caller/callee signatures, module boundaries, and type references without false regex matches.
 
-**Do NOT use as primary adapter.** It returns ranked chunks, not structured
-call graphs. Use to supplement rg findings.
+### 3. Language Server Protocol / Symbol Indexers (LSP)
 
-### 5. Neovim Headless (LSP — optional, last resort)
+In development environments with an active language server (e.g. `pyright`, `gopls`, `tsserver`, `rust-analyzer`), query symbol definitions and workspace references.
 
 ```bash
-nvim --headless -c "lua vim.lsp.buf.references()" -c "q" file.py
+# Querying references via workspace language servers
+# Provides compiler-verified symbol reachability and rename-safe references
 ```
 
-**When to use:** Language has LSP server available, rg is insufficient,
-and Trifecta graph doesn't cover the language.
+**When to use:** Complex enterprise repositories with heavy indirection, interface implementations, and cross-package dependency graphs.
 
-**Requires:** Language server installed for the target language.
+### 4. Optional Graph Engines & MCP Tools (Opt-in Accelerators)
 
-**Note:** Slow and fragile. Only use when other adapters fail.
+If the workspace has graph-aware indexing tools (such as `graphify` MCP, `ctags`, or local code-graph CLI utilities):
+
+```bash
+# Use graph tools to supplement BFS/DFS traversals when available
+```
+
+**Rule:** Graph engines are optional accelerators. A missing graph engine MUST NEVER block or fail the cartography procedure; always fallback cleanly to `rg` + native AST.
 
 ## Adapter Selection Logic
 
-```
+```text
 detect_language(files)
-if language == "python" AND trifecta_available AND graph_indexed:
-    adapter = TRIFECTA_GRAPH
-else:
-    adapter = RG_GREP
 
-# Boost with semantic search
-if trifecta_ctx_available AND confidence < HIGH:
-    boost = TRIFECTA_CTX_SEARCH
+if language_parser_available(language):
+    primary_adapter = RG_PLUS_NATIVE_AST
+else:
+    primary_adapter = RG_GREP
+
+if graph_tool_available():
+    booster = GRAPH_ACCELERATOR
+else:
+    booster = NONE
 ```
 
 ## Adapter Health Check
 
-Before starting, verify adapter availability:
+Before starting, verify tool availability:
 
 ```bash
-# Trifecta
-command -v trifecta && trifecta graph status --segment . 2>/dev/null
-
-# ripgrep
+# ripgrep (required)
 command -v rg
 
 # git grep (inside git repo)
 git rev-parse --is-inside-work-tree 2>/dev/null
+
+# Python runtime (if target is Python)
+command -v python3
+
+# Node / TypeScript runtime (if target is TS/JS)
+command -v node
 ```

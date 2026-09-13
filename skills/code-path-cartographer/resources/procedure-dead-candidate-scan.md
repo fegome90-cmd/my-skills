@@ -15,10 +15,10 @@ Collect all defined symbols using the best available adapter:
 
 | Adapter | Command | Languages |
 |---------|---------|-----------|
-| Trifecta AST | `trifecta ast symbols sym://python/mod\|type/all` | Python |
-| rg + AST | `rg "^(def |class |func |export )" --type-add` | All |
+| Native AST / Parser | `python3 -m ast`, `tsc`, `go doc` | Python, TS/JS, Go |
+| rg (Structured Regex) | `rg "^(def |class |func |export )"` | All |
 
-For non-Python, use rg patterns:
+Common regex patterns by language:
 ```bash
 # Go
 rg "func [A-Z]" --type go
@@ -28,7 +28,7 @@ rg "type [A-Z]" --type go
 rg "export (function|class|const|interface|type) " --type ts
 rg "export default" --type ts
 
-# Python (if no Trifecta)
+# Python
 rg "^(def |class ) " --type py
 ```
 
