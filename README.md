@@ -5,7 +5,7 @@
 [![Standard](https://img.shields.io/badge/Standard-Agent%20Skills%20Spec-blueviolet.svg)](https://github.com/fegome90-cmd/my-skills)
 [![Tests](https://img.shields.io/badge/Tests-Passing%20(14%2F14)-brightgreen.svg)](skills/disk-cleanup-macos-safe/tests/)
 
-> Repositorio canónico de **Agent Skills** para arquitectura de estaciones de trabajo macOS (Darwin), depuración segura de almacenamiento APFS, configuración determinista con Nix Flakes & Home Manager, y disciplina de shell en Fish 4.3.
+> Repositorio canónico de **Agent Skills** desarrollado por Felipe Gonzalez: arquitectura de estaciones de trabajo macOS (Darwin), depuración de almacenamiento APFS, configuración determinista con Nix Flakes & Home Manager, motor transaccional de onboarding y escaneo de seguridad de skills, y patrones avanzados de arquitectura de software y calidad.
 
 **Autor:** [Felipe Gonzalez](https://github.com/fegome90-cmd)  
 **Licencia:** [MIT](LICENSE)
@@ -53,16 +53,37 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 
 ---
 
-## 🧭 Catálogo de Skills
+## 🧭 Catálogo de Skills (15 Skills)
+
+### 🖥️ 1. Arquitectura de Estación de Trabajo y macOS
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
-| **[`disk-cleanup-macos-safe`](skills/disk-cleanup-macos-safe/SKILL.md)** | Diagnóstico, auditoría y recuperación segura de almacenamiento en macOS. Modela la partición System/Data, Foundation API, snapshots locales, aislamiento de caches R1 y protección de R2/R3. | `SKILL.md`<br>`README.md`<br>`scripts/`<br>`tests/`<br>`audits/` | *"liberar espacio", "disco lleno", "limpieza macos", "storage audit", "apfs purge"* |
+| **[`disk-cleanup-macos-safe`](skills/disk-cleanup-macos-safe/SKILL.md)** | Diagnóstico, auditoría y recuperación segura de almacenamiento en macOS. Modela la partición System/Data, Foundation API, snapshots locales, aislamiento de caches R1 y protección de R2/R3. | `SKILL.md`<br>`scripts/`<br>`tests/`<br>`audits/` | *"liberar espacio", "disco lleno", "limpieza macos", "storage audit", "apfs purge"* |
 | **[`nix-fish-homemanager`](skills/nix-fish-homemanager/SKILL.md)** | Arquitectura y directrices de Darwin: Nix Flakes, Fish 4.3 y Home Manager sin romper symlinks, orden léxico de PATH ni Keychain secrets. | `SKILL.md`<br>`assets/`<br>`references/` | *"nix flake", "home manager", "fish config", "darwin rebuild", "keychain secrets"* |
 | **[`fish-shell-config`](skills/fish-shell-config/SKILL.md)** | Configuración de Fish shell verificada en máquina: superficies editables vs inmutables, autoload de funciones, y validación estricta con `fish_indent`. | `SKILL.md`<br>`references/` | *"alias terminal", "funcion fish", "config.fish", "fish_indent", "conf.d"* |
 | **[`dots-maintenance`](skills/dots-maintenance/SKILL.md)** | Protocolo de actualización y auditoría de salud modular a través de 7 subsistemas (Brew, Nix, Bun, uv, Rustup, PNPM, Fisher) con `sysup` y `sysdoc`. | `SKILL.md`<br>`references/` | *"actualizar paquetes", "system maintenance", "sysup", "sysdoc", "dots-update"* |
 | **[`starship-nix-manager`](skills/starship-nix-manager/SKILL.md)** | Configuración y gestión de Starship en Nix: escaping multilínea (`''${...}`) y módulos para hardware Apple Silicon (`ioreg` GPU/RAM). | `SKILL.md` | *"starship nix", "starship apple silicon", "escapar variables starship"* |
 | **[`starship-prompt`](skills/starship-prompt/SKILL.md)** | Arquitectura y guía visual de diseño para prompts cross-shell: statusline, glyphs Nerd Fonts, y paletas visuales (Catppuccin, Kanagawa). | `SKILL.md`<br>`assets/`<br>`references/` | *"customizar starship", "prompt terminal", "powerline glyphs", "paleta starship"* |
+
+### 🛡️ 2. Ciclo de Vida, Seguridad y Onboarding de Skills
+
+| Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
+|---|---|---|---|
+| **[`skill-onboarding`](skills/skill-onboarding/SKILL.md)** | Motor transaccional de onboarding de skills: importación con procedencia segura, reparación de licencias, semantic-lock refactoring y verificación candidate overlay con recibos durables. | `SKILL.md`<br>`resources/`<br>`scripts/` | *"onboard skill", "instalar skill", "import skill", "repair license", "refactor skill"* |
+| **[`skill-import-untrusted`](skills/skill-import-untrusted/SKILL.md)** | Protocolo de aislamiento, cuarentena y promoción atómica de skills externas o repositorios no confiables con validación de procedencia y secretos. | `SKILL.md`<br>`resources/`<br>`scripts/` | *"importar skill untrusted", "quarantine skill", "verificar skill externa", "promote candidate"* |
+| **[`skill-vetting`](skills/skill-vetting/SKILL.md)** | Escáner estático de seguridad (`scan.py`) contra prompt injections, ejecución de código malicioso (`eval`, `exec`, reverse shells) y auditoría de riesgo en skills de terceros. | `SKILL.md`<br>`scripts/`<br>`references/` | *"vetting skill", "auditar skill", "escanear skill", "analizar seguridad skill"* |
+| **[`template-skill`](skills/template-skill/SKILL.md)** | Scaffold y boilerplate canónico estándar para generar nuevas agent skills con frontmatter y estructura de carpetas preconfigurada. | `SKILL.md` | *"template skill", "plantilla skill", "scaffold skill", "crear starter skill"* |
+
+### 🏗️ 3. Arquitectura de Software, Calidad y Desarrollo
+
+| Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
+|---|---|---|---|
+| **[`quality-plan-loop`](skills/quality-plan-loop/SKILL.md)** | Quality Plan Loop (QPL) — Ciclo iterativo de convergencia Planificador ↔ Auditor independiente con presupuestos acotados y stop conditions formales. | `SKILL.md`<br>`templates/`<br>`examples/` | *"quality plan loop", "iterar plan", "auditar plan de arquitectura", "planificador auditor"* |
+| **[`work-closeout`](skills/work-closeout/SKILL.md)** | Cierre higiénico de unidades de trabajo: clasificación de residuo con evidencia (R7), cuarentena reversible y emisión de recibos de verificación. | `SKILL.md`<br>`references/`<br>`templates/` | *"close out", "limpiar temporales", "work closeout", "receipt clean reset"* |
+| **[`diagram-maker-plus`](skills/diagram-maker-plus/SKILL.md)** | Generador multi-motor de diagramas técnicos de alta fidelidad: Live HTML interactivo (Plannotator B2 / Open Design), Archify JSON-IR, Mermaid.js y SVG. | `SKILL.md`<br>`resources/`<br>`scripts/` | *"crear diagrama", "diagrama interactivo", "archify router", "plannotator b2", "diagrama mermaid"* |
+| **[`diagram-auditor`](skills/diagram-auditor/SKILL.md)** | Auditoría sistemática basada en evidencia para diagramas y flujogramas: clasificación estricta de afirmaciones en confirmadas, inferidas o fabricadas. | `SKILL.md`<br>`resources/`<br>`tests/` | *"audita el diagrama", "lint flowchart", "verifica diagrama contra evidencia"* |
+| **[`code-path-cartographer`](skills/code-path-cartographer/SKILL.md)** | Cartografía de rutas de código: rastreo de entrypoints, llamadas entrantes/salientes, detección de símbolos huérfanos y diagramas de conectividad. | `SKILL.md`<br>`resources/` | *"mapear rutas", "code connectivity", "call paths", "buscar simbolos huerfanos"* |
 
 ---
 
@@ -74,34 +95,21 @@ my-skills/
 ├── LICENSE
 ├── README.md
 └── skills/
-    ├── disk-cleanup-macos-safe/
-    │   ├── SKILL.md                 # Contrato operativo, clasificación R0-R3 y workflow
-    │   ├── README.md                # Guía de uso de la herramienta de almacenamiento
-    │   ├── audits/                  # Auditorías de diseño y arquitectura de seguridad (v2-v6)
-    │   ├── references/              # Observabilidad de storage APFS y diseño UI
-    │   ├── scripts/
-    │   │   ├── macos_resource_probe.swift # Sonda Foundation API para capacidades reales
-    │   │   └── macos_storage_audit.py     # Motor Python de auditoría y detección de gaps
-    │   └── tests/
-    │       ├── test_audit_logic.py        # Suite de pruebas unitarias (14 tests)
-    │       ├── pressure-scenarios.md      # Escenarios de estrés y límites de disco
-    │       └── synthetic-report.html      # Fixture de reporte HTML sintético
-    ├── dots-maintenance/
-    │   ├── SKILL.md                 # Matriz de actualización modular de 7 subsistemas
-    │   └── references/runbook.md    # Runbook operativo de mantenimiento
-    ├── fish-shell-config/
-    │   ├── SKILL.md                 # Reglas de autoría de funciones y conf.d
-    │   └── references/              # Migración bash-to-fish, secretos y testing
-    ├── nix-fish-homemanager/
-    │   ├── SKILL.md                 # Arquitectura de integración Darwin + Nix
-    │   ├── assets/                  # Plantillas de flakes, módulos y loaders
-    │   └── references/              # Bug registry (BUG-001 Fisher), Keychain y Nixpkgs
-    ├── starship-nix-manager/
-    │   └── SKILL.md                 # Escaping Nix y hardware Apple Silicon
-    └── starship-prompt/
-        ├── SKILL.md                 # Diseño visual cross-shell
-        ├── assets/                  # Presets toml y módulos Nix
-        └── references/              # Tabla de módulos y glifos Nerd Fonts
+    ├── code-path-cartographer/     # Cartografía de rutas de código y dependencias
+    ├── diagram-auditor/            # Auditoría de diagramas contra evidencia
+    ├── diagram-maker-plus/         # Generador de diagramas Live HTML, Archify y SVG
+    ├── disk-cleanup-macos-safe/    # Recuperación y auditoría de almacenamiento APFS
+    ├── dots-maintenance/          # Mantenimiento de 7 subsistemas de workstation
+    ├── fish-shell-config/          # Configuración de Fish 4.3 y testing de funciones
+    ├── nix-fish-homemanager/       # Arquitectura Darwin Nix Flakes + Home Manager
+    ├── quality-plan-loop/          # Ciclo Planificador ↔ Auditor de convergencia
+    ├── skill-import-untrusted/     # Cuarentena y promoción atómica de skills externas
+    ├── skill-onboarding/           # Motor transaccional de onboarding y overlay
+    ├── skill-vetting/              # Escáner estático de seguridad para skills
+    ├── starship-nix-manager/       # Escaping Nix y hardware Apple Silicon
+    ├── starship-prompt/            # Diseño visual cross-shell y statuslines
+    ├── template-skill/             # Scaffold estándar para nuevas skills
+    └── work-closeout/              # Cierre higiénico de tareas y reset de workbench
 ```
 
 ---

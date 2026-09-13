@@ -1,0 +1,342 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "work-closeout/clean-workbench/resource/v1",
+  "title": "Clean Workbench Reset",
+  "description": "Decision resource for low-friction workspace closeout: explore and report freely; mutate only an explicitly approved manifest.",
+  "schema_version": "work-closeout/clean-workbench/resource/v1",
+  "resource_id": "clean-workbench-reset",
+  "resource_revision": "1.0.0",
+  "base_contract_ref": {
+    "contract_id": "work-closeout-r7",
+    "schema_version": "work-closeout/contract/v1",
+    "artifact_revision": "R7",
+    "authority": "canonical_fixture_contract"
+  },
+  "interaction_model": {
+    "principle": "explore_freely_apply_conservatively",
+    "scope_required": true,
+    "default_scope": "current_work_root",
+    "repository_wide_requires_expansion": true,
+    "llm_role": "triage_and_explanation",
+    "harness_role": "eligibility_and_execution",
+    "inspect": {
+      "approval_required": false,
+      "mutates_files": false,
+      "output": "decision_report"
+    },
+    "dry_run": {
+      "approval_required": false,
+      "mutates_files": false,
+      "output": "decision_report_and_frozen_manifest"
+    },
+    "apply": {
+      "approval_required": true,
+      "approval_granularity": "one_exact_manifest_batch",
+      "mutates_files": true,
+      "allowed_actions": [
+        "QUARANTINE"
+      ]
+    },
+    "restore": {
+      "approval_required": true,
+      "mutates_files": true,
+      "allowed_actions": [
+        "RESTORE"
+      ]
+    },
+    "recover": {
+      "approval_required": true,
+      "mutates_files": true,
+      "allowed_actions": [
+        "RESUME",
+        "ABORT",
+        "INTERVENTION_REQUIRED"
+      ]
+    },
+    "zero_action_result": "NOOP_ALREADY_CLOSED"
+  },
+  "profiles": [
+    {
+      "profile_id": "compatibility-temporary-v1",
+      "purpose": "Preserve the existing R7 proven-temporary behavior.",
+      "candidate_classes": [
+        "TEMPORARY"
+      ],
+      "default_operation": "inspect",
+      "apply_requires_explicit_profile": false
+    },
+    {
+      "profile_id": "clean-workbench-safe-v1",
+      "purpose": "Explore a completed work root and propose reversible quarantine for proven residue.",
+      "candidate_classes": [
+        "TEMPORARY",
+        "GENERATED_ARTIFACT"
+      ],
+      "default_operation": "inspect",
+      "apply_requires_explicit_profile": true,
+      "dry_run_required_before_apply": true,
+      "approval_required_for_apply": true
+    }
+  ],
+  "candidate_classes": [
+    {
+      "class_id": "TEMPORARY",
+      "mutation_eligible": true,
+      "required_evidence": [
+        "regular_file",
+        "run_or_producer_provenance",
+        "outside_protected_roots",
+        "not_user_modified",
+        "complete_identity_and_hash"
+      ]
+    },
+    {
+      "class_id": "GENERATED_ARTIFACT",
+      "mutation_eligible": true,
+      "required_evidence": [
+        "regular_file",
+        "producer_receipt_or_manifest_digest",
+        "derived_output",
+        "not_deliverable",
+        "not_intentional_document",
+        "not_user_modified",
+        "complete_identity_and_hash"
+      ]
+    },
+    {
+      "class_id": "SUSPECTED_RESIDUE",
+      "mutation_eligible": false,
+      "reason": "Useful triage label; filename, extension, age, or appearance alone never authorizes movement."
+    },
+    {
+      "class_id": "AMBIGUOUS",
+      "mutation_eligible": false,
+      "reason": "Insufficient, conflicting, stale, or incomplete evidence."
+    },
+    {
+      "class_id": "USER_DOCUMENT",
+      "mutation_eligible": false,
+      "reason": "Intentional documents remain in place in v1."
+    },
+    {
+      "class_id": "DELIVERABLE",
+      "mutation_eligible": false,
+      "reason": "Deliverables remain in place in v1."
+    },
+    {
+      "class_id": "PROTECTED",
+      "mutation_eligible": false,
+      "reason": "Policy or normative boundary blocks movement."
+    }
+  ],
+  "evidence_rules": {
+    "record_fields": [
+      "evidence_id",
+      "type",
+      "source",
+      "fact",
+      "strength",
+      "value_digest"
+    ],
+    "strengths": [
+      "REQUIRED",
+      "SUPPORTING",
+      "DISQUALIFYING"
+    ],
+    "authorization_rule": "Evidence explains eligibility; it never replaces policy or human approval.",
+    "confidence_rule": "No confidence score authorizes movement.",
+    "heuristics_only": [
+      "filename",
+      "extension",
+      "age",
+      "size",
+      "absence_from_recent_use"
+    ]
+  },
+  "decision_report": {
+    "purpose": "Give the human enough information to decide without approving each file individually.",
+    "required_fields": [
+      "candidate_id",
+      "path",
+      "class_id",
+      "disposition",
+      "proposed_action",
+      "evidence_ids",
+      "reason_codes",
+      "risk"
+    ],
+    "dispositions": [
+      "PROPOSE_QUARANTINE",
+      "KEEP",
+      "PROTECTED",
+      "AMBIGUOUS_REVIEW"
+    ],
+    "proposed_actions": [
+      "QUARANTINE",
+      "KEEP",
+      "NONE"
+    ],
+    "user_decision": "Optional during inspect/dry-run; required only when apply selects a non-empty manifest.",
+    "batch_review": "Group candidates by class and risk; permit explicit exclusions before manifest freeze."
+  },
+  "destinations": {
+    "v1": [
+      {
+        "destination_id": "run_quarantine",
+        "pattern": "<quarantine_root>/<run_id>/<scope_root_id>/<relative_source_path>",
+        "same_filesystem_required": true,
+        "no_replace_required": true,
+        "destination_must_be_absent": true,
+        "excluded_from_future_scans": true
+      }
+    ],
+    "forbidden": [
+      "trash",
+      "permanent_delete",
+      "overwrite",
+      "rename",
+      "cross_filesystem_copy"
+    ]
+  },
+  "approval_binding": {
+    "authority": "explicit_human_approval",
+    "binds": [
+      "resource_digest",
+      "profile_id",
+      "profile_digest",
+      "resource_manifest_digest",
+      "scope_digest",
+      "baseline_digest",
+      "policy_digest",
+      "manifest_digest",
+      "selected_candidate_ids",
+      "human_principal",
+      "nonce",
+      "expiry"
+    ],
+    "one_time_consumption": true,
+    "protected_policy_overrides_approval": true,
+    "engram_cannot_authorize": true
+  },
+  "receipt_linkage": {
+    "base_receipt_schema": "work-closeout/receipt/v1",
+    "resource_link_schema": "work-closeout/clean-workbench/receipt-link/v1",
+    "required_fields": [
+      "resource_id",
+      "resource_digest",
+      "profile_id",
+      "resource_manifest_digest",
+      "base_run_id",
+      "base_receipt_id",
+      "base_receipt_digest",
+      "candidate_class_counts",
+      "kept_no_touch_count",
+      "blocked_count"
+    ]
+  },
+  "lifecycle": [
+    {
+      "step": "INSPECT",
+      "approval_required": false,
+      "mutation_allowed": false,
+      "completion": "Decision report covers every scanned entry or records incomplete coverage."
+    },
+    {
+      "step": "DRY_RUN",
+      "approval_required": false,
+      "mutation_allowed": false,
+      "completion": "Sorted report and manifest are frozen with digests and zero unexplained candidates."
+    },
+    {
+      "step": "APPROVE",
+      "approval_required": true,
+      "mutation_allowed": false,
+      "completion": "Human approval names the exact manifest/profile/resource digests and selected candidate set."
+    },
+    {
+      "step": "PRECOMMIT",
+      "approval_required": true,
+      "mutation_allowed": false,
+      "completion": "R7 lock, no-replace capability, containment, identity, and baseline revalidation pass."
+    },
+    {
+      "step": "QUARANTINE",
+      "approval_required": true,
+      "mutation_allowed": true,
+      "completion": "Only approved eligible candidates move through journaled same-filesystem no-replace operations."
+    },
+    {
+      "step": "VERIFY",
+      "approval_required": true,
+      "mutation_allowed": false,
+      "completion": "Bytes, hashes, metadata, identity, source absence, destination presence, and protected roots verify."
+    },
+    {
+      "step": "RESTORE",
+      "approval_required": true,
+      "mutation_allowed": true,
+      "completion": "Restore preserves original-path preconditions and fails closed on conflicts."
+    },
+    {
+      "step": "RECOVER",
+      "approval_required": true,
+      "mutation_allowed": true,
+      "completion": "R7 recovery table determines resume, abort, or intervention from durable state."
+    }
+  ],
+  "no_touch": {
+    "always": [
+      "permanent_deletion",
+      "document_organization",
+      "document_renaming",
+      "global_disk_cleanup",
+      "vault",
+      "git",
+      "merge_or_pull_request",
+      "network",
+      "cross_filesystem_copy",
+      "classifier_learning_during_apply",
+      "memory_authorization",
+      "symlink_or_special_file_without_explicit_protocol"
+    ],
+    "ambiguous_evidence": "KEEP_AND_REPORT",
+    "missing_capability": "INSPECT_ONLY"
+  },
+  "provenance": {
+    "status": "adapted_patterns_not_authority",
+    "sources": [
+      {
+        "path": "~/.pi/agent/skills/disk-cleanup-macos-safe/SKILL.md",
+        "pattern": "diagnosis, immutable manifest, exact approval, precondition revalidation"
+      },
+      {
+        "path": "~/.claude/skills/backend-resource-safety/SKILL.md",
+        "pattern": "lock check-and-act together to prevent TOCTOU"
+      },
+      {
+        "path": ".agents/skills/learned-authority-vs-evidence-separation/SKILL.md",
+        "pattern": "receipt, current anchor, historical artifact separation"
+      },
+      {
+        "path": "skills/quality-plan-loop/SKILL.md",
+        "pattern": "fresh audit, exact gates, budgets, and stop conditions"
+      },
+      {
+        "path": ".agents/skills/interagent-dispatch/resources/receipt-schemas.md",
+        "pattern": "typed receipts, scope integrity, claim alignment, fail-closed evidence"
+      },
+      {
+        "path": "skills/wiki-keeper/SKILL.md",
+        "pattern": "run IDs, staging, awaiting-human boundaries, lock/CAS promotion"
+      },
+      {
+        "path": "~/.claude/skills/learned/bash-cleanup-trap/SKILL.md",
+        "pattern": "clean staging resources on failure without treating user files as disposable"
+      },
+      {
+        "path": "skills/engram-memory/SKILL.md",
+        "pattern": "memory as durable record and evidence, never implicit authorization"
+      }
+    ]
+  }
+}

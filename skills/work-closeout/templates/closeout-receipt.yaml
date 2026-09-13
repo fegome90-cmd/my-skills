@@ -1,0 +1,48 @@
+report_version: work-closeout/report/v1
+operation: inspect | dry-run | apply | restore | recover
+outcome: PLANNED | APPLYING | CLOSED | BLOCKED | RESTORED | NOOP_ALREADY_CLOSED | RECOVERY_REQUIRED
+receipt:
+  schema_version: work-closeout/receipt/v1
+  receipt_id: <receipt-id>
+  state: ABSENT | PREPARED | FINALIZED
+  manifest_digest: sha256:<64-hex>
+  transition_digest: sha256:<64-hex>
+  artifact_count: 0
+  event_at: <RFC3339-timestamp>
+run:
+  run_id: <run-id>
+  manifest_digest: sha256:<64-hex>
+  baseline_digest: sha256:<64-hex>
+memory:
+  schema_version: work-closeout/memory/v1
+  run_id: <run-id>
+  topic_key: <run-local-topic-key>
+  receipt_digest: sha256:<64-hex>
+  status: REQUESTED | COMMITTED | UNAVAILABLE | PENDING | DUPLICATE | RETRY
+  attempt: 1
+  event_at: <RFC3339-timestamp>
+  authorizes: false
+actions:
+  - schema_version: work-closeout/action/v1
+    action_id: action-001 | action-reference
+    candidate_id: <candidate-id>
+    operation: NOOP | MOVE | RESTORE | BLOCK
+    source: <normalized-source>
+    destination: <normalized-destination>
+    precondition:
+      source_identity_digest: sha256:<64-hex>
+      source_sha256: sha256:<64-hex>
+      source_size: 0
+      destination_absent: true
+    no_replace_required: true
+verification:
+  bytes: PASS | FAIL | NOT_RUN
+  metadata: PASS | FAIL | NOT_RUN
+  identity: PASS | FAIL | NOT_RUN
+  journal: PASS | FAIL | NOT_RUN
+  lock: RELEASED | ACQUIRED | CONTENDED | NOT_REQUESTED
+restore:
+  available: true | false
+  path: <restore-record-or-null>
+blockers: []
+evidence: []
