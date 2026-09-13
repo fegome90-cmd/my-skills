@@ -126,8 +126,8 @@ python3 "$SKILL_DIR/scripts/txn_manager.py" unlock
 
 ## 4. Recovery Contract (truthful, digest-verified)
 
-If any critical-section step fails or a crash interrupts states `SKILL_SWAPPED` /
-`REGISTRY_SWAPPED`, run:
+If any critical-section step fails or a crash interrupts states `PRECOMMIT` (after live backup/mutations begin),
+`SKILL_SWAPPED`, or `REGISTRY_SWAPPED`, run:
 
 ```bash
 python3 "$SKILL_DIR/scripts/txn_manager.py" recover "skills/.staging/{{RUN_ID}}"

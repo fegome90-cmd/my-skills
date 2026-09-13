@@ -232,6 +232,10 @@ def verify(
     }
 
     # 1. Interface Preflight & Secret Quarantine Scan
+    if not (c_dir / "SKILL.md").is_file():
+        print(f"PREFLIGHT FAIL: Candidate SKILL.md missing at '{c_dir / 'SKILL.md'}'.", file=sys.stderr)
+        sys.exit(10)
+
     if not o_path.is_file():
         print(f"PREFLIGHT FAIL: Candidate overlay '{o_path}' missing.", file=sys.stderr)
         sys.exit(10)

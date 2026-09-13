@@ -16,6 +16,7 @@ class ContrastResult(NamedTuple):
     passes_AA_normal: bool
     passes_AA_large: bool
     passes_AAA_normal: bool
+    passes_AAA_large: bool
 
 
 class ColorEngine:
@@ -66,12 +67,14 @@ class ColorEngine:
             # Formula: (L1 + 0.05) / (L2 + 0.05) where L1 is lighter
             l1, l2 = max(lum1, lum2), min(lum1, lum2)
             ratio = (l1 + 0.05) / (l2 + 0.05)
+            r_ratio = round(ratio, 2)
             
             result = ContrastResult(
-                ratio=round(ratio, 2),
-                passes_AA_normal=ratio >= 4.5,
-                passes_AA_large=ratio >= 3.0,
-                passes_AAA_normal=ratio >= 7.0
+                ratio=r_ratio,
+                passes_AA_normal=r_ratio >= 4.5,
+                passes_AA_large=r_ratio >= 3.0,
+                passes_AAA_normal=r_ratio >= 7.0,
+                passes_AAA_large=r_ratio >= 4.5
             )
             return result._asdict()
         except Exception as e:

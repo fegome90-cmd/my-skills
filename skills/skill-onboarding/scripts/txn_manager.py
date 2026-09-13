@@ -116,8 +116,9 @@ def init_txn(
         live_registry_backup.write_text("# Skill Registry\n\n## Compact Rules\n\n", encoding="utf-8")
         reg_sha = sha256_file(live_registry_backup)
 
+    skill_exists = live_skill.is_dir()
     skill_sha = ""
-    if live_skill.is_dir():
+    if skill_exists:
         base_skill_backup = base_dir / "live-skill"
         if base_skill_backup.exists():
             shutil.rmtree(base_skill_backup)
@@ -130,7 +131,8 @@ def init_txn(
         "skill_name": skill_name,
         "state": "INIT",
         "live_registry_path": str(live_reg.resolve()),
-        "live_skill_path": str(live_skill.resolve()) if live_skill.exists() else "",
+        "live_skill_path": str(live_skill.resolve()) if live_skill.exists() else str(live_skill),
+        "skill_existed_initially": skill_exists,
         "base_registry_sha256": reg_sha,
         "base_skill_tree_digest": skill_sha,
         "timestamp": live_registry_backup.stat().st_mtime
@@ -156,7 +158,17 @@ def check_toctou(staging_dir: str | Path) -> None:
         sys.exit(2)
 
     live_skill_str = txn_data.get("live_skill_path")
-    if live_skill_str and Path(live_skill_str).is_dir():
+    initially_existed = txn_data.get("skill_existed_initially", False)
+    current_exists = bool(live_skill_str and Path(live_skill_str).is_dir())
+
+    if current_exists != initially_existed:
+        print(
+            f"CONFLICT_BASE_CHANGED: Live skill existence drifted (initially existed: {initially_existed}, now exists: {current_exists})",
+            file=sys.stderr,
+        )
+        sys.exit(3)
+
+    if current_exists:
         temp_manifest = staging / "temp_manifest"
         current_skill_sha = run_manifest_script(Path(live_skill_str), temp_manifest)
         if current_skill_sha != txn_data["base_skill_tree_digest"]:
@@ -220,10 +232,13 @@ def _restore_skill_component(
     live_skill_str = txn.get("live_skill_path")
     if not live_skill_str:
         return {"component": "skill", "status": "N/A", "reason": "no live skill recorded in transaction"}
-    if expected_digest == "":
-        return {"component": "skill", "status": "N/A", "reason": "transaction froze no skill baseline"}
-
     live_skill = Path(live_skill_str)
+
+    if expected_digest == "" and not txn.get("skill_existed_initially", False):
+        if live_skill.exists():
+            shutil.rmtree(live_skill)
+        return {"component": "skill", "status": "RESTORED", "source": "clean_absence", "tree_digest_verified": ""}
+
     sources = [staging / "backup" / "live-skill", staging / "base" / "live-skill"]
     source_used = next((s for s in sources if s.is_dir()), None)
 
@@ -286,12 +301,25 @@ def recover(staging_dir: str | Path) -> None:
     if state == "COMPLETE":
         print("Previous transaction was cleanly completed.")
         return
-    if state in ["INIT", "PRECOMMIT"]:
+    if state == "INIT":
         print(f"Transaction '{txn['run_id']}' stopped in {state}: no atomic swap performed, nothing to roll back.")
         return
 
-    # Only SKILL_SWAPPED / REGISTRY_SWAPPED reach a compensating rollback.
-    print(f"CRASH DETECTED in state {state}. Initiating verified compensating rollback...")
+    if state == "PRECOMMIT":
+        backup_skill = staging / "backup" / "live-skill"
+        backup_reg = staging / "backup" / "live-registry.md"
+        live_skill_str = txn.get("live_skill_path")
+        skill_vanished = bool(
+            txn.get("skill_existed_initially")
+            and live_skill_str
+            and not Path(live_skill_str).exists()
+        )
+        if not (backup_skill.exists() or backup_reg.exists() or skill_vanished):
+            print(f"Transaction '{txn['run_id']}' stopped in PRECOMMIT before mutations: nothing to roll back.")
+            return
+        print(f"CRASH DETECTED in PRECOMMIT after mutations began. Initiating verified compensating rollback...")
+    else:
+        print(f"CRASH DETECTED in state {state}. Initiating verified compensating rollback...")
 
     components = [
         _restore_registry_component(staging, txn, txn.get("base_registry_sha256", "")),

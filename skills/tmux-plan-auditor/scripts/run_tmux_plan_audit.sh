@@ -228,22 +228,28 @@ echo ""
 echo "Building handoff.json..."
 
 CLEANUP_FLAG="false"
-if [[ "$AUTO_CLEANUP" == "true" && $WAIT_STATUS -eq 0 ]]; then
-  CLEANUP_FLAG="true"
-fi
-
 if [[ "$INTERACTIVE_MODE" == "true" ]]; then
   HANDOFF_SESSION="$SESSION_TARGET"
+  if [[ "$AUTO_CLEANUP" == "true" && $WAIT_STATUS -eq 0 ]]; then
+    echo "Auto-cleanup: killing tmux session '$SESSION_TARGET'"
+    TMUX= tmux kill-session -t "$SESSION_TARGET" 2>/dev/null || true
+    if TMUX= tmux has-session -t "$SESSION_TARGET" 2>/dev/null; then
+      echo "Warning: tmux session '$SESSION_TARGET' still active after kill" >&2
+      CLEANUP_FLAG="false"
+    else
+      CLEANUP_FLAG="true"
+    fi
+    trap - EXIT INT TERM
+  fi
 else
   HANDOFF_SESSION="$RUN_ID"
+  if [[ "$AUTO_CLEANUP" == "true" && $WAIT_STATUS -eq 0 ]]; then
+    CLEANUP_FLAG="true"
+  fi
 fi
+
 cd "$SKILL_DIR" || { echo "Error: Cannot access $SKILL_DIR" >&2; exit 1; }
 PYTHONPATH="$SKILL_DIR" python3 "${RESOURCES_DIR}/handoff_builder.py" "$RUN_DIR" "$RUN_ID" "$HANDOFF_SESSION" "$PLAN_PATH" "$CLEANUP_FLAG" "$AUDITOR_PLAN_DOMAIN"
-
-if [[ "$INTERACTIVE_MODE" == "true" && "$AUTO_CLEANUP" == "true" && $WAIT_STATUS -eq 0 ]]; then
-  echo "Auto-cleanup: killing tmux session '$SESSION_TARGET'"
-  trap - EXIT INT TERM
-fi
 
 # Generate summary
 cat > "${RUN_DIR}/summary.md" <<EOS

@@ -19,13 +19,13 @@ Sigue estos niveles secuencialmente. No saltes a la generación avanzada sin est
 - [ ] **Level 1: Foundation & Semantics**
   - Identifica el requerimiento central (ej. "dashboard accesible en modo oscuro").
   - Consulta `patterns/color-patterns.json` para identificar la base semántica apropiada.
-  - Revisa `reference/color-theory-foundations.md` para seleccionar el espacio de color correcto (HSL vs. LAB).
+  - Revisa `reference/color-theory-foundations.md` para la fundamentación de armonías en espacio HSL y cálculo de luminancia relativa.
 - [ ] **Level 2: Harmonic Generation**
   - Determina la armonía requerida (Monocromática, Complementaria, Análoga, Triádica).
   - Ejecuta `scripts/color_engine.py` usando el comando `harmony` para derivar la paleta matemáticamente.
 - [ ] **Level 3: Accessibility Validation**
   - Ejecuta el comando `contrast` en `scripts/color_engine.py` para todos los pares de texto/fondo.
-  - Ajusta los pasos de luminancia hasta cumplir con los estándares WCAG AA (4.5:1) o AAA (7.0:1).
+  - Ajusta los pasos de luminancia hasta cumplir con los estándares WCAG 2.1: AA Normal / AAA Large (4.5:1), AA Large (3.0:1), o AAA Normal (7.0:1).
 
 ## Contexto de Ejecución
 - **Script**: `python scripts/color_engine.py <command> <args>`
