@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+# hunt-consolidate — Merge findings from multiple bug-hunt agents into a unified report
+# Usage: hunt-consolidate <findings-dir> [output-file]
+#   findings-dir: directory containing hunt-findings-*.md files
+#   output-file:  output path (default: stdout)
+set -euo pipefail
+
+DIR="${1:?Usage: hunt-consolidate <findings-dir> [output-file]}"
+OUTPUT="${2:-/dev/stdout}"
+
+if [ ! -d "$DIR" ]; then
+    echo "ERROR: $DIR is not a directory" >&2; exit 1
+fi
+
+# Collect all finding files
+FILES=()
+for f in "$DIR"/hunt-findings-*.md; do
+    [ -f "$f" ] && FILES+=("$f")
+done
+
+if [ ${#FILES[@]} -eq 0 ]; then
+    echo "ERROR: No hunt-findings-*.md files in $DIR" >&2; exit 1
+fi
+
+# Parse each agent's findings
+echo "# Bug Hunt Consolidation" > "$OUTPUT"
+echo "" >> "$OUTPUT"
+echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUTPUT"
+echo "Sources: ${#FILES[@]} agent(s)" >> "$OUTPUT"
+echo "" >> "$OUTPUT"
+
+# Count findings by severity — ONLY count structured finding headers [AGENT-NNN] SEVERITY
+TOTAL=0
+CRITICAL=0; HIGH=0; MEDIUM=0; LOW=0; INFO=0
+
+for f in "${FILES[@]}"; do
+    # Extract content between FORK_START/FORK_END, or full file as fallback
+    block=$(sed -n '/## FORK_START ##/,/## FORK_END ##/p' "$f" 2>/dev/null || true)
+    if [ -z "$block" ]; then
+        block=$(cat "$f")
+    fi
+
+    # Count severity from structured finding headers only: [PREFIX-NNN] CRITICAL|HIGH|MEDIUM|LOW|INFO
+    for sev in CRITICAL HIGH MEDIUM LOW INFO; do
+        # Match lines like [RIPPER-001] HIGH or [WALKER-003] MEDIUM or [SNIPER-012] LOW
+        count=$(echo "$block" | grep -cE '^\[[A-Z]+-[0-9]+\] +'"$sev"'\b' || true)
+        case "$sev" in
+            CRITICAL) CRITICAL=$((CRITICAL + count)) ;;
+            HIGH) HIGH=$((HIGH + count)) ;;
+            MEDIUM) MEDIUM=$((MEDIUM + count)) ;;
+            LOW) LOW=$((LOW + count)) ;;
+            INFO) INFO=$((INFO + count)) ;;
+        esac
+    done
+done
+
+TOTAL=$((CRITICAL + HIGH + MEDIUM + LOW + INFO))
+
+# Executive summary
+echo "## Executive Summary" >> "$OUTPUT"
+echo "" >> "$OUTPUT"
+echo "- Total findings: $TOTAL" >> "$OUTPUT"
+echo "  - CRITICAL: $CRITICAL" >> "$OUTPUT"
+echo "  - HIGH: $HIGH" >> "$OUTPUT"
+echo "  - MEDIUM: $MEDIUM" >> "$OUTPUT"
+echo "  - LOW: $LOW" >> "$OUTPUT"
+echo "  - INFO: $INFO" >> "$OUTPUT"
+echo "" >> "$OUTPUT"
+
+# Verdict (INFO does not affect verdict)
+if [ "$CRITICAL" -gt 0 ]; then
+    echo "**Verdict: FAIL** — $CRITICAL critical finding(s) must be fixed" >> "$OUTPUT"
+elif [ "$HIGH" -gt 0 ]; then
+    echo "**Verdict: PASS WITH WARNINGS** — $HIGH high-severity finding(s)" >> "$OUTPUT"
+else
+    echo "**Verdict: PASS** — No critical or high-severity findings" >> "$OUTPUT"
+fi
+echo "" >> "$OUTPUT"
+
+# Per-agent breakdown
+echo "## Per-Agent Breakdown" >> "$OUTPUT"
+echo "" >> "$OUTPUT"
+for f in "${FILES[@]}"; do
+    agent=$(basename "$f" .md | sed 's/hunt-findings-//')
+    echo "### $agent" >> "$OUTPUT"
+    echo "" >> "$OUTPUT"
+    # Extract FORK_START..FORK_END block; fallback to full file
+    block=$(sed -n '/## FORK_START ##/,/## FORK_END ##/p' "$f" 2>/dev/null || true)
+    if [ -n "$block" ]; then
+        echo "$block" >> "$OUTPUT"
+    else
+        cat "$f" >> "$OUTPUT"
+    fi
+    echo "" >> "$OUTPUT"
+done
+
+# Cross-validation note
+echo "## Cross-Validation" >> "$OUTPUT"
+echo "" >> "$OUTPUT"
+echo "Bugs found by multiple agents independently are CONFIRMED (high confidence)." >> "$OUTPUT"
+echo "Bugs found by a single agent are UNCONFIRMED (verify with reproduction)." >> "$OUTPUT"
+echo "" >> "$OUTPUT"
+echo "---" >> "$OUTPUT"
+echo "Consolidated by hunt-consolidate from ${#FILES[@]} agent(s)" >> "$OUTPUT"

@@ -53,7 +53,7 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 
 ---
 
-## 🧭 Catálogo de Skills (31 Skills Canónicas)
+## 🧭 Catálogo de Skills (32 Skills Canónicas)
 
 ### 🖥️ 1. Arquitectura de Estación de Trabajo y macOS (6 skills)
 
@@ -102,11 +102,12 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 | **[`skill-vetting`](skills/skill-vetting/SKILL.md)** | Escáner estático de seguridad (`scan.py`) contra prompt injections, ejecución de código malicioso (`eval`, `exec`, reverse shells) y auditoría de riesgo en skills de terceros. | `SKILL.md`<br>`scripts/`<br>`references/` | *"vetting skill", "auditar skill", "escanear skill", "analizar seguridad skill"* |
 | **[`template-skill`](skills/template-skill/SKILL.md)** | Scaffold y boilerplate canónico estándar para generar nuevas agent skills con frontmatter y estructura de carpetas preconfigurada. | `SKILL.md` | *"template skill", "plantilla skill", "scaffold skill", "crear starter skill"* |
 
-### 🏗️ 6. Arquitectura de Software, Calidad y Planificación (7 skills)
+### 🏗️ 6. Arquitectura de Software, Calidad y Planificación (8 skills)
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
 | **[`quality-plan-loop`](skills/quality-plan-loop/SKILL.md)** | Quality Plan Loop (QPL) — Ciclo iterativo de convergencia Planificador ↔ Auditor independiente con presupuestos acotados y stop conditions formales. | `SKILL.md`<br>`templates/`<br>`examples/` | *"quality plan loop", "iterar plan", "auditar plan de arquitectura", "planificador auditor"* |
+| **[`real-world-bug-hunter`](skills/real-world-bug-hunter/SKILL.md)** | Orquestación paralela de agentes adversariales (`ripper`, `walker`, `sniper`) para cazar bugs reales en CLIs y SDKs en ejecución viva, consolidando reportes con severidad. | `SKILL.md`<br>`resources/`<br>`scripts/` | *"bug hunt", "hunt bugs", "real world testing", "adversarial CLI testing", "cazador de bugs"* |
 | **[`work-closeout`](skills/work-closeout/SKILL.md)** | Cierre higiénico de unidades de trabajo: clasificación de residuo con evidencia (R7), cuarentena reversible y emisión de recibos de verificación. | `SKILL.md`<br>`references/`<br>`templates/` | *"close out", "limpiar temporales", "work closeout", "receipt clean reset"* |
 | **[`diagram-maker-plus`](skills/diagram-maker-plus/SKILL.md)** | Generador multi-motor de diagramas técnicos de alta fidelidad: Live HTML interactivo (Plannotator B2 / Open Design), Archify JSON-IR, Mermaid.js y SVG. | `SKILL.md`<br>`resources/`<br>`scripts/` | *"crear diagrama", "diagrama interactivo", "archify router", "plannotator b2", "diagrama mermaid"* |
 | **[`diagram-auditor`](skills/diagram-auditor/SKILL.md)** | Auditoría sistemática basada en evidencia para diagramas y flujogramas: clasificación estricta de afirmaciones en confirmadas, inferidas o fabricadas. | `SKILL.md`<br>`resources/`<br>`tests/` | *"audita el diagrama", "lint flowchart", "verifica diagrama contra evidencia"* |
@@ -151,6 +152,7 @@ my-skills/
     ├── pi-agent/                         # Invocación headless de Pi CLI en solo lectura
     ├── pi-startup-diagnostics/           # Diagnóstico de colisiones de extensiones en Pi
     ├── quality-plan-loop/                # Ciclo Planificador ↔ Auditor de convergencia
+    ├── real-world-bug-hunter/            # Caza paralela de bugs en CLIs con agentes
     ├── scripting-technical-presentations/# Redacción y auditoría de guiones técnicos
     ├── sdd-gate-skill/                   # Pre-implementation quality gate para SDD
     ├── skill-import-untrusted/           # Cuarentena y promoción de skills externas
