@@ -1,0 +1,23 @@
+{
+  "skill_name": "pi-startup-diagnostics",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Mi comando `piup` muestra `Port 19876 in use` y luego `Tool \"todo\" conflicts with ...`. Diagnostica la causa y dime qué probar sin dejar procesos colgados.",
+      "expected_output": "Separa el warning del puerto del error fatal, inspecciona las dos rutas exactas del conflicto, evita grep recursivo amplio y usa timeout real en la verificación.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Pi arranca, pero siempre imprime `Port 19876 in use`. Averigua qué significa y cómo verificarlo sin matar procesos a ciegas.",
+      "expected_output": "Trata el puerto como warning independiente, usa lsof sobre el puerto concreto y reporta el PID; no recomienda matar el proceso sin aprobación.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Dos extensiones registran `todo`, pero quiero conservar la implementación que guarda tareas como archivos Markdown. ¿Cuál es el siguiente paso?",
+      "expected_output": "No copia automáticamente la exclusión del caso gentle-pi; identifica el comportamiento deseado y conserva la implementación elegida mediante una exclusión de paquete reversible.",
+      "files": []
+    }
+  ]
+}

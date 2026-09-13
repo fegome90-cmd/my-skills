@@ -53,7 +53,7 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 
 ---
 
-## 🧭 Catálogo de Skills (18 Skills Universales)
+## 🧭 Catálogo de Skills (30 Skills Canónicas)
 
 ### 🖥️ 1. Arquitectura de Estación de Trabajo y macOS (6 skills)
 
@@ -66,7 +66,33 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 | **[`starship-nix-manager`](skills/starship-nix-manager/SKILL.md)** | Configuración y gestión de Starship en Nix: escaping multilínea (`''${...}`) y módulos para hardware Apple Silicon (`ioreg` GPU/RAM). | `SKILL.md` | *"starship nix", "starship apple silicon", "escapar variables starship"* |
 | **[`starship-prompt`](skills/starship-prompt/SKILL.md)** | Arquitectura y guía visual de diseño para prompts cross-shell: statusline, glyphs Nerd Fonts, y paletas visuales (Catppuccin, Kanagawa). | `SKILL.md`<br>`assets/`<br>`references/` | *"customizar starship", "prompt terminal", "powerline glyphs", "paleta starship"* |
 
-### 🛡️ 2. Ciclo de Vida, Seguridad y Onboarding de Skills (4 skills)
+### 🤖 2. Invocación y Orquestación Headless de Agentes CLI (5 skills)
+
+| Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
+|---|---|---|---|
+| **[`agy-agent`](skills/agy-agent/SKILL.md)** | Invocación no interactiva de Antigravity CLI (`agy --print`) con selección obligatoria de modelo, captura atómica a archivo y política de lectura libre con aviso de escritura. | `SKILL.md` | *"agy", "agy --print", "correr tarea con agy", "headless agy"* |
+| **[`codex-agent`](skills/codex-agent/SKILL.md)** | Invocación headless de Codex CLI (`codex exec`) con modelo explícito, sandbox granular (`-s read-only` / `workspace-write`) y redirección segura de stdin. | `SKILL.md` | *"codex", "codex exec", "correr tarea con codex", "headless codex"* |
+| **[`muse-agent`](skills/muse-agent/SKILL.md)** | Invocación headless de Muse CLI (`muse exec`) con workspace obligatorio, modelo explícito, flag `--disable-write` para solo lectura y control estricto de aprobaciones. | `SKILL.md` | *"muse", "muse exec", "correr tarea con muse", "headless muse"* |
+| **[`opencode-agent`](skills/opencode-agent/SKILL.md)** | Invocación headless de OpenCode CLI (`opencode run`) con modelo obligatorio (`-m`), captura atómica a archivo y prohibición de bypass de permisos sin aviso. | `SKILL.md` | *"opencode", "opencode run", "correr tarea con opencode", "headless opencode"* |
+| **[`pi-agent`](skills/pi-agent/SKILL.md)** | Invocación headless de Pi CLI (`pi --print`) con modelo explícito (`--model`), catálogo de solo lectura (`--tools read,grep,find,ls`) y timeout acotado. | `SKILL.md` | *"pi", "pi --print", "solo lectura con pi", "inspeccionar repo con pi"* |
+
+### 🎯 3. Gobernanza de Tareas, Gates SDD y Worktrees (4 skills)
+
+| Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
+|---|---|---|---|
+| **[`anchoring-tasks`](skills/anchoring-tasks/SKILL.md)** | Preservación del envelope de trabajo mediante `ANCHOR.yaml` o límites declarativos (`intent`, `done_when`, `not_doing`) para frenar sobreingeniería y scope drift. | `SKILL.md` | *"anchoring", "anchor task", "fijar limites", "evitar sobreingenieria", "anchor.yaml"* |
+| **[`sdd-gate-skill`](skills/sdd-gate-skill/SKILL.md)** | Quality gate pre-implementación para Spec-Driven Development con auditoría de autoridad, conectividad de código y verificación rigurosa de propuestas, specs y diseño. | `SKILL.md`<br>`resources/` | *"sdd gate", "gate review", "pre-implementation check", "spec gate", "design gate"* |
+| **[`herdr-worktrunk`](skills/herdr-worktrunk/SKILL.md)** | Gestión aislada de git worktrees mediante Herdr y plugin Worktrunk, soportando creación, conmutación, hooks de ciclo de vida e inspección JSON. | `SKILL.md`<br>`references/` | *"worktrunk", "herdr worktree", "isolated worktree", "wt switch", "worktree hooks"* |
+| **[`grill-me-dual-herdr`](skills/grill-me-dual-herdr/SKILL.md)** | Entrevista socrática adversarial alternada entre dos agentes en Herdr + OpenCode para poner a prueba planes y arquitecturas con evidencia de código real. | `SKILL.md` | *"grill-me", "grillme", "dos agentes", "grill-a/grill-b", "estresar plan"* |
+
+### 🔧 4. Diagnóstico de Infraestructura, SSH y Runtime (2 skills)
+
+| Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
+|---|---|---|---|
+| **[`learned-ssh-agent-vm-bootstrap`](skills/learned-ssh-agent-vm-bootstrap/SKILL.md)** | Diagnóstico en 5 capas de conectividad SSH a VMs Linux para agentes: resolución de config, llaves públicas, descubrimiento de binarios, túneles y reachability de protocolos. | `SKILL.md`<br>`references/` | *"ssh agent vm", "diagnostico ssh", "batchmode failure", "ssh tunnel health", "vm bootstrap"* |
+| **[`pi-startup-diagnostics`](skills/pi-startup-diagnostics/SKILL.md)** | Diagnóstico acotado y resolución de colisiones de extensiones duplicadas, colisiones de puertos y carreras de registro en Pi CLI. | `SKILL.md`<br>`evals/` | *"pi startup", "tool conflicts with", "failed to load extension", "port in use", "pi diagnostics"* |
+
+### 🛡️ 5. Ciclo de Vida, Seguridad y Onboarding de Skills (4 skills)
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
@@ -75,7 +101,7 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 | **[`skill-vetting`](skills/skill-vetting/SKILL.md)** | Escáner estático de seguridad (`scan.py`) contra prompt injections, ejecución de código malicioso (`eval`, `exec`, reverse shells) y auditoría de riesgo en skills de terceros. | `SKILL.md`<br>`scripts/`<br>`references/` | *"vetting skill", "auditar skill", "escanear skill", "analizar seguridad skill"* |
 | **[`template-skill`](skills/template-skill/SKILL.md)** | Scaffold y boilerplate canónico estándar para generar nuevas agent skills con frontmatter y estructura de carpetas preconfigurada. | `SKILL.md` | *"template skill", "plantilla skill", "scaffold skill", "crear starter skill"* |
 
-### 🏗️ 3. Arquitectura de Software, Calidad y Planificación (6 skills)
+### 🏗️ 6. Arquitectura de Software, Calidad y Planificación (7 skills)
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
@@ -85,8 +111,9 @@ Cada skill en este repositorio fue diseñada bajo estándares de ingeniería de 
 | **[`diagram-auditor`](skills/diagram-auditor/SKILL.md)** | Auditoría sistemática basada en evidencia para diagramas y flujogramas: clasificación estricta de afirmaciones en confirmadas, inferidas o fabricadas. | `SKILL.md`<br>`resources/`<br>`tests/` | *"audita el diagrama", "lint flowchart", "verifica diagrama contra evidencia"* |
 | **[`code-path-cartographer`](skills/code-path-cartographer/SKILL.md)** | Cartografía de rutas de código: rastreo de entrypoints, llamadas entrantes/salientes, detección de símbolos huérfanos y diagramas de conectividad. | `SKILL.md`<br>`resources/` | *"mapear rutas", "code connectivity", "call paths", "buscar simbolos huerfanos"* |
 | **[`tmux-plan-auditor`](skills/tmux-plan-auditor/SKILL.md)** | Auditoría paralela de planes de arquitectura ejecutando 4 agentes concurrentes: lógica, calidad de código, fallos silenciosos y estrategia de testing. | `SKILL.md`<br>`resources/`<br>`scripts/`<br>`tests/` | *"auditar plan en paralelo", "tmux plan auditor", "auditoria 4 agentes"* |
+| **[`scripting-technical-presentations`](skills/scripting-technical-presentations/SKILL.md)** | Redacción y auditoría de guiones técnicos, speaker notes y esquemas de diapositivas preservando límites de causalidad, evidencia e hipótesis. | `SKILL.md`<br>`agents/`<br>`references/` | *"technical presentation", "speaker notes", "guion tecnico", "auditar presentacion"* |
 
-### 🧠 4. Sistemas de Conocimiento y Motores de Diseño (2 skills)
+### 🧠 7. Sistemas de Conocimiento y Motores de Diseño (2 skills)
 
 | Skill | Descripción | Componentes Clave | Disparadores Sugeridos |
 |---|---|---|---|
@@ -103,24 +130,36 @@ my-skills/
 ├── LICENSE
 ├── README.md
 └── skills/
-    ├── code-path-cartographer/        # Cartografía de rutas de código y dependencias
-    ├── color-theory-engine/           # Motor de teoría del color y accesibilidad
-    ├── diagram-auditor/               # Auditoría de diagramas contra evidencia
-    ├── diagram-maker-plus/            # Generador de diagramas Live HTML, Archify y SVG
-    ├── disk-cleanup-macos-safe/       # Recuperación y auditoría de almacenamiento APFS
-    ├── dots-maintenance/             # Mantenimiento de 7 subsistemas de workstation
-    ├── fish-shell-config/             # Configuración de Fish 4.3 y testing de funciones
-    ├── nix-fish-homemanager/          # Arquitectura Darwin Nix Flakes + Home Manager
-    ├── quality-plan-loop/             # Ciclo Planificador ↔ Auditor de convergencia
-    ├── skill-import-untrusted/        # Cuarentena y promoción atómica de skills externas
-    ├── skill-onboarding/              # Motor transaccional de onboarding y overlay
-    ├── skill-vetting/                 # Escáner estático de seguridad para skills
-    ├── starship-nix-manager/          # Escaping Nix y hardware Apple Silicon
-    ├── starship-prompt/               # Diseño visual cross-shell y statuslines
-    ├── template-skill/                # Scaffold estándar para nuevas skills
-    ├── tmux-plan-auditor/             # Auditoría paralela de planes con 4 agentes
-    ├── wiki-starter/                  # Bootstrap de bases de conocimiento LLM
-    └── work-closeout/                 # Cierre higiénico de tareas y reset de workbench
+    ├── agy-agent/                        # Invocación headless de Antigravity CLI
+    ├── anchoring-tasks/                  # Preservación de boundaries con ANCHOR.yaml
+    ├── code-path-cartographer/           # Cartografía de rutas de código y dependencias
+    ├── codex-agent/                      # Invocación headless de Codex CLI con sandbox
+    ├── color-theory-engine/              # Motor de teoría del color y accesibilidad
+    ├── diagram-auditor/                  # Auditoría de diagramas contra evidencia
+    ├── diagram-maker-plus/               # Generador de diagramas Live HTML, Archify y SVG
+    ├── disk-cleanup-macos-safe/          # Recuperación y auditoría de almacenamiento APFS
+    ├── dots-maintenance/                # Mantenimiento de 7 subsistemas de workstation
+    ├── fish-shell-config/                # Configuración de Fish 4.3 y testing de funciones
+    ├── grill-me-dual-herdr/              # Entrevista socrática adversarial dual con Herdr
+    ├── herdr-worktrunk/                  # Gestión aislada de git worktrees y hooks
+    ├── learned-ssh-agent-vm-bootstrap/   # Diagnóstico SSH en 5 capas para VMs Linux
+    ├── muse-agent/                       # Invocación headless de Muse CLI
+    ├── nix-fish-homemanager/             # Arquitectura Darwin Nix Flakes + Home Manager
+    ├── opencode-agent/                   # Invocación headless de OpenCode CLI
+    ├── pi-agent/                         # Invocación headless de Pi CLI en solo lectura
+    ├── pi-startup-diagnostics/           # Diagnóstico de colisiones de extensiones en Pi
+    ├── quality-plan-loop/                # Ciclo Planificador ↔ Auditor de convergencia
+    ├── scripting-technical-presentations/# Redacción y auditoría de guiones técnicos
+    ├── sdd-gate-skill/                   # Pre-implementation quality gate para SDD
+    ├── skill-import-untrusted/           # Cuarentena y promoción de skills externas
+    ├── skill-onboarding/                 # Motor transaccional de onboarding y overlay
+    ├── skill-vetting/                    # Escáner estático de seguridad para skills
+    ├── starship-nix-manager/             # Escaping Nix y hardware Apple Silicon
+    ├── starship-prompt/                  # Diseño visual cross-shell y statuslines
+    ├── template-skill/                   # Scaffold estándar para nuevas skills
+    ├── tmux-plan-auditor/                # Auditoría paralela de planes con 4 agentes
+    ├── wiki-starter/                     # Bootstrap de bases de conocimiento LLM
+    └── work-closeout/                    # Cierre higiénico de tareas y reset de workbench
 ```
 
 ---

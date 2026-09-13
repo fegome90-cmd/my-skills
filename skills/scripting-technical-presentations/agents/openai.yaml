@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guiones técnicos"
+  short_description: "Estructura charlas rigurosas y memorables"
+  default_prompt: "Usa $scripting-technical-presentations para convertir este material en un guion técnico claro, narrativo y fiel a la evidencia."
