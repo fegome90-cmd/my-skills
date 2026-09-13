@@ -140,7 +140,4 @@ herdr agent prompt planner-<id>-v<N> "$(cat /tmp/brief.md)" --wait --timeout 600
 - Al APPROVE: actualizar bitácora del contrato, guardar memoria diaria + Engram, entregar `audit-pack/` (copia de todos los planes + veredictos + README índice) para revisión humana.
 - La ejecución del plan aprobado es fase SEPARADA (W1-P1..Pn) — el loop solo garantiza la CALIDAD del plan, no su implementación.
 
-## Ver también
-- SDD gentle-ai: `~/Developer/gentle-ai/internal/assets/skills/sdd-propose/SKILL.md` (scope/budget)
-- Wiki orquestación: `vault/orchestration-wiki/systems/tmux-plan-auditor.md` (auditoría paralela)
-- Ejemplo real: `~/Developer/wiki-library/tools/wiki-validate/w1-audit-pack/`
+
