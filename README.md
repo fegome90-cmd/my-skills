@@ -217,13 +217,6 @@ swiftc -o /dev/null skills/disk-cleanup-macos-safe/scripts/macos_resource_probe.
 fish_indent --check skills/nix-fish-homemanager/assets/keychain-loader-template.fish
 ```
 
----
-
-## 🔒 Privacidad y Seguridad
-
-- **Zero Hardcoded Secrets:** Este repositorio no contiene secretos, claves privadas ni archivos de entorno `.env`.
-- **Rutas Sanitizadas:** Todas las plantillas y scripts utilizan `$USER`, variables de entorno o marcadores genéricos (`<username>`).
-- **Aislamiento de Diagnósticos:** Los volcados crudos de hardware o telemetría local de ejecuciones previas están explícitamente excluidos en `.gitignore`.
 
 ---
 
