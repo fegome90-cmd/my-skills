@@ -79,14 +79,11 @@ is genuinely wanted.
   decides which wins; check `command -v node; node -v` before debugging Node issues.
 - Lists are 1-indexed; `$argv` replaces `$@`/`$1`; `$status` replaces `$?`.
 
-## Existing inventory (do not duplicate)
+## Existing inventory patterns (do not duplicate)
 
-- `functions/`: `piup` (pi update + extensions + priority-error handoff, log at `~/.pi-update-last.log`),
-  `tmux` (wrapper forcing `-2`), `trifecta`, `dev`, `minirag`, `msearch`, `n4n`, `pj`, `t8`, `wt`,
-  `agent-enhance`, `prompt`, plus fisher/nvm internals.
-- `conf.d/`: keychain loaders (`claude-keychain`, `elevenlabs-keychain`, `openrouter`, `aws-profile`),
-  tool hooks (`direnv`, `nvm`, `openclaw`, `eeo-picoclaw`), project launchers (`plan-dope`, `trifecta*`),
-  plugins (`plugin-fisher`, `plugin-catppuccin`), frozen theme/keybindings (never edit).
+- `functions/`: custom CLI wrappers, project navigators (`pj`, `wt`), prompt helpers, plus fisher/nvm internals.
+- `conf.d/`: keychain loaders (`api-keychain`, `cloud-profile`), tool hooks (`direnv`, `nvm`, `pyenv`),
+  project launchers, plugins (`plugin-fisher`, `plugin-catppuccin`), frozen theme/keybindings (never edit).
 
 ## Resources
 

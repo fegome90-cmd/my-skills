@@ -1,4 +1,4 @@
-# Example Audit: FALP Nutrition Referral Process
+# Example Audit: Clinical Nutrition Referral Process
 
 ## Source Diagram (Mermaid)
 
@@ -33,14 +33,14 @@ graph TD
 
 | Element | Tag | Rationale |
 |---------|-----|-----------|
-| ELEMENT-01 | 🟢 CONFIRMED | Patient entering consultation is the standard entry point for any clinical flow at FALP |
-| ELEMENT-02 | 🟢 CONFIRMED | Medico tratante role is standard; nutritional screening at admission is documented FALP protocol |
-| ELEMENT-03 | 🟡 INFERRED | Nutricionista receiving referral is reasonable for a nutrition process, but no FALP document explicitly confirms this specific step |
+| ELEMENT-01 | 🟢 CONFIRMED | Patient entering consultation is the standard entry point for any clinical flow in hospital protocols |
+| ELEMENT-02 | 🟢 CONFIRMED | Medico tratante role is standard; nutritional screening at admission is documented clinical protocol |
+| ELEMENT-03 | 🟡 INFERRED | Nutricionista receiving referral is reasonable for a nutrition process, but no institutional document explicitly confirms this specific step |
 | ELEMENT-04 | 🟡 INFERRED | "Seguimiento habitual" when no risk detected — reasonable assumption based on standard clinical practice |
-| ELEMENT-05 | 🟠 ASSUMED | "Comite Nutricional" — plausible that FALP has a nutrition committee, but no evidence of its existence or formal review step |
-| ELEMENT-06 | 🟡 INFERRED | Personalized plan after approval — reasonable but not verified against FALP documentation |
-| ELEMENT-07 | 🔴 FABRICATED | "Psicologo interviene" as a consequence of committee rejection — no basis in any known FALP process. This step was invented by the agent. |
-| ELEMENT-08 | ⚪ OUTDATED | "Seguimiento digital en plataforma" — FALP previously used paper-based tracking; this may represent current state but stakeholder indicated the platform transition is incomplete |
+| ELEMENT-05 | 🟠 ASSUMED | "Comite Nutricional" — plausible that the institution has a nutrition committee, but no evidence of its existence or formal review step |
+| ELEMENT-06 | 🟡 INFERRED | Personalized plan after approval — reasonable but not verified against institutional documentation |
+| ELEMENT-07 | 🔴 FABRICATED | "Psicologo interviene" as a consequence of committee rejection — no basis in any known institutional process. This step was invented by the agent. |
+| ELEMENT-08 | ⚪ OUTDATED | "Seguimiento digital en plataforma" — institution previously used paper-based tracking; this may represent current state but stakeholder indicated the platform transition is incomplete |
 | ELEMENT-09 | 🟡 INFERRED | "Alta sin intervencion nutricional" — reasonable exit condition but not explicitly documented |
 
 ## Step 3: Evidence Mapping
@@ -48,13 +48,13 @@ graph TD
 ```
 ELEMENT-01: Paciente ingresa a consulta
   Tag: 🟢 CONFIRMED
-  Source: FALP standard clinical flow — patient admission is universal entry point
+  Source: Hospital standard clinical flow — patient admission is universal entry point
   Confidence: high
   Action: keep
 
 ELEMENT-02: Medico tratante evalua estado nutricional
   Tag: 🟢 CONFIRMED
-  Source: FALP protocol documentation — nutritional screening at admission
+  Source: Clinical protocol documentation — nutritional screening at admission
   Confidence: high
   Action: keep
 
@@ -62,7 +62,7 @@ ELEMENT-03: Nutricionista recibe derivacion
   Tag: 🟡 INFERRED
   Source: Inferred from standard referral patterns in clinical nutrition
   Confidence: medium
-  Action: flag for confirmation — ask stakeholder if FALP has a dedicated nutritionist receiving referrals
+  Action: flag for confirmation — ask stakeholder if the institution has a dedicated nutritionist receiving referrals
 
 ELEMENT-04: Seguimiento habitual
   Tag: 🟡 INFERRED
@@ -74,13 +74,13 @@ ELEMENT-05: Comite Nutricional revisa caso
   Tag: 🟠 ASSUMED
   Source: No evidence — assumed based on common hospital committee structures
   Confidence: low
-  Action: replace with "(por confirmar)" — ask stakeholder if a nutrition committee exists at FALP
+  Action: replace with "(por confirmar)" — ask stakeholder if a nutrition committee exists in this clinical workflow
 
 ELEMENT-06: Plan nutricional personalizado
   Tag: 🟡 INFERRED
   Source: Inferred from standard nutrition care process
   Confidence: medium
-  Action: flag for confirmation — verify this is the actual output of the FALP nutrition process
+  Action: flag for confirmation — verify this is the actual output of the clinical nutrition process
 
 ELEMENT-07: Psicologo interviene
   Tag: 🔴 FABRICATED
@@ -109,7 +109,7 @@ Elements: 9 (>5) → **Full audit (Steps 1-5)**
 
 # Diagram Audit Report
 
-**Diagram:** FALP Nutrition Referral Process
+**Diagram:** Clinical Nutrition Referral Process
 **Date:** 2026-05-28
 **Elements audited:** 9
 **Verdict:** FAIL
@@ -129,13 +129,13 @@ Elements: 9 (>5) → **Full audit (Steps 1-5)**
 ## Findings
 
 ### 🔴 FABRICATED (must fix)
-- ELEMENT-07: "Psicologo interviene" has no basis in any known FALP process → Replace with TBD. Ask: "What happens when the nutrition committee rejects a case?"
+- ELEMENT-07: "Psicologo interviene" has no basis in any known clinical process → Replace with TBD. Ask: "What happens when the nutrition committee rejects a case?"
 
 ### 🟠 ASSUMED (flag for confirmation)
-- ELEMENT-05: "Comite Nutricional" assumed without evidence → Ask: "Does FALP have a formal nutrition committee? If so, who are its members?"
+- ELEMENT-05: "Comite Nutricional" assumed without evidence → Ask: "Does the institution have a formal nutrition committee? If so, who are its members?"
 
 ### 🟡 INFERRED (verify when possible)
-- ELEMENT-03: Nutricionista receives referral → Ask: "Is there a dedicated nutritionist at FALP who receives referrals?"
+- ELEMENT-03: Nutricionista receives referral → Ask: "Is there a dedicated nutritionist who receives referrals?"
 - ELEMENT-04: Standard follow-up when no risk → Ask: "What is the current protocol when no nutritional risk is identified?"
 - ELEMENT-06: Personalized nutrition plan → Ask: "What is the actual output of the nutrition evaluation process?"
 - ELEMENT-09: Discharge without intervention → Ask: "Is 'alta sin intervencion' the standard exit for non-risk patients?"
@@ -144,7 +144,7 @@ Elements: 9 (>5) → **Full audit (Steps 1-5)**
 - ELEMENT-08: "Seguimiento digital en plataforma" → Stakeholder indicated platform transition incomplete → Replace with "Seguimiento (formato por confirmar)" until clarified
 
 ## Questions for Stakeholders
-1. Does FALP have a formal nutrition committee (Comite Nutricional)?
+1. Does the institution have a formal nutrition committee (Comite Nutricional)?
 2. Is there a dedicated nutritionist who receives referrals, or is it a shared role?
 3. What happens when a nutrition case is rejected — does it go to another professional or back to the treating physician?
 4. Is the digital platform fully operational for nutrition follow-up, or is paper still used?

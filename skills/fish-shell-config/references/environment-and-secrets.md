@@ -61,14 +61,13 @@ Existing loaders: `claude-keychain` (ANTHROPIC_AUTH_TOKEN), `elevenlabs-keychain
 
 | File | Owns |
 |---|---|
-| `aws-profile.fish`, `cadsp.fish` | AWS/other profile selection |
-| `claude-keychain.fish`, `elevenlabs-keychain.fish`, `openrouter.fish` | Keychain secret exports |
+| `aws-profile.fish`, `cloud-profile.fish` | AWS/cloud profile selection |
+| `api-keychain.fish`, `token-keychain.fish` | Keychain secret exports |
 | `direnv.fish` | direnv hook (`type -q` guard) |
-| `eeo-picoclaw.fish`, `openclaw.fish` | agent tooling env |
+| `agent-env.fish`, `custom-env.fish` | agent tooling and workspace environment |
 | `nvm.fish` | nvm.fish plugin hook |
-| `plan-dope.fish` | `plan_dope` launcher alias |
+| `project-launchers.fish` | project launcher aliases |
 | `plugin-fisher.fish`, `plugin-catppuccin.fish` | plugin bootstrap |
-| `trifecta.fish`, `trifecta-commands.fish`, `trifecta-init.fish`, `trifecta-skill.fish` | trifecta CLI integration |
 | `fish_frozen_theme.fish`, `fish_frozen_key_bindings.fish` | fish 4.3 auto-generated (never edit) |
 
 ## Home-manager boundary

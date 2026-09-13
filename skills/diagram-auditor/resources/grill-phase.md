@@ -29,7 +29,7 @@ FOR EACH unresolved element (priority order):
      "ELEMENT-05 is classified as 🟠 ASSUMED. The label 'Equipo Nutricional' has no evidence."
 
   2. ASK a specific, answerable question
-     "¿Existe un equipo nutricional formal en FALP? Si sí, ¿quién lo integra?"
+     "¿Existe un equipo nutricional formal en la organización? Si sí, ¿quién lo integra?"
 
   3. PROVIDE your recommended answer (based on context/patterns)
      "My recommendation: Hospital nutrition processes typically have a nutritionist
@@ -58,7 +58,7 @@ FOR EACH unresolved element (priority order):
 If a question can be answered by exploring the codebase or existing documentation, **explore it** instead of asking. Per the grill-me principle: don't ask what you can verify yourself.
 
 Actions that count as verification:
-- Reading official FALP documentation in the project
+- Reading official domain/system documentation in the project
 - Checking prior stakeholder communications in memory
 - Searching for the role/process in project wiki or docs
 
@@ -77,7 +77,7 @@ After all questions are resolved or the stakeholder can't answer more:
 AGENT: The audit found 10 elements. 6 need resolution. Starting with 🔴/🟠...
 
 ELEMENT-05 is 🟠 ASSUMED: "Equipo Nutricional" reviews the plan.
-No evidence this team exists at FALP.
+No evidence this team exists in the verified domain specs.
 Question: ¿Existe un equipo nutricional formal?
 My recommendation: Replace with "Nutricionista revisa con médico tratante".
 

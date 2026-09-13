@@ -58,9 +58,6 @@ node --test skills/diagram-maker-plus/scripts/decorate-b2.test.mjs
 
 # Pruebas de integración, E2E y runtime Plannotator real (13 tests)
 node --test skills/diagram-maker-plus/scripts/archify-b2.test.mjs
-
-# Verificador de paridad cross-layer e integridad criptográfica en Python
-python3 apps/pae-wizard/outputs/disenos/test_router_parity.py
 ```
 
 ---

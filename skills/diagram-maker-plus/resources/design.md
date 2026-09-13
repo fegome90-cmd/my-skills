@@ -1,7 +1,7 @@
 # Design System — Linear × Stripe Dark (documentos HTML)
 
 **Skill:** diagram-maker-plus v2.0.0 · **Spec:** Linear × Stripe Dark + Plannotator B2
-**Artefacto validado (referencia):** `apps/pae-wizard/outputs/disenos/prp-hook-openclaw-engram-2026-08-14-r5.html` (PRP técnico, 440+ líneas, verificado 2026-08-14)
+**Artefacto validado (referencia):** `live-diagram-template.html` (Especificación técnica de documentos interactivos HTML, tokens Linear × Stripe Dark)
 **Uso:** documentos HTML autocontenidos de PLAN/ARQUITECTURA/PIPELINE con contenido técnico denso (tablas, código, notas de evidencia). No es para diagramas `.comp` interactivos (usar el boilerplate del SKILL.md); es el mismo sistema de tokens aplicado a formato documento largo.
 
 ---

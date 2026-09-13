@@ -25,10 +25,9 @@ license: MIT
 metadata:
   author: Felipe Gonzalez
   version: "2.0.0"
-  openclaw:
-    requires:
-      bins: ["node"]
-    emoji: "🗺️"
+  requires:
+    bins: ["node"]
+  emoji: "🗺️"
 ---
 
 # Diagram Maker Plus
@@ -526,6 +525,6 @@ REPLACE_WITH_MERMAID_CODE
 ## Recursos
 
 - `resources/ARCHIFY-ROUTER.md` — **Router por capacidades y puente Archify-B2**: Contrato JSON-IR (schemas v2), directiva `engine`, matriz de calificación 5/5, ejecución transaccional atómica, recibo criptográfico y claim boundary formal.
-- `resources/design.md` — **Design system para DOCUMENTOS HTML** (PRP/planes/arquitectura en formato documento largo, no diagrama `.comp`): tokens Linear × Stripe Dark exactos, estructura hero+TOC+cards+tablas, verificación determinista (divs/anclas/diff estructural) y gotchas. Artefacto validado: `apps/pae-wizard/outputs/disenos/prp-hook-openclaw-engram-2026-08-14-r5.html`. Leerlo ANTES de producir un documento HTML extenso.
+- `resources/design.md` — **Design system para DOCUMENTOS HTML** (PRP/planes/arquitectura en formato documento largo, no diagrama `.comp`): tokens Linear × Stripe Dark exactos, estructura hero+TOC+cards+tablas, verificación determinista (divs/anclas/diff estructural) y gotchas. Leerlo ANTES de producir un documento HTML extenso.
 - `resources/design-diagrams.md` — **Design system para DIAGRAMAS VIVOS INTERACTIVOS (.comp)**: Especificación canónica exportada de Open Design para diagramas interactivos Plannotator B2 (sprite SVG 17 iconos Feather, roving tabindex, `.tab-indicator`, `.flow-connector` interactivo, invariante 1:1 `data-review-id`, anti-slop rules).
 - `resources/live-diagram-template.html` — template 1-shot para diagramas interactivos `.comp` (Plannotator B2).

@@ -35,8 +35,5 @@ Close a completed work unit with low-friction exploration, evidence-backed class
 
 ## Resources
 
-- `apps/pae-wizard/outputs/disenos/plan-architecture-work-closeout-deluxe-2026-09-04-fixtures.json` — normative R7 schemas, policy precedence, digests, lifecycle, locks, recovery, classifier, and fixtures; read before every run.
-- `apps/pae-wizard/outputs/disenos/plan-architecture-work-closeout-deluxe-2026-09-04.html` — human review surface for R7; read when reviewing or changing the contract.
 - `references/clean-workbench-reset.v1.json` — decision/report resource for the three-layer explore → report → approve/apply workflow; read before candidate classification.
 - `templates/closeout-receipt.yaml` — mandatory R7 receipt shape.
-- `skills/engram-memory/SKILL.md` — read when writing or retrying durable memory evidence.

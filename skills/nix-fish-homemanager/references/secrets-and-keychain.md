@@ -16,7 +16,7 @@ To inject secrets into environment variables at runtime without writing them to 
 1. **Store credentials securely in macOS Keychain:**
    ```bash
    security add-generic-password -a "$USER" -s "ollama-api-key" -w "sk-..." -U
-   security add-generic-password -a "$USER" -s "openclaw-gateway-token" -w "token-..." -U
+   security add-generic-password -a "$USER" -s "api-service-token" -w "token-..." -U
    ```
 
 2. **Load dynamically in `conf.d/<name>-keychain.fish`:**

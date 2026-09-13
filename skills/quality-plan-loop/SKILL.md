@@ -9,7 +9,7 @@ metadata:
 
 # Quality Plan Loop (QPL) — Generar planes de calidad con convergencia garantizada
 
-> **Autor:** Felipe Gonzalez & PicoClaw (2026-08-02)
+> **Autor:** Felipe Gonzalez (2026-08-02)
 > **Proveniencia:** ciclo real planificador↔auditor que convergió PLAN-CIERRE-0B (8 iters → APPROVE) y PLAN-W1 (6 iters → APPROVE, 2/3 del presupuesto).
 > **Principio rector:** un plan es "de calidad" cuando un auditor independiente lo aprueba — no cuando el planificador lo declara completo. La calidad se DEMUESTRA, no se declara.
 

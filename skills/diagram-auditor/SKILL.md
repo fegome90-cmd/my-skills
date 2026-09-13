@@ -1,7 +1,7 @@
 ---
 name: diagram-auditor
 description: "Use when auditing clinical or technical diagrams against evidence, validating flowcharts before delivery, or classifying diagram elements as confirmed/inferred/fabricated. Triggers: 'audita el diagrama', 'audit this flowchart', 'lint the diagram', 'verifica el diagrama'. Do NOT use for visual design review, diagram generation, or Mermaid syntax-only checks (use mermaid skill)."
-search_hints: diagram audit flowchart evidence validation clinical FALP flujograma audit-assume fabricate confirm stakeholder
+search_hints: diagram audit flowchart evidence validation clinical flujograma audit-assume fabricate confirm stakeholder
 license: MIT
 metadata:
   author: Felipe Gonzalez
@@ -230,16 +230,13 @@ After audit fixes are applied, run design-principles to ensure presentation qual
 | `resources/audit-report-template.md` | Full report template + memory_save format | Step 4 |
 | `resources/grill-phase.md` | Interactive stakeholder interrogation protocol | Step 4.5 |
 | `resources/annotation-convention.md` | Visual cues (SVG/Mermaid) + wiki integration | Step 5 |
-| `resources/example-falp-audit.md` | Complete FALP nutrition referral audit example | On demand |
+| `resources/example-clinical-audit.md` | Complete clinical nutrition referral audit example | On demand |
 | `resources/mermaid-extract.md` | Extraction patterns for embedded Mermaid blocks | Step 0 |
 | `resources/svg-extract.md` | Automated SVG element extraction (nodes, connectors, validation) | Step 0-1 |
 | `resources/batch-mode.md` | Multi-diagram audit with cross-diagram consistency | Step 6 |
 | `resources/evidence-sources.md` | External evidence adapters (PubMed, Papers MCP) for tag upgrades | Step 3.1 |
 | `resources/wiki-sync.md` | Persist audit results to wiki + orphan detection | Step 5.5 |
-| `skills/design-principles/SKILL.md` | Design polish checklist for HTML/SVG output | Step 5.8 |
 | `skills/diagram-maker-plus/SKILL.md` | Diagram generation from raw data | Step -1 |
-| `skills/design-ux-researcher/SKILL.md` | UX validation with target audience | Step 4.5 |
-| `skills/presentation-builder/SKILL.md` | Stakeholder deck generation | Step 7 |
 
 ## Key Distinctions
 
@@ -264,11 +261,11 @@ Covers: Mermaid extraction, SVG parsing, element inventory, verdict calculation,
 **Version:** 1.7.0
 **Created:** 2026-05-27
 **Updated:** 2026-06-02
-**Author:** PicoClaw
+**Author:** Felipe Gonzalez
 **Status:** Active
 **Changelog:**
-- v1.5.0 — Pi autoresearch O-4 third pass. Added evidence enrichment (Step 3.1 with PubMed/Papers MCP adapters) + wiki sync (Step 5.5 with frontmatter + audit log + orphan detection). +13 tests (36 total).
-- v1.4.0 — Pi autoresearch O-3 second pass. Added batch mode + test suite (23 tests). Cross-diagram consistency checking.
+- v1.5.0 — Autoresearch third pass. Added evidence enrichment (Step 3.1 with PubMed/Papers MCP adapters) + wiki sync (Step 5.5 with frontmatter + audit log + orphan detection). +13 tests (36 total).
+- v1.4.0 — Autoresearch second pass. Added batch mode + test suite (23 tests). Cross-diagram consistency checking.
 - v1.3.0 — Added SVG extraction engine. Step 0 validates SVG. Step 1 uses automated extraction.
 - v1.2.0 — Progressive disclosure refactor. Added Step 4.5 Grill Phase. Split into resources/.
 - v1.1.0 — Step 0 (syntax validation), Step 0.5 (memory), persistence, embedded extraction, example
