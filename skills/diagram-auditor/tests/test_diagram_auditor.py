@@ -392,3 +392,61 @@ class TestWikiSync:
         if wiki_available:
             wiki_updated = True  # would update
         assert not wiki_updated  # graceful skip
+
+
+# ---------------------------------------------------------------------------
+# Tests: Standalone Mermaid Validator Script (Step 0)
+# ---------------------------------------------------------------------------
+
+import importlib.util
+
+def _load_validate_mermaid():
+    script_path = Path(__file__).parent.parent / "scripts" / "validate_mermaid.py"
+    spec = importlib.util.spec_from_file_location("validate_mermaid", script_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+class TestMermaidValidatorScript:
+
+    @pytest.fixture(autouse=True)
+    def setup_validator(self):
+        self.validator = _load_validate_mermaid()
+
+    def test_valid_graph(self):
+        ok, msg = self.validator.validate_structure("graph TD\n  A[Start] --> B(Stop)")
+        assert ok is True
+        assert "Syntax OK" in msg
+
+    def test_valid_sequence(self):
+        ok, msg = self.validator.validate_structure("sequenceDiagram\n  Alice->>Bob: Hello")
+        assert ok is True
+
+    def test_valid_with_comments(self):
+        code = "%% comment line\nflowchart LR\n  A --> B"
+        ok, msg = self.validator.validate_structure(code)
+        assert ok is True
+
+    def test_unclosed_bracket_fails(self):
+        code = "graph TD\n  A[Start --> B"
+        ok, msg = self.validator.validate_structure(code)
+        assert ok is False
+        assert "SYNTAX-FAIL" in msg
+
+    def test_empty_diagram_fails(self):
+        ok, msg = self.validator.validate_structure("")
+        assert ok is False
+        assert "empty" in msg
+
+    def test_unrecognized_declaration_fails(self):
+        ok, msg = self.validator.validate_structure("random_word\n  A --> B")
+        assert ok is False
+        assert "Unrecognized diagram declaration" in msg
+
+    def test_extract_from_markdown_fence(self):
+        fenced = "```mermaid\ngraph TD\n  A --> B\n```"
+        extracted = self.validator.extract_raw_mermaid(fenced)
+        assert extracted == "graph TD\n  A --> B"
+        ok, _ = self.validator.validate_structure(extracted)
+        assert ok is True
+

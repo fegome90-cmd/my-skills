@@ -68,20 +68,18 @@ After batch rollup (Step B4):
    | Issue | Severity | Diagrams |
    |-------|----------|----------|
    ```
-3. **Run wiki lint** if available:
-   ```
-   Read wiki-keeper skill → execute lint checklist
-   Check for orphan references from removed elements
-   ```
+3. **Check for orphan references & lint**:
+   - Check for orphan references from removed elements across wiki pages (`wiki_search` / grep)
+   - Verify frontmatter consistency across audited diagram pages
 
-## Integration with wiki-keeper
+## Wiki Maintenance Integration
 
-After wiki sync, the wiki-keeper lint cycle will automatically:
+After wiki sync, any wiki maintenance pass will automatically:
 - Detect stale `audit_state: needs-review` pages
 - Verify frontmatter consistency
 - Catch orphan references from removed elements
 
-No special trigger needed — just ensure wiki pages are updated.
+No special external skill required — ensure diagram wiki pages are updated with frontmatter and audit logs.
 
 ## Graceful Degradation
 

@@ -101,4 +101,7 @@ awk '/^```mermaid$/{found=1; next} found && /^```$/{found=0; count++; close(outp
 
 # Verify extracted files
 ls -la diagram-*.mmd
+
+# Validate extracted diagram syntax
+python3 skills/diagram-auditor/scripts/validate_mermaid.py diagram-01.mmd
 ```

@@ -1,6 +1,6 @@
 ---
 name: diagram-auditor
-description: "Use when auditing clinical or technical diagrams against evidence, validating flowcharts before delivery, or classifying diagram elements as confirmed/inferred/fabricated. Triggers: 'audita el diagrama', 'audit this flowchart', 'lint the diagram', 'verifica el diagrama'. Do NOT use for visual design review, diagram generation, or Mermaid syntax-only checks (use mermaid skill)."
+description: "Use when auditing clinical or technical diagrams against evidence, validating flowcharts before delivery, or classifying diagram elements as confirmed/inferred/fabricated. Triggers: 'audita el diagrama', 'audit this flowchart', 'lint the diagram', 'verifica el diagrama'. Do NOT use for visual design review, diagram generation, or Mermaid syntax-only checks (use mmdc or standalone syntax validator)."
 search_hints: diagram audit flowchart evidence validation clinical flujograma audit-assume fabricate confirm stakeholder
 license: MIT
 metadata:
@@ -46,7 +46,7 @@ Systematic evidence-based audit for diagrams and flowcharts. Every node, label, 
 If the diagram source is `.mmd`, `.svg`, or `.html`, validate syntax BEFORE content audit.
 
 **Mermaid:**
-1. **Mermaid file (.mmd):** Run `mermaid/tools/validate.sh diagram.mmd` (requires mermaid skill)
+1. **Mermaid file (.mmd):** Run `python3 skills/diagram-auditor/scripts/validate_mermaid.py diagram.mmd` (or `mmdc -i diagram.mmd -o /dev/null` if Mermaid CLI is installed)
 2. **Embedded in Markdown:** Extract blocks first (→ `resources/mermaid-extract.md`), then validate each
 
 **SVG / Inline SVG in HTML:**
@@ -118,7 +118,7 @@ If the stakeholder is available in the session, **resolve questions interactivel
 
 **Summary:** For each non-🟢 element, ask the stakeholder. Reclassify based on answers. Re-calculate verdict. Skip if no stakeholder present.
 
-**UX Validation Extension:** For stakeholder-facing diagrams, optionally run `skills/design-ux-researcher/SKILL.md` to:
+**UX Validation Extension:** For stakeholder-facing diagrams, perform UX validation to:
 - Validate diagram clarity with target audience
 - Check information hierarchy matches stakeholder mental model
 - Identify cognitive load issues (too many nodes, ambiguous labels)
@@ -152,11 +152,9 @@ When auditing multiple diagrams in one session (thesis, wiki, project review), u
 
 ## Step 5.8: Design Polish (for HTML/SVG diagrams)
 
-After audit fixes are applied, run design-principles to ensure presentation quality.
+After audit fixes are applied, apply the design polish checklist to ensure presentation quality.
 
 **Trigger:** Output is `.html` or `.svg` AND diagram will be shown to stakeholders.
-
-**Read:** `skills/design-principles/SKILL.md`
 
 **Apply these checks to the diagram:**
 
@@ -197,9 +195,9 @@ After audit fixes are applied, run design-principles to ensure presentation qual
 ## When Not to Use
 
 - **Visual design review** → use UI/UX skills instead
-- **Diagram generation** → this skill audits, does not create
-- **Mermaid syntax-only checks** → use `mermaid` skill directly
-- **Code flow analysis** → use `authority-flow-audit` or `code-path-cartographer`
+- **Diagram generation** → this skill audits, does not create (use `diagram-maker-plus`)
+- **Mermaid syntax-only checks** → use `scripts/validate_mermaid.py` or Mermaid CLI directly
+- **Code flow analysis** → use `authority-flow-audit` or code review workflows
 
 ## Inputs
 
@@ -213,7 +211,7 @@ After audit fixes are applied, run design-principles to ensure presentation qual
 
 **Trigger:** Diagram needs to be presented in a formal meeting (board, committee, external partner).
 
-**Read:** `skills/presentation-builder/SKILL.md`
+**Read:** `skills/scripting-technical-presentations/SKILL.md`
 
 **Protocol:**
 1. Build structured deck using 10-20-30 framework + Pyramid Principle
@@ -227,6 +225,7 @@ After audit fixes are applied, run design-principles to ensure presentation qual
 
 | File | Purpose | When to Load |
 |------|---------|-------------|
+| `scripts/validate_mermaid.py` | Standalone Mermaid syntax validator | Step 0 |
 | `resources/audit-report-template.md` | Full report template + memory_save format | Step 4 |
 | `resources/grill-phase.md` | Interactive stakeholder interrogation protocol | Step 4.5 |
 | `resources/annotation-convention.md` | Visual cues (SVG/Mermaid) + wiki integration | Step 5 |
