@@ -58,7 +58,7 @@ Raw data backing each finding. One entry per notable finding.
 | Symbol | File | Confidence | Classification | References |
 |--------|------|-----------|---------------|-----------|
 | `_old_parser` | src/legacy.py:42 | HIGH | no-references | 0 |
-| `handle_v2` | src/hooks.py:88 | MEDIUM | imported-unused | 1 |
+| `handle_v2` | src/hooks.py:88 | MEDIUM | imported-uncalled | 1 |
 
 **Total unwired candidates:** N (HIGH: X, MEDIUM: Y, LOW: Z)
 

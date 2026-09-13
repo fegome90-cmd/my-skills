@@ -6,7 +6,7 @@ Canonical registry of edge-case bugs, silent hangs, activation pitfalls, and fai
 
 > [!IMPORTANT]
 > **Co-Invocation with `dots-maintenance`:**
-> If the error or hang occurred while executing `sysup`, `sysdoc`, `dots-update`, `dots-doctor`, or modifying scripts inside `~/Developer/Gentleman.Dots-nix`, you MUST activate the `dots-maintenance` skill (`~/.gemini/config/skills/dots-maintenance/SKILL.md`) alongside this one. `dots-maintenance` owns multi-subsystem orchestration and runtime rollback runbooks, while this skill owns Nix/Fish activation and internal mechanics.
+> If the error or hang occurred while executing `sysup`, `sysdoc`, `dots-update`, `dots-doctor`, or modifying scripts inside `~/Developer/Gentleman.Dots-nix`, you MUST activate the `dots-maintenance` skill (`skills/dots-maintenance/SKILL.md`) alongside this one. `dots-maintenance` owns multi-subsystem orchestration and runtime rollback runbooks, while this skill owns Nix/Fish activation and internal mechanics.
 
 ---
 

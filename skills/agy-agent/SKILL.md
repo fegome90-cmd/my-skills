@@ -28,12 +28,11 @@ Invoca a agy en modo headless.
 - Esta skill NO tiene modelo por defecto hardcodeado. Si el uso no indica `<MODEL>`, pedirlo y esperar — nunca asumir ni inventar uno.
 - NOTA: el CLI trae modelo por defecto; omitir `--model` NO falla (verificado: `agy --print` responde igual). El agente DEBE pedir `<MODEL>` antes de ejecutar aunque el CLI no lo exija.
 
-## Permisos: lectura libre + escritura con aviso
+## Permisos: directiva de agente (lectura libre + escritura con aviso)
 
-- Lectura libre del repo: leer archivos, listar directorios, responder preguntas.
+- Garantía de solo lectura: es una directiva comportamental del agente ejecutor, NO una frontera técnica a nivel de sandbox o kernel. `cd <DIR>` no garantiza aislamiento hermético del workspace de `agy`.
 - Cualquier escritura, edición o apply solo tras aviso explícito al usuario en el mismo uso.
 - PROHIBIDO `--dangerously-skip-permissions` por defecto. Nunca agregarlo salvo aviso explícito al usuario en el mismo uso.
-- El enforcement real hoy lo dan las reglas globales del CLI; esta sección es directiva del agente, no un gate técnico.
 - Nota: se evaluó `disable-model-invocation: true` y se rechazó — la skill debe seguir invocable por el modelo; el control es el aviso previo en escrituras, no el bloqueo de invocación.
 
 ## Invocación
@@ -48,14 +47,23 @@ agy models      # lookup = señal de listo; si falla por auth, frenar y pedir cr
 Forma canónica (workdir explícito + captura de output a archivo):
 
 ```sh
+TIMEOUT_BIN=$(command -v timeout || command -v gtimeout)
+[ -z "$TIMEOUT_BIN" ] && { echo "BLOCK: timeout/gtimeout required" >&2; exit 1; }
+
 OUT=$(mktemp /tmp/agy-out.XXXXXX)
-cd <DIR> && timeout 60 agy --model "<MODEL>" --print "<prompt del worker>" > "$OUT" 2>&1 </dev/null
-cat "$OUT"
+cd <DIR> && $TIMEOUT_BIN 60 agy --model "<MODEL>" --print "<prompt del worker>" > "$OUT" 2>&1 </dev/null
+EXIT_CODE=$?
+
+# agy puede salir con código 0 aun ante errores de selección de modelo o runtime: inspeccionar output
+if [ $EXIT_CODE -ne 0 ] || grep -qi "error: invalid model selection" "$OUT"; then
+  echo "FAIL: agy execution error" >&2
+  cat "$OUT" >&2
+fi
 ```
 
 - Workdir explícito siempre vía `cd <DIR>`, nunca cwd implícito. `--add-dir` existe en `agy --help` pero agrega un directorio al workspace, no fija el workdir; no usarlo en el patrón canónico.
 - `agy --help` no expone flag de captura a archivo: el output queda en `$OUT` por redirección shell; leerlo con `cat "$OUT"`.
-- `</dev/null` mandatorio en shells background/scripts: cierra stdin y evita bloqueos esperando EOF. (Solo `--input-format stream-json` lee stdin; en `text` —el default— no se afirma que lo anexe como contexto: es cierre preventivo, misma disciplina que las skills hermanas.)
+- `</dev/null` mandatorio en shells background/scripts: cierra stdin y evita bloqueos esperando EOF.
 - One-task-per-launch: una tarea acotada por corrida; post-ejecución revisar `git diff --stat` y `git status --short` en `<DIR>` antes de declarar done.
 - El worker arranca ciego (no ve esta conversación): escribir el brief completo en el prompt con el molde de 5 campos — Objective / Constraints (solo-lectura vs implementar, sin push; archivos a tocar) / Deliverable / Validation (cómo sabe que terminó) / Report (resumen corto, ver §Ejemplo).
 - Reportes cortos: devolver resumen + diff/files changed; nunca volcar el prompt ni transcripts crudos.
@@ -65,7 +73,10 @@ cat "$OUT"
 
 ```sh
 OUT=$(mktemp /tmp/agy-out.XXXXXX)
-cd "$PWD" && timeout 60 agy --model "<MODEL>" --print "lista los archivos del directorio actual sin modificar nada" > "$OUT" 2>&1 </dev/null
+TIMEOUT_BIN=$(command -v timeout || command -v gtimeout)
+[ -z "$TIMEOUT_BIN" ] && { echo "BLOCK: timeout/gtimeout required" >&2; exit 1; }
+
+cd "$PWD" && $TIMEOUT_BIN 60 agy --model "<MODEL>" --print "lista los archivos del directorio actual sin modificar nada" > "$OUT" 2>&1 </dev/null
 cat "$OUT"
 git diff --stat; git status --short
 ```
@@ -77,8 +88,9 @@ NOTA: el orden de flags es irrelevante (flags estilo Go; `--print ... --model ..
 ## Unhappy paths
 
 - Binario ausente → lane bloqueada, reportar y no avanzar.
+- Falta de timeout → si ni `timeout` ni `gtimeout` están presentes en el host, bloquear antes de la ejecución.
 - Modelo omitido → pedirlo, no defaultear.
-- Modelo inválido → el CLI imprime `Error: invalid model selection` pero sale con código 0; verificar el output, no solo `$?`.
+- Modelo inválido → el CLI imprime `Error: invalid model selection` pero sale con código 0; verificar siempre el contenido de `$OUT`, no solo `$?`.
 - Escritura sin aviso previo → frenar y avisar.
 - Auth ausente (`agy models` falla) → frenar; pedir credenciales al usuario. No intentar workarounds (no existe `login status` en este CLI).
 - Flag inexistente → el CLI lo rechaza; no adivinar ni inventar flags.

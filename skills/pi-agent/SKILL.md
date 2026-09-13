@@ -43,11 +43,11 @@ Invoca al CLI `pi` en modo headless (no interactivo) para tareas de solo lectura
 - One-task-per-launch: una tarea autocontenida por invocación; tras ejecutar, revisar `git diff --stat` / `git status --short` en el workdir antes de declarar done.
 - Molde ciego (el worker no ve tu contexto; todo va en el prompt): Objective (una frase) / Constraints (solo-lectura vs implementar, sin push, sin prod) / Deliverable (qué devolver) / Validation (cómo sabe que terminó) / Report (corto, ver §Ejemplo). Lo de "Skills/files to use" de la fuente se absorbe en Constraints.
 
-## Política de permisos (lectura-libre + escritura-con-aviso)
+## Política de permisos (herramientas de modelo solo-lectura + escritura-con-aviso)
 
-- Lectura libre del repo/directorio de trabajo.
-- Toda invocación read-only DEBE incluir `--tools read,grep,find,ls` (los tools `edit`, `write` y `bash` vienen habilitados por defecto y obedecen escritura sin aviso).
-- Cualquier escritura, edición o apply SOLO tras aviso explícito al usuario en el mismo uso.
+- Garantía operativa de solo lectura: se implementa a nivel de herramientas del modelo pasando estrictamente `--tools read,grep,find,ls` (excluyendo `edit`, `write`, `bash`).
+- Advertencia sobre escrituras del host: el proceso CLI de `pi` puede escribir archivos de metadatos o sesión en el CWD (`_ctx/`, `.atl/`, `.pi/`, `.gitignore`). Para aislamiento total, ejecutar en un scratch dir o verificar `git status`.
+- Cualquier escritura, edición o apply del modelo SOLO tras aviso explícito al usuario en el mismo uso.
 - Ante prompt de escritura/exfiltración: pedir aviso en el mismo uso; si hay duda, rehusar.
 - No introducir flags de auto-approve / full-access por defecto.
 - Nota: se evaluó `disable-model-invocation: true` y se rechazó — la skill debe seguir invocable por el modelo; el control es el aviso previo en escrituras, no el bloqueo de invocación.
@@ -58,12 +58,18 @@ Invoca al CLI `pi` en modo headless (no interactivo) para tareas de solo lectura
 cd /path/to/repo  # workdir explícito: pi no tiene --cd
 OUT=$(mktemp /tmp/pi-out.XXXXXX)
 MODEL="<provider/id>"  # ID real de `pi --list-models`, nunca un pattern inventado
-timeout 60 pi --print --model "$MODEL" --tools read,grep,find,ls "Objective: listar archivos sin modificar nada. Constraints: READ ONLY, sin writes. Deliverable: lista. Validation: sin cambios en git. Report: corto." > "$OUT" </dev/null
+
+# Resolución portable de timeout (GNU coreutils o macOS Homebrew)
+TIMEOUT_BIN=$(command -v timeout || command -v gtimeout)
+[ -z "$TIMEOUT_BIN" ] && { echo "BLOCK: timeout/gtimeout required" >&2; exit 1; }
+
+$TIMEOUT_BIN 60 pi --print --model "$MODEL" --tools read,grep,find,ls "Objective: listar archivos sin modificar nada. Constraints: READ ONLY, sin writes. Deliverable: lista. Validation: sin cambios en git. Report: corto." > "$OUT" 2>&1 </dev/null
 cat "$OUT"
 git diff --stat
+git status --short
 ```
 
-Notas: el modo "solo lectura" igual escribe `_ctx/`, `.atl/`, `.pi/` y `.gitignore` en el CWD — correr en scratch o sesión dedicada. La combinación `--print --no-session` puede colgar por extensiones en segundo plano; usar siempre el wrapper `timeout 60 ... < /dev/null`.
+Notas: el modo "solo lectura" igual puede escribir `_ctx/`, `.atl/`, `.pi/` y `.gitignore` en el CWD por parte del runtime — correr en scratch o sesión dedicada. La combinación `--print --no-session` puede colgar por extensiones en segundo plano; usar siempre el wrapper portable de timeout con `</dev/null`.
 
 Reportes cortos sin dumps: devolver solo modelo usado, workdir, read-only vs implement y resultado/diff resumido; no volcar prompt ni output completo en el contexto padre.
 
@@ -72,6 +78,7 @@ Reportes cortos sin dumps: devolver solo modelo usado, workdir, read-only vs imp
 - Auth ausente (`pi auth check` falla) → frenar y pedir autenticación al usuario; no intentar workarounds.
 - Flag inexistente (p. ej. `--cd`, `--output`, `--sandbox`) → no existe en `pi --help`; usar `cd` + redirección `>` en su lugar.
 - Modelo inválido (`Error: Model "<pattern>" not found`) → re-hacer lookup con `pi --list-models [búsqueda]`; nunca adivinar IDs.
-- Cuelgue sin output → stdin abierto o combinación `--print --no-session` con extensiones en segundo plano; matar, relanzar con `</dev/null` y wrapper `timeout 60`.
+- Cuelgue sin output → stdin abierto o combinación `--print --no-session` con extensiones en segundo plano; matar, relanzar con `</dev/null` y `$TIMEOUT_BIN 60`.
+- Falta de timeout → si ni `timeout` ni `gtimeout` están presentes, bloquear antes de la ejecución para evitar cuelgues indefinidos.
 
 Solo flags documentados: `--print`, `--model <pattern>`, `--provider` (default `google`), `--tools`/`-t`, `--exclude-tools`/`-xt`, `--list-models`, `--no-session`, `--offline`.

@@ -120,8 +120,8 @@ After creating/updating this skill, run:
 grep -c "authoritative\|SSOT\|ownership\|double.writer\|competing" SKILL.md resources/*.md
 # Should be 0 in procedure files (only in boundary docs)
 
-# Verify no forbidden language
-grep -rn "dead code\|safe to delete\|unused\|orphaned code" SKILL.md resources/*.md
+# Verify no forbidden language in procedure execution files (excluding definitions in boundary/confidence docs)
+grep -rn "dead code\|safe to delete\|unused\|orphaned code" resources/procedure-*.md
 # Should be 0
 
 # Line counts

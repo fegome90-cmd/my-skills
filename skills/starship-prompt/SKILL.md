@@ -52,7 +52,18 @@ $$\text{Transition Glyph: } [\text{}](\text{fg:Background\_A bg:Background\_B
 
 ---
 
-### 3. Declarative Home Manager Integration (Nix)
+### 3. Declarative Home Manager Integration (Nix) & Ownership Preflight
+
+Before proposing or applying any edit to `~/.config/starship.toml`, execute this mandatory ownership preflight:
+
+```bash
+# Preflight check: verify if config is owned by Nix / Home Manager
+if [ -L ~/.config/starship.toml ]; then
+  echo "BLOCK: ~/.config/starship.toml is a symlink -> $(readlink ~/.config/starship.toml)" >&2
+  echo "Managed by Nix/Home Manager. Do NOT edit directly. Edit the source .nix module instead." >&2
+  exit 1
+fi
+```
 
 Never edit `~/.config/starship.toml` imperatively when managed by Nix. Declare the configuration inside `starship.nix`:
 
@@ -89,8 +100,8 @@ Never edit `~/.config/starship.toml` imperatively when managed by Nix. Declare t
 
 | Situation | Action |
 | :--- | :--- |
-| **Managing via Nix / Home Manager** | Write settings to `starship.nix` in `programs.starship.settings`; validate with `home-manager build`. |
-| **Managing via standalone dotfiles** | Edit `~/.config/starship.toml` directly; validate with `starship print-config`. |
+| **Managing via Nix / Home Manager** | Run `test -L ~/.config/starship.toml` preflight. Write settings to `starship.nix` in `programs.starship.settings`; validate with `home-manager build`. |
+| **Managing via standalone dotfiles** | Run `test -L ~/.config/starship.toml` preflight to confirm it is NOT a Nix symlink. Edit `~/.config/starship.toml` directly; validate with `starship print-config`. |
 | **Maximalist context / High contrast** | Choose **Connected Powerline (``)** with colored background blocks. |
 | **Minimalist / Low distraction** | Choose **2-Line Minimal** or **1-Line Inline** with transparent backgrounds and bold foreground colors. |
 | **Terminal lacks Nerd Fonts** | Use `starship preset no-nerd-font` or standard Unicode symbols (`➜`, `λ`). |

@@ -42,9 +42,9 @@ metadata:
 | Subsystem | Managed Scope | Update Command | Fallback / Rollback |
 |---|---|---|---|
 | **Nix Flakes** | Declarative CLI tools, shells, fonts | `nix flake update && home-manager switch` | Activate `/nix/store/<hash>-.../activate` |
-| **Homebrew** | macOS casks, window managers (`nehir`), daemons | `brew update && brew upgrade && brew cleanup` | `brew install <pkg>@<ver>` |
-| **Bun** | JavaScript/TypeScript fast runtime | `bun upgrade` | `curl -fsSL https://bun.sh/install \| bash` |
-| **uv** | Python toolchains & virtualenvs | `uv self update` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
+| **Homebrew** | macOS casks, window managers (`nehir`), daemons | `brew update && brew upgrade` | `brew install <pkg>@<ver>` |
+| **Bun** | JavaScript/TypeScript fast runtime | `bun upgrade` | Inspect official installer script before running |
+| **uv** | Python toolchains & virtualenvs | `uv self update` | Inspect official installer script before running |
 | **Rustup** | Rust toolchains & `cargo` | `rustup update` | `rustup default stable` |
 | **PNPM** | Global Node CLI packages | `pnpm update -g` | `pnpm setup` |
 | **Fisher** | Fish shell plugins & themes | `fisher update` | Reinstall via `fish.nix` declarative plugin |
@@ -114,21 +114,30 @@ home-manager generations
 
 ### Scenario B: Incompatible Upstream Flake Input
 ```bash
-# 1. Revert flake.lock to previous git revision
+# 1. Revert flake.lock to the recorded baseline commit (never blind HEAD~1)
 cd ~/Developer/Gentleman.Dots-nix
-git checkout HEAD~1 flake.lock
+# Identify baseline commit from git log:
+git log -n 5 --oneline flake.lock
+# Restore the exact known-good commit:
+git checkout <recorded-good-commit> -- flake.lock
 
 # 2. Re-switch Home Manager
 home-manager switch --flake .#gentleman
 ```
 
 ### Scenario C: Corrupted Standalone Runtime (Bun / uv)
-```bash
-# Re-bootstrap Bun
-curl -fsSL https://bun.sh/install | bash
+> [!WARNING]
+> Security Risk: Never pipe untrusted remote shell scripts directly to `bash` or `sh` without inspecting the file contents or verifying cryptographic signatures. Download to a local file, inspect, and execute explicitly:
 
-# Re-bootstrap uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
+```bash
+# Download and inspect before execution
+curl -fsSL https://bun.sh/install -o /tmp/bun-install.sh
+# Review /tmp/bun-install.sh before running:
+bash /tmp/bun-install.sh
+
+curl -LsSf https://astral.sh/uv/install.sh -o /tmp/uv-install.sh
+# Review /tmp/uv-install.sh before running:
+sh /tmp/uv-install.sh
 ```
 
 ### Scenario D: Broken Toolchain Package Manager (Rustup / PNPM)

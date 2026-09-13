@@ -33,13 +33,17 @@ muse --version   # alcanzable? si falla, lane bloqueada
 ## Invocación
 
 ```sh
+TIMEOUT_BIN=$(command -v timeout || command -v gtimeout)
+[ -z "$TIMEOUT_BIN" ] && { echo "BLOCK: timeout/gtimeout required for bounded execution" >&2; exit 1; }
+
 OUT=$(mktemp /tmp/muse-out.XXXXXX)
-muse exec --disable-write --workspace /path/to/repo --model "<ID>" "prompt completo" </dev/null > "$OUT"
-git -C /path/to/repo diff --stat   # revisar lo que realmente cambió antes de dar por hecha la tarea
+$TIMEOUT_BIN 60 muse exec --disable-write --workspace /path/to/repo --model "<ID>" "prompt completo" </dev/null > "$OUT" 2>&1
+git -C /path/to/repo diff --stat; git -C /path/to/repo status --short   # revisar diff y archivos untracked antes de dar por hecha la tarea
+cat "$OUT"
 ```
 
 - Workdir explícito: siempre `--workspace <PATH>` (flag verificado en `muse exec --help`); no asumir cwd del launcher.
-- Captura a archivo: redirigir stdout a `"$OUT"` (no existe flag `--output` en `muse exec --help`; la redirección shell es el mecanismo).
+- Captura a archivo: redirigir stdout y stderr a `"$OUT"` (`> "$OUT" 2>&1`; no existe flag `--output` en `muse exec --help`; la redirección shell es el mecanismo).
 - `</dev/null` mandatorio: stdin abierto puede dejar el proceso esperando EOF en shells background/scripts; cerrarlo evita el bloqueo.
 - Prompt largo? Usar `--prompt-file /tmp/task.md` (flag verificado) en vez del argumento posicional.
 - El worker arranca ciego: `muse exec` no ve la conversación. Molde de 5 campos en cada prompt:
@@ -70,23 +74,30 @@ git -C /path/to/repo diff --stat   # revisar lo que realmente cambió antes de d
 ## Ejemplo (solo lectura)
 
 ```sh
+TIMEOUT_BIN=$(command -v timeout || command -v gtimeout)
+[ -z "$TIMEOUT_BIN" ] && { echo "BLOCK: timeout/gtimeout required" >&2; exit 1; }
+
 OUT=$(mktemp /tmp/muse-out.XXXXXX)
-muse exec --disable-write --workspace /path/to/repo --model "<ID>" "$(cat <<'EOF'
+$TIMEOUT_BIN 60 muse exec --disable-write --workspace /path/to/repo --model "<ID>" "$(cat <<'EOF'
 Objective: listar los archivos del repo sin modificar nada.
 Constraints: READ ONLY. Sin cambios de código, sin git writes.
 Deliverable: lista de archivos.
-Validation: no hay diff tras correr (git status limpio).
+Validation: no hay diff ni untracked tras correr (git status limpio).
 Report: resumen corto, sin dumps.
 EOF
-)" </dev/null > "$OUT"
+)" </dev/null > "$OUT" 2>&1
+cat "$OUT"
+git -C /path/to/repo diff --stat; git -C /path/to/repo status --short
 ```
 
 Reemplazar `"<ID>"` por el ID real (con comillas: sin comillas el shell lo interpreta como redirección y falla con exit 1).
-Reportar corto: qué se pidió, qué devolvió, qué cambió (`git diff --stat`). Nunca volcar el prompt ni el transcript crudo.
+Reportar corto: qué se pidió, qué devolvió, qué cambió (`git diff --stat` + `git status --short`). Nunca volcar el prompt ni el transcript crudo.
 
 ## Unhappy paths
 
 - Binario ausente → lane bloqueada, reportar y no avanzar (señal esperada: `muse: command not found`, exit 127).
+- Timeout ausente → si ni `timeout` ni `gtimeout` están disponibles, BLOQUEAR la ejecución bounded; nunca correr indefinidamente.
+- Cuelgue o sin salida en 60s → matar por timeout y reportar.
 - Modelo omitido → pedirlo, no defaultear.
 - Failure modes: auth ausente/inválida → `muse login` (ver §Preflight); flag inexistente → solo valen los flags de `muse --help` / `muse exec --help` (no `--cd`, no `--output`, no `--sandbox`, no `--service-tier`/`--reasoning-level` de otros CLIs); modelo inválido → pedir un `<ID>` válido al usuario, no reintentar en loop.
 - Approval degradado a auto sin aviso → frenar y avisar.

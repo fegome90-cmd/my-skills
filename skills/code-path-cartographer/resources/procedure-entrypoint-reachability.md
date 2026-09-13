@@ -69,11 +69,11 @@ For each unwired candidate:
 |--------|---------------|
 | Only referenced in comments/docs | candidate:documentation-only |
 | Referenced in config/string but no import | candidate:dynamic-dispatch |
-| Imported but never called | candidate:imported-unused |
+| Imported but never called | candidate:imported-uncalled |
 | No references found at all | candidate:no-references |
-| Exported but no external consumers | candidate:exported-unused |
+| Exported but no external consumers | candidate:exported-no-consumers |
 
-**Never classify as:** dead code, safe to delete, unused.
+**Never classify using prohibited terms** (see resources/confidence-model.md).
 
 ## Step 6: Generate Report
 

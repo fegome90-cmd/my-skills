@@ -96,7 +96,7 @@ human_decision_required:
 
 When the worker returns:
 
-1. **Schema Validation:** Ensure the payload contains the `result_receipt` root object and parses cleanly via JSON or YAML parser.
+1. **Schema Validation & Required Fields:** Ensure the payload contains the `result_receipt` root object and parses cleanly. Enforce presence of all required fields: `status` (enum: `done`, `partial`, `blocked`, `failed`), `summary` (string), `modified_files` (list of strings), `evidence` (list of objects), `blocking_reasons` (list), and `residual_risks` (list). Missing fields or schema non-conformance fail closed to `status: failed`.
 2. **Evidence Iteration & Status Integrity:** Iterate across all entries in `evidence`. If any item has `exit_code != 0` or missing command output, reject `status: done` (fail-closed to `status: failed`).
 3. **Scope Integrity:** Compare `modified_files` against `scope.allowed_paths`. Any out-of-scope mutation triggers immediate block.
 4. **Claim Alignment:** Verify that every claim in `summary` maps to at least one verified item in `evidence` with `exit_code: 0`.

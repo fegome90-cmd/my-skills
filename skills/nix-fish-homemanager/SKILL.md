@@ -75,7 +75,7 @@ When debugging failures, unexpected hangs, or activation errors in Nix, Home Man
 | :--- | :--- |
 | **Issue in `Gentleman.Dots-nix` or running `sysup`/`sysdoc`** | Load BOTH `nix-fish-homemanager` AND `dots-maintenance` skills together immediately. |
 | **Diagnosing hangs or switch errors** | Read [references/troubleshooting-and-known-bugs.md](references/troubleshooting-and-known-bugs.md) first (check Fisher stdin hang, silent switch errors, checkLinkTargets, set -e). |
-| **Tool has official Home Manager module** | Use `programs.<tool>` (e.g. `programs.starship`, `programs.git`). Do NOT use `home.file` or `home.packages` for it. |
+| **Tool has official Home Manager module** | Prefer `programs.<tool>` (e.g. `programs.starship`, `programs.git`) over standalone `home.packages` or raw `home.file` dumps, to leverage structured configurations and shell integrations. |
 | **Dotfile without Home Manager module** | Use `home.file.".config/<app>".source = ./path;` for immutable symlinking. |
 | **Application requires writable directory** | Use `home.activation.<name>` with `chmod -R u+w` backup/copy pattern. |
 | **Handling API Tokens / Secrets** | Store in macOS Keychain (`security add-generic-password`); load via `fish/conf.d/*-keychain.fish`. |
@@ -121,7 +121,7 @@ When completing any Nix/Fish work unit:
 
 ## Progressive Disclosure & Deep References
 
-- **Workstation Maintenance & Orchestration:** `dots-maintenance` skill (`~/.gemini/config/skills/dots-maintenance/SKILL.md`) — Multi-subsystem update orchestrator (`sysup`, `sysdoc`, `dots-update`, `dots-doctor`), preflight health audits, and recovery runbooks.
+- **Workstation Maintenance & Orchestration:** `dots-maintenance` skill (`skills/dots-maintenance/SKILL.md`) — Multi-subsystem update orchestrator (`sysup`, `sysdoc`, `dots-update`, `dots-doctor`), preflight health audits, and recovery runbooks.
 - **Troubleshooting & Known Bugs:** [references/troubleshooting-and-known-bugs.md](references/troubleshooting-and-known-bugs.md) — Canonical registry of edge-case bugs, silent hangs, and activation traps.
 - **Nix Flakes Architecture:** [references/nix-and-flakes.md](references/nix-and-flakes.md) — Flake anatomy, inputs, derivations, and locking.
 - **Home Manager System:** [references/home-manager-architecture.md](references/home-manager-architecture.md) — Modules, symlinks, profiles, and plugins.

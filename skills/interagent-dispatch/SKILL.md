@@ -49,7 +49,7 @@ Assemble typed execution contracts and structured return receipts for subagent d
 
 Choose payload format by transport:
 - **Markdown Mode:** Default for interactive chat and subagent prompts where visual inspection matters.
-- **JSON (A2A RPC) Mode:** High-efficiency transport for programmatic pipes, API workers, and tight token budgets. Guarantees 0-ambiguity machine parsing with `JSON.parse()`.
+- **JSON (A2A RPC) Mode:** High-efficiency transport for programmatic pipes, API workers, and tight token budgets. Enables direct structured machine parsing with `JSON.parse()`.
 
 ## Resources
 

@@ -50,8 +50,11 @@ opencode models [<provider>]  # lookup = señal de listo; usar solo IDs del cat�
 Forma canónica (workdir explícito + captura de output a archivo):
 
 ```sh
+TIMEOUT_BIN=$(command -v timeout || command -v gtimeout)
+[ -z "$TIMEOUT_BIN" ] && { echo "BLOCK: timeout/gtimeout required for bounded execution" >&2; exit 1; }
+
 OUT=$(mktemp /tmp/opencode-out.XXXXXX)
-cd <DIR> && timeout 60 opencode run -m "<provider/model>" "<prompt del worker>" > "$OUT" 2>&1 </dev/null
+cd <DIR> && $TIMEOUT_BIN 60 opencode run -m "<provider/model>" "<prompt del worker>" > "$OUT" 2>&1 </dev/null
 cat "$OUT"
 ```
 
@@ -66,8 +69,11 @@ cat "$OUT"
 ## Ejemplo (solo lectura)
 
 ```sh
+TIMEOUT_BIN=$(command -v timeout || command -v gtimeout)
+[ -z "$TIMEOUT_BIN" ] && { echo "BLOCK: timeout/gtimeout required" >&2; exit 1; }
+
 OUT=$(mktemp /tmp/opencode-out.XXXXXX)
-cd "$PWD" && timeout 60 opencode run -m "<provider/model>" "lista los archivos del directorio actual sin modificar nada" > "$OUT" 2>&1 </dev/null
+cd "$PWD" && $TIMEOUT_BIN 60 opencode run -m "<provider/model>" "lista los archivos del directorio actual sin modificar nada" > "$OUT" 2>&1 </dev/null
 cat "$OUT"
 git diff --stat; git status --short
 ```
@@ -77,11 +83,12 @@ Plantilla NO ejecutable tal cual: reemplazar `<provider/model>` por el modelo re
 ## Unhappy paths (Failure modes)
 
 - Binario ausente → reportar `opencode no encontrado en PATH ni en ~/.opencode/bin/opencode; lane bloqueada`, y no avanzar.
+- Timeout ausente → si ni `timeout` ni `gtimeout` existen, BLOQUEAR la ejecución bounded; no correr indefinidamente.
 - Auth ausente (`opencode providers` falla) → frenar; pedir credenciales al usuario. No intentar workarounds (no existe `login status` en este CLI).
 - Modelo omitido → pedirlo, no defaultear.
 - Modelo inválido o sin saldo/cuota → error (stdout vacío, `UnknownError` al final del stderr), reportar verbatim, cero reintentos.
 - Flag inexistente → el CLI lo rechaza; no adivinar ni inventar flags.
-- Ignorar líneas `[omniroute-plugin]` en stderr (ruido local `ConnectionRefused localhost:20128`); el error real va al final.
+- Errores en stderr → reportar todos los errores observados (incluyendo fallos de conexión de plugins o daemons de ruteo como omniroute); no silenciarlos ni ignorarlos.
 - Sin salida con stdin abierto → matar y relanzar con `</dev/null` (stdin abierto = bloqueo esperando EOF).
 - Sin salida en 60s → matar por timeout y reportar (no reintentar a ciegas).
 - Escritura sin aviso previo → frenar y avisar.

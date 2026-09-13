@@ -26,7 +26,7 @@ Use when the user explicitly asks for isolated worktree work via herdr: create, 
 | --- | --- |
 | Setup/teardown hooks needed (deps, `.env`) | Use `wt` via the worktrunk plugin, not native commands |
 | Open an existing worktree as a tab | `herdr worktree open --path <path>` |
-| Finish and integrate work | `wt merge` from the worktree, then remove it |
+| Finish and integrate work | `wt merge` from the worktree, verify integration on base branch, then remove worktree |
 | Native vs hooks unclear | Ask which one before acting |
 | Editing `~/.config/worktrunk/config.toml` | Propose first, preserve structure; never install tools unasked |
 | Editing `<repo>/.config/wt.toml` | Edit proactively (versioned); warn before destructive or network-piped commands |
@@ -36,12 +36,14 @@ Use when the user explicitly asks for isolated worktree work via herdr: create, 
 1. Inspect state: `herdr worktree list` or `wt list`.
 2. Create or switch: `herdr worktree create --branch <name> --base <ref>` or `wt switch <name>`.
 3. Work inside the returned worktree path; commit there, never in the main checkout.
-4. Merge with `wt merge`; remove with `herdr worktree remove` (`--force` only with approval).
-5. Verify with `wt list` that the worktree is gone and the branch state is as expected.
+4. Merge: run `wt merge`.
+5. **Verify integration gate:** Explicitly verify that the merge completed cleanly and that target base branch contains the changes (`git status`, `git log -1`). If conflicts or merge failures occurred, STOP and resolve; NEVER proceed to removal.
+6. Remove: after integration is verified, remove with `herdr worktree remove` (`--force` only with explicit user approval).
+7. Verify with `wt list` that the worktree is gone and the branch state is as expected.
 
 ## Output Contract
 
-Return: worktree path and branch created, switched, merged, or removed; hook results when `wt` ran; `wt list` verification; residual risks such as unmerged branches.
+Return: worktree path and branch created, switched, merged, or removed; hook results when `wt` ran; integration verification result; `wt list` verification; residual risks such as unmerged branches.
 
 ## References
 
