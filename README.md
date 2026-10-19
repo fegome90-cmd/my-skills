@@ -54,7 +54,7 @@ Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus nec
 
 - [`authority-flow-audit`](skills/authority-flow-audit/SKILL.md): audita autoridad, flujos, escritores en competencia y supuestas fuentes únicas de verdad.
 - [`code-path-cartographer`](skills/code-path-cartographer/SKILL.md): rastrea entrypoints, referencias y alcanzabilidad sin emitir veredictos de autoridad.
-- [`color-theory-engine`](skills/color-theory-engine/SKILL.md): genera y analiza paletas, armonías y relaciones de contraste para interfaces.
+- [`color-theory-engine`](skills/color-theory-engine/SKILL.md): genera armonías y escalas, consulta paletas Wada mediante datos externos explícitos y mide contraste WCAG.
 - [`disenar-slides`](skills/disenar-slides/SKILL.md): diseña y revisa slides web con criterios de tipografía, color, grilla, jerarquía y movimiento mínimo, y mide cada slide con un script de Playwright.
 - [`diagram-auditor`](skills/diagram-auditor/SKILL.md): contrasta diagramas con evidencia y clasifica sus afirmaciones antes de entregarlos.
 - [`learned-accuracy-fallacy-audit`](skills/learned-accuracy-fallacy-audit/SKILL.md): audita afirmaciones separando consistencia interna, verificación factual externa y errores de razonamiento.
