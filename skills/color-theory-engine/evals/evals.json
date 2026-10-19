@@ -1,18 +1,33 @@
 {
   "skill_name": "color-theory-engine",
+  "notes": "These evaluations assess response quality when the skill is invoked; they do not prove routing, registry state, or automatic enforcement. Semantic role selection and WCAG non-text applicability remain agent judgments. Any Wada query requires user-supplied external data.",
   "evals": [
     {
       "id": 0,
-      "name": "corporate-saas-triadic",
-      "prompt": "Diseña una paleta para una aplicación de finanzas corporativa (corporate_saas). Usa el color base #1E40AF. Genera una armonía triádica usando el motor de Python y valida si el texto blanco tiene suficiente contraste con el color de éxito sugerido por el motor.",
-      "expected_output": "Paleta triádica calculada matemáticamente, siguiendo el patrón corporate_saas, con veredicto de contraste WCAG AA/AAA.",
+      "name": "choose-and-measure-success-role",
+      "prompt": "For a corporate finance interface, choose which of two supplied colors is a more suitable success-status fill and explain the semantic reason. Treat pattern ranges as candidate guidance, not an engine recommendation. If normal text is placed on the chosen fill, measure that actual text/fill pair and report the applicable result.",
+      "expected_output": "The agent chooses a success role and explains its reason based on interface meaning; it does not claim the engine selected a semantic role. Every stated numeric contrast comes from the engine, and a fill-role choice is not represented as proof that text on that fill passes.",
       "files": []
     },
     {
       "id": 1,
-      "name": "accessibility-fix",
-      "prompt": "Un cliente usa texto #999999 sobre fondo #FFFFFF. Analiza el ratio actual usando el motor y propón un ajuste de luminancia que cumpla con WCAG AAA para texto normal.",
-      "expected_output": "Análisis de ratio fallido (~2.84:1) y propuesta de nuevo color con ratio >= 7.0:1.",
+      "name": "measure-scale-candidate-for-aaa",
+      "prompt": "Text #999999 on #FFFFFF fails normal-text contrast. Measure the pair, generate its OKLCH scale, then measure a scale candidate against white for AAA normal text. Report a selected candidate and its measured ratio; if no available candidate meets 7:1, report that limitation without claiming PASS.",
+      "expected_output": "The agent uses scale and contrast instead of claiming automatic adjustment. The current pair is reported as 2.85:1; any candidate ratio is measured with the engine. If no candidate meets 7:1, the agent reports that no available candidate meets the target and does not fabricate PASS.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "external-wada-query",
+      "prompt": "Given an explicitly supplied, authorized Wada-compatible dataset, query a palette ID and a multiword color name. Report results in dataset order, distinguish source colors from semantic UI roles, and state if a query has no matches.",
+      "expected_output": "The agent passes the supplied dataset explicitly with --dataset, reports only values returned from that file, preserves result order, and does not imply the dataset is bundled or licensed by this package.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "nontext-contrast-context",
+      "prompt": "Measure a supplied accent color against its adjacent background. Decide whether it conveys required information for an active control/state or meaningful icon, or is only decorative/inactive. Explain WCAG 1.4.11 applicability and the 3:1 threshold without treating a large-text flag as a complete non-text verdict.",
+      "expected_output": "The agent reports the numeric pair from the engine, states the contextual applicability judgment separately, and does not infer non-text conformance from a numeric flag alone. Decorative content and inactive controls are distinguished from required active-state or meaningful-icon information.",
       "files": []
     }
   ]
