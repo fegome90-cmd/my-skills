@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import importlib.util
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -14,13 +16,11 @@ from typing import Any
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 ENGINE_SCRIPT = PACKAGE_ROOT / "scripts" / "color_engine.py"
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "synthetic-wada-test-data.json"
-EVIDENCE_DIR = PACKAGE_ROOT.parents[1] / ".release-evidence" / "color-engine-2.0.0"
 
 
 class ColorEngineCliTests(unittest.TestCase):
     def setUp(self) -> None:
-        EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
-        self.temp_dir = tempfile.TemporaryDirectory(dir=str(EVIDENCE_DIR))
+        self.temp_dir = tempfile.TemporaryDirectory(prefix="color-engine-cli-")
         self.addCleanup(self.temp_dir.cleanup)
         self.temporary_path = Path(self.temp_dir.name)
 
@@ -174,6 +174,90 @@ class ColorEngineCliTests(unittest.TestCase):
         self.assertEqual(combined_variant.returncode, canonical_triadic.returncode)
         self.assertEqual(combined_variant.stdout, canonical_triadic.stdout)
         self.assertEqual(combined_variant.stderr, canonical_triadic.stderr)
+
+    def test_temporary_directory_lifecycle_isolated_from_repository_evidence(self) -> None:
+        source_module = Path(__file__).resolve()
+
+        def load_fake_package(fake_repo: Path, module_name: str) -> Any:
+            copied_module = fake_repo / "skills" / "color-theory-engine" / "tests" / "test_cli.py"
+            copied_module.parent.mkdir(parents=True)
+            shutil.copyfile(source_module, copied_module)
+            spec = importlib.util.spec_from_file_location(module_name, copied_module)
+            if spec is None or spec.loader is None:
+                raise ImportError(f"cannot load copied test module: {copied_module}")
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            return module
+
+        with tempfile.TemporaryDirectory(prefix="color-engine-cli-lifecycle-") as owned_root:
+            fake_root = Path(owned_root) / "fresh-fake-repo"
+            module = load_fake_package(fake_root, "_color_engine_cli_lifecycle_fresh")
+            fake_evidence = fake_root / ".release-evidence"
+            self.assertFalse(fake_evidence.exists(), "module import created repo evidence")
+
+            normal_case = module.ColorEngineCliTests(
+                methodName="test_help_is_successful_and_prints_usage_to_stdout"
+            )
+            normal_case.setUp()
+            normal_temp = normal_case.temporary_path
+            try:
+                self.assertTrue(normal_temp.is_dir())
+                self.assertFalse(fake_evidence.exists(), "setUp created repo evidence")
+            finally:
+                normal_case.doCleanups()
+            self.assertFalse(normal_temp.exists(), "normal cleanup left its temporary directory")
+
+            class DeliberateBodyFailure(module.ColorEngineCliTests):
+                def test_deliberate_failure(self) -> None:
+                    self.observed_temp_path = self.temporary_path
+                    self.fail("expected lifecycle-test failure")
+
+            body_case = DeliberateBodyFailure(methodName="test_deliberate_failure")
+            body_result = unittest.TestResult()
+            body_case.run(body_result)
+            self.assertEqual(len(body_result.failures), 1)
+            self.assertEqual(body_result.errors, [])
+            self.assertFalse(body_case.observed_temp_path.exists(), "failed body leaked its temporary directory")
+            self.assertFalse(fake_evidence.exists(), "failed body created repo evidence")
+
+            class DeliberateSetupFailure(module.ColorEngineCliTests):
+                def setUp(self) -> None:
+                    super().setUp()
+                    self.observed_temp_path = self.temporary_path
+                    raise RuntimeError("expected lifecycle-test setup failure")
+
+                def test_body_must_not_run(self) -> None:
+                    self.fail("setup failure should prevent the test body")
+
+            setup_case = DeliberateSetupFailure(methodName="test_body_must_not_run")
+            setup_result = unittest.TestResult()
+            setup_case.run(setup_result)
+            self.assertEqual(setup_result.failures, [])
+            self.assertEqual(len(setup_result.errors), 1)
+            self.assertFalse(setup_case.observed_temp_path.exists(), "failed setup leaked its temporary directory")
+            self.assertFalse(fake_evidence.exists(), "failed setup created repo evidence")
+
+            sentinel_root = Path(owned_root) / "sentinel-fake-repo"
+            sentinel = sentinel_root / ".release-evidence" / "preexisting-artifact.bin"
+            sentinel.parent.mkdir(parents=True)
+            sentinel.write_bytes(b"synthetic preexisting artifact\n")
+            sentinel_module = load_fake_package(sentinel_root, "_color_engine_cli_lifecycle_sentinel")
+            sentinel_case = sentinel_module.ColorEngineCliTests(
+                methodName="test_help_is_successful_and_prints_usage_to_stdout"
+            )
+            sentinel_case.setUp()
+            sentinel_temp = sentinel_case.temporary_path
+            try:
+                self.assertFalse(
+                    (sentinel_module.PACKAGE_ROOT.parents[1] / ".release-evidence" / "color-engine-2.0.0").exists()
+                )
+            finally:
+                sentinel_case.doCleanups()
+            self.assertFalse(sentinel_temp.exists(), "sentinel case leaked its temporary directory")
+            self.assertEqual(sentinel.read_bytes(), b"synthetic preexisting artifact\n")
+            self.assertEqual(sorted(path.name for path in sentinel.parent.iterdir()), ["preexisting-artifact.bin"])
+
+        self.assertFalse(Path(owned_root).exists(), "fake-package parent temporary directory leaked")
 
 
 if __name__ == "__main__":
