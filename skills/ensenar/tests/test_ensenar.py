@@ -120,6 +120,37 @@ class TestEscala(unittest.TestCase):
         self.assertEqual(leer(SKILL_MD).count("consolidado"), 1)
 
 
+class TestTeoriaAntesQueEjemplos(unittest.TestCase):
+    def setUp(self):
+        texto = leer(SKILL_MD)
+        self.seccion3 = texto.split("## 3.", 1)[1].split("\n## ", 1)[0]
+
+    def capas(self):
+        return re.findall(r"(?m)^\d\. \*\*([^:*]+):?\*\*", self.seccion3)
+
+    def test_concepto_y_formalizacion_preceden_al_ejemplo(self):
+        capas = self.capas()
+        concepto = capas.index("Construcción del concepto")
+        formalizacion = capas.index("Formalización")
+        ejemplo = capas.index("Ejemplo trabajado mínimo")
+        self.assertLess(concepto, ejemplo)
+        self.assertLess(formalizacion, ejemplo)
+
+    def test_regla_explicita_teoria_antes_que_ejemplos(self):
+        self.assertIn("**Teoría antes que ejemplos.**", self.seccion3)
+        self.assertIn("nunca termines un turno con solo ejemplos", self.seccion3)
+
+    def test_recetas_empiezan_por_el_concepto(self):
+        encabezado = next(l for l in leer(RECETAS).splitlines() if l.startswith("| Dominio"))
+        columnas = [c.strip() for c in encabezado.strip("|").split("|")]
+        self.assertEqual(columnas[1], "Concepto (primero)")
+        self.assertEqual(columnas[2], "Primer ejemplo")
+
+    def test_hay_eval_de_teoria_antes_que_ejemplos(self):
+        nombres = [e["name"] for e in json.loads(leer(EVALS))["evals"]]
+        self.assertIn("teoria-antes-que-ejemplos", nombres)
+
+
 class TestIdioma(unittest.TestCase):
     ANGLICISMOS = r"\b(feedback|scores?|shapes|plugins?|readback|quiz|baseline|draft)\b"
 

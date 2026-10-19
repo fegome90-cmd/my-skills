@@ -10,7 +10,7 @@ description: >-
 license: MIT
 metadata:
   author: Felipe Gonzalez
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Enseñar · enseñanza transversal
@@ -40,22 +40,24 @@ Elige el tipo de conocimiento a evaluar: `concepto`, `mecanismo`, `procedimiento
 
 Cuando la tarea amerita una clase, sigue una secuencia **adaptable**, no un formato rígido:
 
-1. **Situación y pregunta:** problema concreto, fenómeno o decisión que el contenido ayuda a comprender.
-2. **Intuición correcta:** explicación simple con terminología precisa. No infantilices ni sustituyas hechos con metáforas.
-3. **Ejemplo trabajado mínimo:** pocos elementos, cifras pequeñas o un documento breve; declara supuestos y elementos inventados.
-4. **Formalización:** vocabulario, evidencia, ecuación, cronología, estructura o procedimiento real; define símbolos, unidades y dimensiones cuando corresponda.
+1. **Situación y pregunta:** problema concreto, fenómeno o decisión que el contenido ayuda a comprender. Basta una o dos frases; todavía no es un ejemplo resuelto.
+2. **Construcción del concepto:** enuncia la idea central y desarróllala antes de cualquier ejemplo: qué es (definición precisa), de qué partes o variables se compone, por qué funciona o qué mecanismo la produce, y bajo qué condiciones deja de valer. Usa terminología precisa; no infantilices ni sustituyas hechos con metáforas.
+3. **Formalización:** vocabulario, evidencia, ecuación, cronología, estructura o procedimiento real; define símbolos, unidades y dimensiones cuando corresponda.
+4. **Ejemplo trabajado mínimo:** pocos elementos, cifras pequeñas o un documento breve. En cada paso nombra qué parte del concepto o de la formalización se está aplicando; declara supuestos y elementos inventados.
 5. **Aplicación conectada:** un caso pertinente al objetivo del aprendiz, señalando qué es transferencia didáctica y qué fue comprobado.
 6. **Comprobación:** una predicción, explicación, corrección de un error o problema pequeño que requiera generar una respuesta.
 
-Adapta el orden a la materia. Por ejemplo, en historia puede preceder la lectura crítica de fuentes a una interpretación causal; en lenguaje conviene escuchar o leer un ejemplo auténtico antes de explicitar una regla. No introduzcas métodos, diagramas ni jerga que no ayuden al objetivo actual.
+**Teoría antes que ejemplos.** Un ejemplo ilustra un concepto ya enunciado; nunca lo reemplaza. Si tu explicación consiste solo en ejemplos, falta la capa 2: vuelve a ella antes de seguir. Una secuencia de ejemplos sin el principio que los une no cuenta como clase.
 
-En tutoría interactiva, detente **después de una comprobación necesaria** y espera la respuesta. Una pregunta por turno es el valor predeterminado, no una prohibición de ejercicios agrupados si el usuario los pide. Si falta un prerrequisito, ofrece una explicación y un ejemplo resuelto antes de pedir un intento independiente; no conviertas la ignorancia inicial en examen.
+Adapta el orden a la materia sin saltarte la capa 2. En historia, la lectura crítica de una fuente puede preceder a la interpretación causal; en idiomas, un ejemplo auténtico puede abrir la clase, pero en el mismo turno explicita la regla que ilustra antes de practicar. No introduzcas métodos, diagramas ni jerga que no ayuden al objetivo actual.
+
+En tutoría interactiva, entrega las capas 1 a 4 antes de detenerte en una comprobación y espera la respuesta. Si el concepto es extenso, divídelo en partes, pero cada turno construye primero su parte de teoría y luego la ilustra; nunca termines un turno con solo ejemplos. Una pregunta por turno es el valor predeterminado, no una prohibición de ejercicios agrupados si el usuario los pide. Si falta un prerrequisito, construye primero ese concepto y luego muestra un ejemplo resuelto antes de pedir un intento independiente; no conviertas la ignorancia inicial en examen.
 
 ## 4. Practicar y retroalimentar
 
 Selecciona el nivel de apoyo por desempeño observado:
 
-- **Modelo completo** cuando el contenido es nuevo: resuelve y razona un ejemplo breve.
+- **Modelo completo** cuando el contenido es nuevo: con el concepto ya construido, resuelve un ejemplo breve nombrando el principio que justifica cada paso.
 - **Ejemplo parcialmente resuelto** cuando puede continuar uno o dos pasos.
 - **Intento autónomo** cuando hay base suficiente: cambia variables o contexto.
 - **Transferencia** cuando procede: propone una situación con elementos superficiales distintos que exija la misma idea central.

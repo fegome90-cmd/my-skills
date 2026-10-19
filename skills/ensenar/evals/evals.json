@@ -5,7 +5,7 @@
       "id": 1,
       "name": "tutoria-derivadas-desde-cero",
       "prompt": "Enséñame derivadas desde cero, nunca las vi en el colegio.",
-      "expected_output": "Modo tutoría en vivo: fija un objetivo observable, parte de una situación concreta y un ejemplo resuelto mínimo antes de pedir un intento, termina el turno con una sola comprobación y espera la respuesta sin revelar la solución.",
+      "expected_output": "Modo tutoría en vivo: fija un objetivo observable, construye el concepto de derivada (definición como tasa de cambio instantánea, límite del cociente incremental, qué representa y cuándo no existe) antes del primer ejemplo, luego resuelve un ejemplo mínimo nombrando qué parte de la definición aplica cada paso, termina con una sola comprobación y espera la respuesta sin revelar la solución.",
       "files": []
     },
     {
@@ -48,6 +48,13 @@
       "name": "respuesta-en-idioma-del-aprendiz",
       "prompt": "Teach me how binary search works, step by step.",
       "expected_output": "Responde en inglés, el idioma del aprendiz, siguiendo la secuencia por capas con un ejemplo pequeño y una comprobación.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "name": "teoria-antes-que-ejemplos",
+      "prompt": "Enséñame qué es la entropía en termodinámica. Quiero entender el concepto, no solo ver ejemplos.",
+      "expected_output": "Antes de cualquier ejemplo enuncia y desarrolla el concepto: definición (dS = δQ_rev/T e interpretación estadística S = k ln W), de qué depende, por qué aumenta en procesos espontáneos y cuándo la intuición de «desorden» falla. Solo después ilustra con un ejemplo que señala qué parte de la teoría aplica. Una respuesta formada solo por ejemplos o analogías no cumple.",
       "files": []
     }
   ]
