@@ -2,9 +2,9 @@
 
 Síntesis de la base empírica que justifica las elecciones de enseñanza de la skill. No es un extracto de obras externas.
 
-## Papers y grados de evidencia
+## Artículos y grados de evidencia
 
-- Roediger & Karpicke (2006), *Test-Enhanced Learning*, Psychological Science. https://doi.org/10.1111/j.1467-9280.2006.01693.x — Recuperación favorece retención a plazo diferido en condiciones estudiadas; no equivale a que cualquier quiz pruebe aprendizaje.
+- Roediger & Karpicke (2006), *Test-Enhanced Learning*, Psychological Science. https://doi.org/10.1111/j.1467-9280.2006.01693.x — Recuperación favorece retención a plazo diferido en condiciones estudiadas; no equivale a que cualquier cuestionario pruebe aprendizaje.
 - Dunlosky et al. (2013), *Improving Students’ Learning With Effective Learning Techniques*, PSPI. https://doi.org/10.1177/1529100612453266 — Práctica de recuperación y práctica distribuida figuran entre las técnicas de alta utilidad general; efecto depende del contexto.
 - Agarwal, Nunes & Blunt (2021), *Retrieval Practice Consistently Benefits Student Learning*, EPR. https://doi.org/10.1007/s10648-021-09595-9 — Revisión de 50 experimentos y 5.374 participantes; sesgo geográfico señalado por los autores.
 - Cepeda et al. (2006), *Distributed Practice in Verbal Recall Tasks*, Psychological Bulletin. https://doi.org/10.1037/0033-2909.132.3.354 — No hay un calendario universal: intervalo y horizonte de retención interactúan.

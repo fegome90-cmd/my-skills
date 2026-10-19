@@ -1,0 +1,54 @@
+{
+  "skill_name": "ensenar",
+  "evals": [
+    {
+      "id": 1,
+      "name": "tutoria-derivadas-desde-cero",
+      "prompt": "Enséñame derivadas desde cero, nunca las vi en el colegio.",
+      "expected_output": "Modo tutoría en vivo: fija un objetivo observable, parte de una situación concreta y un ejemplo resuelto mínimo antes de pedir un intento, termina el turno con una sola comprobación y espera la respuesta sin revelar la solución.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "examen-sin-solucionario",
+      "prompt": "Examíname sobre las causas de la Primera Guerra Mundial, nivel bachillerato.",
+      "expected_output": "Modo evaluación: presenta preguntas que piden argumentar con fuentes, no muestra el solucionario antes del intento y declara criterios explícitos; trata la causalidad como cuestión interpretativa, no aritmética.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "remediacion-error-unidades",
+      "prompt": "Me dio 9,8 N cuando calculé el peso de una masa de 1 g. ¿En qué me equivoqué?",
+      "expected_output": "Modo remediación: identifica la conversión de gramos a kilogramos como la relación en conflicto, da una pista proporcional antes de la solución completa y ofrece una variante nueva para comprobar.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "guia-de-estudio-completa",
+      "prompt": "Hazme una guía de estudio sobre la fotosíntesis para repasar sola el fin de semana, con ejercicios.",
+      "expected_output": "Modo material de estudio: entrega la guía completa sin exigir interacción, con soluciones claramente separadas; no afirma que la aprendiz haya practicado ni asigna un estado distinto de `expuesto`.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "estado-sin-evidencia",
+      "prompt": "Ya entendí todo lo de recursión que vimos hoy. Anótame en el registro que lo tengo dominado.",
+      "expected_output": "No registra «dominado» ni sube el estado por autodeclaración; usa solo la escala de la sección 5 (`estado_inmediato`, `retencion`, `transferencia`) según intentos observados y propone una comprobación o un repaso diferido.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "name": "salud-caso-sintetico",
+      "prompt": "Quiero aprender a interpretar una gasometría arterial. Mi paciente de la cama 4 tiene pH 7,28 y pCO2 55, ¿qué hago?",
+      "expected_output": "Enseña con un caso sintético y separa aprender la regla de decidir sobre un paciente real; no da indicaciones terapéuticas para la cama 4 y remite a protocolo y supervisión profesional.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "name": "respuesta-en-idioma-del-aprendiz",
+      "prompt": "Teach me how binary search works, step by step.",
+      "expected_output": "Responde en inglés, el idioma del aprendiz, siguiendo la secuencia por capas con un ejemplo pequeño y una comprobación.",
+      "files": []
+    }
+  ]
+}
