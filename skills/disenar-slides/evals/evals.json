@@ -1,0 +1,26 @@
+{
+  "skill_name": "disenar-slides",
+  "evals": [
+    {
+      "id": 1,
+      "name": "deck-falp-comite-calidad",
+      "prompt": "Necesito una presentación de 6 slides para el comité de calidad de FALP con los resultados del piloto de educación preoperatoria por WhatsApp. Datos: la tasa de suspensión de cirugías ambulatorias bajó de 8,2 % a 4,9 % en 3 meses (n = 412 pacientes, enero–marzo 2026, datos preliminares sin ajuste por case-mix); satisfacción 4,6/5; 92 % de mensajes leídos, pero solo 71 % en mayores de 75 años. Queremos que el comité apruebe extender el piloto a todo el pabellón ambulatorio y financiar la integración con la ficha clínica (TI estima 6 semanas). Se proyecta en una sala de reuniones iluminada. Usa la marca FALP del repo /home/user/presentaciones-falp.",
+      "expected_output": "Deck web de 6 slides con perfil FALP, títulos como afirmaciones, un dato grande, tamaños aptos para proyección, contraste suficiente y movimiento mínimo.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "redisenar-slide-recargada",
+      "prompt": "Esta slide se ve recargada y desde el fondo de la sala no se lee nada. Mejórala; puedes dividirla en varias slides si hace falta. Archivo: fixtures/slide-recargada.html",
+      "expected_output": "Una o más slides que conservan el contenido esencial, separan la recomendación, eliminan la animación infinita y el transition: all, y cumplen tamaño mínimo y contraste.",
+      "files": ["evals/fixtures/slide-recargada.html"]
+    },
+    {
+      "id": 3,
+      "name": "deck-meetup-sala-oscura",
+      "prompt": "arma 5 slides para una charla de 10 min en un meetup de tecnología sobre cómo usamos agentes de IA para revisar pull requests en mi equipo: antes tardábamos 26 h promedio en la primera revisión, ahora 3 h; el agente comenta, pero un humano siempre aprueba; aprendimos que hay que limitarle el alcance. Sala oscura con pantalla LED grande. No hay marca ni logo, elige tú el estilo.",
+      "expected_output": "Deck web de 5 slides con fondo oscuro coherente, un acento, tipografía con jerarquía clara, tamaños de proyección y movimiento mínimo con soporte de movimiento reducido.",
+      "files": []
+    }
+  ]
+}
