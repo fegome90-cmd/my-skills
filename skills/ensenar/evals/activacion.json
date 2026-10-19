@@ -1,0 +1,14 @@
+[
+  {"query": "Enséñame derivadas desde cero", "should_trigger": true},
+  {"query": "Quiero aprender a leer partituras, ¿me ayudas?", "should_trigger": true},
+  {"query": "Hagamos una clase sobre la Revolución Francesa", "should_trigger": true},
+  {"query": "Examíname de anatomía del corazón", "should_trigger": true},
+  {"query": "Prepárame para estudiar el examen de estadística del viernes", "should_trigger": true},
+  {"query": "No entendí cómo funcionan los punteros en C, explícamelo de nuevo con ejercicios", "should_trigger": true},
+  {"query": "¿Qué es un tensor?", "should_trigger": false},
+  {"query": "Resume este paper en tres párrafos", "should_trigger": false},
+  {"query": "Corrige la ortografía de este correo", "should_trigger": false},
+  {"query": "Busca las últimas noticias sobre la ley de IA europea", "should_trigger": false},
+  {"query": "Arregla el test que falla en mi repo", "should_trigger": false},
+  {"query": "¿En qué año cayó el muro de Berlín?", "should_trigger": false}
+]
