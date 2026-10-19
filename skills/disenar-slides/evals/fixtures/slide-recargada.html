@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Resultados piloto</title>
+<style>
+  body { margin: 0; font-family: Arial, sans-serif; background: #f2f2f2; }
+  article { display: none; width: 100vw; height: 100vh; padding: 10px 14px; box-sizing: border-box; }
+  article[data-active="true"] { display: block; }
+  h1 { font-size: 30px; color: #e63946; text-align: center; margin: 4px 0; animation: rebote 1.2s infinite; }
+  h2 { font-size: 22px; color: #457b9d; margin: 4px 0; }
+  ul { font-size: 15px; color: #888; columns: 2; }
+  li { margin: 2px 0; }
+  .nota { font-size: 11px; color: #aaa; }
+  .caja { background: linear-gradient(90deg, #ffd166, #06d6a0); color: #fff; padding: 6px; font-size: 14px; transition: all 1s; }
+  .caja:hover { width: 120%; }
+  .kpis { display: flex; gap: 4px; }
+  .kpi { flex: 1; background: #fff; border: 2px dashed #e63946; padding: 4px; font-size: 13px; color: #555; box-shadow: 4px 4px 12px rgba(0,0,0,.4); }
+  .kpi b { font-size: 26px; color: #2a9d8f; display: block; }
+  @keyframes rebote { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+</style>
+</head>
+<body>
+<article data-active="true">
+  <h1>RESULTADOS DEL PILOTO DE EDUCACIÓN PREOPERATORIA POR WHATSAPP EN PACIENTES QUIRÚRGICOS AMBULATORIOS</h1>
+  <h2>Resumen de indicadores y aprendizajes</h2>
+  <div class="kpis">
+    <div class="kpi"><b>4,9%</b>Tasa de suspensión de cirugías (antes 8,2%)</div>
+    <div class="kpi"><b>412</b>Pacientes incluidos en 3 meses</div>
+    <div class="kpi"><b>4,6/5</b>Satisfacción usuaria</div>
+    <div class="kpi"><b>92%</b>Mensajes leídos</div>
+    <div class="kpi"><b>$1,2M</b>Ahorro estimado</div>
+  </div>
+  <ul>
+    <li>Se enviaron 3 mensajes por paciente: 7 días, 48 horas y 12 horas antes de la cirugía.</li>
+    <li>Los mensajes incluían ayuno, suspensión de anticoagulantes y documentos a traer.</li>
+    <li>Las enfermeras respondieron dudas en horario hábil con un tiempo medio de 2 horas.</li>
+    <li>Las principales causas de suspensión restantes fueron clínicas y no educativas.</li>
+    <li>Pacientes mayores de 75 años tuvieron menor lectura de mensajes (71%).</li>
+    <li>Se propone incorporar llamada telefónica para mayores de 75 años.</li>
+    <li>Se requiere integración con la ficha clínica para registrar la educación entregada.</li>
+    <li>El equipo de TI estima 6 semanas para la integración.</li>
+    <li>Próximo paso: extender a cirugía mayor ambulatoria de traumatología.</li>
+    <li>Riesgo: dependencia de un número de WhatsApp personal del servicio.</li>
+  </ul>
+  <div class="caja">Recomendación: aprobar la extensión del piloto a todo el pabellón ambulatorio y financiar la integración con ficha clínica.</div>
+  <p class="nota">Fuente: registro de pabellón FALP, enero–marzo 2026. Datos preliminares, sin ajuste por case-mix. Elaboración propia del equipo de enfermería quirúrgica.</p>
+</article>
+</body>
+</html>
