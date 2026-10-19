@@ -4,7 +4,7 @@ Este repositorio guarda skills creadas y curadas para agentes, bajo control de v
 
 ## Qué guarda este repositorio
 
-Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus necesidades, también puede incluir recursos locales como `scripts/`, `tests/`, `references/`, `resources/`, `templates/`, `assets/`, `evals/` o ejemplos. Este README es el mapa general, pero el archivo `skills/<nombre>/SKILL.md` de cada paquete es la autoridad sobre su alcance, requisitos y forma de uso. El inventario actual reúne 40 paquetes de skills versionados.
+Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus necesidades, también puede incluir recursos locales como `scripts/`, `tests/`, `references/`, `resources/`, `templates/`, `assets/`, `evals/` o ejemplos. Este README es el mapa general, pero el archivo `skills/<nombre>/SKILL.md` de cada paquete es la autoridad sobre su alcance, requisitos y forma de uso. El inventario actual reúne 41 paquetes de skills versionados.
 
 ## Inventario
 
@@ -61,6 +61,7 @@ Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus nec
 - [`learned-keynote-to-mp4-pipeline`](skills/learned-keynote-to-mp4-pipeline/SKILL.md): documenta un pipeline específico de macOS: Keynote → PDF/imágenes → MP4 sincronizado con audio.
 - [`learned-structured-review`](skills/learned-structured-review/SKILL.md): estructura revisiones con hallazgos numerados, severidades BLOCK/WARN/SUGGEST y correcciones concretas.
 - [`scripting-technical-presentations`](skills/scripting-technical-presentations/SKILL.md): redacta o audita guiones, notas y esquemas de presentaciones técnicas preservando evidencia y límites.
+- [`teach-anything`](skills/teach-anything/SKILL.md): enseña cualquier materia por capas, con práctica, feedback y una escala explícita que separa exposición, desempeño, retención y transferencia.
 - [`wiki-starter`](skills/wiki-starter/SKILL.md): prepara la estructura inicial de una wiki mantenida por LLM y su flujo de enriquecimiento progresivo.
 
 ## Llevarlo a otra máquina
