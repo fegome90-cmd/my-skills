@@ -230,10 +230,19 @@ function measureSlide({ selector, minRatio }) {
   };
   const isVisible = (el) => {
     if (el.closest('[aria-hidden="true"]') && el.closest('[aria-hidden="true"]') !== root.closest('[aria-hidden="true"]')) return false;
+    // Contenido de un <details> cerrado: no se ve hasta que alguien lo abre.
+    const closed = el.closest("details:not([open])");
+    if (closed && !el.closest("summary")) return false;
     const style = getComputedStyle(el);
     if (style.visibility === "hidden" || style.display === "none") return false;
     const rect = el.getBoundingClientRect();
-    return rect.width > 0 && rect.height > 0 && opacityOf(el) > 0.05;
+    // Texto solo para lectores de pantalla (patrón sr-only: caja de ~1 px o recortada).
+    if (rect.width <= 2 || rect.height <= 2) return false;
+    for (let node = el; node && node.nodeType === 1; node = node.parentElement) {
+      const s = getComputedStyle(node);
+      if (s.position === "absolute" && (s.clip === "rect(0px, 0px, 0px, 0px)" || s.clipPath === "inset(50%)")) return false;
+    }
+    return opacityOf(el) > 0.05;
   };
 
   // En vertical (móvil) no se proyecta: se usa el piso de lectura en pantalla de 12 px.
@@ -270,8 +279,12 @@ function measureSlide({ selector, minRatio }) {
       add("error", "S3", `Texto de ${size.toFixed(1)} px bajo el mínimo de ${minFont.toFixed(1)} px`, { element: describe(el), text: sample });
     }
 
-    const bg = backgroundOf(el);
-    if (bg.unmeasured) {
+    // WCAG 1.4.3 exceptúa los controles deshabilitados.
+    const disabled = el.closest(':disabled, [aria-disabled="true"]');
+    const bg = disabled ? { skip: true } : backgroundOf(el);
+    if (bg.skip) {
+      // sin requisito de contraste
+    } else if (bg.unmeasured) {
       add("sin-medir", "S4", `Contraste sin medir: ${bg.unmeasured}`, { element: describe(el), text: sample });
     } else {
       const fg = toRgba(style.color);
