@@ -106,6 +106,36 @@ class ColorEngineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             ColorEngine.generate_harmony("#3B82F6", "monochromatic", space="hsl")
 
+    def test_harmony_rejects_non_string_space_for_every_harmony(self) -> None:
+        invalid_spaces = (0, False, [], {}, b"oklch", object())
+        harmonies = ("complementary", "analogous", "triadic", "monochromatic")
+        for harmony in harmonies:
+            for space in invalid_spaces:
+                with self.subTest(harmony=harmony, space_type=type(space).__name__):
+                    with self.assertRaisesRegex(ValueError, "Harmony space must be a string or None"):
+                        ColorEngine.generate_harmony("#3B82F6", harmony, space=space)
+
+    def test_harmony_space_none_and_mixed_case_aliases_preserve_outputs(self) -> None:
+        base = "#3B82F6"
+        for harmony in ("complementary", "analogous", "triadic", "monochromatic"):
+            default = ColorEngine.generate_harmony(base, harmony)
+            with self.subTest(harmony=harmony, space=None):
+                self.assertEqual(ColorEngine.generate_harmony(base, harmony, space=None), default)
+
+            if harmony == "monochromatic":
+                self.assertEqual(ColorEngine.generate_harmony(base, harmony, space="OKLCH"), default)
+                continue
+
+            for space in ("hsl", "HSL"):
+                with self.subTest(harmony=harmony, space=space):
+                    self.assertEqual(ColorEngine.generate_harmony(base, harmony, space=space), default)
+            for space in ("oklch", "OKLCH"):
+                with self.subTest(harmony=harmony, space=space):
+                    self.assertEqual(
+                        ColorEngine.generate_harmony(base, harmony, space=space),
+                        ColorEngine.generate_harmony(base, harmony, space="oklch"),
+                    )
+
     def test_scale_has_eleven_ordered_steps_and_exact_base_anchor(self) -> None:
         result = ColorEngine.generate_scale("#3B82F6")
         self.assertEqual(set(result), {"base", "space", "anchor", "steps", "collapsed_steps"})

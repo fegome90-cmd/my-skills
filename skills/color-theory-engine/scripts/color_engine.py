@@ -196,6 +196,8 @@ class ColorEngine:
         cls, base_hex: str, harmony_type: str, space: Optional[str] = None
     ) -> List[str]:
         """Generate legacy HSL or opt-in OKLCH rotations and monochromatic steps."""
+        if space is not None and not isinstance(space, str):
+            raise ValueError("Harmony space must be a string or None.")
         if not isinstance(harmony_type, str):
             raise ValueError("Harmony type must be a string.")
         normalized_type = harmony_type.lower()
