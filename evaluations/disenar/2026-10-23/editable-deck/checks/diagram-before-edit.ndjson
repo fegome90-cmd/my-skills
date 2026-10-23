@@ -1,0 +1,6 @@
+{"id":"sh/obq90bml","name":"conexion-2","kind":"shape","position":{"left":800,"top":360,"width":72,"height":0}}
+{"id":"sh/3ah8rqlg","name":"conexion-1","kind":"shape","position":{"left":408,"top":360,"width":72,"height":0}}
+{"id":"sh/pcjqtg36","name":"titulo","kind":"textbox","text":"Tres etapas","position":{"left":88,"top":67,"width":1104,"height":80}}
+{"id":"sh/cza94vmx","name":"etapa-1","kind":"textbox","text":"Diagnóstico\n2 sesiones","position":{"left":88,"top":270,"width":320,"height":180}}
+{"id":"sh/d0jax03i","name":"etapa-2","kind":"textbox","text":"Diseño\n2 sesiones","position":{"left":480,"top":270,"width":320,"height":180}}
+{"id":"sh/298ryl4v","name":"etapa-3","kind":"textbox","text":"Prototipo\n3 sesiones","position":{"left":872,"top":270,"width":320,"height":180}}

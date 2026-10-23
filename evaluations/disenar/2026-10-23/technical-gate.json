@@ -1,0 +1,10 @@
+{
+  "decision": "TECHNICALLY_VALID",
+  "totals": {
+    "PASS": 13,
+    "FAIL": 0,
+    "NOT_RUN": 2,
+    "BLOCKED": 2,
+    "NOT_APPLICABLE": 0
+  }
+}

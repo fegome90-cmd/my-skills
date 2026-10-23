@@ -1,0 +1,4 @@
+[render_docx] $ /opt/codex/runtimes/codex-primary-runtime/dependencies/bin/override/soffice -env:UserInstallation=file:///workspace/scratch/cbc1d7005c48/research/final-validation/editorial/tmp/soffice_profile_d5fz49l5 --invisible --headless --norestore --convert-to pdf --outdir /workspace/scratch/cbc1d7005c48/research/final-validation/editorial/tmp/soffice_convert_it1flio2 /workspace/scratch/cbc1d7005c48/research/final-validation/editorial/qa/editabilidad/prueba_edicion.docx
+convert /workspace/scratch/cbc1d7005c48/research/final-validation/editorial/qa/editabilidad/prueba_edicion.docx as a Writer document -> /workspace/scratch/cbc1d7005c48/research/final-validation/editorial/tmp/soffice_convert_it1flio2/prueba_edicion.pdf using filter : writer_pdf_Export
+
+Pages rendered to /workspace/scratch/cbc1d7005c48/research/final-validation/editorial/qa/editabilidad/render

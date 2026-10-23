@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diseñar"
+  short_description: "Diseño por encargo, independiente del stack y del banco"
+  default_prompt: "Usa $disenar para crear o revisar la pieza que necesito y entregarla en el formato solicitado."

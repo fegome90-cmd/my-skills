@@ -4,7 +4,7 @@ Este repositorio guarda skills creadas y curadas para agentes, bajo control de v
 
 ## Qué guarda este repositorio
 
-Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus necesidades, también puede incluir recursos locales como `scripts/`, `tests/`, `references/`, `resources/`, `templates/`, `assets/`, `evals/` o ejemplos. Este README es el mapa general, pero el archivo `skills/<nombre>/SKILL.md` de cada paquete es la autoridad sobre su alcance, requisitos y forma de uso. El inventario actual reúne 41 paquetes de skills versionados.
+Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus necesidades, también puede incluir recursos locales como `scripts/`, `tests/`, `references/`, `resources/`, `templates/`, `assets/`, `evals/` o ejemplos. Este README es el mapa general, pero el archivo `skills/<nombre>/SKILL.md` de cada paquete es la autoridad sobre su alcance, requisitos y forma de uso. El inventario actual reúne 42 paquetes de skills versionados.
 
 ## Inventario
 
@@ -55,6 +55,7 @@ Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus nec
 - [`authority-flow-audit`](skills/authority-flow-audit/SKILL.md): audita autoridad, flujos, escritores en competencia y supuestas fuentes únicas de verdad.
 - [`code-path-cartographer`](skills/code-path-cartographer/SKILL.md): rastrea entrypoints, referencias y alcanzabilidad sin emitir veredictos de autoridad.
 - [`color-theory-engine`](skills/color-theory-engine/SKILL.md): genera y analiza paletas, armonías y relaciones de contraste para interfaces.
+- [`disenar`](skills/disenar/SKILL.md): crea, modifica y audita componentes, web, movimiento, presentaciones, identidad y material editorial con recursos del proyecto, bibliotecas elegidas u originales; no depende de un banco, marca ni framework.
 - [`disenar-slides`](skills/disenar-slides/SKILL.md): diseña y revisa slides web con criterios de tipografía, color, grilla, jerarquía y movimiento mínimo, y mide cada slide con un script de Playwright.
 - [`diagram-auditor`](skills/diagram-auditor/SKILL.md): contrasta diagramas con evidencia y clasifica sus afirmaciones antes de entregarlos.
 - [`learned-accuracy-fallacy-audit`](skills/learned-accuracy-fallacy-audit/SKILL.md): audita afirmaciones separando consistencia interna, verificación factual externa y errores de razonamiento.
@@ -63,6 +64,14 @@ Cada paquete vive en `skills/<nombre>/` y contiene un `SKILL.md`; según sus nec
 - [`scripting-technical-presentations`](skills/scripting-technical-presentations/SKILL.md): redacta o audita guiones, notas y esquemas de presentaciones técnicas preservando evidencia y límites.
 - [`ensenar`](skills/ensenar/SKILL.md): enseña cualquier materia por capas, con práctica, retroalimentación y una escala explícita que separa exposición, desempeño, retención y transferencia.
 - [`wiki-starter`](skills/wiki-starter/SKILL.md): prepara la estructura inicial de una wiki mantenida por LLM y su flujo de enriquecimiento progresivo.
+
+## Sistema de diseño portable
+
+`disenar` reúne un contrato común y seis módulos que se consultan según el entregable. La selección de recursos sigue el pedido: permite usar componentes existentes, otra biblioteca, implementación original o una combinación. Los repositorios de componentes y las marcas son recursos opcionales, separados del alojamiento de la skill.
+
+El paquete contiene referencias locales y un helper de contraste para colores sRGB opacos; los productores de web, imagen, presentaciones y documentos dependen de las capacidades disponibles en el host. No incluye ni instala un runtime de diseño. `disenar-slides` conserva su alcance especializado de slides web; una petición explícita a esa skill no exige atravesar un segundo selector.
+
+La [revisión y evidencia de desarrollo](evaluations/disenar/2026-10-23/README.md) distingue estructura, comportamiento observado, cobertura pendiente y activación del host. Guardar el paquete en este repositorio no implica que un host lo haya instalado o descubierto automáticamente.
 
 ## Llevarlo a otra máquina
 

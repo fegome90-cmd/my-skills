@@ -1,0 +1,18 @@
+✔ Fuentes locales, cuatro selectores nativos y nombres de etapa requeridos (1.822874ms)
+✔ Inicio estático y selección directa de las cuatro etapas (2.775118ms)
+✔ Secuencia completa: 6 s por etapa, final estable y repetición (1.175851ms)
+✔ Pausa conserva exactamente los 3.8 s restantes de la etapa (0.874006ms)
+✔ Reinicio cancela cambios tardíos y restaura posición inicial (0.84348ms)
+✔ Elegir una etapa durante la reproducción detiene y cancela el temporizador anterior (0.724271ms)
+✔ Movimiento reducido inicial permite reproducción explícita y se anuncia en pantalla (0.613363ms)
+✔ Cambiar movimiento reducido durante la secuencia pausa sin perder el estado (1.880081ms)
+✔ Ocultar la pestaña y salir de la página pausan; volver no inicia reproducción (0.920326ms)
+✔ Activaciones rápidas no generan más de un temporizador (1.648952ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20.306363

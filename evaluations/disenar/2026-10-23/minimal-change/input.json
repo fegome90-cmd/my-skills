@@ -1,0 +1,6 @@
+{
+  "request": "Corrige el contraste del texto de este botón, conservando el resto de su diseño y sin añadir dependencias.",
+  "source_sha256": "2f76c1b2a2fa4d95f5076b7e495c85c8cb8839e89b42d5eb86c9394e3bbad2cf",
+  "states": "normal and hover (same foreground; different opaque backgrounds)",
+  "case": "D01"
+}

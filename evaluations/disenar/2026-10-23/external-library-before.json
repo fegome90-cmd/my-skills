@@ -1,0 +1,10 @@
+{
+  "files": {
+    "index.html": "daa358365ceb15db5b4dbc0124d6cdd6e9bdf5cd1a8ed2623a60d6024e1a9836",
+    "theme.css": "4ee7196b2cc77728fe58564d0b3aeb9f88e04dec6c6d801fab110861d46c938f",
+    "resource-origin.json": "6db2bf5714ab1ebb22201630604816acfc8ba4520fb5cd5c0b4929d5bb21b7f0",
+    "vendor/LICENSE-Pico.md": "17b54cc4bb41043afecd590f7cedde13d38d0693e5683d813f598eabc92b30bc",
+    "vendor/pico.min.css": "fbc9a63fc9fc9f72d12fd7fc9806e11fa9f77ae4f9cad146b27003a1119ba3db"
+  },
+  "pico_blob_verified": true
+}

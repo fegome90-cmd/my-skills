@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "authorized_scope": "New disenar package, evaluation fixtures/reports, README entry and new branch in my-skills. No component repository mutation or publication.",
+  "host_write": "BLOCKED: automatic approval rejected escalation modifying /root/.codex; no retry or indirect workaround.",
+  "host_git_head_before": "f2f405936fd79e0eed89ab86a94874fbf7f5ad18",
+  "host_git_head_after": "f2f405936fd79e0eed89ab86a94874fbf7f5ad18",
+  "host_unrelated_status_preserved": {
+    "modified_files": 1,
+    "untracked_directories": 1,
+    "details": "Names omitted from repository evidence; inspected read-only and preserved."
+  },
+  "audit_fixture_unchanged": true,
+  "external_vendor_and_theme_unchanged": true,
+  "limits": [
+    "GitHub new-branch persistence verified separately at closeout.",
+    "No host install or automatic activation claim."
+  ]
+}
