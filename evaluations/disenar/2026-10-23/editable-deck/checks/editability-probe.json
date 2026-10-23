@@ -1,0 +1,10 @@
+{
+  "finalPath": "/workspace/scratch/cbc1d7005c48/research/final-validation/editable-deck/output/plan-talleres-2027-reconstruido.pptx",
+  "probePath": "/workspace/scratch/cbc1d7005c48/research/final-validation/editable-deck/build/editability-probe.pptx",
+  "changedObject": "slide 3 / etapa-1",
+  "changedText": "Diagnóstico (comprobación)",
+  "beforeLeft": 88,
+  "afterLeft": 104,
+  "application": "@oai/artifact-tool 2.8.99",
+  "powerPointUI": "NOT_RUN"
+}

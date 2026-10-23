@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "unchanged": {
+    "theme.css": true,
+    "resource-origin.json": true,
+    "vendor/LICENSE-Pico.md": true,
+    "vendor/pico.min.css": true
+  },
+  "pico_version": "2.1.1",
+  "method": "SHA-256 exact comparison to pre-run local assets; source inspection separate"
+}

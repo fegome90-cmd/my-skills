@@ -1,0 +1,18 @@
+{
+  "plan-talleres-2027.pptx": {
+    "bytes": 42987,
+    "sha256": "ce9132ac283d42b76ffeca5f3e2385d98d823d3f47dcc72bc7584bf3e600a389"
+  },
+  "fuente-plan-talleres-2027.zip": {
+    "bytes": 14166,
+    "sha256": "2fc9e4d4333a5098ea6a86a573d44bdf5546805a70f40fa0e164748606867bfb"
+  },
+  "COMPROBACIONES.md": {
+    "bytes": 5918,
+    "sha256": "f76a54892f45f89e3908263496448df53b2aa90cdbb5878d6fce920e0a9851d8"
+  },
+  "plan-talleres-2027-reconstruido.pptx": {
+    "bytes": 42990,
+    "sha256": "2b91ae33edb4bf662978e839909013640e7167da5ab0105e1d0b45a0987d944a"
+  }
+}

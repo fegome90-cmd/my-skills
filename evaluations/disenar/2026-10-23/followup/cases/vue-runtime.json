@@ -1,0 +1,104 @@
+{
+  "generated_at_utc": "2026-10-23T13:41:42.919Z",
+  "node": "v24.19.0",
+  "runtime": "Vue 3.5.22",
+  "coverage": "Source integrity, real Vue runtime/compiler, reactive state and async fixture logic. No DOM mounting or browser render.",
+  "checks": [
+    {
+      "id": "runtime",
+      "criterion": "The vendored runtime executes as Vue 3.5.22 and exposes real reactive refs.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "compile-UiField",
+      "criterion": "UiField template compiles with the shipped Vue compiler (identity HTML-entity decoder for Node; templates contain no entity references).",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "compile-UiPanel",
+      "criterion": "UiPanel template compiles with the shipped Vue compiler (identity HTML-entity decoder for Node; templates contain no entity references).",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "compile-OptionSelector",
+      "criterion": "OptionSelector template compiles with the shipped Vue compiler (identity HTML-entity decoder for Node; templates contain no entity references).",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "compile-App",
+      "criterion": "App template compiles with the shipped Vue compiler (identity HTML-entity decoder for Node; templates contain no entity references).",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "selector-unavailability",
+      "criterion": "Loading, error, empty and disabled states make the select unavailable; normal options allow use.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "scenarios-and-preservation",
+      "criterion": "All six demo modes share the same state/controller; selection survives temporary unavailability and reset works.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "retry-immediate",
+      "criterion": "Retry enters loading synchronously.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "retry-completes",
+      "criterion": "Retry returns to ready with options after its local timer.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "retry-cancellation",
+      "criterion": "Changing scenario cancels an outstanding retry so it does not overwrite the new state.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "dispose-cancels-timer",
+      "criterion": "Disposal cancels a retry timer (the component calls disposal on unmount).",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "preserve-UiField.js",
+      "criterion": "Existing primitive UiField.js remains byte-for-byte unchanged from the initial snapshot.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "preserve-UiPanel.js",
+      "criterion": "Existing primitive UiPanel.js remains byte-for-byte unchanged from the initial snapshot.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "radix-react-requirement",
+      "criterion": "Required Radix Select package is real and declares React/ReactDOM peer runtimes and imports.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "no-react-and-no-cdn",
+      "criterion": "The active app has no React/Radix imports and no remote scripts, styles, fonts or imports.",
+      "status": "PASS",
+      "method": "v24.19.0 + local Vue runtime; no browser"
+    },
+    {
+      "id": "render-keyboard-layout",
+      "criterion": "Rendered viewports, keyboard, focus, native popup and assistive technologies.",
+      "status": "BLOCKED",
+      "method": "No browser controlled by this worker. Coordinator reports cloud browser cannot reach localhost and policy rejected data URLs; alternate control surfaces are prohibited. No rendered or keyboard evidence exists."
+    }
+  ]
+}

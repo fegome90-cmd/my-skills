@@ -1,0 +1,32 @@
+{
+  "generated_at_utc": "2026-10-23T13:45:44.953944+00:00",
+  "method": "Read exact published package metadata and module imports; do not install or execute Radix.",
+  "package": "@radix-ui/react-select",
+  "version": "2.2.6",
+  "required_peer_ranges": {
+    "react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+    "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
+  },
+  "observed_imports": [
+    "react",
+    "react-dom",
+    "react/jsx-runtime"
+  ],
+  "condition_inherited_from_case_1": {
+    "keepVue": true,
+    "noReact": true
+  },
+  "analysis_status": "COMPLETE",
+  "integration_status": "BLOCKED",
+  "blocker": "The required package needs React and ReactDOM; adding them violates the inherited no-React condition. Its React component API cannot be directly used as a Vue component.",
+  "hybrid_note": "Keeping Vue alone does not prevent a React island. An explicit Vue-to-React adapter and both React runtimes could be developed if the no-React condition changed.",
+  "replacements_made": false,
+  "react_installed": false,
+  "radix_executed": false,
+  "source_hashes": {
+    "radix-package-original.json": "1b1fce2854f1d5d6551308d6ba4d723cb013be1a6bbe412c17eff37e5fe5b898",
+    "radix-index-original.mjs": "c3f74d6f4820c1b108c2db061a87de2f16002c8adbfc2f8f5c49643e79adcd39",
+    "radix-select-docs.html": "6343dcd6d28a860b24324be77c44d72bc61cd6408d83880ae670e4ede87f5e04"
+  },
+  "project_unchanged": true
+}

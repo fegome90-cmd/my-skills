@@ -1,0 +1,313 @@
+{
+  "case_id": "disenar-pending-followup",
+  "contract_revision": "normalized-v1",
+  "evaluation_purpose": "technical_validation",
+  "subject_type": "produced_skill",
+  "subject_revision": "43408fe0c1b256ed91703b8c5139e568e6c6130a2bfe37629ff67be475000385",
+  "evaluator_revision": "root followup plus three fresh worker contexts; exact unchanged candidate",
+  "date": "2026-10-23",
+  "model": "ChatGPT/Codex; exact model identifier not exposed",
+  "environment": "Python 3, Node v24.19.0, Vue 3.5.22, SQLite, MuPDF, npm fixture toolchain; Cloud Chrome access blocked for artifacts",
+  "evaluation_integrity": "DEVELOPMENT_NON_BLIND_SHARED_FILESYSTEM; workers knew development-test purpose; no efficacy experiment",
+  "material_conflicts": [],
+  "checks": [
+    {
+      "id": "structure",
+      "layer": "static",
+      "status": "PASS",
+      "observation": "Manager inspector OK for the exact unchanged candidate; only declared local coverage.",
+      "artifacts": [
+        {
+          "path": "candidate-lint.json",
+          "sha256": "14438a1af344cafec242bc52a64ec481eef7ae54e387be3eb5af249b5a103817"
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "layer": "static",
+      "status": "PASS",
+      "observation": "Candidate bytes and bundled local resources unchanged. Evidence bundle has complete internal inventory; offline extraction/replay succeeded.",
+      "artifacts": [
+        {
+          "path": "source-integrity.json",
+          "sha256": "61d0d22c53f74d213b388663e457e88b5ac135a9eb2881e213e7cff0a727dacf"
+        },
+        {
+          "path": "replay-results.json",
+          "sha256": "53ba423c243963acd8fee148f4f4ec72a6c2432d5ac2b6a8a826c7caf62e4fc0"
+        }
+      ]
+    },
+    {
+      "id": "provenance",
+      "layer": "static",
+      "status": "PASS",
+      "observation": "Prior frozen source integrity/own synthesis record retained and read; candidate unchanged. Fixture code licenses and pinned sources included. This is provenance tracing within stated scope, not a new exhaustive rights comparison.",
+      "artifacts": [
+        {
+          "path": "prior-provenance.json",
+          "sha256": "3ab480b972a43f84e2c161d099a4cf78db8b2f3100385346fc5208e4b5d9b066"
+        },
+        {
+          "path": "source-integrity.json",
+          "sha256": "61d0d22c53f74d213b388663e457e88b5ac135a9eb2881e213e7cff0a727dacf"
+        }
+      ]
+    },
+    {
+      "id": "permissions",
+      "layer": "static",
+      "status": "PASS",
+      "observation": "Candidate unchanged, bank integration confined to isolated snapshot, no protected registry reattempt. Real bank and other repositories not mutated.",
+      "artifacts": [
+        {
+          "path": "source-integrity.json",
+          "sha256": "61d0d22c53f74d213b388663e457e88b5ac135a9eb2881e213e7cff0a727dacf"
+        },
+        {
+          "path": "cases/bank.json",
+          "sha256": "948868c62160d5b691ce54b68b38ea80c1b53f0c0d1622b98897da77b59913ca"
+        },
+        {
+          "path": "host-discovery.json",
+          "sha256": "24b4b2c8d243b648e5b8a8cddb8aab638f941c8cd516df7cb5a8d4334571ddc6"
+        }
+      ]
+    },
+    {
+      "id": "D02",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Real local Vue runtime/compiler/reactivity and fixtures exercised; browser layer remains BLOCKED.",
+      "artifacts": [
+        {
+          "path": "cases/vue-runtime.json",
+          "sha256": "18c30f9be70f34da33861f39f9bb39d0fc8a27ba3eeefe734d6c42402bc9fc84"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "D05",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Conflict concretely evidenced, no substitute or silent React installation; required integration remains BLOCKED under inherited no-React condition.",
+      "artifacts": [
+        {
+          "path": "cases/resource-conflict.json",
+          "sha256": "37eee908c419c06145b5fea0761c906d5705e60f5207c9e94606c20f6ff9f84c"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "D06",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "REA component, registry and previews produced on isolated snapshot; 260 existing tests, types/lint/build/registry pass; no native visual claim.",
+      "artifacts": [
+        {
+          "path": "cases/bank.json",
+          "sha256": "948868c62160d5b691ce54b68b38ea80c1b53f0c0d1622b98897da77b59913ca"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "D07",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Standalone profile produced without bank/new dependencies; source/resources/color checks only.",
+      "artifacts": [
+        {
+          "path": "cases/bank.json",
+          "sha256": "948868c62160d5b691ce54b68b38ea80c1b53f0c0d1622b98897da77b59913ca"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "D09",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "22 simulated DOM/event observations with actual deck script; preservation/static checks retained, no temporal browser proof.",
+      "artifacts": [
+        {
+          "path": "cases/slide-state.json",
+          "sha256": "59bec87e566f7cf6b57d1edfb1fd5882bc62da126579ed07352a74ad675e327c"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "D10-negative",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Actual image-only OOXML fixture rejected for native editability, eight notes preserved. Negative output FAIL is expected, probe PASS.",
+      "artifacts": [
+        {
+          "path": "cases/pptx-raster.json",
+          "sha256": "6af0f8cf690f10060e837504b3cea5ac0bc220fc8861c7fae3e608328054f1a1"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "D11",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Real SVG masters and variants, rasterization, alpha equality, geometry edit and visual inspection at 24px; no recognition efficacy claim.",
+      "artifacts": [
+        {
+          "path": "cases/identity.json",
+          "sha256": "4ad1bf67227331b682466a3d6b07404d0bac8754b4638cebc83e01c22f2e30c6"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "D14",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Spoken script and notes produced without visual expansion; 565 words and explicit five-minute estimate, no timed rehearsal.",
+      "artifacts": [
+        {
+          "path": "cases/script-duration.json",
+          "sha256": "cd678ca00f066bb9e1f8000e150de545215c5b97b424357ae0af905983ed7e12"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "D15",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Actual synthetic SQLite JOIN duplication reproduced and EXISTS correction validated on six cases; no host routing claim.",
+      "artifacts": [
+        {
+          "path": "cases/sql.json",
+          "sha256": "924531d6ed81d7c2752aadd03bfc28330e761ca6992052829c53042bed16cb7f"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "D16",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Audit report delivered without candidate changes; its own incomplete gate retained and not converted into readiness.",
+      "artifacts": [
+        {
+          "path": "cases/audit-source.json",
+          "sha256": "bd9563acb0be5981cf9cfd65c6e723067c2a31cfe244c9b455790059953620c6"
+        },
+        {
+          "path": "evidence.zip",
+          "sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5"
+        }
+      ]
+    },
+    {
+      "id": "replay",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Ten bounded groups re-executed in temporary extraction using real candidate; no network/install/candidate mutation. Full REA build not repeated by replay.",
+      "artifacts": [
+        {
+          "path": "replay-results.json",
+          "sha256": "53ba423c243963acd8fee148f4f4ec72a6c2432d5ac2b6a8a826c7caf62e4fc0"
+        },
+        {
+          "path": "replay.py",
+          "sha256": "28c5ab8bfefae518d174f9ed497cced39978ddf4827becb98d5acae8fd9649a3"
+        }
+      ]
+    },
+    {
+      "id": "browser-render",
+      "layer": "integration",
+      "status": "BLOCKED",
+      "observation": "Cloud Chrome available but cannot load fixtures: localhost refused, data protocol rejected by policy. No alternate browser control used.",
+      "artifacts": [
+        {
+          "path": "cases/browser.json",
+          "sha256": "295e69a2306e50b8f5599ac10590ed0c1536c70491eb8c633e26b4078556e175"
+        }
+      ]
+    },
+    {
+      "id": "host-registry",
+      "layer": "integration",
+      "status": "BLOCKED",
+      "observation": "Supported complete executor/cloud inventory does not contain disenar; prior protected write rejection remains, no new install attempted.",
+      "artifacts": [
+        {
+          "path": "host-discovery.json",
+          "sha256": "24b4b2c8d243b648e5b8a8cddb8aab638f941c8cd516df7cb5a8d4334571ddc6"
+        }
+      ]
+    },
+    {
+      "id": "host-activation",
+      "layer": "integration",
+      "status": "NOT_RUN",
+      "observation": "No supported installed skill discovered; local explicit-path reading is not automatic invocation.",
+      "artifacts": [
+        {
+          "path": "host-discovery.json",
+          "sha256": "24b4b2c8d243b648e5b8a8cddb8aab638f941c8cd516df7cb5a8d4334571ddc6"
+        }
+      ]
+    },
+    {
+      "id": "human-outcomes",
+      "layer": "integration",
+      "status": "NOT_RUN",
+      "observation": "No participants or causal/baseline comparison. Not a prerequisite invented for generic artifact production.",
+      "artifacts": []
+    },
+    {
+      "id": "physical-print-office",
+      "layer": "integration",
+      "status": "NOT_RUN",
+      "observation": "No physical print, physical device or Microsoft Office UI test. Prior digital file evidence remains scoped.",
+      "artifacts": []
+    }
+  ],
+  "limits": [
+    "PASS is limited to the stated method and artifact, not automatic activation or global media quality.",
+    "Fresh-context audit preserves INCOMPLETE for its unperformed exhaustive external provenance check; parent carries prior provenance evidence without relabeling that result.",
+    "Natively rendered web behavior, timing, preference changes, responsive layouts, focus and keyboard remain unverified.",
+    "No installation, people, physical print/device or Microsoft Office UI evidence.",
+    "D02/D06/D07/D09 used prepared representative fixtures, not production project validation.",
+    "Original historical technical gate and acceptance observations remain unmodified."
+  ]
+}

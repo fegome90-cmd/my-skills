@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "checks": [
+    "SVG real sin imágenes incrustadas",
+    "viewBox y tamaño objetivo 24",
+    "maestro currentColor y variantes negra/blanca",
+    "canal alfa idéntico entre variantes",
+    "edición de geometría y rerender produce cambio real"
+  ],
+  "files": [
+    {
+      "path": "pliego-master.svg",
+      "sha256": "81b05a28af032c843c18b2fe1a721525efe161dd61286bdc24c0be15b620a209",
+      "vector_paths": 1,
+      "raster_images": 0,
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "pliego-black.svg",
+      "sha256": "6389f98f5d4b45a1ab4c0ce5b02428d0d53b21e2655de817e879a1d7be241f5d",
+      "vector_paths": 1,
+      "raster_images": 0,
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "path": "pliego-white.svg",
+      "sha256": "1a7236558de987d12a340963e1f85f3db1a8f7fa0530e5b93ed905f083574e5c",
+      "vector_paths": 1,
+      "raster_images": 0,
+      "viewBox": "0 0 24 24"
+    }
+  ],
+  "renderer": "MuPDF via PyMuPDF 1.26.6",
+  "not_run": [
+    "reconocimiento con personas",
+    "exclusividad de marca",
+    "navegador nativo; bloqueo reportado por separado"
+  ],
+  "visual_review": {
+    "status": "PASS",
+    "method": "Direct inspection of MuPDF contact sheet via view_image, with native 16/24/48 px samples and enlarged 24 px.",
+    "observation": "Contour, folded corner and interior bar remain distinct at 24 px in both monochrome variants. Same silhouette/alpha. Does not establish recognition or user efficacy."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "spoken_words": 565,
+  "words_by_block": {
+    "Apertura": 82,
+    "Antes": 142,
+    "Durante": 186,
+    "Cierre": 115,
+    "Despedida": 40
+  },
+  "assumed_wpm": 120,
+  "pause_seconds": 17.5,
+  "estimated_seconds": 300.0,
+  "range_wpm": [
+    110,
+    130
+  ],
+  "estimated_range_seconds": [
+    278.3,
+    325.7
+  ],
+  "timed_rehearsal": "NOT_RUN",
+  "counting": "Unicode word tokens in spoken sections only; titles and notes excluded."
+}

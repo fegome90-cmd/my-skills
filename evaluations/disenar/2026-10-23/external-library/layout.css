@@ -1,0 +1,140 @@
+.taller .site-header {
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.taller .site-nav {
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.taller .brand {
+  color: var(--pico-color);
+  font-size: 1.1rem;
+}
+
+.taller > main {
+  padding-block: 0;
+}
+
+.taller .intro {
+  max-width: 49rem;
+  padding-block: clamp(3rem, 7vw, 6rem);
+  margin-bottom: 0;
+}
+
+.taller .eyebrow {
+  margin-bottom: 0.75rem;
+  color: var(--pico-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.taller .intro h1 {
+  margin-bottom: 1.5rem;
+  color: var(--pico-color);
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.taller .intro-copy {
+  max-width: 57ch;
+  margin-bottom: 1.75rem;
+  font-size: 1.1rem;
+}
+
+.taller .program-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 100%;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--pico-primary-border);
+  border-radius: var(--pico-border-radius);
+  background: var(--pico-primary-background);
+  color: var(--pico-primary-inverse);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.taller .program-link:hover {
+  border-color: var(--pico-primary-hover-border);
+  background: var(--pico-primary-hover-background);
+}
+
+.taller a:focus-visible {
+  outline: 3px solid var(--pico-primary);
+  outline-offset: 4px;
+}
+
+.taller .program-section,
+.taller .questions-section {
+  margin-bottom: 0;
+  padding-block: 2.75rem;
+  border-top: 1px solid var(--pico-muted-border-color);
+  scroll-margin-top: 1rem;
+}
+
+.taller .section-heading {
+  max-width: 44rem;
+  margin-bottom: 1.5rem;
+}
+
+.taller .section-heading h2 {
+  color: var(--pico-color);
+}
+
+.taller .program-card {
+  margin-bottom: 0;
+  border-top: 3px solid var(--pico-primary);
+}
+
+.taller .program-card h3 {
+  color: var(--pico-primary);
+}
+
+.taller .program-action {
+  margin-bottom: 0.75rem;
+}
+
+.taller .program-card p:last-child,
+.taller .questions-grid p:last-child {
+  margin-bottom: 0;
+}
+
+.taller .questions-grid h3 {
+  font-size: 1.1rem;
+  color: var(--pico-color);
+}
+
+.taller .site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--pico-muted-border-color);
+  font-size: 0.85rem;
+}
+
+.taller .site-footer p {
+  margin-bottom: 0;
+}
+
+.taller .skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1;
+  padding: 0.6rem 0.9rem;
+  transform: translateY(-200%);
+  background: var(--pico-background-color);
+}
+
+.taller .skip-link:focus {
+  transform: translateY(0);
+}

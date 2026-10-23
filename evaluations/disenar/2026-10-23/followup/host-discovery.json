@@ -1,0 +1,21 @@
+{
+  "check": "host-registry-supported-readonly",
+  "time_context": "2026-10-23 America/Santiago",
+  "attempted_mutations": false,
+  "prior_rejection_retained": true,
+  "inventories": [
+    {
+      "authority": "executor",
+      "count": 318,
+      "discovered_disennar": [],
+      "full_inventory_sha256": "1317531ec5315e724cee73da74cb4b887bbbd20ccb6bc54580e1cfd198a267ea"
+    },
+    {
+      "authority": "cloud",
+      "count": 250,
+      "discovered_disennar": [],
+      "full_inventory_sha256": "b8fcf99d3391166f7a2486689113dff2f900c7553e46a24a9d76a547bc362b9f"
+    }
+  ],
+  "publication_scope": "Relevant target lookup, counts and inventory digests; unrelated skill names omitted."
+}

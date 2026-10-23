@@ -1,0 +1,10 @@
+{
+  "library": "@picocss/pico",
+  "version": "2.1.1",
+  "source": "https://github.com/picocss/pico/blob/v2.1.1/css/pico.min.css",
+  "github_blob_sha": "e10ec26dd4f8959f533f22a93c9fadd0459b4ae3",
+  "css_file": "vendor/pico.min.css",
+  "license": "vendor/LICENSE-Pico.md",
+  "docs": "https://picocss.com/docs",
+  "role": "Existing, explicitly selected library in development fixture; not a system dependency or endorsement."
+}

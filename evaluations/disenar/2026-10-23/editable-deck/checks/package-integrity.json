@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "/root/.codex/skills/builtins/presentations/container_tools/inspect_presentation_package_integrity.py",
+    "/workspace/scratch/cbc1d7005c48/research/final-validation/editable-deck/output/plan-talleres-2027.pptx",
+    "--fail-on-findings"
+  ],
+  "command_display": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /root/.codex/skills/builtins/presentations/container_tools/inspect_presentation_package_integrity.py /workspace/scratch/cbc1d7005c48/research/final-validation/editable-deck/output/plan-talleres-2027.pptx --fail-on-findings",
+  "cwd": "/workspace/scratch/cbc1d7005c48/research/final-validation/editable-deck",
+  "exit_code": 0,
+  "stdout": "{\n  \"chart_count\": 0,\n  \"claim_boundary\": \"Structural package checks only; no slide text, notes, formulas, chart values, or native PowerPoint execution were inspected.\",\n  \"finding_count\": 0,\n  \"findings\": [],\n  \"notes_parts_skipped\": 8,\n  \"relationship_part_count\": 26,\n  \"slide_count\": 8,\n  \"status\": \"pass\"\n}\n",
+  "stderr": "",
+  "report": {
+    "chart_count": 0,
+    "claim_boundary": "Structural package checks only; no slide text, notes, formulas, chart values, or native PowerPoint execution were inspected.",
+    "finding_count": 0,
+    "findings": [],
+    "notes_parts_skipped": 8,
+    "relationship_part_count": 26,
+    "slide_count": 8,
+    "status": "pass"
+  },
+  "reason": "Validator returned zero and reported no findings."
+}

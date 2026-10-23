@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "before_sha256": "83bb261d3a5c5f90f7d47c5ed26a8a27344f2d4f74b67cc0535ff74216c81dd9",
+  "after_sha256": "83bb261d3a5c5f90f7d47c5ed26a8a27344f2d4f74b67cc0535ff74216c81dd9",
+  "method": "File hash comparison against pre-run fixture; separate from visual claims"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "method": "Python HTMLParser and file reads; source-only verification, not browser layout or behavior",
+  "checks": {
+    "one_main_and_h1": true,
+    "unique_ids": true,
+    "aria_targets_exist": true,
+    "internal_links_resolve": true,
+    "local_styles_exist": true,
+    "chosen_library_included": true,
+    "chosen_theme_included": true,
+    "no_scripts_or_forms": true,
+    "required_content": true
+  },
+  "anchor_count": 5,
+  "candidate_html_sha256": "55ae211478c6ade9e234ed586a3b49fafbcbef734d3459879bf9e928089b13ad",
+  "limits": [
+    "No browser render, keyboard traversal or accessibility conformance test.",
+    "Pico is an explicitly selected fixture library, not a package dependency."
+  ]
+}
