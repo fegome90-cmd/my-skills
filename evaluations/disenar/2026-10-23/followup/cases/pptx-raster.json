@@ -1,0 +1,118 @@
+{
+  "probe_status": "PASS",
+  "native": {
+    "file": "plan-talleres-2027.pptx",
+    "sha256": "ce9132ac283d42b76ffeca5f3e2385d98d823d3f47dcc72bc7584bf3e600a389",
+    "slides": [
+      {
+        "slide": 1,
+        "native_text_runs": 4,
+        "pictures": 0,
+        "connectors": 0
+      },
+      {
+        "slide": 2,
+        "native_text_runs": 4,
+        "pictures": 0,
+        "connectors": 0
+      },
+      {
+        "slide": 3,
+        "native_text_runs": 7,
+        "pictures": 0,
+        "connectors": 2
+      },
+      {
+        "slide": 4,
+        "native_text_runs": 7,
+        "pictures": 0,
+        "connectors": 0
+      },
+      {
+        "slide": 5,
+        "native_text_runs": 7,
+        "pictures": 0,
+        "connectors": 0
+      },
+      {
+        "slide": 6,
+        "native_text_runs": 4,
+        "pictures": 0,
+        "connectors": 0
+      },
+      {
+        "slide": 7,
+        "native_text_runs": 7,
+        "pictures": 0,
+        "connectors": 0
+      },
+      {
+        "slide": 8,
+        "native_text_runs": 3,
+        "pictures": 0,
+        "connectors": 0
+      }
+    ],
+    "notes": 8,
+    "requested_editability": "PASS"
+  },
+  "image_only": {
+    "file": "raster-only.pptx",
+    "sha256": "5ae66b9b2911c8b288c73742f0e512a72710ea1475e1899dda4b9abe30810aa8",
+    "slides": [
+      {
+        "slide": 1,
+        "native_text_runs": 0,
+        "pictures": 1,
+        "connectors": 0
+      },
+      {
+        "slide": 2,
+        "native_text_runs": 0,
+        "pictures": 1,
+        "connectors": 0
+      },
+      {
+        "slide": 3,
+        "native_text_runs": 0,
+        "pictures": 1,
+        "connectors": 0
+      },
+      {
+        "slide": 4,
+        "native_text_runs": 0,
+        "pictures": 1,
+        "connectors": 0
+      },
+      {
+        "slide": 5,
+        "native_text_runs": 0,
+        "pictures": 1,
+        "connectors": 0
+      },
+      {
+        "slide": 6,
+        "native_text_runs": 0,
+        "pictures": 1,
+        "connectors": 0
+      },
+      {
+        "slide": 7,
+        "native_text_runs": 0,
+        "pictures": 1,
+        "connectors": 0
+      },
+      {
+        "slide": 8,
+        "native_text_runs": 0,
+        "pictures": 1,
+        "connectors": 0
+      }
+    ],
+    "notes": 8,
+    "requested_editability": "FAIL"
+  },
+  "existing_validator_exit_code": 1,
+  "outcome": "Image-only exporter cannot satisfy requested text/diagram editability. Preserve output as partial and disclose exact unmet requirement; use native producer when available.",
+  "scope": "Actual OOXML output rejection; no Microsoft PowerPoint UI or skill invocation claim."
+}

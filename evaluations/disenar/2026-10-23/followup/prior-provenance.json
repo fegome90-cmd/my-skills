@@ -1,0 +1,294 @@
+{
+  "status": "PASS",
+  "method": "Root recomputed Git blob SHA-1 for frozen downloaded bytes; this is integrity, not behavior or exhaustive semantic coverage.",
+  "sources": [
+    {
+      "source": "emil",
+      "commit": "2d228630ba1446365f614a108cb8252f1feda202",
+      "files": [
+        {
+          "path": "README.md",
+          "expected_blob": "3cc865e4f4d678c29dd938d11f96342942b7b52c",
+          "actual_blob": "3cc865e4f4d678c29dd938d11f96342942b7b52c",
+          "match": true
+        },
+        {
+          "path": "LICENSE",
+          "expected_blob": "57b46f1fd11dc62351ea548104a88aa3f659c11b",
+          "actual_blob": "57b46f1fd11dc62351ea548104a88aa3f659c11b",
+          "match": true
+        },
+        {
+          "path": "skills/emil-design-eng/SKILL.md",
+          "expected_blob": "62ce902af8dd32c590ea7203e9ab2edb1d6ef81a",
+          "actual_blob": "62ce902af8dd32c590ea7203e9ab2edb1d6ef81a",
+          "match": true
+        },
+        {
+          "path": "skills/animate/SKILL.md",
+          "expected_blob": "7c3b20c6ed681b2d47c9ca9e3ee0e659ed47d032",
+          "actual_blob": "7c3b20c6ed681b2d47c9ca9e3ee0e659ed47d032",
+          "match": true
+        },
+        {
+          "path": "skills/animate/RECIPES.md",
+          "expected_blob": "6744891261bdf0bb0473d77f2cc706f2d78b574e",
+          "actual_blob": "6744891261bdf0bb0473d77f2cc706f2d78b574e",
+          "match": true
+        },
+        {
+          "path": "skills/review-animations/SKILL.md",
+          "expected_blob": "577a64397267ce20960de2202950594d5bd6f9b6",
+          "actual_blob": "577a64397267ce20960de2202950594d5bd6f9b6",
+          "match": true
+        },
+        {
+          "path": "skills/review-animations/STANDARDS.md",
+          "expected_blob": "863ea12ea94c1f7a47b5f7e1019e976aa82bd4cd",
+          "actual_blob": "863ea12ea94c1f7a47b5f7e1019e976aa82bd4cd",
+          "match": true
+        },
+        {
+          "path": "skills/improve-animations/SKILL.md",
+          "expected_blob": "d6e77f37272329af0cc36f9eeedbe5226e86ce63",
+          "actual_blob": "d6e77f37272329af0cc36f9eeedbe5226e86ce63",
+          "match": true
+        },
+        {
+          "path": "skills/improve-animations/AUDIT.md",
+          "expected_blob": "94056154e532d695b8792ea67d701625b4f43b6e",
+          "actual_blob": "94056154e532d695b8792ea67d701625b4f43b6e",
+          "match": true
+        },
+        {
+          "path": "skills/improve-animations/PLAN-TEMPLATE.md",
+          "expected_blob": "239026b91f8032df191dde2085fd796b8c116d91",
+          "actual_blob": "239026b91f8032df191dde2085fd796b8c116d91",
+          "match": true
+        },
+        {
+          "path": "skills/pick-ui-library/SKILL.md",
+          "expected_blob": "5e0028e988b88d2a88a019fdc978b4732243e467",
+          "actual_blob": "5e0028e988b88d2a88a019fdc978b4732243e467",
+          "match": true
+        },
+        {
+          "path": "skills/animation-performance/SKILL.md",
+          "expected_blob": "d688dd7c3ba143c6ae17efd2bc665380d5252c5a",
+          "actual_blob": "d688dd7c3ba143c6ae17efd2bc665380d5252c5a",
+          "match": true
+        },
+        {
+          "path": "performance-cheatsheet.md",
+          "expected_blob": "5b279577685cebabbfbb0197bd6b3a74591b3392",
+          "actual_blob": "5b279577685cebabbfbb0197bd6b3a74591b3392",
+          "match": true
+        },
+        {
+          "path": "skills/mobile-native/SKILL.md",
+          "expected_blob": "94bba21fcb990b850e06effbf5709c96a07446ad",
+          "actual_blob": "94bba21fcb990b850e06effbf5709c96a07446ad",
+          "match": true
+        },
+        {
+          "path": "skills/break-ui/SKILL.md",
+          "expected_blob": "091a28d488662d2451131f1aaa60a6dcd2391932",
+          "actual_blob": "091a28d488662d2451131f1aaa60a6dcd2391932",
+          "match": true
+        },
+        {
+          "path": "skills/break-ui/CATALOG.md",
+          "expected_blob": "46962bb89445b8526ea94994a79b49508573b5fd",
+          "actual_blob": "46962bb89445b8526ea94994a79b49508573b5fd",
+          "match": true
+        },
+        {
+          "path": "skills/prototype/SKILL.md",
+          "expected_blob": "dbcc1a23c66933f7372c0aacbce2b0d7cc6100b6",
+          "actual_blob": "dbcc1a23c66933f7372c0aacbce2b0d7cc6100b6",
+          "match": true
+        },
+        {
+          "path": "skills/animation-vocabulary/SKILL.md",
+          "expected_blob": "5ab2976514c74a194ebf069506d95ff3a5a0084f",
+          "actual_blob": "5ab2976514c74a194ebf069506d95ff3a5a0084f",
+          "match": true
+        },
+        {
+          "path": "skills/find-animation-opportunities/SKILL.md",
+          "expected_blob": "d3b030fbca9abad9220a032f72d425c6b7fa2de8",
+          "actual_blob": "d3b030fbca9abad9220a032f72d425c6b7fa2de8",
+          "match": true
+        },
+        {
+          "path": "skills/apple-design/SKILL.md",
+          "expected_blob": "adf68c517f2d7d2781587d619de07f4de286da57",
+          "actual_blob": "adf68c517f2d7d2781587d619de07f4de286da57",
+          "match": true
+        }
+      ],
+      "passed": 20,
+      "total": 20
+    },
+    {
+      "source": "impeccable",
+      "commit": "5cb95eea9c96479f57afe0732a45470d30183326",
+      "files": [
+        {
+          "path": "README.md",
+          "expected_blob": "82f74064346bda53f48e6e1c4b729427da76b569",
+          "actual_blob": "82f74064346bda53f48e6e1c4b729427da76b569",
+          "match": true
+        },
+        {
+          "path": "LICENSE",
+          "expected_blob": "bb3f6d23b1f8025514a62a12b51b47d73e3c9aa9",
+          "actual_blob": "bb3f6d23b1f8025514a62a12b51b47d73e3c9aa9",
+          "match": true
+        },
+        {
+          "path": "NOTICE.md",
+          "expected_blob": "0468271c904ae334cfaf27da6f8df3d5f419a1f0",
+          "actual_blob": "0468271c904ae334cfaf27da6f8df3d5f419a1f0",
+          "match": true
+        },
+        {
+          "path": "skill/SKILL.src.md",
+          "expected_blob": "de0316613aa6a0065963ad21aa5c8253033e97c6",
+          "actual_blob": "de0316613aa6a0065963ad21aa5c8253033e97c6",
+          "match": true
+        },
+        {
+          "path": "skill/reference/init.md",
+          "expected_blob": "87a0f8b8b805a60316cff901c9c8f39ef55fc720",
+          "actual_blob": "87a0f8b8b805a60316cff901c9c8f39ef55fc720",
+          "match": true
+        },
+        {
+          "path": "skill/reference/new-work.md",
+          "expected_blob": "540b79f31c58d56d7bce6069c655c664f3ed2636",
+          "actual_blob": "540b79f31c58d56d7bce6069c655c664f3ed2636",
+          "match": true
+        },
+        {
+          "path": "skill/reference/audit.md",
+          "expected_blob": "7865aae66f4b2c8d3bd3ffbf5f9f8361d4378c6b",
+          "actual_blob": "7865aae66f4b2c8d3bd3ffbf5f9f8361d4378c6b",
+          "match": true
+        },
+        {
+          "path": "skill/reference/critique.md",
+          "expected_blob": "03acd2f77a484abb736fd4f8230bc3bc78503565",
+          "actual_blob": "03acd2f77a484abb736fd4f8230bc3bc78503565",
+          "match": true
+        },
+        {
+          "path": "skill/reference/animate.md",
+          "expected_blob": "f80ebd154cd0b51ac713f3a535ca9640a30ab966",
+          "actual_blob": "f80ebd154cd0b51ac713f3a535ca9640a30ab966",
+          "match": true
+        },
+        {
+          "path": "skill/reference/adapt.md",
+          "expected_blob": "e6add003e67fa841655d906fd55458b2473f2127",
+          "actual_blob": "e6add003e67fa841655d906fd55458b2473f2127",
+          "match": true
+        },
+        {
+          "path": "skill/reference/polish.md",
+          "expected_blob": "f2146990505863574e3c8298613a37d4c31ee73c",
+          "actual_blob": "f2146990505863574e3c8298613a37d4c31ee73c",
+          "match": true
+        },
+        {
+          "path": "skill/reference/harden.md",
+          "expected_blob": "8447329bcfd37566f09385136a373a97d54b6e45",
+          "actual_blob": "8447329bcfd37566f09385136a373a97d54b6e45",
+          "match": true
+        },
+        {
+          "path": "skill/reference/craft-floor.md",
+          "expected_blob": "30b63c7b30058e02dbdeea17ab4e0d74e8189705",
+          "actual_blob": "30b63c7b30058e02dbdeea17ab4e0d74e8189705",
+          "match": true
+        },
+        {
+          "path": "skill/reference/operate.md",
+          "expected_blob": "5e4666de08f63f55c832c7bb2511cc9ad8068744",
+          "actual_blob": "5e4666de08f63f55c832c7bb2511cc9ad8068744",
+          "match": true
+        },
+        {
+          "path": "skill/reference/mode-operate.md",
+          "expected_blob": "833775ba85f03bf65a4c1b23e39192f7653414e6",
+          "actual_blob": "833775ba85f03bf65a4c1b23e39192f7653414e6",
+          "match": true
+        },
+        {
+          "path": "skill/reference/mode-persuade.md",
+          "expected_blob": "1d4299e507b666221ed569aaf10b5bbdf68c2985",
+          "actual_blob": "1d4299e507b666221ed569aaf10b5bbdf68c2985",
+          "match": true
+        },
+        {
+          "path": "skill/reference/mode-read.md",
+          "expected_blob": "b30c4c9139e3094bd35c60738decb6109326153f",
+          "actual_blob": "b30c4c9139e3094bd35c60738decb6109326153f",
+          "match": true
+        },
+        {
+          "path": "skill/reference/typeset.md",
+          "expected_blob": "b3aa293d11d9f55a42e59f45cc5371ac186797dd",
+          "actual_blob": "b3aa293d11d9f55a42e59f45cc5371ac186797dd",
+          "match": true
+        },
+        {
+          "path": "skill/reference/layout.md",
+          "expected_blob": "4b9eadcb10bbcf3e4d8de84ebd0d86d90e804d4b",
+          "actual_blob": "4b9eadcb10bbcf3e4d8de84ebd0d86d90e804d4b",
+          "match": true
+        },
+        {
+          "path": "skill/reference/extract.md",
+          "expected_blob": "c4d5a402f6291095b6a99082f3680bc11f72f318",
+          "actual_blob": "c4d5a402f6291095b6a99082f3680bc11f72f318",
+          "match": true
+        },
+        {
+          "path": "skill/reference/routing.md",
+          "expected_blob": "fb35adc46a200ce09f3efbfdc9ae87b3a5be123f",
+          "actual_blob": "fb35adc46a200ce09f3efbfdc9ae87b3a5be123f",
+          "match": true
+        },
+        {
+          "path": "skill/reference/shape.md",
+          "expected_blob": "90a74ae813331cbce8fff6beb498ced77970fadf",
+          "actual_blob": "90a74ae813331cbce8fff6beb498ced77970fadf",
+          "match": true
+        },
+        {
+          "path": "skill/reference/document.md",
+          "expected_blob": "90b963b1a74a1e98848d200eafc1230b8e77e803",
+          "actual_blob": "90b963b1a74a1e98848d200eafc1230b8e77e803",
+          "match": true
+        },
+        {
+          "path": "crates/detect/tests/list_rules.rs",
+          "expected_blob": "155dcd08b290d9a78e3983b121014c121150f437",
+          "actual_blob": "155dcd08b290d9a78e3983b121014c121150f437",
+          "match": true
+        },
+        {
+          "path": "crates/detect/tests/regex_only_note.rs",
+          "expected_blob": "6b7324dab797b45628e27ae39aa89a9e052b4ede",
+          "actual_blob": "6b7324dab797b45628e27ae39aa89a9e052b4ede",
+          "match": true
+        }
+      ],
+      "passed": 25,
+      "total": 25
+    }
+  ],
+  "reuse": "Own synthesis only; no upstream scripts, templates or private assets included in disenar. Pico vendored only in separate development fixture with its MIT notice.",
+  "notice_correction": "Impeccable attribution now points to NOTICE.md, matching frozen manifest."
+}

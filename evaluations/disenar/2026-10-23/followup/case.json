@@ -1,0 +1,75 @@
+{
+  "case_id": "disenar-pending-followup",
+  "revision": "normalized-v1",
+  "evaluation_purpose": "technical_validation",
+  "need": "Execute previously unrun development cases and attempt remaining integration checks.",
+  "mode": "verify",
+  "source": "09eec73a305b096e3f4da1ba121fb38a60371344",
+  "source_revision": "43408fe0c1b256ed91703b8c5139e568e6c6130a2bfe37629ff67be475000385",
+  "expected_outcome": "Actual per-layer results, no forced acceptance.",
+  "requirements": [
+    {
+      "text": "Respect user resources and requested artifact",
+      "source": "user task and preserved acceptance plan",
+      "validity": "current"
+    }
+  ],
+  "preferences": [],
+  "capabilities": [
+    "Python",
+    "Node",
+    "GitHub connector",
+    "MuPDF",
+    "Cloud Chrome with access restrictions"
+  ],
+  "permissions": [
+    "local development fixtures and evidence",
+    "update existing source PR evidence",
+    "no protected registry retries",
+    "no production component repository mutation"
+  ],
+  "baseline_conditions": "No comparative value experiment; new worker contexts share filesystem and know this is development testing.",
+  "mandatory_checks": [
+    "structure",
+    "resources",
+    "provenance",
+    "permissions",
+    "D02",
+    "D05",
+    "D06",
+    "D07",
+    "D09",
+    "D10-negative",
+    "D11",
+    "D14",
+    "D15",
+    "D16",
+    "replay",
+    "browser-render",
+    "host-registry",
+    "host-activation"
+  ],
+  "criteria": {
+    "structure": "Manager inspector OK for the exact unchanged candidate; only declared local coverage.",
+    "resources": "Candidate bytes and bundled local resources unchanged. Evidence bundle has complete internal inventory; offline extraction/replay succeeded.",
+    "provenance": "Prior frozen source integrity/own synthesis record retained and read; candidate unchanged. Fixture code licenses and pinned sources included. This is provenance tracing within stated scope, not a new exhaustive rights comparison.",
+    "permissions": "Candidate unchanged, bank integration confined to isolated snapshot, no protected registry reattempt. Real bank and other repositories not mutated.",
+    "D02": "Real local Vue runtime/compiler/reactivity and fixtures exercised; browser layer remains BLOCKED.",
+    "D05": "Conflict concretely evidenced, no substitute or silent React installation; required integration remains BLOCKED under inherited no-React condition.",
+    "D06": "REA component, registry and previews produced on isolated snapshot; 260 existing tests, types/lint/build/registry pass; no native visual claim.",
+    "D07": "Standalone profile produced without bank/new dependencies; source/resources/color checks only.",
+    "D09": "22 simulated DOM/event observations with actual deck script; preservation/static checks retained, no temporal browser proof.",
+    "D10-negative": "Actual image-only OOXML fixture rejected for native editability, eight notes preserved. Negative output FAIL is expected, probe PASS.",
+    "D11": "Real SVG masters and variants, rasterization, alpha equality, geometry edit and visual inspection at 24px; no recognition efficacy claim.",
+    "D14": "Spoken script and notes produced without visual expansion; 565 words and explicit five-minute estimate, no timed rehearsal.",
+    "D15": "Actual synthetic SQLite JOIN duplication reproduced and EXISTS correction validated on six cases; no host routing claim.",
+    "D16": "Audit report delivered without candidate changes; its own incomplete gate retained and not converted into readiness.",
+    "replay": "Ten bounded groups re-executed in temporary extraction using real candidate; no network/install/candidate mutation. Full REA build not repeated by replay.",
+    "browser-render": "Cloud Chrome available but cannot load fixtures: localhost refused, data protocol rejected by policy. No alternate browser control used.",
+    "host-registry": "Supported complete executor/cloud inventory does not contain disenar; prior protected write rejection remains, no new install attempted.",
+    "host-activation": "No supported installed skill discovered; local explicit-path reading is not automatic invocation.",
+    "human-outcomes": "No participants or causal/baseline comparison. Not a prerequisite invented for generic artifact production.",
+    "physical-print-office": "No physical print, physical device or Microsoft Office UI test. Prior digital file evidence remains scoped."
+  },
+  "normalization_note": "Post-run normalization of preserved pre-existing case criteria and followup contract, not an independent preregistration. Historical evidence is unchanged."
+}

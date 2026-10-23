@@ -1,5 +1,7 @@
 # Revisión de desarrollo de `disenar`
 
+El [seguimiento de pruebas pendientes](followup/testing-pendientes.md) añade los escenarios y mantiene los bloqueos actuales de navegador y host. Este archivo y los resultados iniciales conservan su alcance histórico.
+
 Esta carpeta conserva la evidencia de creación del paquete, separada de las instrucciones que consume el agente. El objetivo es disponer de un método de diseño portable que use recursos del proyecto, bibliotecas elegidas u originales sin depender de un banco, marca o framework.
 
 ## Fuente y arquitectura

@@ -1,0 +1,102 @@
+{
+  "status": "BLOCKED",
+  "browser_inventory": {
+    "provider": "Cloud Chrome via cua_repl",
+    "browser_id": "1",
+    "native_apps": []
+  },
+  "extension_api": "No Browser js tool exposed in tool registry; cloud fallback selected under control-browser skill.",
+  "attempts": [
+    {
+      "action": "goto http://127.0.0.1:8765/evaluations/disenar/2026-10-23/original-panel/",
+      "result": "net::ERR_CONNECTION_REFUSED"
+    },
+    {
+      "action": "read fixture from scratch path in cloud runtime",
+      "result": "ENOENT; separate filesystem"
+    },
+    {
+      "action": "download pinned public source in cloud runtime",
+      "result": "fetch failed"
+    },
+    {
+      "action": "goto data:text/html;base64 of byte-bound fixture",
+      "result": "Browser security policy rejected protocol. Allowed protocols http/https; no alternate browser surface used after rejection."
+    }
+  ],
+  "transfer_integrity": {
+    "sha256": "ee8f96c2fa677d20c0d42d53a58e68ffd9fd473cf42e8de7f1e8a3e9e34396db",
+    "observation": "Compressed fixture payload inflated in cloud runtime; SHA-256 matched before rejected navigation. This proves byte transfer only, no render."
+  },
+  "checks": [
+    {
+      "id": "panel-render",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "panel-native-keyboard",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "panel-real-clock-playback",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "panel-reduced-motion-live",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "pico-responsive",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "minimal-render",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "vue-render-native-states",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "rea-native-preview",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "profile-responsive",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "slides-native-reveal",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "slides-reduced-motion-live",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    },
+    {
+      "id": "browser-console-health",
+      "status": "BLOCKED",
+      "reason": "Artifact not loaded into supported browser"
+    }
+  ],
+  "not_claimed": [
+    "page render",
+    "screenshots of working app",
+    "native interaction",
+    "viewport testing",
+    "timing/performance",
+    "cross-browser or mobile hardware"
+  ],
+  "source_unchanged": true
+}

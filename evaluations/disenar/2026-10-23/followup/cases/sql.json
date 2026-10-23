@@ -1,0 +1,158 @@
+{
+  "sqlite_version": "3.53.1",
+  "data": "synthetic",
+  "before": [
+    [
+      1,
+      "Jardín comunitario"
+    ],
+    [
+      1,
+      "Jardín comunitario"
+    ],
+    [
+      2,
+      "Intercambio de oficios"
+    ],
+    [
+      5,
+      "Jardín comunitario"
+    ],
+    [
+      5,
+      "Jardín comunitario"
+    ],
+    [
+      5,
+      "Jardín comunitario"
+    ]
+  ],
+  "after": [
+    [
+      1,
+      "Jardín comunitario"
+    ],
+    [
+      2,
+      "Intercambio de oficios"
+    ],
+    [
+      5,
+      "Jardín comunitario"
+    ]
+  ],
+  "cause": "The JOIN yields one row per matching confirmed registration; a workshop can match several.",
+  "fix": "Correlated EXISTS filters workshops by the presence of a match without multiplying the outer rows.",
+  "checks": [
+    {
+      "id": "normal-1-to-many-and-same-name",
+      "status": "PASS",
+      "expected": [
+        [
+          1,
+          "Jardín comunitario"
+        ],
+        [
+          2,
+          "Intercambio de oficios"
+        ],
+        [
+          5,
+          "Jardín comunitario"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "Jardín comunitario"
+        ],
+        [
+          2,
+          "Intercambio de oficios"
+        ],
+        [
+          5,
+          "Jardín comunitario"
+        ]
+      ]
+    },
+    {
+      "id": "empty",
+      "status": "PASS",
+      "expected": [],
+      "actual": []
+    },
+    {
+      "id": "no-confirmed",
+      "status": "PASS",
+      "expected": [],
+      "actual": []
+    },
+    {
+      "id": "no-registrations",
+      "status": "PASS",
+      "expected": [],
+      "actual": []
+    },
+    {
+      "id": "additional-confirmed",
+      "status": "PASS",
+      "expected": [
+        [
+          1,
+          "Jardín comunitario"
+        ],
+        [
+          2,
+          "Intercambio de oficios"
+        ],
+        [
+          5,
+          "Jardín comunitario"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "Jardín comunitario"
+        ],
+        [
+          2,
+          "Intercambio de oficios"
+        ],
+        [
+          5,
+          "Jardín comunitario"
+        ]
+      ]
+    },
+    {
+      "id": "removed-confirmation",
+      "status": "PASS",
+      "expected": [
+        [
+          2,
+          "Intercambio de oficios"
+        ],
+        [
+          5,
+          "Jardín comunitario"
+        ]
+      ],
+      "actual": [
+        [
+          2,
+          "Intercambio de oficios"
+        ],
+        [
+          5,
+          "Jardín comunitario"
+        ]
+      ]
+    }
+  ],
+  "limits": [
+    "No production schema/data or performance workload was supplied.",
+    "The required result is one row per workshop, not one row per participant."
+  ]
+}
