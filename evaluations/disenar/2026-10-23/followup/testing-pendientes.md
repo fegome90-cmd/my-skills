@@ -4,6 +4,8 @@
 
 Se ejercitaron los siete escenarios que estaban sin ejecutar, los dos que solo tenían revisión de alcance y la frontera de exportación raster de PowerPoint. Los resultados acreditan producción, comprobaciones de fuente y lógica, compilación o render vectorial según la fila. **La validación completa sigue incompleta: no hubo render web ni interacción nativa, y la skill no aparece en el catálogo del host.** No se fusionó el PR ni se modificaron los repositorios de componentes.
 
+**Revisión posterior de los validadores:** la auditoría del commit `2df99b33479881af531bfae44e6f9dbfe3629ed2` confirmó los artefactos y reprodujo tres vías de falso PASS: salida 0 pese a contraste FAIL, variante SVG blanca no contrastada con el color esperado y cualquier error del validador PPTX aceptado como rechazo válido. Las reparaciones y su evidencia están en [harness-v2](harness-v2/README.md). Los siete controles dirigidos pasaron de 2 PASS / 5 FAIL a 7 PASS / 0 FAIL; la repetición corregida volvió a pasar diez grupos. Se conserva el ZIP original y el gate de este seguimiento: estos nuevos controles no se suman a sus quince PASS ni acreditan integración nativa.
+
 ## Resultados por escenario
 
 | Caso | Resultado comprobado | Límite material |
@@ -44,7 +46,8 @@ El [gate de este seguimiento](gate.json) conserva INCOMPLETE porque las comproba
 - `cases/`: resultados principales legibles sin extraer el archivo. Los artefactos internos que describen conservan sus rutas originales dentro del bundle.
 - `source-integrity.json`, `candidate-lint.json`, `host-discovery.json`: identidad del candidato, comprobación local y lectura soportada del host.
 - `case.json`, `report.json`, `gate.json`: normalización posterior de los criterios y evidencias de desarrollo. El contrato y plan previos quedan conservados dentro del bundle. No se presentan como preregistro independiente.
-- `replay.py` y `replay-results.json`: repetición real en directorio temporal; diez grupos PASS y candidato intacto. Requiere Python, Node, PyYAML, PyMuPDF y Pillow ya disponibles. No instala dependencias ni usa red. No ejecuta navegador ni cambia el registro de skills.
+- `replay.py`: repetición actual en directorio temporal con cuatro reemplazos verificados por hash; diez grupos PASS y candidato intacto, registrados en `harness-v2/replay-results.json`. Requiere Python, Node, PyYAML, PyMuPDF y Pillow ya disponibles. No instala dependencias ni usa red. No ejecuta navegador ni cambia el registro de skills.
+- `replay-results.json`, `report.json` y `gate.json` conservan los bytes históricos de `2df99b3`. El hash de `replay.py` citado en ese `report.json` corresponde ahora a la copia preservada en `harness-v2/history/replay-v1.py`; no describe el evaluador actualizado. El [informe de revisión](harness-v2/README.md) documenta esa relación y los controles nuevos.
 
 Desde la raíz de un checkout del PR:
 

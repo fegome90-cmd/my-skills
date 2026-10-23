@@ -1,0 +1,58 @@
+{
+  "base_commit": "2df99b33479881af531bfae44e6f9dbfe3629ed2",
+  "candidate_unchanged": true,
+  "candidate_inventory": [
+    {
+      "path": "SKILL.md",
+      "sha256": "c3a1817e2d18b34057ff1699e38296add7ab7cacf5a7cacf9405ddaebb9d9712"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "sha256": "518a856e26cec4096173868d35350463111bf83f6f21b1023a9dce4f50f0764c"
+    },
+    {
+      "path": "references/auditoria-y-verificacion.md",
+      "sha256": "f0735d4856caf40f1adb4eef379b6696c6ac7ef74b8f80e58fcb112fe0d1075c"
+    },
+    {
+      "path": "references/direccion-y-fundamentos.md",
+      "sha256": "ffdd8c5ef9abc44103ed37050f9d05dfbc58bbe67aa147b86567180f4bb6a281"
+    },
+    {
+      "path": "references/editorial-e-impresion.md",
+      "sha256": "7375fd3391005f1460642c10f23a91cdd4c7a94979b6224048f442ff2a8ca263"
+    },
+    {
+      "path": "references/encargo-y-recursos.md",
+      "sha256": "6016aa37b42a9ddf07f6c6ef9211129d99ae81ab22ddf999a0c0909c5bb8de47"
+    },
+    {
+      "path": "references/fuentes.md",
+      "sha256": "4b8f07403814426405bcbb7c98086595fc23cc917604ef43dbcfb55ceae620e6"
+    },
+    {
+      "path": "references/identidad-y-grafica.md",
+      "sha256": "d7c478ebdb768d181878a2c9afb91427b0907b153774a555a31f4adc56ef9e8e"
+    },
+    {
+      "path": "references/movimiento.md",
+      "sha256": "d75e5418892ef656e6d0944f8ecd297f26ffa5e64b814d4cfc98a777d0a2b7c5"
+    },
+    {
+      "path": "references/presentaciones.md",
+      "sha256": "6ee737320003c24eaaee5a5c8ad28657926eb3d9b236745128d225e08571866e"
+    },
+    {
+      "path": "references/web-y-componentes.md",
+      "sha256": "1c5889c743154c43c76ded639eecccd74610f18a4f32cd7fe5081e6f1c492a3a"
+    },
+    {
+      "path": "scripts/contrast.py",
+      "sha256": "66b659965c34a4ddea5978cfda7007f7a2d4d5abba7d72887c9db4579af6f2d2"
+    }
+  ],
+  "archive_unchanged": true,
+  "archive_sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5",
+  "historical_replay_unchanged": true,
+  "normalization": "Only verifier code and its evidence changed; original source, fixture archive and historical report/gate were retained."
+}

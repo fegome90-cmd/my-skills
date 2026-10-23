@@ -24,6 +24,7 @@ if inventory(candidate)!=frozen:
     parser.error('candidate bytes differ from the frozen revision')
 before=inventory(candidate)
 results=[]
+overrides=json.loads((here/'harness-v2/overrides.json').read_text())
 with tempfile.TemporaryDirectory(prefix='disenar-replay-') as temp:
     temp=Path(temp)
     with ZipFile(here/'evidence.zip') as archive:
@@ -35,6 +36,15 @@ with tempfile.TemporaryDirectory(prefix='disenar-replay-') as temp:
     manifest=json.loads((temp/'BUNDLE_MANIFEST.json').read_text())
     for row in manifest['files']:
         assert hashlib.sha256((temp/row['path']).read_bytes()).hexdigest()==row['sha256'],row['path']
+    for row in overrides['files']:
+        target=(temp/row['target']).resolve()
+        source=(here/row['source']).resolve()
+        if not target.is_relative_to(temp) or not source.is_relative_to(here):
+            raise ValueError('override outside its source or extraction')
+        assert hashlib.sha256(target.read_bytes()).hexdigest()==row['original_sha256'],row['target']
+        replacement=source.read_bytes()
+        assert hashlib.sha256(replacement).hexdigest()==row['replacement_sha256'],row['source']
+        target.write_bytes(replacement)
     work=temp/'followup'
     commands=[
         ('vue-runtime', ['node',str(work/'vue/scripts/verify.mjs')]),
@@ -53,7 +63,7 @@ with tempfile.TemporaryDirectory(prefix='disenar-replay-') as temp:
         results.append({'id':check,'status':'PASS' if run.returncode==0 else 'FAIL','exit_code':run.returncode,'stdout':run.stdout,'stderr':run.stderr})
 after=inventory(candidate)
 assert before==after,'replay changed candidate'
-report={'purpose':'bounded replay, not global acceptance','archive_sha256':hashlib.sha256((here/'evidence.zip').read_bytes()).hexdigest(),'evaluator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'candidate_unchanged':before==after,'checks':results,'not_replayed':['full REA npm build/test (recorded logs and separate reconstruction instructions)','browser render, keyboard, timing and device tests','host installation or automatic invocation','human outcomes, physical printing or Microsoft Office UI']}
+report={'purpose':'bounded replay, not global acceptance','harness_revision':overrides['revision'],'harness_overrides':overrides['files'],'archive_sha256':hashlib.sha256((here/'evidence.zip').read_bytes()).hexdigest(),'evaluator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'candidate_unchanged':before==after,'checks':results,'not_replayed':['full REA npm build/test (recorded logs and separate reconstruction instructions)','browser render, keyboard, timing and device tests','host installation or automatic invocation','human outcomes, physical printing or Microsoft Office UI']}
 args.output.parent.mkdir(parents=True,exist_ok=True)
 args.output.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({'PASS':sum(x['status']=='PASS' for x in results),'FAIL':sum(x['status']=='FAIL' for x in results),'candidate_unchanged':before==after}))

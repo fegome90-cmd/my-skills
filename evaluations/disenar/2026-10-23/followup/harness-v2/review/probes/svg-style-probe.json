@@ -1,0 +1,169 @@
+{
+  "base_commit": "2df99b33479881af531bfae44e6f9dbfe3629ed2",
+  "reviewed_producer_sha256": "eab267cdafc0b827f6595b6efff3128f2a31cf573f2430cc8ae487122c78fa0e",
+  "probe": "Preserve fill attribute; override white variant with inline CSS fill:black.",
+  "cases": [
+    {
+      "label": "valid",
+      "exit_code": 0,
+      "stdout": "SVG structure, alpha consistency and editability: PASS\n",
+      "stderr": "",
+      "producer_sha256": "eab267cdafc0b827f6595b6efff3128f2a31cf573f2430cc8ae487122c78fa0e",
+      "white_svg_sha256": "1a7236558de987d12a340963e1f85f3db1a8f7fa0530e5b93ed905f083574e5c",
+      "fill_attribute": "#ffffff",
+      "style_attribute": null,
+      "opaque_pixels_24px": 131,
+      "opaque_rgb_values": [
+        "(255, 255, 255)"
+      ],
+      "checks": {
+        "status": "PASS",
+        "checks": [
+          "SVG real sin imágenes incrustadas",
+          "viewBox y tamaño objetivo 24",
+          "maestro currentColor y variantes negra/blanca",
+          "canal alfa idéntico entre variantes",
+          "edición de geometría y rerender produce cambio real"
+        ],
+        "files": [
+          {
+            "path": "pliego-master.svg",
+            "sha256": "81b05a28af032c843c18b2fe1a721525efe161dd61286bdc24c0be15b620a209",
+            "vector_paths": 1,
+            "raster_images": 0,
+            "viewBox": "0 0 24 24"
+          },
+          {
+            "path": "pliego-black.svg",
+            "sha256": "6389f98f5d4b45a1ab4c0ce5b02428d0d53b21e2655de817e879a1d7be241f5d",
+            "vector_paths": 1,
+            "raster_images": 0,
+            "viewBox": "0 0 24 24"
+          },
+          {
+            "path": "pliego-white.svg",
+            "sha256": "1a7236558de987d12a340963e1f85f3db1a8f7fa0530e5b93ed905f083574e5c",
+            "vector_paths": 1,
+            "raster_images": 0,
+            "viewBox": "0 0 24 24"
+          }
+        ],
+        "renderer": "MuPDF via PyMuPDF 1.26.6",
+        "not_run": [
+          "reconocimiento con personas",
+          "exclusividad de marca",
+          "navegador nativo; bloqueo reportado por separado"
+        ],
+        "visual_review": "PENDING"
+      }
+    },
+    {
+      "label": "white-style-black",
+      "exit_code": 0,
+      "stdout": "SVG structure, alpha consistency and editability: PASS\n",
+      "stderr": "",
+      "producer_sha256": "14c7982686335014719285bd9c2a2e28c75c9acf88aa9c8bbd23f1d518b8532b",
+      "white_svg_sha256": "abf3574dae5e517997d5330af7e83fc7b15c73c55b6bb2151c956cc25dd21719",
+      "fill_attribute": "#ffffff",
+      "style_attribute": "fill:#000000",
+      "opaque_pixels_24px": 131,
+      "opaque_rgb_values": [
+        "(255, 255, 255)"
+      ],
+      "checks": {
+        "status": "PASS",
+        "checks": [
+          "SVG real sin imágenes incrustadas",
+          "viewBox y tamaño objetivo 24",
+          "maestro currentColor y variantes negra/blanca",
+          "canal alfa idéntico entre variantes",
+          "edición de geometría y rerender produce cambio real"
+        ],
+        "files": [
+          {
+            "path": "pliego-master.svg",
+            "sha256": "81b05a28af032c843c18b2fe1a721525efe161dd61286bdc24c0be15b620a209",
+            "vector_paths": 1,
+            "raster_images": 0,
+            "viewBox": "0 0 24 24"
+          },
+          {
+            "path": "pliego-black.svg",
+            "sha256": "6389f98f5d4b45a1ab4c0ce5b02428d0d53b21e2655de817e879a1d7be241f5d",
+            "vector_paths": 1,
+            "raster_images": 0,
+            "viewBox": "0 0 24 24"
+          },
+          {
+            "path": "pliego-white.svg",
+            "sha256": "abf3574dae5e517997d5330af7e83fc7b15c73c55b6bb2151c956cc25dd21719",
+            "vector_paths": 1,
+            "raster_images": 0,
+            "viewBox": "0 0 24 24"
+          }
+        ],
+        "renderer": "MuPDF via PyMuPDF 1.26.6",
+        "not_run": [
+          "reconocimiento con personas",
+          "exclusividad de marca",
+          "navegador nativo; bloqueo reportado por separado"
+        ],
+        "visual_review": "PENDING"
+      }
+    },
+    {
+      "label": "white-style-after-black",
+      "exit_code": 0,
+      "stdout": "SVG structure, alpha consistency and editability: PASS\n",
+      "stderr": "",
+      "producer_sha256": "3b8ef3d279fb96dc5241ac36fdd4883483effd679252fc79e6b3fbd0c4900e41",
+      "white_svg_sha256": "1fbdde427e14f7cf7a1a91f6643f707406c3cce68ec1df4196030e5fe6982523",
+      "fill_attribute": "#ffffff",
+      "style_attribute": "fill:#000000",
+      "opaque_pixels_24px": 131,
+      "opaque_rgb_values": [
+        "(255, 255, 255)"
+      ],
+      "checks": {
+        "status": "PASS",
+        "checks": [
+          "SVG real sin imágenes incrustadas",
+          "viewBox y tamaño objetivo 24",
+          "maestro currentColor y variantes negra/blanca",
+          "canal alfa idéntico entre variantes",
+          "edición de geometría y rerender produce cambio real"
+        ],
+        "files": [
+          {
+            "path": "pliego-master.svg",
+            "sha256": "81b05a28af032c843c18b2fe1a721525efe161dd61286bdc24c0be15b620a209",
+            "vector_paths": 1,
+            "raster_images": 0,
+            "viewBox": "0 0 24 24"
+          },
+          {
+            "path": "pliego-black.svg",
+            "sha256": "6389f98f5d4b45a1ab4c0ce5b02428d0d53b21e2655de817e879a1d7be241f5d",
+            "vector_paths": 1,
+            "raster_images": 0,
+            "viewBox": "0 0 24 24"
+          },
+          {
+            "path": "pliego-white.svg",
+            "sha256": "1fbdde427e14f7cf7a1a91f6643f707406c3cce68ec1df4196030e5fe6982523",
+            "vector_paths": 1,
+            "raster_images": 0,
+            "viewBox": "0 0 24 24"
+          }
+        ],
+        "renderer": "MuPDF via PyMuPDF 1.26.6",
+        "not_run": [
+          "reconocimiento con personas",
+          "exclusividad de marca",
+          "navegador nativo; bloqueo reportado por separado"
+        ],
+        "visual_review": "PENDING"
+      }
+    }
+  ]
+}
