@@ -44,7 +44,7 @@ Diseñar y auditar sistemas de color completos que traduzcan la identidad emocio
 ### Fase 2: Regla 60-30-10 y Construcción Matemática de Rampas (100-900 + Comodín 150)
 
 1. **Presupuesto Espacial 60-30-10**:
-   - **60% Dominante (Neutrales Tintados de Superficie)**: Fondos de página, contenedores base y espacio negativo. **Prohibido usar grises muertos puros (`S = 0%`)**: inyecta siempre `2% - 8%` de saturación del `Hue` primario en la rampa de grises (frios o cálidos) para unificar la atmósfera.
+   - **60% Dominante (Neutrales Tintados de Superficie)**: Fondos de página, contenedores base y espacio negativo. Evita grises puros cuando desentonen con la atmósfera. Al generar una paleta nueva, `2%-8%` de saturación HSB del `Hue` primario puede ser un **objetivo contextual**, no universal ni propiedad garantizada de cada neutral o rampa; verifica o comunica los valores HEX reales del catálogo.
    - **30% Secundario (Estructura y Elevación)**: Tarjetas secundarias, barras laterales, cabeceras, bordes y tipografía principal/secundaria.
    - **10% Acento (Foco de Acción)**: reservado estrictamente para el CTA primario, indicadores activos y puntos focales críticos. Si el color de acento supera el 10% del viewport, deja de ser un acento y se vuelve ruido.
 2. **Construcción de la Rampa `100-900` + Comodín `150` (Opacidad Escalonada / Curva HSB)**:
@@ -96,7 +96,7 @@ Entrega una especificación del **Sistema de Color** (`design-system/04-color-sy
 1. **Justificación Cromática y Armonía**: Mapeo de keywords -> `Hue` base, esquema de armonía elegido y presupuesto `60-30-10`.
 2. **Tablas Completas de Rampas (`100-900` + `150`)**: Valores en `HEX` y `OKLCH`/`HSL` para:
    - Rampa `Primary` (y `Secondary`/`Accent` si aplica).
-   - Rampa `Neutral` (tintada con `2%-8%` de saturación del matiz base).
+   - Rampa `Neutral` (al generarla, `2%-8%` de saturación HSB es solo un objetivo contextual; si se citan HEX de catálogo, comunica su saturación real por paso en lugar de asumir ese rango).
    - Rampas Semánticas (`Success`, `Warning`, `Danger`, `Info`).
 3. **Mapeo Dual-Theme (Light Mode vs. Dark Mode)**: Tabla de asignación semántica (`--surface-canvas`, `--surface-card`, `--surface-elevated`, `--text-primary`, `--text-secondary`, `--border-subtle`, `--action-primary`) para ambos modos.
 4. **Matriz de Auditoría Psicofísica y WCAG**: Ratios de contraste verificados para los pares texto/fondo y validación contra cromoestereopsis, halación y daltonismo.
@@ -109,7 +109,7 @@ Entrega una especificación del **Sistema de Color** (`design-system/04-color-sy
 
 ## Verification
 
-- [ ] Se construyeron las rampas completas `100-900` incluyendo el paso comodín `150` y neutrales tintados (`S: 2%-8%`).
+- [ ] Se construyeron las rampas completas `100-900` incluyendo el paso comodín `150`; la saturación HSB `2%-8%` es un objetivo contextual al generar neutrales, no una regla universal. Si se afirma un rango para un catálogo existente, se verificó por HEX y por paso.
 - [ ] El presupuesto espacial respeta la proporción `60% Neutrales - 30% Estructura - 10% Acento`.
 - [ ] Los ratios de contraste se calcularon con `scripts/contrast_check.py` (no estimados a ojo) y el paso de CTA es el que el script valida.
 - [ ] Prueba del helper (stdlib): desde este directorio, `python3 -B -m unittest discover -s tests -p 'test_*.py' -v`.

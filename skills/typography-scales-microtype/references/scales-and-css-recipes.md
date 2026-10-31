@@ -2,9 +2,9 @@
 
 ## 1. Escala Armónica por Raíces de la Proporción Áurea ($\sqrt{\phi} = 1.272$ / $\sqrt[3]{\phi} = 1.174$)
 
-Esta progresión puede servir como punto de partida para sitios editoriales, marcas o portfolios que buscan un contraste más pronunciado en Desktop y una progresión suave en Mobile. Adáptala al contenido, la fuente y los dispositivos del proyecto:
+Esta progresión puede servir como punto de partida para sitios editoriales, marcas o portfolios que buscan un contraste más pronunciado en Desktop y una progresión suave en Mobile. Adáptala al contenido, la fuente y los dispositivos del proyecto. Los multiplicadores expresan la progresión objetivo desde `16px`; los tamaños de la tabla son aproximaciones con ajustes ópticos, no el resultado exacto de redondear mecánicamente a una cuadrícula de `4px`. Se conservan los tamaños legibles de cuerpo y caption:
 
-| Token | Paso ($n$) | Desktop ($\times 1.272^n$, redond. 4px) | Mobile ($\times 1.174^n$, redond. 2px/4px) | `line-height` inicial | `letter-spacing` inicial |
+| Token | Paso ($n$) | Desktop ($\times 1.272^n$; ajuste óptico) | Mobile ($\times 1.174^n$; ajuste óptico) | `line-height` inicial | `letter-spacing` inicial |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `--text-display` | $+5$ | `56px` (`3.50rem`) | `36px` (`2.25rem`) | `1.08` | `-0.03em` |
 | `--text-h1` | $+4$ | `44px` (`2.75rem`) | `30px` (`1.875rem`) | `1.14` | `-0.02em` |
@@ -50,6 +50,7 @@ $$\text{CSS} = \texttt{clamp(} S_{\min}\text{rem, } b\text{rem + } (m \times 100
   --measure-wide: 75ch;
 }
 
+/* --text-primary y --text-secondary dependen del sistema de roles de color provisto por el proyecto; esta receta no obliga a una herramienta ni stack. */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   text-wrap: balance;
   color: var(--text-primary);
@@ -94,4 +95,4 @@ p, .body-copy {
 }
 ```
 
-> Estos valores son ejemplos de CSS, no resultados de pruebas. Para SC 1.4.12 comprueba simultáneamente los cuatro overrides (`line-height: 1.5`, espaciado entre párrafos `2em`, `letter-spacing: 0.12em`, `word-spacing: 0.16em`) y que no se pierda contenido. Para SC 1.4.4 comprueba el redimensionado/zoom pertinente (incluido 200% cuando aplique); una unidad CSS por sí sola no demuestra cumplimiento.
+> Estos valores son ejemplos de CSS, no resultados de pruebas. Para SC 1.4.12 comprueba simultáneamente los cuatro overrides (`line-height: 1.5`, espaciado entre párrafos `2em`, `letter-spacing: 0.12em`, `word-spacing: 0.16em`) y que el renderizado no pierda contenido ni función. `min-height` puede ayudar a evitar recortes, pero no basta para demostrar el criterio. Sin renderizador/evidencia del producto, el estado es `NOT VERIFIED`; esta receta no demuestra conformidad global. Para SC 1.4.4 comprueba el redimensionado/zoom pertinente (incluido 200% cuando aplique); una unidad CSS por sí sola no demuestra cumplimiento.

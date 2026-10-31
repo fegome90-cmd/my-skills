@@ -77,6 +77,7 @@ Este CSS ilustra un preset posible. Cambia columnas, breakpoints, gutters, márg
 }
 
 .layout-grid {
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
   gap: var(--grid-gutter);

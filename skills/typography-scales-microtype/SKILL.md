@@ -44,7 +44,7 @@ Elige una escala que responda al proyecto y al contenido; los tamaños y progres
 | `--text-overline` | Eyebrow (`UPPERCASE`), si aporta información | `12px` (`0.75rem`) | `12px` (`0.75rem`) | `0.75rem` | `1.33` (`16px`) | `+0.08em` |
 
 2. **Arquitectura B - Escala Armónica por Raíces de la Proporción Áurea (`phi = 1.618`)**:
-   - Si encaja con un proyecto editorial o de marca, puedes probar desktop `sqrt(phi) = 1.272` y mobile `cuberoot(phi) = 1.174` como progresiones iniciales, no como una elección universal.
+   - Si encaja con un proyecto editorial o de marca, puedes probar desktop `sqrt(phi) = 1.272` y mobile `cuberoot(phi) = 1.174` como progresiones iniciales, no como una elección universal. Los tamaños de `references/scales-and-css-recipes.md` son aproximaciones con ajuste óptico, no redondeos exactos a una cuadrícula de `4px`; conserva los tamaños legibles de cuerpo y caption.
    - Consulta las tablas y fórmulas de interpolación `clamp()` en `references/scales-and-css-recipes.md`.
 
 ### Fase 2: Parametrización Micro-tipográfica en CSS
@@ -95,6 +95,6 @@ Entrega una especificación de **Escala Tipográfica y Micro-tipografía** (`des
 
 - [ ] Se registran unidades y escala elegidas para el contexto; `rem`/`clamp()` se consideran recomendaciones, no evidencia de conformidad.
 - [ ] Los valores de letter-spacing, line-height y medida se adaptan al uso; `line-height: 1.5`–`1.6` no se toma como prueba de SC 1.4.12.
-- [ ] Cuando aplica SC 1.4.12, se prueban los cuatro overrides simultáneamente sin pérdida de contenido: `line-height: 1.5`, espaciado entre párrafos `2em`, `letter-spacing: 0.12em` y `word-spacing: 0.16em`.
+- [ ] Cuando aplica SC 1.4.12, se prueban simultáneamente los cuatro overrides (`line-height: 1.5`, espaciado entre párrafos `2em`, `letter-spacing: 0.12em`, `word-spacing: 0.16em`) y se comprueba en el renderizado que no se pierda contenido ni función. `min-height` puede ayudar, pero no basta; sin renderizador/evidencia del producto, el resultado es `NOT VERIFIED` y no se declara conformidad global.
 - [ ] Cuando aplica SC 1.4.4, se comprueba el redimensionado/zoom al 200% en el producto pertinente y que el contenido no se pierda; no se infiere resultado solo de usar `rem` o `px`.
 - [ ] Los checks no ejecutados quedan identificados como no verificados, no como conformes.

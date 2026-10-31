@@ -49,7 +49,7 @@ El movimiento en una interfaz no es decoración; explica de dónde viene un elem
    - **4. Functional Affordance**: El control ejecuta una función con propósito real para la tarea del usuario.
    - **5. Feedback & Recovery States**: Ninguna vista está terminada si solo existe el *Happy Path*. Debes diseñar explícitamente:
      - `Empty State` (Estado vacío con explicación y CTA de primer paso).
-     - `Loading / Skeleton State` (Preservando las dimensiones exactas para `CLS = 0`).
+     - `Loading / Skeleton State` (Reservar dimensiones previstas puede reducir saltos dentro del componente; el CLS de página requiere medición y no se infiere como cero).
      - `Partial / Truncated Data State` (Qué ocurre si un nombre tiene 80 caracteres o un número tiene 12 dígitos).
      - `Error & Recovery State` (Mensaje en lenguaje humano junto al campo afectado indicando qué ocurrió y cómo resolverlo sin perder los datos ingresados).
 2. **Método de Generación "Widget-First" (4 Variaciones antes de ensamblar la Página)**:

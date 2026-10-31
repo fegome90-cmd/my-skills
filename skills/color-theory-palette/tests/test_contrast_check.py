@@ -98,6 +98,23 @@ class ContrastCliTests(unittest.TestCase):
                         ink_ratio = against_ink.stdout.split(": ", 1)[1].split(":1 -> ", 1)[0]
                         self.assertEqual(ink_ratio, fields[3])
 
+    def test_invalid_hex_is_reported_without_traceback_for_ramp_and_pair(self):
+        for value in ("GGGGGG", "#12AB", "##ABC", "##AABBCC"):
+            cases = (
+                ("ramp", (value,)),
+                ("pair", (value, "#FFFFFF")),
+                ("pair", ("#000000", value)),
+            )
+            for command, arguments in cases:
+                with self.subTest(value=value, command=command, arguments=arguments):
+                    result = run_cli(command, *arguments)
+
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertEqual(result.stdout, "")
+                    self.assertEqual(len(result.stderr.splitlines()), 1, result.stderr)
+                    self.assertIn(value, result.stderr)
+                    self.assertNotIn("Traceback", result.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

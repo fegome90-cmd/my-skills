@@ -34,10 +34,12 @@ MIX = [
 
 
 def parse_hex(value):
-    h = value.strip().lstrip("#")
+    h = value.strip()
+    if h.startswith("#"):
+        h = h[1:]
     if len(h) == 3:
         h = "".join(c * 2 for c in h)
-    if len(h) != 6:
+    if len(h) != 6 or any(c not in "0123456789abcdefABCDEF" for c in h):
         raise ValueError(f"Color HEX invalido: {value}")
     return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
@@ -102,13 +104,17 @@ def cmd_ramp(base_hex):
 
 
 def main(argv):
-    if len(argv) == 4 and argv[1] == "pair":
-        cmd_pair(argv[2], argv[3])
-    elif len(argv) == 3 and argv[1] == "ramp":
-        cmd_ramp(argv[2])
-    else:
-        print(__doc__)
-        return 1
+    try:
+        if len(argv) == 4 and argv[1] == "pair":
+            cmd_pair(argv[2], argv[3])
+        elif len(argv) == 3 and argv[1] == "ramp":
+            cmd_ramp(argv[2])
+        else:
+            print(__doc__)
+            return 1
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
     return 0
 
 

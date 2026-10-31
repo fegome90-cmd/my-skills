@@ -1,8 +1,8 @@
 # Catálogo de Paletas Completas (100-900 + 150) y Mapeo Dual-Theme
 
-## 1. Paleta Arquetipo Técnico / Clínico / SaaS (Azul Cobalto `Hue 220°` + Neutrales Frios Tintados)
+## 1. Paleta Arquetipo Técnico / Clínico / SaaS (Azul Cobalto `Hue 220°` + Neutrales Fríos Tintados)
 
-| Paso | Primary (Cobalt `220°`) | Neutral Tintado (`Hue 220°, S: 4-8%`) | Success (Emerald `152°`) | Warning (Amber `38°`) | Danger (Crimson `352°`) |
+| Paso | Primary (Cobalt `220°`) | Neutral Tintado (HEX de catálogo; S HSB varía por paso) | Success (Emerald `152°`) | Warning (Amber `38°`) | Danger (Crimson `352°`) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **`100`** | `#EFF6FF` | `#F8FAFC` | `#ECFDF5` | `#FFFBEB` | `#FFF1F2` |
 | **`150`** | `#DBEAFE` | `#F1F5F9` | `#D1FAE5` | `#FEF3C7` | `#FFE4E6` |
@@ -17,7 +17,7 @@
 
 ## 2. Paleta Arquetipo Editorial / Orgánico / Bienestar (Terracota `Hue 18°` + Neutrales Piedra Cálidos)
 
-| Paso | Primary (Terracotta `18°`) | Neutral Cálido (`Hue 32°, S: 4-7%`) | Accent Secundario (Sage `145°`) |
+| Paso | Primary (Terracotta `18°`) | Neutral Cálido (HEX de catálogo; S HSB varía por paso) | Accent Secundario (Sage `145°`) |
 | :--- | :--- | :--- | :--- |
 | **`100`** | `#FDF4F0` | `#FAF8F5` | `#F2F7F4` |
 | **`150`** | `#FBE8DF` | `#F3EFEA` | `#E4EFE9` |
@@ -32,9 +32,27 @@
 
 ## 3. Mapeo Semántico Dual-Theme en CSS (`Light Mode` vs `Dark Mode` por Elevación de Luminancia)
 
+El ejemplo CSS selecciona la paleta fría Cobalt/Slate de la tabla 1. Para probar la cálida, sustituye solo los primitivos `--primary-*` y `--neutral-*` declarados aquí por los HEX correspondientes de la tabla 2; los roles semánticos pueden permanecer iguales.
+
 ```css
 :root,
 [data-theme="light"] {
+  /* Primitivos usados en este ejemplo: paleta fría Cobalt/Slate, tabla 1. */
+  --primary-300: #93C5FD;
+  --primary-400: #60A5FA;
+  --primary-600: #2563EB;
+  --primary-700: #1D4ED8;
+  --neutral-100: #F8FAFC;
+  --neutral-150: #F1F5F9;
+  --neutral-200: #E2E8F0;
+  --neutral-300: #CBD5E1;
+  --neutral-400: #94A3B8;
+  --neutral-500: #64748B;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1E293B;
+  --neutral-900: #0F172A;
+
   /* 60% Superficies Dominantes */
   --surface-canvas: var(--neutral-100);
   --surface-subtle: var(--neutral-150);
@@ -42,7 +60,8 @@
   --surface-card: #FFFFFF;
   --surface-elevated: #FFFFFF;
   --border-subtle: var(--neutral-200);
-  --border-strong: var(--neutral-300);
+  /* Para bordes esenciales de UI: >= 3:1 en las superficies claras de este ejemplo. No se aplica a todo borde decorativo. */
+  --border-strong: var(--neutral-500);
   --text-primary: var(--neutral-900);     /* Contraste > 15:1 */
   --text-secondary: var(--neutral-600);   /* Contraste > 5.7:1 */
   --text-muted: var(--neutral-500);       /* Contraste > 4.5:1 */
@@ -59,10 +78,11 @@
   --surface-card: var(--neutral-800);     /* Nivel 2: Tarjeta elevada (#1E293B) */
   --surface-elevated: var(--neutral-700); /* Nivel 3: Modal / Popover (#334155) */
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  /* 0.40 mantiene >= 3:1 sobre las cuatro superficies oscuras listadas; para bordes esenciales, no todos los decorativos. */
+  --border-strong: rgba(255, 255, 255, 0.40);
   --text-primary: var(--neutral-100);     /* Blanco suavizado (#F8FAFC) sin halación */
   --text-secondary: var(--neutral-300);
-  --text-muted: var(--neutral-400);
+  --text-muted: var(--neutral-300);
   /* Acento desaturado (paso 400/500) para evitar vibración óptica */
   --action-primary: var(--primary-400);
   --action-primary-hover: var(--primary-300);

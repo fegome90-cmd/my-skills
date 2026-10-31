@@ -35,27 +35,41 @@ Ruta canónica relativa a la raíz del proyecto (`PROJECT-ROOT`): `PROJECT-ROOT/
       "base": { "$value": "{brand.color.cobalt-600}", "$type": "color" },
       "hover": { "$value": "{brand.color.cobalt-700}", "$type": "color" },
       "dark-mode": { "$value": "{brand.color.cobalt-400}", "$type": "color" }
+    },
+    "surface": {
+      "canvas": {
+        "light": { "$value": "{brand.color.slate-100}", "$type": "color" },
+        "dark": { "$value": "{brand.color.slate-900}", "$type": "color" }
+      },
+      "card": {
+        "light": { "$value": "{brand.color.white}", "$type": "color" },
+        "dark": { "$value": "{brand.color.slate-800}", "$type": "color" }
+      },
+      "card-hover": {
+        "light": { "$value": "{brand.color.slate-150}", "$type": "color" },
+        "dark": { "$value": "{brand.color.slate-850}", "$type": "color" }
+      }
     }
   },
   "mapped": {
     "$description": "Colección pública en esta convención local; los modos se expresan mediante una extensión propia del proyecto.",
     "surface": {
       "canvas": {
-        "$value": "{brand.color.slate-100}",
+        "$value": "{alias.surface.canvas.light}",
         "$type": "color",
-        "$extensions": { "mode": { "light": "{brand.color.slate-100}", "dark": "{brand.color.slate-900}" } },
+        "$extensions": { "mode": { "light": "{alias.surface.canvas.light}", "dark": "{alias.surface.canvas.dark}" } },
         "$description": "Fondo base de toda la pantalla; nunca usar en tarjetas elevadas ni botones."
       },
       "card": {
-        "$value": "{brand.color.white}",
+        "$value": "{alias.surface.card.light}",
         "$type": "color",
-        "$extensions": { "mode": { "light": "{brand.color.white}", "dark": "{brand.color.slate-800}" } },
+        "$extensions": { "mode": { "light": "{alias.surface.card.light}", "dark": "{alias.surface.card.dark}" } },
         "$description": "Superficie de tarjetas y paneles de primer nivel sobre el canvas; no usar para el fondo de página."
       },
       "card-hover": {
-        "$value": "{brand.color.slate-150}",
+        "$value": "{alias.surface.card-hover.light}",
         "$type": "color",
-        "$extensions": { "mode": { "light": "{brand.color.slate-150}", "dark": "{brand.color.slate-850}" } },
+        "$extensions": { "mode": { "light": "{alias.surface.card-hover.light}", "dark": "{alias.surface.card-hover.dark}" } },
         "$description": "Superficie de tarjeta interactiva en estado hover o contenedor secundario sutil (paso 150)."
       }
     },
