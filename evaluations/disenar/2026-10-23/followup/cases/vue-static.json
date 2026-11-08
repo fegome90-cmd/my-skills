@@ -1,0 +1,285 @@
+{
+  "generated_at_utc": "2026-10-23T13:50:48.024148+00:00",
+  "checks": [
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "project/src/App.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/App.js",
+      "specifier": "./primitives/UiPanel.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/App.js",
+      "specifier": "./components/OptionSelector.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/App.js",
+      "specifier": "../vendor/vue.esm-browser.prod.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/App.js",
+      "specifier": "./useDemoState.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "project/src/components/OptionSelector.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/components/OptionSelector.js",
+      "specifier": "../../vendor/vue.esm-browser.prod.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/components/OptionSelector.js",
+      "specifier": "../primitives/UiField.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "project/src/fixtures.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "project/src/main.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/main.js",
+      "specifier": "../vendor/vue.esm-browser.prod.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/main.js",
+      "specifier": "./App.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "project/src/primitives/UiField.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "project/src/primitives/UiPanel.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "project/src/useDemoState.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/useDemoState.js",
+      "specifier": "../vendor/vue.esm-browser.prod.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "project/src/useDemoState.js",
+      "specifier": "./fixtures.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "project/vendor/vue.esm-browser.prod.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "Stylesheet import resolves locally",
+      "file": "project/src/styles.css",
+      "specifier": "./tokens.css",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Entrypoint asset exists",
+      "file": "project/index.html",
+      "specifier": "./src/styles.css",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Entrypoint asset exists",
+      "file": "project/index.html",
+      "specifier": "./src/main.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "initial-snapshot/src/App.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "initial-snapshot/src/App.js",
+      "specifier": "./primitives/UiPanel.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "initial-snapshot/src/App.js",
+      "specifier": "./primitives/UiField.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "initial-snapshot/src/App.js",
+      "specifier": "../vendor/vue.esm-browser.prod.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "initial-snapshot/src/main.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "initial-snapshot/src/main.js",
+      "specifier": "../vendor/vue.esm-browser.prod.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Static import resolves locally without CDN",
+      "file": "initial-snapshot/src/main.js",
+      "specifier": "./App.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "initial-snapshot/src/primitives/UiField.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "initial-snapshot/src/primitives/UiPanel.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "ECMAScript syntax",
+      "file": "initial-snapshot/vendor/vue.esm-browser.prod.js",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "criterion": "Stylesheet import resolves locally",
+      "file": "initial-snapshot/src/styles.css",
+      "specifier": "./tokens.css",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Entrypoint asset exists",
+      "file": "initial-snapshot/index.html",
+      "specifier": "./src/styles.css",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Entrypoint asset exists",
+      "file": "initial-snapshot/index.html",
+      "specifier": "./src/main.js",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Contrast for specified opaque sRGB pair, threshold 4.5",
+      "use": "Main card text",
+      "foreground": "#18352c",
+      "background": "#ffffff",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "{\"foreground\": \"#18352c\", \"background\": \"#ffffff\", \"ratio\": 13.253818409868764, \"threshold\": 4.5, \"status\": \"PASS\", \"scope\": \"Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.\"}",
+      "limit": "Calculation only; no rendered text/background measurement or full accessibility assessment."
+    },
+    {
+      "criterion": "Contrast for specified opaque sRGB pair, threshold 4.5",
+      "use": "Card helper text",
+      "foreground": "#53635a",
+      "background": "#ffffff",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "{\"foreground\": \"#53635a\", \"background\": \"#ffffff\", \"ratio\": 6.363302568789717, \"threshold\": 4.5, \"status\": \"PASS\", \"scope\": \"Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.\"}",
+      "limit": "Calculation only; no rendered text/background measurement or full accessibility assessment."
+    },
+    {
+      "criterion": "Contrast for specified opaque sRGB pair, threshold 4.5",
+      "use": "Page helper text",
+      "foreground": "#53635a",
+      "background": "#f3f4ee",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "{\"foreground\": \"#53635a\", \"background\": \"#f3f4ee\", \"ratio\": 5.75297702512577, \"threshold\": 4.5, \"status\": \"PASS\", \"scope\": \"Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.\"}",
+      "limit": "Calculation only; no rendered text/background measurement or full accessibility assessment."
+    },
+    {
+      "criterion": "Contrast for specified opaque sRGB pair, threshold 4.5",
+      "use": "Selected scenario button",
+      "foreground": "#ffffff",
+      "background": "#18352c",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "{\"foreground\": \"#ffffff\", \"background\": \"#18352c\", \"ratio\": 13.253818409868764, \"threshold\": 4.5, \"status\": \"PASS\", \"scope\": \"Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.\"}",
+      "limit": "Calculation only; no rendered text/background measurement or full accessibility assessment."
+    },
+    {
+      "criterion": "Contrast for specified opaque sRGB pair, threshold 4.5",
+      "use": "Retry button text",
+      "foreground": "#166044",
+      "background": "#ffffff",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "{\"foreground\": \"#166044\", \"background\": \"#ffffff\", \"ratio\": 7.524901809834926, \"threshold\": 4.5, \"status\": \"PASS\", \"scope\": \"Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.\"}",
+      "limit": "Calculation only; no rendered text/background measurement or full accessibility assessment."
+    },
+    {
+      "criterion": "Contrast for specified opaque sRGB pair, threshold 4.5",
+      "use": "Error text",
+      "foreground": "#9c302b",
+      "background": "#ffffff",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "{\"foreground\": \"#9c302b\", \"background\": \"#ffffff\", \"ratio\": 7.313891465871245, \"threshold\": 4.5, \"status\": \"PASS\", \"scope\": \"Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.\"}",
+      "limit": "Calculation only; no rendered text/background measurement or full accessibility assessment."
+    }
+  ],
+  "coverage": "Syntax, local static dependency paths, narrow opaque color calculations; no browser.",
+  "contrast_helper": "/workspace/scratch/d17c3d8f8225/design-testing/skills/disenar/scripts/contrast.py",
+  "contrast_helper_source": "relative repository layout"
+}

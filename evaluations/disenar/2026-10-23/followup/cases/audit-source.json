@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "snapshot_matches_frozen_manifest": true,
+  "checked_candidate_matches_frozen_manifest": true,
+  "checked_candidate": "/workspace/scratch/d17c3d8f8225/design-testing/skills/disenar",
+  "candidate_selection": "explicit --candidate",
+  "historical_source": "/workspace/scratch/d17c3d8f8225/design-testing/skills/disenar",
+  "historical_source_checked": true,
+  "revision": "43408fe0c1b256ed91703b8c5139e568e6c6130a2bfe37629ff67be475000385",
+  "files_count": 12
+}

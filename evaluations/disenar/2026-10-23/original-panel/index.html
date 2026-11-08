@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f6f3">
+    <title>El recorrido del taller</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="workshop">
+      <header class="page-header">
+        <p class="eyebrow"><span class="brand-mark" aria-hidden="true"></span> Cuaderno de taller</p>
+        <h1>Un paso a la vez.</h1>
+        <p class="intro">Cuatro etapas para pasar de una intención a algo que compartir.</p>
+      </header>
+
+      <section class="panel" aria-labelledby="panel-title">
+        <header class="panel-header">
+          <h2 id="panel-title">El recorrido del taller</h2>
+          <span class="playback-state" id="playback-state">Listo para empezar</span>
+        </header>
+
+        <nav aria-label="Elegir etapa del taller">
+          <ol class="stages">
+            <li><button class="stage" type="button" data-stage="0" aria-pressed="true" aria-controls="stage-content">
+              <span class="stage-number" aria-hidden="true">01</span>
+              <span class="stage-name">Preparar</span>
+              <span class="stage-state">Estás aquí</span>
+            </button></li>
+            <li><button class="stage" type="button" data-stage="1" aria-pressed="false" aria-controls="stage-content">
+              <span class="stage-number" aria-hidden="true">02</span>
+              <span class="stage-name">Explorar</span>
+              <span class="stage-state">Elegir etapa</span>
+            </button></li>
+            <li><button class="stage" type="button" data-stage="2" aria-pressed="false" aria-controls="stage-content">
+              <span class="stage-number" aria-hidden="true">03</span>
+              <span class="stage-name">Construir</span>
+              <span class="stage-state">Elegir etapa</span>
+            </button></li>
+            <li><button class="stage" type="button" data-stage="3" aria-pressed="false" aria-controls="stage-content">
+              <span class="stage-number" aria-hidden="true">04</span>
+              <span class="stage-name">Compartir</span>
+              <span class="stage-state">Elegir etapa</span>
+            </button></li>
+          </ol>
+        </nav>
+
+        <div class="stage-content" id="stage-content">
+          <section class="stage-detail" aria-labelledby="stage-title">
+            <p class="eyebrow" id="stage-counter">Etapa 1 de 4</p>
+            <h3 id="stage-title">Preparar</h3>
+            <p class="description" id="stage-description">Alinea al grupo: define el objetivo, reúne los materiales y acuerda qué queréis conseguir al terminar.</p>
+            <p class="outcome"><span class="outcome-label">Para llevaros</span><span id="stage-outcome">Un objetivo común y los materiales a mano.</span></p>
+          </section>
+          <aside class="guide" aria-labelledby="guide-label">
+            <p class="eyebrow" id="guide-label">Pregunta guía</p>
+            <p id="stage-question">¿Qué queremos llevarnos de este taller?</p>
+            <span class="guide-rule" aria-hidden="true"></span>
+            <p class="guide-note">Un momento para pensar juntos antes de seguir.</p>
+          </aside>
+        </div>
+
+        <section class="progress-section" aria-labelledby="progress-label">
+          <div class="progress-labels">
+            <label id="progress-label" for="workshop-progress">Posición en el recorrido</label>
+            <span id="progress-value">25 %</span>
+          </div>
+          <progress id="workshop-progress" value="1" max="4" aria-valuetext="Etapa 1 de 4: Preparar">1 de 4</progress>
+        </section>
+
+        <footer class="panel-footer">
+          <div class="controls" aria-label="Controles del recorrido">
+            <button class="primary-button" type="button" id="play-button">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path id="play-icon" d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              <span id="play-label">Reproducir</span>
+            </button>
+            <button class="reset-button" type="button" id="reset-button">
+              <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" focusable="false"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Reiniciar</span>
+            </button>
+          </div>
+          <p class="playback-help">6 segundos por etapa.<br>Elige cualquier etapa para detenerte en ella.</p>
+        </footer>
+        <p class="motion-note" id="motion-note" hidden>Movimiento reducido activo: los cambios son instantáneos. La reproducción sigue disponible.</p>
+      </section>
+
+      <p class="page-note">Lleva el ritmo del grupo. Puedes detenerte en cualquier momento.</p>
+      <p class="sr-only" id="announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+      <noscript><p class="noscript-note">Activa JavaScript para elegir etapas y reproducir el recorrido. Ahora se muestra la etapa Preparar.</p></noscript>
+    </main>
+  </body>
+</html>

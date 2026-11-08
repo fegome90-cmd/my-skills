@@ -1,0 +1,25 @@
+{
+  "candidate": "disenar",
+  "revision": "development-r1",
+  "files": {
+    "SKILL.md": "c3a1817e2d18b34057ff1699e38296add7ab7cacf5a7cacf9405ddaebb9d9712",
+    "agents/openai.yaml": "518a856e26cec4096173868d35350463111bf83f6f21b1023a9dce4f50f0764c",
+    "references/auditoria-y-verificacion.md": "f0735d4856caf40f1adb4eef379b6696c6ac7ef74b8f80e58fcb112fe0d1075c",
+    "references/direccion-y-fundamentos.md": "ffdd8c5ef9abc44103ed37050f9d05dfbc58bbe67aa147b86567180f4bb6a281",
+    "references/editorial-e-impresion.md": "7375fd3391005f1460642c10f23a91cdd4c7a94979b6224048f442ff2a8ca263",
+    "references/encargo-y-recursos.md": "6016aa37b42a9ddf07f6c6ef9211129d99ae81ab22ddf999a0c0909c5bb8de47",
+    "references/fuentes.md": "54c478fae16e70c2bc93485fbea239dfe49305c1b60a8647bb264d35a3db21d7",
+    "references/identidad-y-grafica.md": "d7c478ebdb768d181878a2c9afb91427b0907b153774a555a31f4adc56ef9e8e",
+    "references/movimiento.md": "d75e5418892ef656e6d0944f8ecd297f26ffa5e64b814d4cfc98a777d0a2b7c5",
+    "references/presentaciones.md": "6ee737320003c24eaaee5a5c8ad28657926eb3d9b236745128d225e08571866e",
+    "references/web-y-componentes.md": "1c5889c743154c43c76ded639eecccd74610f18a4f32cd7fe5081e6f1c492a3a",
+    "scripts/contrast.py": "66b659965c34a4ddea5978cfda7007f7a2d4d5abba7d72887c9db4579af6f2d2"
+  },
+  "evaluation_type": "DEVELOPMENT_FORWARD_CHECKS",
+  "host_activation": "NOT_RUN",
+  "browser_render": "BLOCKED: official Chromium download returned invalid or empty archive; install exit 1",
+  "limitations": [
+    "Fresh-context runs share filesystem, model and tooling; not blind or independent efficacy evidence.",
+    "Supplied candidate is explicitly read; automatic host activation is not tested."
+  ]
+}

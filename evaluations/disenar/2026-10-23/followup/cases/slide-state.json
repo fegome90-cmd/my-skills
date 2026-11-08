@@ -1,0 +1,183 @@
+{
+  "status": "PASS",
+  "method": "Node VM and minimal DOM/event double; no rendering engine, layout, actual keyboard, native focus or CSS animation observed.",
+  "node": "v24.19.0",
+  "observations": [
+    {
+      "label": "initial",
+      "slide": 1,
+      "visibleStages": 0,
+      "position": "1 / 3",
+      "previousDisabled": true,
+      "nextDisabled": false
+    },
+    {
+      "label": "button-enter-second",
+      "slide": 2,
+      "visibleStages": 0,
+      "position": "2 / 3 · Etapas: 0 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "reveal-1",
+      "slide": 2,
+      "visibleStages": 1,
+      "position": "2 / 3 · Etapas: 1 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "reveal-2",
+      "slide": 2,
+      "visibleStages": 2,
+      "position": "2 / 3 · Etapas: 2 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "reveal-3",
+      "slide": 2,
+      "visibleStages": 3,
+      "position": "2 / 3 · Etapas: 3 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "exit-after-all-revealed",
+      "slide": 3,
+      "visibleStages": 3,
+      "position": "3 / 3",
+      "previousDisabled": false,
+      "nextDisabled": true
+    },
+    {
+      "label": "return-from-closing",
+      "slide": 2,
+      "visibleStages": 3,
+      "position": "2 / 3 · Etapas: 3 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "reverse-2",
+      "slide": 2,
+      "visibleStages": 2,
+      "position": "2 / 3 · Etapas: 2 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "reverse-1",
+      "slide": 2,
+      "visibleStages": 1,
+      "position": "2 / 3 · Etapas: 1 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "reverse-0",
+      "slide": 2,
+      "visibleStages": 0,
+      "position": "2 / 3 · Etapas: 0 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "return-to-first",
+      "slide": 1,
+      "visibleStages": 0,
+      "position": "1 / 3",
+      "previousDisabled": true,
+      "nextDisabled": false
+    },
+    {
+      "label": "page-down-reveal",
+      "slide": 2,
+      "visibleStages": 1,
+      "position": "2 / 3 · Etapas: 1 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "page-up-reverse",
+      "slide": 2,
+      "visibleStages": 0,
+      "position": "2 / 3 · Etapas: 0 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "restart-button",
+      "slide": 1,
+      "visibleStages": 0,
+      "position": "1 / 3",
+      "previousDisabled": true,
+      "nextDisabled": false
+    },
+    {
+      "label": "home-clears-progress",
+      "slide": 1,
+      "visibleStages": 0,
+      "position": "1 / 3",
+      "previousDisabled": true,
+      "nextDisabled": false
+    },
+    {
+      "label": "end",
+      "slide": 3,
+      "visibleStages": 0,
+      "position": "3 / 3",
+      "previousDisabled": false,
+      "nextDisabled": true
+    },
+    {
+      "label": "reverse-after-end",
+      "slide": 2,
+      "visibleStages": 3,
+      "position": "2 / 3 · Etapas: 3 de 3",
+      "previousDisabled": false,
+      "nextDisabled": false
+    },
+    {
+      "label": "rapid-input-clamps-end",
+      "slide": 3,
+      "visibleStages": 3,
+      "position": "3 / 3",
+      "previousDisabled": false,
+      "nextDisabled": true
+    },
+    {
+      "label": "rapid-reverse-clamps-start",
+      "slide": 1,
+      "visibleStages": 0,
+      "position": "1 / 3",
+      "previousDisabled": true,
+      "nextDisabled": false
+    },
+    {
+      "label": "modifier-ignored",
+      "slide": 1,
+      "visibleStages": 0,
+      "position": "1 / 3",
+      "previousDisabled": true,
+      "nextDisabled": false
+    },
+    {
+      "label": "form-ignored",
+      "slide": 1,
+      "visibleStages": 0,
+      "position": "1 / 3",
+      "previousDisabled": true,
+      "nextDisabled": false
+    },
+    {
+      "label": "editable-ignored",
+      "slide": 1,
+      "visibleStages": 0,
+      "position": "1 / 3",
+      "previousDisabled": true,
+      "nextDisabled": false
+    }
+  ]
+}

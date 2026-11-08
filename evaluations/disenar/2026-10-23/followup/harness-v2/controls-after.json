@@ -1,0 +1,139 @@
+{
+  "revision": "fixed",
+  "source_commit": "2df99b33479881af531bfae44e6f9dbfe3629ed2",
+  "archive_sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5",
+  "contract_sha256": "83dd1e8b09d24b4d49b8952823ff4aa96f4fe4dfd8bc3144152f109b289930fb",
+  "test_sha256": "2a7295e21e6f5c9e80687434e4ebf2972c8190a7488ea6fcc1e43b3b60e862f8",
+  "checks": [
+    {
+      "id": "contrast-valid",
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/tmp/disenar-oracle-otm2dg9d/followup/bank/checks-contrast.py"
+          ],
+          "exit_code": 0,
+          "stdout": "[\n  {\n    \"case\": \"case-1-rea\",\n    \"pairs\": 12,\n    \"failures\": []\n  },\n  {\n    \"case\": \"case-2-generic\",\n    \"pairs\": 9,\n    \"failures\": []\n  }\n]\n",
+          "stderr": ""
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "contrast-invalid",
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/tmp/disenar-oracle-glp8io11/followup/bank/checks-contrast.py"
+          ],
+          "exit_code": 1,
+          "stdout": "[\n  {\n    \"case\": \"case-1-rea\",\n    \"pairs\": 12,\n    \"failures\": [\n      {\n        \"label\": \"Tinta claro\",\n        \"foreground\": \"#f4f4f0\",\n        \"background\": \"#f4f4f0\",\n        \"ratio\": 1.0,\n        \"threshold\": 4.5,\n        \"status\": \"FAIL\"\n      }\n    ]\n  },\n  {\n    \"case\": \"case-2-generic\",\n    \"pairs\": 9,\n    \"failures\": []\n  }\n]\n",
+          "stderr": ""
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "svg-valid",
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/tmp/disenar-oracle-yxyjcowo/followup/identity/produce_verify.py"
+          ],
+          "exit_code": 0,
+          "stdout": "SVG structure, alpha consistency and editability: PASS\n",
+          "stderr": ""
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "svg-invalid-white",
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/tmp/disenar-oracle-afa6gun4/followup/identity/produce_verify.py"
+          ],
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"/tmp/disenar-oracle-afa6gun4/followup/identity/produce_verify.py\", line 52, in <module>\n    assert actual_fill == expected_fill, (name, expected_fill, actual_fill)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('white', '#ffffff', '#000000')\n"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "pptx-valid-boundary",
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/tmp/disenar-oracle-pxqj9ltw/editable-deck/source/validate_deck.py",
+            "/tmp/disenar-oracle-pxqj9ltw/editable-deck/output/plan-talleres-2027.pptx"
+          ],
+          "exit_code": 0,
+          "stdout": "{\n  \"status\": \"PASS\",\n  \"file\": \"/tmp/disenar-oracle-pxqj9ltw/editable-deck/output/plan-talleres-2027.pptx\",\n  \"sha256\": \"ce9132ac283d42b76ffeca5f3e2385d98d823d3f47dcc72bc7584bf3e600a389\",\n  \"suggested_duration_seconds\": 300,\n  \"spoken_notes_words\": 556\n}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/tmp/disenar-oracle-pxqj9ltw/followup/pptx_raster_probe.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"probe_status\": \"PASS\", \"native_editability\": \"PASS\", \"raster_editability\": \"FAIL\", \"negative_validator_exit\": 1}\n",
+          "stderr": ""
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "pptx-broken-validator",
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/tmp/disenar-oracle-7p7bjbu4/followup/pptx_raster_probe.py"
+          ],
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"/tmp/disenar-oracle-7p7bjbu4/followup/pptx_raster_probe.py\", line 68, in <module>\n    assert control.returncode==0, ('native validator did not accept the control', control.stderr)\n           ^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('native validator did not accept the control', 'Traceback (most recent call last):\\n  File \"/tmp/disenar-oracle-7p7bjbu4/editable-deck/source/validate_deck.py\", line 1, in <module>\\n    raise RuntimeError(\"ORACLE_TEST_VALIDATOR_UNAVAILABLE\")\\nRuntimeError: ORACLE_TEST_VALIDATOR_UNAVAILABLE\\n')\n"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "pptx-negative-operational-error",
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/tmp/disenar-oracle-gbvkttnb/editable-deck/source/validate_deck.py",
+            "/tmp/disenar-oracle-gbvkttnb/editable-deck/output/plan-talleres-2027.pptx"
+          ],
+          "exit_code": 0,
+          "stdout": "{\n  \"status\": \"PASS\",\n  \"file\": \"/tmp/disenar-oracle-gbvkttnb/editable-deck/output/plan-talleres-2027.pptx\",\n  \"sha256\": \"ce9132ac283d42b76ffeca5f3e2385d98d823d3f47dcc72bc7584bf3e600a389\",\n  \"suggested_duration_seconds\": 300,\n  \"spoken_notes_words\": 556\n}\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+            "/tmp/disenar-oracle-gbvkttnb/followup/pptx_raster_probe.py"
+          ],
+          "exit_code": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"/tmp/disenar-oracle-gbvkttnb/followup/pptx_raster_probe.py\", line 74, in <module>\n    negative_result=json.loads(check.stdout)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py\", line 338, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py\", line 356, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n"
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "totals": {
+    "PASS": 7,
+    "FAIL": 0
+  },
+  "scope": "Verifier regression controls. Does not test browser interaction, host activation or human outcomes."
+}

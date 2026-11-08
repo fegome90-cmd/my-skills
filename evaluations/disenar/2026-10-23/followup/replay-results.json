@@ -1,0 +1,84 @@
+{
+  "purpose": "bounded replay, not global acceptance",
+  "archive_sha256": "2840abdc017586e6eff6e285cc6fb8697da189f341e181d1a01b0946a9a78ff5",
+  "evaluator_sha256": "28c5ab8bfefae518d174f9ed497cced39978ddf4827becb98d5acae8fd9649a3",
+  "candidate_unchanged": true,
+  "checks": [
+    {
+      "id": "vue-runtime",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "{\n  \"generated_at_utc\": \"2026-10-23T14:00:09.735Z\",\n  \"node\": \"v24.19.0\",\n  \"runtime\": \"Vue 3.5.22\",\n  \"coverage\": \"Source integrity, real Vue runtime/compiler, reactive state and async fixture logic. No DOM mounting or browser render.\",\n  \"checks\": [\n    {\n      \"id\": \"runtime\",\n      \"criterion\": \"The vendored runtime executes as Vue 3.5.22 and exposes real reactive refs.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"compile-UiField\",\n      \"criterion\": \"UiField template compiles with the shipped Vue compiler (identity HTML-entity decoder for Node; templates contain no entity references).\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"compile-UiPanel\",\n      \"criterion\": \"UiPanel template compiles with the shipped Vue compiler (identity HTML-entity decoder for Node; templates contain no entity references).\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"compile-OptionSelector\",\n      \"criterion\": \"OptionSelector template compiles with the shipped Vue compiler (identity HTML-entity decoder for Node; templates contain no entity references).\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"compile-App\",\n      \"criterion\": \"App template compiles with the shipped Vue compiler (identity HTML-entity decoder for Node; templates contain no entity references).\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"selector-unavailability\",\n      \"criterion\": \"Loading, error, empty and disabled states make the select unavailable; normal options allow use.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"scenarios-and-preservation\",\n      \"criterion\": \"All six demo modes share the same state/controller; selection survives temporary unavailability and reset works.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"retry-immediate\",\n      \"criterion\": \"Retry enters loading synchronously.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"retry-completes\",\n      \"criterion\": \"Retry returns to ready with options after its local timer.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"retry-cancellation\",\n      \"criterion\": \"Changing scenario cancels an outstanding retry so it does not overwrite the new state.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"dispose-cancels-timer\",\n      \"criterion\": \"Disposal cancels a retry timer (the component calls disposal on unmount).\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"preserve-UiField.js\",\n      \"criterion\": \"Existing primitive UiField.js remains byte-for-byte unchanged from the initial snapshot.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"preserve-UiPanel.js\",\n      \"criterion\": \"Existing primitive UiPanel.js remains byte-for-byte unchanged from the initial snapshot.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"radix-react-requirement\",\n      \"criterion\": \"Required Radix Select package is real and declares React/ReactDOM peer runtimes and imports.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"no-react-and-no-cdn\",\n      \"criterion\": \"The active app has no React/Radix imports and no remote scripts, styles, fonts or imports.\",\n      \"status\": \"PASS\",\n      \"method\": \"v24.19.0 + local Vue runtime; no browser\"\n    },\n    {\n      \"id\": \"render-keyboard-layout\",\n      \"criterion\": \"Rendered viewports, keyboard, focus, native popup and assistive technologies.\",\n      \"status\": \"BLOCKED\",\n      \"method\": \"No browser controlled by this worker. Coordinator reports cloud browser cannot reach localhost and policy rejected data URLs; alternate control surfaces are prohibited. No rendered or keyboard evidence exists.\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "id": "vue-static",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "{\"PASS\": 40, \"FAIL\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "id": "vue-react-compatibility",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "{\"analysis\": \"COMPLETE\", \"integration\": \"BLOCKED\", \"project_unchanged\": true}\n",
+      "stderr": ""
+    },
+    {
+      "id": "slide-state",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "{\"status\":\"PASS\",\"observations\":22,\"method\":\"Node VM and minimal DOM/event double; no rendering engine, layout, actual keyboard, native focus or CSS animation observed.\"}\n",
+      "stderr": ""
+    },
+    {
+      "id": "sql",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "{\"sqlite_version\": \"3.53.1\", \"before_ids\": [1, 1, 2, 5, 5, 5], \"after_ids\": [1, 2, 5], \"checks\": 6, \"status\": \"PASS\"}\n",
+      "stderr": ""
+    },
+    {
+      "id": "skill-audit",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "{\"lint\": \"OK\", \"lint_findings\": 0, \"lint_unverified_external\": 40, \"helper_cases\": 6, \"source_unchanged\": true}\n",
+      "stderr": ""
+    },
+    {
+      "id": "svg-vector-edit",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "SVG structure, alpha consistency and editability: PASS\n",
+      "stderr": ""
+    },
+    {
+      "id": "pptx-raster-boundary",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "{\"probe_status\": \"PASS\", \"native_editability\": \"PASS\", \"raster_editability\": \"FAIL\", \"negative_validator_exit\": 1}\n",
+      "stderr": ""
+    },
+    {
+      "id": "generic-source",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"method\": \"Python HTMLParser + filesystem\",\n  \"coverage\": [\n    \"unique ids\",\n    \"fragment link targets\",\n    \"local stylesheet and script exist\",\n    \"no external HTML resource\",\n    \"no package manifest\"\n  ],\n  \"ids\": 16,\n  \"local_resources\": [\n    \"styles.css\",\n    \"app.js\"\n  ],\n  \"excluded\": [\n    \"browser parse behavior\",\n    \"rendering\",\n    \"interaction\",\n    \"global accessibility\"\n  ]\n}\n[\n  {\n    \"case\": \"case-1-rea\",\n    \"pairs\": 12,\n    \"failures\": []\n  },\n  {\n    \"case\": \"case-2-generic\",\n    \"pairs\": 9,\n    \"failures\": []\n  }\n]\n",
+      "stderr": ""
+    },
+    {
+      "id": "bank-color-pairs",
+      "status": "PASS",
+      "exit_code": 0,
+      "stdout": "[\n  {\n    \"case\": \"case-1-rea\",\n    \"pairs\": 12,\n    \"failures\": []\n  },\n  {\n    \"case\": \"case-2-generic\",\n    \"pairs\": 9,\n    \"failures\": []\n  }\n]\n",
+      "stderr": ""
+    }
+  ],
+  "not_replayed": [
+    "full REA npm build/test (recorded logs and separate reconstruction instructions)",
+    "browser render, keyboard, timing and device tests",
+    "host installation or automatic invocation",
+    "human outcomes, physical printing or Microsoft Office UI"
+  ]
+}

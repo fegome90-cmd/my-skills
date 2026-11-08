@@ -1,0 +1,20 @@
+[
+  {
+    "exit_code": 0,
+    "foreground": "#4a3d32",
+    "background": "#ffffff",
+    "ratio": 10.47525511720026,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim."
+  },
+  {
+    "exit_code": 0,
+    "foreground": "#4a3d32",
+    "background": "#f4f1e8",
+    "ratio": 9.275078770045155,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim."
+  }
+]

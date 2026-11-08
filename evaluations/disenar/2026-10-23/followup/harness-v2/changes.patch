@@ -1,0 +1,63 @@
+--- archive/followup/bank/checks-contrast.py
++++ harness-v2/checks-contrast.py
+@@ -22,3 +22,4 @@
+  (Path(__file__).resolve().parent/Path(case)/'checks'/'contrast.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+  rows.append({'case':case,'pairs':len(result),'failures':[r for r in result if r['status']=='FAIL']})
+ print(json.dumps(rows,ensure_ascii=False,indent=2))
++raise SystemExit(1 if any(row['failures'] for row in rows) else 0)
+--- archive/followup/identity/produce_verify.py
++++ harness-v2/produce_verify.py
+@@ -47,6 +47,9 @@
+     assert not root.findall('.//{*}image')
+     assert not root.findall('.//{*}script')
+     assert len(root.findall('.//{*}path'))==1
++    expected_fill = {'master': 'currentColor', 'black': '#000000', 'white': '#ffffff'}[name]
++    actual_fill = root.find('.//{*}path').get('fill')
++    assert actual_fill == expected_fill, (name, expected_fill, actual_fill)
+     files.append({'path':target.name,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'vector_paths':1,'raster_images':0,'viewBox':root.attrib['viewBox']})
+ a=Image.open(p/'pliego-black-24.png').getchannel('A')
+ b=Image.open(p/'pliego-white-24.png').getchannel('A')
+--- archive/followup/pptx_raster_probe.py
++++ harness-v2/pptx_raster_probe.py
+@@ -63,10 +63,20 @@
+ assert native['requested_editability']=='PASS'
+ assert raster['requested_editability']=='FAIL'
+ assert raster['notes']==8 and all(x['pictures']==1 for x in raster['slides'])
++control=subprocess.run([sys.executable,str(baseline/'source/validate_deck.py'),str(original)],capture_output=True,text=True)
++(dest/'existing-validator-positive.log').write_text(control.stdout+control.stderr)
++assert control.returncode==0, ('native validator did not accept the control', control.stderr)
++native_result=json.loads(control.stdout)
++assert native_result['status']=='PASS' and native_result['sha256']==native['sha256']
+ check=subprocess.run([sys.executable,str(baseline/'source/validate_deck.py'),str(output)],capture_output=True,text=True)
+-assert check.returncode!=0
+ (dest/'existing-validator-negative.log').write_text(check.stdout+check.stderr)
++assert check.returncode==1, ('unexpected negative validator exit', check.returncode)
++negative_result=json.loads(check.stdout)
++assert negative_result['status']=='FAIL' and negative_result['code']=='NATIVE_TEXT_MISSING'
++assert negative_result['sha256']==raster['sha256'] and negative_result['slide']==1
+ report={'probe_status':'PASS','native':native,'image_only':raster,
++        'native_validator':{'exit_code':control.returncode,'result':native_result},
++        'negative_validator':{'exit_code':check.returncode,'result':negative_result},
+         'existing_validator_exit_code':check.returncode,
+         'outcome':'Image-only exporter cannot satisfy requested text/diagram editability. Preserve output as partial and disclose exact unmet requirement; use native producer when available.',
+         'scope':'Actual OOXML output rejection; no Microsoft PowerPoint UI or skill invocation claim.'}
+--- archive/editable-deck/source/validate_deck.py
++++ harness-v2/validate_deck.py
+@@ -34,6 +34,10 @@
+     for i, name in enumerate(slide_names):
+         root = ET.fromstring(z.read(name))
+         texts = [e.text or '' for e in root.findall('.//a:t', NS)]
++        if not texts:
++            print(json.dumps({'status': 'FAIL', 'code': 'NATIVE_TEXT_MISSING',
++                              'slide': i + 1, 'file': str(PPTX), 'sha256': report['sha256']}))
++            raise SystemExit(1)
+         joined = ' '.join(texts)
+         for expected in EXPECTED[i]:
+             assert expected in joined, (i + 1, expected, joined)
+@@ -78,5 +82,6 @@
+ assert report['suggested_duration_seconds'] == 300
+ report['claim_boundary'] = 'OOXML package inspection. Does not verify interactive editing in Microsoft PowerPoint or actual speaking time.'
+ out = ROOT / 'checks/content-editability.json'
++out.parent.mkdir(parents=True, exist_ok=True)
+ out.write_text(json.dumps(report, ensure_ascii=False, indent=2))
+ print(json.dumps({key: report[key] for key in ['status', 'file', 'sha256', 'suggested_duration_seconds', 'spoken_notes_words']}, ensure_ascii=False, indent=2))

@@ -1,0 +1,64 @@
+{
+  "case_id": "disenar-final-development",
+  "revision": "technical-v1",
+  "evaluation_purpose": "technical_validation",
+  "need": "Sistema propio de diseño independiente de bancos, marcas y frameworks; completar el artefacto solicitado con evidencia proporcionada.",
+  "mode": "create/adapt; development verification",
+  "source": "research/design-acceptance-cases.json (preimplementation criteria) + finalization-plan.md",
+  "source_revision": "371d27ed5ae2a7bf1b3f15e6b191ea3acb6f040fd74cbf12f0ab9a2a1770f1c2",
+  "expected_outcome": "Paquete portable y entregables representativos; registro del host y cobertura de navegador se valoran por separado, sin aprobación implícita.",
+  "requirements": [
+    {
+      "text": "Independencia del banco personal y respeto de recursos elegidos",
+      "source": "user 2026-10-23",
+      "validity": "current"
+    },
+    {
+      "text": "Artefactos reales y separación entre evidencia ejecutada y pendiente",
+      "source": "frozen D04/D08/D10/D13 and P01-P04",
+      "validity": "current"
+    }
+  ],
+  "preferences": [],
+  "capabilities": [
+    "read/write own workspace",
+    "GitHub connector",
+    "Python/Node",
+    "available document producer",
+    "image inspection"
+  ],
+  "permissions": [
+    "create/adapt skill source in new my-skills branch",
+    "no mutation of component repositories",
+    "no internal host write after rejection"
+  ],
+  "baseline_conditions": "No comparative value evaluation requested or performed.",
+  "mandatory_checks": [
+    "structure",
+    "resource-resolution",
+    "provenance",
+    "permissions",
+    "original-component-source",
+    "motion-no-playback",
+    "editable-deck",
+    "image-audit",
+    "external-selection"
+  ],
+  "criteria": {
+    "structure": "P03: exact-candidate official validator and manager local inspector; retain coverage limits.",
+    "resource-resolution": "P01: resolve local resources from isolated package with no private bank mounts.",
+    "provenance": "P02/source contract: preserve reviewed provenance, own synthesis and asset/license boundaries.",
+    "permissions": "No modified component repositories, host registry or audit image; source changes only within authorized paths.",
+    "original-component-source": "D04: produce original HTML/CSS/JS requested, no dependencies, with content and behavior; explicitly distinguish simulated checks from real browser.",
+    "motion-no-playback": "D08 combined with D04: real source/integration and reduced-motion behavior; unavailable actual playback remains BLOCKED.",
+    "editable-deck": "D10: eight slides and notes; text and diagram editable in OOXML; inspect render when available. PowerPoint application interoperability separate.",
+    "image-audit": "D13: actual image observations and prioritized report; no source edits or interaction/cognition claims.",
+    "external-selection": "D03 derivative: keep user-chosen Pico CSS in existing fixture, compatible HTML and actual artifact; no component-bank substitution. Browser coverage separate."
+  },
+  "limits": [
+    "Technical record normalizes previously frozen criteria; not an independent or blind benchmark.",
+    "Fresh-context agents share model, filesystem and tooling.",
+    "Original-component and motion cases combined; final observations must retain this deviation.",
+    "Host automatic activation and real-browser coverage are separate integration checks, not inferred from technical readiness."
+  ]
+}

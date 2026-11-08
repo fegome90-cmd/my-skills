@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "exact_single_replacement": true,
+  "source_intact": true,
+  "diff": "--- before.html\n+++ index.html\n@@ -5,7 +5,7 @@\n <title>Acción de guardado</title>\n <style>\n body { margin: 3rem; background: #f4f1e8; }\n-.save { color: #c1c1c1; background: #ffffff; border: 2px solid #4a3d32; padding: 0.8rem 1.2rem; font: 16px Georgia, serif; border-radius: 0; }\n+.save { color: #4a3d32; background: #ffffff; border: 2px solid #4a3d32; padding: 0.8rem 1.2rem; font: 16px Georgia, serif; border-radius: 0; }\n .save:hover { background: #f4f1e8; }\n .save:focus-visible { outline: 3px solid #1a5487; outline-offset: 3px; }\n </style>\n",
+  "limits": [
+    "Only file change and color calculation are verified; no browser render."
+  ]
+}

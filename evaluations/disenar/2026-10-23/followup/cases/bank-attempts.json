@@ -1,0 +1,28 @@
+{
+  "npm_ci_offline": {
+    "status": "BLOCKED",
+    "observed": "ENOTCACHED yoctocolors-2.2.0.tgz; install then retried online with existing lockfile."
+  },
+  "npm_ci_prefer_offline": {
+    "status": "PASS",
+    "observed": "499 packages installed; --ignore-scripts; package/lock hashes unchanged."
+  },
+  "initial_make_check": {
+    "status": "FAIL",
+    "reason": "Copied research metadata registry-inventory.json/source-manifest.json lacked final newline; these are not upstream tracked files. Removed only from runnable work copy; preserved in snapshots. Not attributed to component or upstream code.",
+    "final": "PASS"
+  },
+  "initial_biome": {
+    "status": "FAIL",
+    "reason": "New prop named role collided with native ARIA role. Renamed to occupation before final validation.",
+    "final": "PASS"
+  },
+  "servers": {
+    "status": "BLOCKED",
+    "observed": "Next start encountered uv_interface_addresses error. HTTP from another isolated command returned connection refused for both demos. No browser interaction inferred. Both sessions stopped (130)."
+  },
+  "browser": {
+    "status": "BLOCKED",
+    "source": "Coordinator message: localhost ERR_CONNECTION_REFUSED and data URL rejected by browser policy. Worker never initialized browser."
+  }
+}

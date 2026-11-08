@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "source_command": "bash source/rebuild.sh plan-talleres-2027-reconstruido.pptx",
+  "command_exit_code": 0,
+  "exact_slide_and_notes_text_match": true,
+  "identical_rendered_png_sha256_count": 8,
+  "byte_identical_pptx": false,
+  "reason": "Package identifiers and ZIP metadata may differ between generations.",
+  "original_sha256": "ce9132ac283d42b76ffeca5f3e2385d98d823d3f47dcc72bc7584bf3e600a389",
+  "rebuilt_sha256": "2b91ae33edb4bf662978e839909013640e7167da5ab0105e1d0b45a0987d944a"
+}

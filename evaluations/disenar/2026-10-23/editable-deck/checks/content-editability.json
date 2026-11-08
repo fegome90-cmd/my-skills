@@ -1,0 +1,151 @@
+{
+  "file": "output/plan-talleres-2027.pptx",
+  "sha256": "ce9132ac283d42b76ffeca5f3e2385d98d823d3f47dcc72bc7584bf3e600a389",
+  "status": "PASS",
+  "slides": [
+    {
+      "number": 1,
+      "text": [
+        "Plan de talleres 2027:",
+        "aprender haciendo",
+        "Plan interno para un equipo de 12 personas",
+        "Caso de planificación sintético"
+      ],
+      "native_shapes": 4,
+      "native_text_shapes": 4,
+      "native_connectors": 0,
+      "pictures": 0,
+      "notes_words": 73
+    },
+    {
+      "number": 2,
+      "text": [
+        "Objetivo",
+        "Alinear criterios",
+        "Producir un prototipo",
+        "compartido"
+      ],
+      "native_shapes": 3,
+      "native_text_shapes": 3,
+      "native_connectors": 0,
+      "pictures": 0,
+      "notes_words": 80
+    },
+    {
+      "number": 3,
+      "text": [
+        "Tres etapas",
+        "Diagnóstico",
+        "2 sesiones",
+        "Diseño",
+        "2 sesiones",
+        "Prototipo",
+        "3 sesiones"
+      ],
+      "native_shapes": 4,
+      "native_text_shapes": 4,
+      "native_connectors": 2,
+      "pictures": 0,
+      "notes_words": 95
+    },
+    {
+      "number": 4,
+      "text": [
+        "Calendario",
+        "Semana 1",
+        "Diagnóstico",
+        "Semana 2",
+        "Diseño",
+        "Semanas 3 y 4",
+        "Prototipo"
+      ],
+      "native_shapes": 9,
+      "native_text_shapes": 7,
+      "native_connectors": 0,
+      "pictures": 0,
+      "notes_words": 89
+    },
+    {
+      "number": 5,
+      "text": [
+        "Roles",
+        "Coordinación",
+        "Organiza",
+        "Facilitación",
+        "Guía",
+        "Participantes",
+        "Construyen"
+      ],
+      "native_shapes": 9,
+      "native_text_shapes": 7,
+      "native_connectors": 0,
+      "pictures": 0,
+      "notes_words": 87
+    },
+    {
+      "number": 6,
+      "text": [
+        "Recursos",
+        "Sala",
+        "Equipo de proyección",
+        "Materiales de trabajo"
+      ],
+      "native_shapes": 6,
+      "native_text_shapes": 4,
+      "native_connectors": 0,
+      "pictures": 0,
+      "notes_words": 82
+    },
+    {
+      "number": 7,
+      "text": [
+        "Riesgos y respuestas",
+        "Disponibilidad",
+        "Agendar con anticipación",
+        "Retrasos",
+        "Priorizar alcance",
+        "Dificultades técnicas",
+        "Preparar una alternativa sencilla"
+      ],
+      "native_shapes": 9,
+      "native_text_shapes": 7,
+      "native_connectors": 0,
+      "pictures": 0,
+      "notes_words": 100
+    },
+    {
+      "number": 8,
+      "text": [
+        "Próxima decisión",
+        "Acordar fecha de inicio",
+        "y responsables"
+      ],
+      "native_shapes": 2,
+      "native_text_shapes": 2,
+      "native_connectors": 0,
+      "pictures": 0,
+      "notes_words": 87
+    }
+  ],
+  "checks": [
+    {
+      "criterion": "Exactly 8 slides and 8 non-empty notes parts",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Required content in the requested slide order",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Native text objects without picture replacement",
+      "status": "PASS"
+    },
+    {
+      "criterion": "Three native process nodes and two attached native connectors",
+      "status": "PASS"
+    }
+  ],
+  "suggested_duration_seconds": 300,
+  "spoken_notes_words": 556,
+  "claim_boundary": "OOXML package inspection. Does not verify interactive editing in Microsoft PowerPoint or actual speaking time."
+}

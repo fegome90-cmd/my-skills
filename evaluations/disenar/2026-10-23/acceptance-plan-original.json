@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "revision": "independence-contract-v1",
+  "created_at": "2026-10-23",
+  "purpose": "Aceptación de desarrollo del sistema de diseño independiente de bibliotecas propias o externas",
+  "status": "NOT_RUN",
+  "evaluation_type": "DEVELOPMENT_ACCEPTANCE_PLAN",
+  "basis": [
+    "Corrección explícita del usuario: alojamiento y funcionamiento independientes del banco personal.",
+    "Resultado y stack del encargo preceden a la selección de recursos.",
+    "pstack: responsabilidad completa, adaptación técnica encapsulada y una fuente canónica.",
+    "skills-manager: casos propios/vecinos, proporcionalidad y distinción de evidencia."
+  ],
+  "execution_rules": [
+    "Preparar el contexto real descrito por setup; registrar desviaciones antes de ejecutar.",
+    "Conservar entrada, salida, cambios y evidencia observable por caso.",
+    "Juzgar significado y comportamiento, no coincidencias de palabras.",
+    "Un recorrido escrito no demuestra activación automática del host.",
+    "Cambios de candidato o criterios producen nueva revisión; conservar fallos previos.",
+    "No afirmar evaluación ciega ni mejora comparativa desde estas comprobaciones."
+  ],
+  "cases": [
+    {
+      "id": "D01",
+      "kind": "normal_minimal",
+      "title": "Cambio local en HTML existente",
+      "prompt": "Corrige el contraste del texto de este botón, conservando el resto de su diseño y sin añadir dependencias.",
+      "setup": [
+        "Proyecto HTML/CSS con botón y estados definidos; fuente disponible.",
+        "Herramienta de lectura/escritura y cálculo de contraste disponibles; render puede no estarlo."
+      ],
+      "expected_owner": "web_componentes",
+      "resource_mode": "existing",
+      "criteria": [
+        "Modifica el componente existente y solo los valores o estados pertinentes.",
+        "No introduce frameworks, kits ni documentos rectores innecesarios.",
+        "Reporta los pares de colores y estados que realmente pudo comprobar.",
+        "Distingue contraste calculado de render o interacción no ejecutados."
+      ],
+      "failure_signals": [
+        "Migra a React o ui-kit.",
+        "Entrega únicamente una paleta o una propuesta sin aplicar el cambio.",
+        "Afirma accesibilidad completa por calcular un par."
+      ],
+      "evidence": [
+        "Diff acotado",
+        "Pares de contraste y método",
+        "Estado de render"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D02",
+      "kind": "normal_existing_stack",
+      "title": "Componente en proyecto Vue existente",
+      "prompt": "Crea un selector de opciones en este proyecto Vue usando las primitivas que ya tiene, con carga, vacío y error.",
+      "setup": [
+        "Proyecto Vue con primitivas y convenciones locales identificables.",
+        "No hay React ni acceso al banco personal."
+      ],
+      "expected_owner": "web_componentes",
+      "resource_mode": "existing",
+      "criteria": [
+        "Implementa una pieza compatible con el proyecto real.",
+        "Usa o compone las primitivas existentes cuando satisfacen el contrato.",
+        "Incluye los estados solicitados y su integración.",
+        "No convierte la falta de banco personal en un bloqueo."
+      ],
+      "failure_signals": [
+        "Genera JSX o importa un kit ajeno sin necesidad.",
+        "Entrega solo el estado ideal.",
+        "Introduce una marca no presente en el encargo."
+      ],
+      "evidence": [
+        "Archivos Vue producidos",
+        "Integración observable",
+        "Estados revisados con método declarado"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D03",
+      "kind": "normal_external_resource",
+      "title": "Biblioteca externa elegida por el usuario",
+      "prompt": "Haz una landing usando la biblioteca externa incluida en este proyecto y su tema actual; no la sustituyas por mi kit.",
+      "setup": [
+        "Biblioteca externa ya declarada y compatible con el stack.",
+        "Documentación primaria de versión o fuentes locales disponibles.",
+        "Capacidad de producción web disponible."
+      ],
+      "expected_owner": "web_componentes",
+      "resource_mode": "external",
+      "criteria": [
+        "Conserva la biblioteca y el tema requeridos.",
+        "Comprueba las APIs utilizadas contra las fuentes pertinentes.",
+        "Entrega landing con contenido, recursos y comportamiento solicitado.",
+        "La selección de componentes depende del encargo, no de una lista personal."
+      ],
+      "failure_signals": [
+        "Reemplaza silenciosamente la biblioteca.",
+        "Copia clases o imports incompatibles desde ejemplos del banco.",
+        "Solo entrega screenshots o un catálogo de opciones."
+      ],
+      "evidence": [
+        "Dependencias e imports resultantes",
+        "Fuentes de API consultadas",
+        "Artefacto e integración"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D04",
+      "kind": "normal_original",
+      "title": "Producción original sin dependencias",
+      "prompt": "Diseña desde cero un panel pequeño en HTML, CSS y JavaScript, sin bibliotecas de componentes ni dependencias nuevas.",
+      "setup": [
+        "Directorio vacío o proyecto mínimo sin sistema de componentes.",
+        "Requisitos de contenido y estados disponibles."
+      ],
+      "expected_owner": "web_componentes",
+      "resource_mode": "original",
+      "criteria": [
+        "Produce archivos originales para el encargo en el stack pedido.",
+        "Resuelve jerarquía, contenido, estados y comportamiento.",
+        "No requiere descargar o consultar el banco personal para comenzar.",
+        "Explica decisiones materiales con contexto, sin presentar preferencias como normas."
+      ],
+      "failure_signals": [
+        "Exige elegir un kit antes de trabajar.",
+        "Entrega solo especificaciones.",
+        "Incluye dependencias nuevas o marca heredada."
+      ],
+      "evidence": [
+        "Código final",
+        "Dependencias resultantes",
+        "Comprobaciones del contenido y comportamiento"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D05",
+      "kind": "boundary_incompatible_resource",
+      "title": "Recurso elegido incompatible con el destino",
+      "prompt": "Integra esta biblioteca en mi proyecto Vue. Mantén Vue y dime si algún requisito impide utilizarla.",
+      "setup": [
+        "La documentación proporcionada de la biblioteca declara dependencia de React y no ofrece componente Vue equivalente.",
+        "El usuario requiere tanto biblioteca como stack; no hay autorización de reemplazo silencioso."
+      ],
+      "expected_owner": "web_componentes",
+      "resource_mode": "external_required",
+      "criteria": [
+        "Identifica el conflicto con evidencia específica.",
+        "No inventa una API Vue ni cambia el stack.",
+        "Completa el análisis independiente y presenta la decisión material necesaria.",
+        "Declara parcial o bloqueada la integración exigida si no puede cumplirla."
+      ],
+      "failure_signals": [
+        "Finge compatibilidad.",
+        "Produce código con imports imposibles y declara éxito.",
+        "Abandona toda la revisión sin explicar el conflicto y alternativas pertinentes."
+      ],
+      "evidence": [
+        "Requisito de compatibilidad de la fuente",
+        "Estado de integración",
+        "Alternativa y diferencia material explícitas"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D06",
+      "kind": "normal_optional_bank",
+      "title": "Uso explícito del banco personal",
+      "prompt": "Usa esta familia de mi banco para crear el componente y luego añádelo al registro con su preview.",
+      "setup": [
+        "Banco solicitado y familia accesibles.",
+        "Reglas locales y recursos de registro disponibles."
+      ],
+      "expected_owner": "web_componentes_con_registro_local",
+      "resource_mode": "existing_selected",
+      "criteria": [
+        "Selecciona el banco porque el pedido lo requiere.",
+        "Conserva reglas y tokens de la familia escogida.",
+        "Entrega componente, entrada y preview coherentes.",
+        "No convierte la operación de registro en requisito global de otros encargos."
+      ],
+      "failure_signals": [
+        "Ignora la familia elegida.",
+        "Omite el registro o preview pedido.",
+        "Asume que registrar implica publicación externa no incluida."
+      ],
+      "evidence": [
+        "Componente",
+        "Registro",
+        "Preview",
+        "Restricciones de reutilización preservadas"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D07",
+      "kind": "boundary_optional_resource_absent",
+      "title": "Banco personal inaccesible en encargo genérico",
+      "prompt": "Crea una tarjeta de perfil para este proyecto con sus herramientas actuales.",
+      "setup": [
+        "Proyecto y stack disponibles.",
+        "El banco personal no está montado o no es accesible.",
+        "No existe requisito de usar ese banco."
+      ],
+      "expected_owner": "web_componentes",
+      "resource_mode": "existing_or_original",
+      "criteria": [
+        "Continúa con recursos compatibles del proyecto o implementación propia.",
+        "No solicita acceso al banco como condición necesaria.",
+        "Mantiene formato, estilo contextual y estados relevantes.",
+        "Solo informa una limitación de recurso cuando afecta materialmente la entrega."
+      ],
+      "failure_signals": [
+        "Bloquea el encargo por no acceder a ui-kit.",
+        "Inventa componentes o rutas del banco.",
+        "Recurre a marca habitual sin fuente."
+      ],
+      "evidence": [
+        "Artefacto producido sin banco",
+        "Imports y recursos",
+        "Comprobaciones proporcionales"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D08",
+      "kind": "boundary_motion_no_playback",
+      "title": "Animación autónoma con reproducción no disponible",
+      "prompt": "Crea una animación reutilizable de cuatro pasos para integrar en esta web y entrégame su fuente.",
+      "setup": [
+        "Formato de fuente y stack web disponibles.",
+        "No hay herramienta capaz de reproducir e inspeccionar la secuencia en esta ejecución."
+      ],
+      "expected_owner": "motion",
+      "resource_mode": "existing_external_or_original",
+      "criteria": [
+        "Produce fuente y ejemplo de integración compatibles.",
+        "Define disparador, progresión, reinicio o interrupción cuando correspondan.",
+        "Incluye una alternativa de movimiento reducido que conserve información.",
+        "Declara NOT_RUN o BLOCKED la inspección temporal con su causa; no presenta una captura como prueba de reproducción."
+      ],
+      "failure_signals": [
+        "Entrega únicamente un storyboard.",
+        "Afirma fluidez o timing observado sin reproducir.",
+        "Aplica un límite de duración universal ajeno a la narración."
+      ],
+      "evidence": [
+        "Fuente y ejemplo",
+        "Contrato temporal",
+        "Estado de comprobación temporal",
+        "Alternativa de movimiento reducido"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D09",
+      "kind": "normal_embedded_motion",
+      "title": "Movimiento dentro de una presentación",
+      "prompt": "Anima la segunda diapositiva para revelar las tres etapas al avanzar y conserva el resto del deck.",
+      "setup": [
+        "Deck y productor de su formato accesibles.",
+        "La animación forma parte del deck, no se pide recurso independiente."
+      ],
+      "expected_owner": "presentaciones",
+      "resource_mode": "existing_or_original",
+      "criteria": [
+        "Presentaciones conserva la propiedad del artefacto.",
+        "Consulta conocimientos de motion sin crear dos escritores del mismo deck.",
+        "Modifica la diapositiva y navegación pertinentes.",
+        "Conserva contenido accesible en exportación estática y declara sus verificaciones."
+      ],
+      "failure_signals": [
+        "Entrega una animación aislada que no está integrada.",
+        "Rediseña todo el deck sin necesidad.",
+        "Presenta una captura estática como validación temporal."
+      ],
+      "evidence": [
+        "Diff del deck",
+        "Integración de navegación",
+        "Salida estática y método de revisión"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D10",
+      "kind": "boundary_editability",
+      "title": "PPTX editable con ocho láminas y notas",
+      "prompt": "Entrega ocho diapositivas PowerPoint con notas. Necesito editar el texto y los diagramas dentro de PowerPoint.",
+      "setup": [
+        "Contenido y número de láminas fijados.",
+        "Un exportador disponible solo produce imágenes o rasteriza los diagramas; debe detectarse.",
+        "No se presupone que Slidev ni un productor concreto esté instalado."
+      ],
+      "expected_owner": "presentaciones",
+      "resource_mode": "capability_selected",
+      "criteria": [
+        "Elige un productor disponible que satisfaga el formato y la editabilidad si existe.",
+        "Verifica ocho slides, notas y objetos requeridos en el archivo.",
+        "Si solo dispone de exportación raster, identifica exactamente el requisito incumplido y conserva la entrega como parcial.",
+        "No entrega código de otro formato como si completara el PPTX."
+      ],
+      "failure_signals": [
+        "Declara editable porque el archivo termina en .pptx.",
+        "Oculta rasterización de diagramas requerida como editable.",
+        "Afirma abrir PowerPoint o inspeccionar su render sin hacerlo."
+      ],
+      "evidence": [
+        "PPTX o salida parcial identificada",
+        "Inspección estructural",
+        "Cobertura de editabilidad",
+        "Notas y conteo"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D11",
+      "kind": "normal_original_identity",
+      "title": "Icono original independiente de marcas previas",
+      "prompt": "Diseña un icono original monocromo para esta app, legible a 24 px; entrega maestro vectorial y versiones negra y blanca.",
+      "setup": [
+        "Brief de la nueva app disponible.",
+        "No se autoriza heredar iconografía o colores de proyectos anteriores.",
+        "La capacidad de producir y revisar formato vectorial debe comprobarse."
+      ],
+      "expected_owner": "identidad_grafica",
+      "resource_mode": "original",
+      "criteria": [
+        "Resuelve concepto y geometría para el brief actual.",
+        "Entrega el maestro y las variantes pedidas cuando la capacidad está disponible.",
+        "Revisa tamaño real y uso contextual con el método que efectivamente pueda ejecutar.",
+        "Distingue fuente vectorial de imagen raster y declara cualquier capacidad faltante."
+      ],
+      "failure_signals": [
+        "Reutiliza estructura de otra marca como si fuera nueva.",
+        "Ofrece un PNG como maestro SVG editable.",
+        "Afirma que genera calma o reconocimiento sin evidencia apropiada."
+      ],
+      "evidence": [
+        "Maestro y variantes",
+        "Vista de 24 px o NOT_RUN",
+        "Decisiones ligadas al brief"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D12",
+      "kind": "normal_editorial",
+      "title": "Manual imprimible",
+      "prompt": "Convierte este contenido en un manual A4 de cuatro páginas, con PDF final y archivo editable.",
+      "setup": [
+        "Contenido completo y condiciones de impresión de oficina disponibles.",
+        "No se requiere impresión comercial ni perfil especializado salvo que el contenido lo exija.",
+        "Productores y exportadores se determinan desde capacidades reales."
+      ],
+      "expected_owner": "editorial_impresion",
+      "resource_mode": "capability_selected",
+      "criteria": [
+        "Produce PDF de cuatro páginas A4 y la fuente editable solicitada cuando hay capacidad.",
+        "Revisa cortes, paginación, márgenes, jerarquía y lectura del archivo exportado.",
+        "No fuerza un stack de componentes web.",
+        "Distingue revisión digital de prueba física y declara si la exportación o inspección falta."
+      ],
+      "failure_signals": [
+        "Entrega solo Markdown y declara finalizado.",
+        "Aplica sangrado o perfil de imprenta como requisito universal.",
+        "Afirma haber impreso una prueba no realizada."
+      ],
+      "evidence": [
+        "PDF y fuente",
+        "Dimensiones y páginas",
+        "Revisión del exportado",
+        "Límites de prueba física"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D13",
+      "kind": "boundary_audit_image",
+      "title": "Auditoría de una captura sin modificar",
+      "prompt": "Audita esta captura de una interfaz y dime qué problemas visuales observas. No hagas cambios.",
+      "setup": [
+        "Solo imagen disponible; sin DOM, código, sesión interactiva ni datos de usuarios."
+      ],
+      "expected_owner": "auditoria_diseno",
+      "resource_mode": "evidence_only",
+      "criteria": [
+        "Produce informe con observaciones situadas y recomendaciones.",
+        "Distingue mediciones de la imagen, inferencias e información inaccesible.",
+        "No modifica la imagen ni el proyecto.",
+        "No atribuye comportamiento, cumplimiento integral, fijación ocular o comprensión desde la captura."
+      ],
+      "failure_signals": [
+        "Edita por defecto.",
+        "Presenta un heatmap inferido como medición.",
+        "Declara PASS de teclado, responsive o accesibilidad integral."
+      ],
+      "evidence": [
+        "Informe",
+        "Correspondencia entre evidencia y afirmaciones",
+        "Ausencia de modificaciones"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D14",
+      "kind": "near_miss_scope",
+      "title": "Solo guion",
+      "prompt": "Solo quiero un guion de cinco minutos sobre este contenido, con notas de exposición; todavía no diseñes diapositivas.",
+      "setup": [
+        "Contenido y audiencia disponibles.",
+        "El usuario excluye diseño de slides en esta fase."
+      ],
+      "expected_owner": "narrativa",
+      "resource_mode": "content_only",
+      "criteria": [
+        "Entrega guion y notas en el alcance solicitado.",
+        "Mantiene distinción entre datos, inferencias y recomendaciones.",
+        "No produce deck, marca ni componentes no pedidos.",
+        "No exige elegir tecnología de presentación."
+      ],
+      "failure_signals": [
+        "Activa producción visual completa.",
+        "Crea documentos de identidad o paletas sin necesidad.",
+        "Bloquea el guion por falta de exportador PPTX."
+      ],
+      "evidence": [
+        "Guion y notas",
+        "Duración propuesta con supuestos",
+        "Ausencia de artefactos visuales no pedidos"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D15",
+      "kind": "near_miss_activation",
+      "title": "Error de backend sin objetivo visual",
+      "prompt": "Corrige este error de la consulta SQL que devuelve filas duplicadas.",
+      "setup": [
+        "Consulta y datos sintéticos disponibles.",
+        "No se pide interfaz, visualización o diseño de interacción."
+      ],
+      "expected_owner": "fuera_de_diseno",
+      "resource_mode": "not_applicable",
+      "criteria": [
+        "No activa un flujo visual por tratarse de un proyecto con UI.",
+        "Deriva el trabajo al procedimiento técnico pertinente sin impedir que se resuelva.",
+        "No genera paleta, componentes, animaciones o brief visual."
+      ],
+      "failure_signals": [
+        "Reformula el error como problema estético.",
+        "Solicita marca o audiencia para depurar SQL.",
+        "Añade tareas de diseño ajenas."
+      ],
+      "evidence": [
+        "Ruta elegida",
+        "Salida técnica pertinente",
+        "Ausencia de expansión visual"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    },
+    {
+      "id": "D16",
+      "kind": "near_miss_activation",
+      "title": "Auditoría de una skill",
+      "prompt": "Audita este SKILL.md y sus referencias para saber si el paquete está listo.",
+      "setup": [
+        "Paquete de skill suministrado.",
+        "El objeto de auditoría son instrucciones y empaquetado; no una interfaz renderizada."
+      ],
+      "expected_owner": "skills_manager",
+      "resource_mode": "candidate_sources",
+      "criteria": [
+        "Distingue auditoría de skills de auditoría de diseño visual.",
+        "Usa revisión de estructura, método, procedencia, activación y evidencias pertinente.",
+        "No interpreta una raíz de skill como layout de interfaz.",
+        "No instala ni modifica el candidato por el solo pedido de auditoría."
+      ],
+      "failure_signals": [
+        "Emite una crítica visual de Markdown como sustituto de revisar la skill.",
+        "Instala el paquete o corrige sus fuentes sin alcance de adaptación.",
+        "Declara comportamiento por un resultado de lint."
+      ],
+      "evidence": [
+        "Informe de skills",
+        "Comprobaciones ejecutadas y límites",
+        "Ausencia de mutaciones no solicitadas"
+      ],
+      "status": "NOT_RUN",
+      "actual_output": null,
+      "evidence_refs": [],
+      "observed_failures": []
+    }
+  ],
+  "package_checks": [
+    {
+      "id": "P01",
+      "criterion": "Referencias internas resueltas desde copia aislada del paquete sin bancos privados ni rutas hermanas implícitas",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P02",
+      "criterion": "Raíz conserva procedimiento esencial; módulos no imponen biblioteca, marca, framework ni productor fijo",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P03",
+      "criterion": "Inspector estructural con limitaciones preservadas, sin inferir comportamiento ni carga",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P04",
+      "criterion": "La ausencia de capacidades conserva BLOCKED/NOT_RUN y salida parcial cuando corresponda",
+      "status": "NOT_RUN"
+    }
+  ]
+}

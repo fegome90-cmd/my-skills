@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "status": "OK",
+  "candidate_revision": "43408fe0c1b256ed91703b8c5139e568e6c6130a2bfe37629ff67be475000385",
+  "files": {
+    "SKILL.md": "c3a1817e2d18b34057ff1699e38296add7ab7cacf5a7cacf9405ddaebb9d9712",
+    "agents/openai.yaml": "518a856e26cec4096173868d35350463111bf83f6f21b1023a9dce4f50f0764c",
+    "references/auditoria-y-verificacion.md": "f0735d4856caf40f1adb4eef379b6696c6ac7ef74b8f80e58fcb112fe0d1075c",
+    "references/direccion-y-fundamentos.md": "ffdd8c5ef9abc44103ed37050f9d05dfbc58bbe67aa147b86567180f4bb6a281",
+    "references/editorial-e-impresion.md": "7375fd3391005f1460642c10f23a91cdd4c7a94979b6224048f442ff2a8ca263",
+    "references/encargo-y-recursos.md": "6016aa37b42a9ddf07f6c6ef9211129d99ae81ab22ddf999a0c0909c5bb8de47",
+    "references/fuentes.md": "4b8f07403814426405bcbb7c98086595fc23cc917604ef43dbcfb55ceae620e6",
+    "references/identidad-y-grafica.md": "d7c478ebdb768d181878a2c9afb91427b0907b153774a555a31f4adc56ef9e8e",
+    "references/movimiento.md": "d75e5418892ef656e6d0944f8ecd297f26ffa5e64b814d4cfc98a777d0a2b7c5",
+    "references/presentaciones.md": "6ee737320003c24eaaee5a5c8ad28657926eb3d9b236745128d225e08571866e",
+    "references/web-y-componentes.md": "1c5889c743154c43c76ded639eecccd74610f18a4f32cd7fe5081e6f1c492a3a",
+    "scripts/contrast.py": "66b659965c34a4ddea5978cfda7007f7a2d4d5abba7d72887c9db4579af6f2d2"
+  },
+  "metrics": {
+    "root_bytes": 6718,
+    "root_lines": 64
+  },
+  "findings": [],
+  "unverified": [
+    {
+      "check": "external_url",
+      "file": "references/auditoria-y-verificacion.md",
+      "line": 48,
+      "reason": "Not fetched: https://www.w3.org/TR/WCAG22/",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/auditoria-y-verificacion.md",
+      "line": 58,
+      "reason": "Not fetched: https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/crates/detect/tests/regex_only_note.rs",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/auditoria-y-verificacion.md",
+      "line": 58,
+      "reason": "Not fetched: https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/skill/reference/audit.md",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/direccion-y-fundamentos.md",
+      "line": 31,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/direccion-y-fundamentos.md",
+      "line": 31,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/direccion-y-fundamentos.md",
+      "line": 37,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/direccion-y-fundamentos.md",
+      "line": 45,
+      "reason": "Not fetched: https://www.designtokens.org/TR/2025.10/format/",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/direccion-y-fundamentos.md",
+      "line": 51,
+      "reason": "Not fetched: https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/skill/SKILL.src.md",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 9,
+      "reason": "Not fetched: https://github.com/fegome90-cmd/my-skills/tree/df8fc14837c5b9566ffe231640958586bfe2832f",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 10,
+      "reason": "Not fetched: https://github.com/fegome90-cmd/presentaciones-falp/tree/82185c0d3a201b34ced5b302096594cfe554161f",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 11,
+      "reason": "Not fetched: https://github.com/fegome90-cmd/ui-kit/tree/4ae9b6e04afbfa50f5a9196a6a0d35d5458d8ec4",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 12,
+      "reason": "Not fetched: https://github.com/fegome90-cmd/creador_diapos/tree/b6d6eea48101dd0298f7a5fff090a5ecc078645c",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 19,
+      "reason": "Not fetched: https://emilkowal.ski/skill",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 19,
+      "reason": "Not fetched: https://github.com/emilkowalski/skills/blob/2d228630ba1446365f614a108cb8252f1feda202/LICENSE",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 19,
+      "reason": "Not fetched: https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 27,
+      "reason": "Not fetched: https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/LICENSE",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 27,
+      "reason": "Not fetched: https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/NOTICE.md",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 27,
+      "reason": "Not fetched: https://github.com/pbakaus/impeccable/tree/5cb95eea9c96479f57afe0732a45470d30183326",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 27,
+      "reason": "Not fetched: https://impeccable.style",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 29,
+      "reason": "Not fetched: https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/skill/SKILL.src.md",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 37,
+      "reason": "Not fetched: https://www.w3.org/TR/WCAG22/",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 38,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 38,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html#dfn-relative-luminance",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 39,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 39,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 40,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 40,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 41,
+      "reason": "Not fetched: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 42,
+      "reason": "Not fetched: https://www.w3.org/WAI/ARIA/apg/patterns/",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 42,
+      "reason": "Not fetched: https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 43,
+      "reason": "Not fetched: https://www.designtokens.org/TR/2025.10/color/",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 43,
+      "reason": "Not fetched: https://www.designtokens.org/TR/2025.10/format/",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 44,
+      "reason": "Not fetched: https://motion.dev/docs/performance",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 45,
+      "reason": "Not fetched: https://sli.dev/guide/exporting",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/fuentes.md",
+      "line": 46,
+      "reason": "Not fetched: https://vercel.com/design/guidelines",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/movimiento.md",
+      "line": 53,
+      "reason": "Not fetched: https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/movimiento.md",
+      "line": 53,
+      "reason": "Not fetched: https://motion.dev/docs/performance",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/presentaciones.md",
+      "line": 30,
+      "reason": "Not fetched: https://sli.dev/guide/exporting",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/web-y-componentes.md",
+      "line": 47,
+      "reason": "Not fetched: https://github.com/emilkowalski/skills/tree/2d228630ba1446365f614a108cb8252f1feda202",
+      "blocking": false
+    },
+    {
+      "check": "external_url",
+      "file": "references/web-y-componentes.md",
+      "line": 47,
+      "reason": "Not fetched: https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/",
+      "blocking": false
+    }
+  ],
+  "coverage": {
+    "yaml": "SafeLoader with duplicate-key rejection; installed PyYAML required",
+    "identity": "Skills Manager ASCII profile; name matches candidate directory",
+    "markdown": "Conventional single-line inline links/images and reference definitions/full/collapsed/defined-shortcut links in all *.md files",
+    "excluded": [
+      "fenced code",
+      "inline code",
+      "HTML comments",
+      "frontmatter"
+    ],
+    "not_fully_parsed": [
+      "CommonMark",
+      "nested labels",
+      "multiline links",
+      "indented code",
+      "HTML links",
+      "vault wikilinks",
+      "undefined shortcut references",
+      "footnote labels (their bodies are scanned)"
+    ],
+    "anchors": false,
+    "behavior": false,
+    "host": false,
+    "external_urls": false,
+    "candidate_code_execution": false,
+    "yaml_version": "6.0.3"
+  }
+}

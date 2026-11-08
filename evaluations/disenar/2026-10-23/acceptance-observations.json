@@ -1,0 +1,181 @@
+{
+  "purpose": "Development observations; original plan remains unchanged. PASS applies only to described covered checks, not unexecuted parts of a case.",
+  "cases": [
+    {
+      "id": "D01",
+      "execution": "EXERCISED",
+      "covered_checks_status": "PASS",
+      "observation": "Single color replacement, two calculated states, all other bytes preserved.",
+      "artifacts": [
+        "minimal-change/root-check.json",
+        "minimal-change/contrast-results.json"
+      ],
+      "uncovered_or_deviations": [
+        "Browser rendering blocked."
+      ]
+    },
+    {
+      "id": "D02",
+      "execution": "NOT_RUN",
+      "covered_checks_status": "NOT_RUN",
+      "observation": "Not executed in this development review; no inferred PASS.",
+      "artifacts": [],
+      "uncovered_or_deviations": []
+    },
+    {
+      "id": "D03",
+      "execution": "DERIVATIVE_EXERCISED",
+      "covered_checks_status": "PASS",
+      "observation": "Explicit Pico CSS 2.1.1 library and theme retained; landing source and local links checked.",
+      "artifacts": [
+        "external-source-check.json",
+        "external-preservation.json"
+      ],
+      "uncovered_or_deviations": [
+        "Pico fixture chosen before run; no real-browser rendering."
+      ]
+    },
+    {
+      "id": "D04",
+      "execution": "DERIVATIVE_EXERCISED",
+      "covered_checks_status": "PASS",
+      "observation": "Original HTML/CSS/JS panel, four stages and controls; actual script logic exercised using simulated DOM/clock.",
+      "artifacts": [
+        "original-panel/index.html",
+        "original-panel/script.js",
+        "original-panel/resultados-node.txt",
+        "original-panel/README.md"
+      ],
+      "uncovered_or_deviations": [
+        "Actual prompt added motion requirements; not a general website or browser test."
+      ]
+    },
+    {
+      "id": "D05",
+      "execution": "NOT_RUN",
+      "covered_checks_status": "NOT_RUN",
+      "observation": "Not executed in this development review; no inferred PASS.",
+      "artifacts": [],
+      "uncovered_or_deviations": []
+    },
+    {
+      "id": "D06",
+      "execution": "NOT_RUN",
+      "covered_checks_status": "NOT_RUN",
+      "observation": "Not executed in this development review; no inferred PASS.",
+      "artifacts": [],
+      "uncovered_or_deviations": []
+    },
+    {
+      "id": "D07",
+      "execution": "NOT_RUN",
+      "covered_checks_status": "NOT_RUN",
+      "observation": "Not executed in this development review; no inferred PASS.",
+      "artifacts": [],
+      "uncovered_or_deviations": []
+    },
+    {
+      "id": "D08",
+      "execution": "PARTIALLY_EXERCISED",
+      "covered_checks_status": "PASS",
+      "observation": "No-playback boundary combined with panel: produced source and integrated sequence, declared missing browser, reduced-motion logic tested.",
+      "artifacts": [
+        "original-panel/README.md",
+        "original-panel/resultados-node.txt"
+      ],
+      "uncovered_or_deviations": [
+        "Not a separate exported animation asset; real playback remains blocked."
+      ]
+    },
+    {
+      "id": "D09",
+      "execution": "NOT_RUN",
+      "covered_checks_status": "NOT_RUN",
+      "observation": "Not executed in this development review; no inferred PASS.",
+      "artifacts": [],
+      "uncovered_or_deviations": []
+    },
+    {
+      "id": "D10",
+      "execution": "PARTIALLY_EXERCISED",
+      "covered_checks_status": "PASS",
+      "observation": "Eight-slide PPTX, notes and native objects; edit/readback and eight renders.",
+      "artifacts": [
+        "editable-deck/checks/content-editability.json",
+        "editable-deck/checks/editability-readback.json",
+        "editable-deck/output/COMPROBACIONES.md"
+      ],
+      "uncovered_or_deviations": [
+        "Raster-only exporter fallback scenario NOT_RUN.",
+        "Microsoft PowerPoint UI NOT_RUN."
+      ]
+    },
+    {
+      "id": "D11",
+      "execution": "NOT_RUN",
+      "covered_checks_status": "NOT_RUN",
+      "observation": "Not executed in this development review; no inferred PASS.",
+      "artifacts": [],
+      "uncovered_or_deviations": []
+    },
+    {
+      "id": "D12",
+      "execution": "DERIVATIVE_EXERCISED",
+      "covered_checks_status": "PASS",
+      "observation": "Four-page A4 DOCX/PDF, native edit test and digital render checks.",
+      "artifacts": [
+        "editorial/qa/verificacion_final.json",
+        "editorial/VERIFICACION.md"
+      ],
+      "uncovered_or_deviations": [
+        "Physical print and Microsoft Word UI NOT_RUN."
+      ]
+    },
+    {
+      "id": "D13",
+      "execution": "EXERCISED",
+      "covered_checks_status": "PASS",
+      "observation": "Capture audit, situated observations and source hash unchanged.",
+      "artifacts": [
+        "capture-audit/informe-auditoria-visual.md",
+        "capture-audit/source-integrity.json",
+        "semantic-review.md"
+      ],
+      "uncovered_or_deviations": [
+        "No interactive app or human observation data."
+      ]
+    },
+    {
+      "id": "D14",
+      "execution": "NOT_RUN",
+      "covered_checks_status": "NOT_RUN",
+      "observation": "Not executed in this development review; no inferred PASS.",
+      "artifacts": [],
+      "uncovered_or_deviations": []
+    },
+    {
+      "id": "D15",
+      "execution": "STATIC_ROUTING_ONLY",
+      "covered_checks_status": "PASS",
+      "observation": "Semantic review excludes backend-only SQL request.",
+      "artifacts": [
+        "semantic-review.md"
+      ],
+      "uncovered_or_deviations": [
+        "No actual SQL repair or automatic host routing was run."
+      ]
+    },
+    {
+      "id": "D16",
+      "execution": "STATIC_ROUTING_ONLY",
+      "covered_checks_status": "PASS",
+      "observation": "Semantic review excludes skill-package audit from visual-design workflow.",
+      "artifacts": [
+        "semantic-review.md"
+      ],
+      "uncovered_or_deviations": [
+        "No automatic host routing was run."
+      ]
+    }
+  ]
+}

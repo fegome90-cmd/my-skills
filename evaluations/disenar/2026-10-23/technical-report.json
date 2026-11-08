@@ -1,0 +1,334 @@
+{
+  "case_id": "disenar-final-development",
+  "contract_revision": "technical-v1",
+  "evaluation_purpose": "technical_validation",
+  "subject_type": "produced_skill",
+  "subject_revision": "43408fe0c1b256ed91703b8c5139e568e6c6130a2bfe37629ff67be475000385",
+  "evaluator_revision": "root-development-2026-10-23 + fresh-context semantic review + skills-manager 0.3.5 record gate",
+  "date": "2026-10-23",
+  "model": "GPT-6 Astra Pro, inherited, no model override",
+  "environment": "Shared workspace; Python 3.12.14, Node v24.19.0; Artifact Tool and document/PDF producers available; browser unavailable; internal skill registry write rejected.",
+  "evaluation_integrity": "DEVELOPMENT_NON_BLIND_SHARED_RUNTIME",
+  "material_conflicts": [],
+  "checks": [
+    {
+      "id": "structure",
+      "layer": "static",
+      "status": "PASS",
+      "observation": "Official creator validator passed; Skills Manager inspector r2 OK with zero local findings. Inspector limitations and 40 nonblocking external-citation items retained.",
+      "artifacts": [
+        {
+          "path": "candidate-lint-r2.json",
+          "sha256": "14438a1af344cafec242bc52a64ec481eef7ae54e387be3eb5af249b5a103817"
+        },
+        {
+          "path": "candidate-r2.json",
+          "sha256": "38ed4d2f0e5b1ea02eb61addcacc477344d53cc31a120c181d71e43f922a9587"
+        }
+      ]
+    },
+    {
+      "id": "resource-resolution",
+      "layer": "static",
+      "status": "PASS",
+      "observation": "All 14 local Markdown targets and helper resolved within a byte-identical isolated 12-file package. No private bank required; public citations are provenance, not runtime dependencies.",
+      "artifacts": [
+        {
+          "path": "package-isolation-r2.json",
+          "sha256": "b73dca1c6a26034f60519b2edce4c10f5e34032130634d04c83b13f36624afbc"
+        }
+      ]
+    },
+    {
+      "id": "provenance",
+      "layer": "static",
+      "status": "PASS",
+      "observation": "Own instructions/helper, frozen source attribution and source hash checks; no upstream executable/template/private asset included in runtime package. NOTICE.md correction verified against source manifest. Pico fixture contains MIT notice.",
+      "artifacts": [
+        {
+          "path": "provenance-check.json",
+          "sha256": "3ab480b972a43f84e2c161d099a4cf78db8b2f3100385346fc5208e4b5d9b066"
+        },
+        {
+          "path": "r1-to-r2.patch",
+          "sha256": "e6660821d395ad91b4be6c8bb907f041c2a6702865c7528146768ff034e574bb"
+        },
+        {
+          "path": "external-library/resource-origin.json",
+          "sha256": "6db2bf5714ab1ebb22201630604816acfc8ba4520fb5cd5c0b4929d5bb21b7f0"
+        },
+        {
+          "path": "external-library/vendor/LICENSE-Pico.md",
+          "sha256": "17b54cc4bb41043afecd590f7cedde13d38d0693e5683d813f598eabc92b30bc"
+        }
+      ]
+    },
+    {
+      "id": "permissions",
+      "layer": "static",
+      "status": "PASS",
+      "observation": "Authorized own package/test paths; audit image and chosen library/theme preserved; protected registry rejected and left unchanged. Source branch write separately reviewed at closeout.",
+      "artifacts": [
+        {
+          "path": "permission-scope.json",
+          "sha256": "3cb27808741fcfb0a3b33c871f9f874240b3754442ad0cf364bdb11616daebc5"
+        },
+        {
+          "path": "capture-audit/source-integrity.json",
+          "sha256": "1e26d73e3f8fe19ef7ef79136855f654a2e72f6f447f2c56a37bfb9822849994"
+        },
+        {
+          "path": "external-preservation.json",
+          "sha256": "8308a9317799dd932a9427feaf4264cca9a8d147bb02548502789a9c58e9df09"
+        }
+      ]
+    },
+    {
+      "id": "original-component-source",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Actual original HTML/CSS/JS delivered; requested stages, controls and reduced-motion handling; ten Node tests and fresh-context semantic review cover source and simulated logic, not browser behavior.",
+      "artifacts": [
+        {
+          "path": "original-panel/index.html",
+          "sha256": "d82ffeb5bd77849d51c30cd2756f1230f1d1f34bf5d6a47745c7a80b3d714525"
+        },
+        {
+          "path": "original-panel/styles.css",
+          "sha256": "597f96a1cb7e404e5286e451bf3db44ddeadf232b1746e28c17ad978516c9f49"
+        },
+        {
+          "path": "original-panel/script.js",
+          "sha256": "c55ee4083c6c28e546c8b0b664bbb91118be81b7193dc1b49f4d3ae433a0238d"
+        },
+        {
+          "path": "original-panel/verificar.cjs",
+          "sha256": "d2d48f72aee098601b9e136ea29a188485e3b5a276f2a6b0169e412e48690637"
+        },
+        {
+          "path": "original-panel/resultados-node.txt",
+          "sha256": "f0068e4dc4b0f7bc18bac17dc5559f1827d0f3f42c051b2dfb17a4a1c644b676"
+        },
+        {
+          "path": "semantic-review.md",
+          "sha256": "ca5b6ae788d195aabee154c96096082e6fef8d7c33e8b93431691dc580ab8ab3"
+        }
+      ]
+    },
+    {
+      "id": "motion-no-playback",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Boundary behavior fulfilled: source and integration delivered with pause/reset/cancel and dynamic reduced-motion handling. Author explicitly preserves BLOCKED real playback; simulated clock tests only.",
+      "artifacts": [
+        {
+          "path": "original-panel/README.md",
+          "sha256": "b1c9993fa650d05c804c2b4085bf25ef5d04dba69d673bc4c5ddfcaee9371e7a"
+        },
+        {
+          "path": "original-panel/resultados-node.txt",
+          "sha256": "f0068e4dc4b0f7bc18bac17dc5559f1827d0f3f42c051b2dfb17a4a1c644b676"
+        }
+      ]
+    },
+    {
+      "id": "editable-deck",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Eight slides and notes, native text and connected diagram objects; edit/reexport/readback, actual eight-slide render and reconstruction. PowerPoint UI and source-font portability not tested. Structural evidence empty-file issue fixed and validator rerun; full generation not repeated after capture-only script correction.",
+      "artifacts": [
+        {
+          "path": "editable-deck/output/plan-talleres-2027.pptx",
+          "sha256": "ce9132ac283d42b76ffeca5f3e2385d98d823d3f47dcc72bc7584bf3e600a389"
+        },
+        {
+          "path": "editable-deck/output/COMPROBACIONES.md",
+          "sha256": "f76a54892f45f89e3908263496448df53b2aa90cdbb5878d6fce920e0a9851d8"
+        },
+        {
+          "path": "editable-deck/checks/content-editability.json",
+          "sha256": "bb2154eb541ef9373709576632853626ba014894e87a659fe13e6ea1e7bb06d1"
+        },
+        {
+          "path": "editable-deck/checks/editability-readback.json",
+          "sha256": "4120e7d7f5b188781d5c8793996b5ac7a6f7f017e91fc7dc417ba6d751400b08"
+        },
+        {
+          "path": "editable-deck/checks/package-integrity.json",
+          "sha256": "76fe955d45c9b2b7d331b22009fad2e52744b32d9408efdf708f19c666e27468"
+        },
+        {
+          "path": "editable-deck/checks/reproducibility.json",
+          "sha256": "cc3d80a54174ed705f70456b40190598db0980fba31b23f729632334090399b4"
+        }
+      ]
+    },
+    {
+      "id": "image-audit",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Observed image issues, bounded color calculations, no interaction/cognition claims, original file hash preserved; fresh-context visual/source review agrees within coverage.",
+      "artifacts": [
+        {
+          "path": "capture-audit/captura.png",
+          "sha256": "83bb261d3a5c5f90f7d47c5ed26a8a27344f2d4f74b67cc0535ff74216c81dd9"
+        },
+        {
+          "path": "capture-audit/informe-auditoria-visual.md",
+          "sha256": "ef5532174147a205030cec7475e517d16d2aad4c4cef2f0c7850fba9062fdbbb"
+        },
+        {
+          "path": "capture-audit/source-integrity.json",
+          "sha256": "1e26d73e3f8fe19ef7ef79136855f654a2e72f6f447f2c56a37bfb9822849994"
+        },
+        {
+          "path": "semantic-review.md",
+          "sha256": "ca5b6ae788d195aabee154c96096082e6fef8d7c33e8b93431691dc580ab8ab3"
+        }
+      ]
+    },
+    {
+      "id": "external-selection",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Landing preserves explicitly selected Pico 2.1.1 and original theme byte-for-byte; source uses compatible local HTML/CSS with required content and internal links. No bank substitution or added framework. Browser not exercised.",
+      "artifacts": [
+        {
+          "path": "external-library/index.html",
+          "sha256": "55ae211478c6ade9e234ed586a3b49fafbcbef734d3459879bf9e928089b13ad"
+        },
+        {
+          "path": "external-library/layout.css",
+          "sha256": "4036f10fc22569577a214bf4be950be5e109c810da66e8cc6d983067e5b1b7ec"
+        },
+        {
+          "path": "external-preservation.json",
+          "sha256": "8308a9317799dd932a9427feaf4264cca9a8d147bb02548502789a9c58e9df09"
+        },
+        {
+          "path": "external-source-check.json",
+          "sha256": "ff22caf6902049417dded45c3233910338d58b666e5a2959feb6fd387fe32194"
+        }
+      ]
+    },
+    {
+      "id": "minimal-scope",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Exact D01 change limited to foreground color; no extra documents or dependencies were created by the run. Normal and hover pairs pass declared contrast threshold.",
+      "artifacts": [
+        {
+          "path": "minimal-change/root-check.json",
+          "sha256": "031dc98f22f4fa86b462fc216acd01190720f7f38d007a9dc16e18cc96c68433"
+        },
+        {
+          "path": "minimal-change/contrast-results.json",
+          "sha256": "4056b907546433092ce6c31526c3b7596fadb0d1132559d35446a6521676e075"
+        }
+      ]
+    },
+    {
+      "id": "contrast-cli",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "12 actual CLI boundary/invalid-input cases passed; unrounded threshold comparison and distinct exit codes. No overall accessibility claim.",
+      "artifacts": [
+        {
+          "path": "contrast-cli-results.json",
+          "sha256": "90873627355276b4eb9a17d1f9ce77986e57b5ae98fd904d80deddcdbecac7f3"
+        },
+        {
+          "path": "check-contrast.py",
+          "sha256": "edc3aa589dce8a9d801e3d165fc20680f340c6029e3ae9eb9431f473cbb1626f"
+        }
+      ]
+    },
+    {
+      "id": "editorial-output",
+      "layer": "behavior",
+      "status": "PASS",
+      "observation": "Four-page A4 PDF and native editable DOCX, content correspondence, embedded fonts, grayscale render, copy-edit-save/reexport observed. Print and Word UI not executed.",
+      "artifacts": [
+        {
+          "path": "editorial/manual_taller_de_ideas.pdf",
+          "sha256": "96769ca511e105bc88f8f1e2a61e06060be5996188016d37c36c19485fbda64b"
+        },
+        {
+          "path": "editorial/manual_taller_de_ideas.docx",
+          "sha256": "052d8a6bf789cab52c6ce6c2781bb2fdf6a96505c9d56fe8023c4dd1aebe9217"
+        },
+        {
+          "path": "editorial/qa/verificacion_final.json",
+          "sha256": "b75ff4e7e0f83aceb746f408aec864bb13bf8dc297d17a4f366f872d73263e75"
+        },
+        {
+          "path": "editorial/VERIFICACION.md",
+          "sha256": "d149e5d00c7b8c915f850f34a30a888a9c243c1947a0a9a9acfddf2eff7091ec"
+        }
+      ]
+    },
+    {
+      "id": "semantic-scope",
+      "layer": "static",
+      "status": "PASS",
+      "observation": "Fresh-context reading found no material procedure defect. Backend SQL and SKILL audit excluded semantically; not an automatic invocation test. Review is r1; r2 only changes attribution link.",
+      "artifacts": [
+        {
+          "path": "semantic-review.md",
+          "sha256": "ca5b6ae788d195aabee154c96096082e6fef8d7c33e8b93431691dc580ab8ab3"
+        },
+        {
+          "path": "r1-to-r2.patch",
+          "sha256": "e6660821d395ad91b4be6c8bb907f041c2a6702865c7528146768ff034e574bb"
+        }
+      ]
+    },
+    {
+      "id": "browser-render",
+      "layer": "integration",
+      "status": "BLOCKED",
+      "observation": "Official Chromium download failed with invalid/empty ZIP; no local browser binary. No web layout, native keyboard, real timing or cross-device verification.",
+      "artifacts": [
+        {
+          "path": "original-panel/README.md",
+          "sha256": "b1c9993fa650d05c804c2b4085bf25ef5d04dba69d673bc4c5ddfcaee9371e7a"
+        }
+      ]
+    },
+    {
+      "id": "host-registry",
+      "layer": "integration",
+      "status": "BLOCKED",
+      "observation": "Automatic approval rejected escalated writes under /root/.codex; no workaround or host installation attempted afterward.",
+      "artifacts": [
+        {
+          "path": "permission-scope.json",
+          "sha256": "3cb27808741fcfb0a3b33c871f9f874240b3754442ad0cf364bdb11616daebc5"
+        }
+      ]
+    },
+    {
+      "id": "host-activation",
+      "layer": "integration",
+      "status": "NOT_RUN",
+      "observation": "No automatic host discovery/invocation tested. Explicitly supplying a local procedure path does not prove installation or activation.",
+      "artifacts": []
+    },
+    {
+      "id": "human-outcomes",
+      "layer": "integration",
+      "status": "NOT_RUN",
+      "observation": "No user study, attention measurement, causal performance comparison or effectiveness benchmark performed.",
+      "artifacts": []
+    }
+  ],
+  "limits": [
+    "No value/baseline comparison or causal improvement claim.",
+    "New agent contexts share model, tools and filesystem; not blind or independent efficacy evidence.",
+    "r1 behavior results apply to byte-identical operative files in r2; only attribution URL corrected.",
+    "Behavior PASS covers stated artifact/source or simulated checks; blocked integration remains separate.",
+    "Seven original cases entirely NOT_RUN; two further cases only static routing; combined/partial cases documented in acceptance-observations.json.",
+    "Graphic/vector generation and all combinations of libraries, hosts or formats are not demonstrated.",
+    "Technical readiness is not adoption, installation permission, automatic activation or universal visual quality."
+  ]
+}

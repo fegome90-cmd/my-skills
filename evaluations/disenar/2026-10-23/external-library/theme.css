@@ -1,0 +1,10 @@
+:root:not([data-theme=dark]), [data-theme=light] {
+  --pico-primary: #8b3f24;
+  --pico-primary-background: #8b3f24;
+  --pico-primary-border: #8b3f24;
+  --pico-primary-hover: #6e301b;
+  --pico-primary-hover-background: #6e301b;
+  --pico-primary-hover-border: #6e301b;
+  --pico-background-color: #fffaf4;
+  --pico-color: #322f2a;
+}

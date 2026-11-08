@@ -1,0 +1,293 @@
+{
+  "encargo": "Manual A4 de cuatro páginas para taller de ideas",
+  "productores": {
+    "docx": "python-docx 1.2.0",
+    "pdf": "LibreOfficeDev 26.8.0.0.alpha0 mediante render_docx.py",
+    "raster": "Poppler a 135 ppp"
+  },
+  "artefactos": {
+    "docx": {
+      "ruta": "manual_taller_de_ideas.docx",
+      "bytes": 39538,
+      "sha256": "052d8a6bf789cab52c6ce6c2781bb2fdf6a96505c9d56fe8023c4dd1aebe9217"
+    },
+    "pdf": {
+      "ruta": "manual_taller_de_ideas.pdf",
+      "bytes": 84521,
+      "sha256": "96769ca511e105bc88f8f1e2a61e06060be5996188016d37c36c19485fbda64b"
+    }
+  },
+  "comprobaciones": [
+    {
+      "criterio": "Cuatro páginas A4 verticales",
+      "estado": "PASS",
+      "metodo": "PyMuPDF abre el PDF y mide MediaBox y rotación",
+      "cobertura": "Las cuatro páginas del PDF final",
+      "evidencia": [
+        [
+          210.01,
+          297.0,
+          0
+        ],
+        [
+          210.01,
+          297.0,
+          0
+        ],
+        [
+          210.01,
+          297.0,
+          0
+        ],
+        [
+          210.01,
+          297.0,
+          0
+        ]
+      ]
+    },
+    {
+      "criterio": "Contenido íntegro y en la página correspondiente",
+      "estado": "PASS",
+      "metodo": "Comparación de todo el texto nativo del DOCX por etapa con la extracción del PDF; normalización de espacios y exclusión del pie",
+      "cobertura": "Todo el texto del cuerpo, incluidas etiquetas y títulos",
+      "evidencia": {
+        "coincidencia_por_pagina": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "caracteres_docx_sin_espacios_de_formulario": 2881
+      }
+    },
+    {
+      "criterio": "Fuentes incluidas en PDF",
+      "estado": "PASS",
+      "metodo": "Extracción de los programas de fuente por referencia PDF con PyMuPDF",
+      "cobertura": "Todas las fuentes referenciadas en las cuatro páginas",
+      "evidencia": [
+        {
+          "xref": 161,
+          "nombre": "GAAAAA+DejaVuSans-Bold",
+          "extension": "ttf",
+          "bytes_incrustados": 9108
+        },
+        {
+          "xref": 166,
+          "nombre": "FAAAAA+DejaVuSans-Bold",
+          "extension": "ttf",
+          "bytes_incrustados": 9632
+        },
+        {
+          "xref": 171,
+          "nombre": "HAAAAA+DejaVuSans-Bold",
+          "extension": "ttf",
+          "bytes_incrustados": 6492
+        },
+        {
+          "xref": 176,
+          "nombre": "DAAAAA+DejaVuSans-Bold",
+          "extension": "ttf",
+          "bytes_incrustados": 7068
+        },
+        {
+          "xref": 181,
+          "nombre": "CAAAAA+DejaVuSans-Bold",
+          "extension": "ttf",
+          "bytes_incrustados": 5448
+        },
+        {
+          "xref": 186,
+          "nombre": "EAAAAA+DejaVuSans",
+          "extension": "ttf",
+          "bytes_incrustados": 10540
+        },
+        {
+          "xref": 191,
+          "nombre": "BAAAAA+DejaVuSans",
+          "extension": "ttf",
+          "bytes_incrustados": 5596
+        }
+      ]
+    },
+    {
+      "criterio": "Render en escala de grises",
+      "estado": "PASS",
+      "metodo": "Comparación RGB de todos los píxeles de las imágenes renderizadas por Poppler a 135 ppp",
+      "cobertura": "Las cuatro imágenes finales; no es prueba de impresora",
+      "evidencia": [
+        {
+          "pagina": 1,
+          "diferencia_maxima_entre_canales": 0,
+          "pixeles": [
+            1117,
+            1579
+          ]
+        },
+        {
+          "pagina": 2,
+          "diferencia_maxima_entre_canales": 0,
+          "pixeles": [
+            1117,
+            1579
+          ]
+        },
+        {
+          "pagina": 3,
+          "diferencia_maxima_entre_canales": 0,
+          "pixeles": [
+            1117,
+            1579
+          ]
+        },
+        {
+          "pagina": 4,
+          "diferencia_maxima_entre_canales": 0,
+          "pixeles": [
+            1117,
+            1579
+          ]
+        }
+      ]
+    },
+    {
+      "criterio": "Área imprimible prevista",
+      "estado": "PASS",
+      "metodo": "Medición de las cajas de texto y trazos del PDF; mínimo elegido de 8 mm en cada borde",
+      "cobertura": "Contenido y pies de las cuatro páginas, para una comprobación digital de geometría",
+      "evidencia": [
+        {
+          "pagina": 1,
+          "margenes_minimos_mm": [
+            20.0,
+            17.99,
+            19.96,
+            9.0
+          ]
+        },
+        {
+          "pagina": 2,
+          "margenes_minimos_mm": [
+            20.0,
+            17.99,
+            19.96,
+            9.0
+          ]
+        },
+        {
+          "pagina": 3,
+          "margenes_minimos_mm": [
+            20.0,
+            17.99,
+            19.96,
+            9.0
+          ]
+        },
+        {
+          "pagina": 4,
+          "margenes_minimos_mm": [
+            20.0,
+            17.99,
+            19.96,
+            9.0
+          ]
+        }
+      ]
+    },
+    {
+      "criterio": "Fuente DOCX con contenido nativo",
+      "estado": "PASS",
+      "metodo": "Inspección OOXML del paquete DOCX y apertura con python-docx",
+      "cobertura": "Texto, títulos, campos de escritura, reglas y estructura del documento",
+      "evidencia": {
+        "parrafos": 87,
+        "nodos_texto": 88,
+        "archivos_media": 0,
+        "dibujos": 0,
+        "protecciones": 0,
+        "estilos_usados": [
+          "Field Label",
+          "Heading 1",
+          "Heading 2",
+          "Lead",
+          "Normal",
+          "Stage",
+          "Title"
+        ]
+      }
+    },
+    {
+      "criterio": "Espacio para notas manuscritas",
+      "estado": "PASS",
+      "metodo": "Conteo y medición de los trazos bajo el rótulo Notas en el PDF; agrupación de los trazos exactamente coincidentes",
+      "cobertura": "Área de notas de la página 4",
+      "evidencia": {
+        "lineas_distintas": 7,
+        "trazos_pdf_brutos": 14,
+        "ancho_mm": 169.99,
+        "distancias_entre_lineas_mm": [
+          8.64,
+          8.64,
+          8.64,
+          8.64,
+          8.64,
+          8.63
+        ]
+      }
+    },
+    {
+      "criterio": "Edición y guardado de una copia DOCX",
+      "estado": "PASS",
+      "metodo": "Edición de un título de paso y un espacio de respuesta con python-docx; guardado y reapertura; hash del original antes y después",
+      "cobertura": "Dos ediciones representativas; no es interacción en Microsoft Word",
+      "evidencia": {
+        "copia": "qa/editabilidad/prueba_edicion.docx",
+        "original_sha256_inalterado": "052d8a6bf789cab52c6ce6c2781bb2fdf6a96505c9d56fe8023c4dd1aebe9217"
+      }
+    },
+    {
+      "criterio": "Reexportación de la copia editada",
+      "estado": "PASS",
+      "metodo": "LibreOffice exportó la copia editada a PDF; PyMuPDF extrajo el texto de la salida",
+      "cobertura": "Dos cambios representativos y conservación de cuatro páginas",
+      "evidencia": {
+        "cambios_presentes": [
+          true,
+          true
+        ],
+        "paginas": 4,
+        "ruta": "qa/editabilidad/render/prueba_edicion.pdf"
+      }
+    },
+    {
+      "criterio": "Inspección visual del PDF final",
+      "estado": "PASS",
+      "metodo": "Apertura y revisión de las cuatro imágenes PNG a 135 ppp con view_image, tras la última exportación; segunda revisión independiente",
+      "cobertura": "Todas las páginas completas: recortes, solapamientos, glifos, jerarquía, espaciado, pies y zonas de escritura",
+      "evidencia": "qa/render/page-1.png a page-4.png; no se observaron defectos materiales"
+    },
+    {
+      "criterio": "Prueba física de impresión",
+      "estado": "NOT_RUN",
+      "metodo": "No se imprimieron hojas",
+      "cobertura": "Impresora y papel físicos",
+      "evidencia": "La revisión se limita a los archivos digitales y su geometría"
+    },
+    {
+      "criterio": "Edición mediante la interfaz de Microsoft Word",
+      "estado": "NOT_RUN",
+      "metodo": "No se abrió Microsoft Word",
+      "cobertura": "Aplicación de escritorio del destinatario",
+      "evidencia": "La edición real probada se realizó con python-docx y se reexportó con LibreOffice"
+    },
+    {
+      "criterio": "Conformidad integral de accesibilidad",
+      "estado": "NOT_RUN",
+      "metodo": "No se realizó una auditoría integral del etiquetado ni una prueba con lector de pantalla",
+      "cobertura": "Accesibilidad del documento",
+      "evidencia": "La apariencia, los estilos o la presencia de etiquetas PDF no acreditan por sí solos conformidad"
+    }
+  ],
+  "estado_encargo": "completo"
+}

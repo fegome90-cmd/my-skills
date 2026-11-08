@@ -1,0 +1,29 @@
+{
+  "revision": "harness-v2",
+  "files": [
+    {
+      "target": "followup/bank/checks-contrast.py",
+      "source": "harness-v2/checks-contrast.py",
+      "original_sha256": "33c61b9256fc86092bbfc92c3a92f2f823166e534a6a432ba5947385cc09b25c",
+      "replacement_sha256": "b30db21bad7d0330fd2e75e684c9294915b77b1a718c82054be2f260ec13583d"
+    },
+    {
+      "target": "followup/identity/produce_verify.py",
+      "source": "harness-v2/produce_verify.py",
+      "original_sha256": "d860e4e370852493fb88d21934b37e475252c1683ffc02c45956a3432cb18ae0",
+      "replacement_sha256": "eab267cdafc0b827f6595b6efff3128f2a31cf573f2430cc8ae487122c78fa0e"
+    },
+    {
+      "target": "followup/pptx_raster_probe.py",
+      "source": "harness-v2/pptx_raster_probe.py",
+      "original_sha256": "a29e4e860116d885cf261971b888e16d0814393eb279f143191d7fcbc14ef5a3",
+      "replacement_sha256": "efff4e000bc0f74995411ef1814867af50d28b8e5bc844b6cd9fe44dc3264721"
+    },
+    {
+      "target": "editable-deck/source/validate_deck.py",
+      "source": "harness-v2/validate_deck.py",
+      "original_sha256": "a49bdab1575158a705766ae5fa218edc5cd55ffce56a6cddcdc2ef955fc3e6ff",
+      "replacement_sha256": "c3d83937d146a6fb8a613a36096548242c355d3e335efbe73bc256fc16f216fc"
+    }
+  ]
+}

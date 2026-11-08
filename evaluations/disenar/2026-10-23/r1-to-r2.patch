@@ -1,0 +1,11 @@
+--- r1/references/fuentes.md
++++ r2/references/fuentes.md
+@@ -24,7 +24,7 @@
+ 
+ ## Impeccable
+ 
+-Fuente canónica: [impeccable.style](https://impeccable.style) y [pbakaus/impeccable](https://github.com/pbakaus/impeccable/tree/5cb95eea9c96479f57afe0732a45470d30183326), revisión `5cb95eea9c96479f57afe0732a45470d30183326`. El repositorio declara [Apache License 2.0](https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/LICENSE) y [NOTICE](https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/NOTICE) con atribuciones adicionales.
++Fuente canónica: [impeccable.style](https://impeccable.style) y [pbakaus/impeccable](https://github.com/pbakaus/impeccable/tree/5cb95eea9c96479f57afe0732a45470d30183326), revisión `5cb95eea9c96479f57afe0732a45470d30183326`. El repositorio declara [Apache License 2.0](https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/LICENSE) y [NOTICE](https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/NOTICE.md) con atribuciones adicionales.
+ 
+ El núcleo examinado es [`skill/SKILL.src.md`](https://github.com/pbakaus/impeccable/blob/5cb95eea9c96479f57afe0732a45470d30183326/skill/SKILL.src.md), junto con referencias de contexto, tipografía, composición, adaptación, motion, robustez, auditoría y crítica. Informan la separación conceptual de hechos del producto, identidad y superficie; la distinción entre refinamiento y rediseño; y la necesidad de declarar método y cobertura.
+ 

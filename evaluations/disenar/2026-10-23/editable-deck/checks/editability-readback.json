@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "method": "Reimport, text and position edit, PPTX reexport, OOXML readback",
+  "shape": "slide 3, etapa-1",
+  "readback_text": "Diagnóstico (comprobación)",
+  "readback_x_emu": 990600,
+  "native_connectors_retained": 2,
+  "final_unchanged_sha256": "ce9132ac283d42b76ffeca5f3e2385d98d823d3f47dcc72bc7584bf3e600a389"
+}

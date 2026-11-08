@@ -1,0 +1,41 @@
+{
+  "checks": [
+    {
+      "id": "preserve-bienvenida",
+      "status": "PASS",
+      "method": "exact HTML text comparison"
+    },
+    {
+      "id": "preserve-cierre",
+      "status": "PASS",
+      "method": "exact HTML text comparison"
+    },
+    {
+      "id": "original-css-unchanged-prefix",
+      "status": "PASS"
+    },
+    {
+      "id": "standalone-static-complete",
+      "status": "PASS",
+      "method": "HTML source inspection; no render"
+    },
+    {
+      "id": "reduce-rule",
+      "status": "PASS",
+      "method": "CSS source only; preference change not reproduced in this worker"
+    },
+    {
+      "id": "browser-render-and-real-interaction",
+      "status": "NOT_RUN",
+      "reason": "Assigned to coordinator; worker does not use browser."
+    }
+  ],
+  "final_source_hashes": {
+    "deck.js": "705020872aaebbbc0933c4aceda248e0eb7a09d0ae62140ce51303870b102a28",
+    "index.html": "d8c00cbe6eea2a16a8f1e23533ac909c672a96f3c7e26c1a7119a5403c6cd6d3",
+    "static.html": "20cfde824c07a5208809edbfa40dac1ca52c389df282297a201ef8a495978537",
+    "style.css": "50238f0658545121ba0f372ed5a8d30be8df4991805982c903a71b9434fe092c"
+  },
+  "final_verification": "Repeated after CSS continuity and specificity correction; source-only assertions PASS.",
+  "render": "NOT_RUN by worker; coordinator handles browser."
+}

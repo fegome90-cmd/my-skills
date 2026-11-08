@@ -1,0 +1,207 @@
+{
+  "candidate_script_sha256": "66b659965c34a4ddea5978cfda7007f7a2d4d5abba7d72887c9db4579af6f2d2",
+  "method": "Actual CLI invocations, boundary values and invalid input; no browser or full accessibility test",
+  "cases": [
+    {
+      "id": "black_white",
+      "args": [
+        "#000000",
+        "#ffffff"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": {
+        "foreground": "#000000",
+        "background": "#ffffff",
+        "ratio": 21.0,
+        "threshold": 4.5,
+        "status": "PASS",
+        "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim."
+      },
+      "stderr": "",
+      "status": "PASS"
+    },
+    {
+      "id": "reverse",
+      "args": [
+        "#ffffff",
+        "#000000"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": {
+        "foreground": "#ffffff",
+        "background": "#000000",
+        "ratio": 21.0,
+        "threshold": 4.5,
+        "status": "PASS",
+        "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim."
+      },
+      "stderr": "",
+      "status": "PASS"
+    },
+    {
+      "id": "equal",
+      "args": [
+        "#123456",
+        "#123456"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "output": {
+        "foreground": "#123456",
+        "background": "#123456",
+        "ratio": 1.0,
+        "threshold": 4.5,
+        "status": "FAIL",
+        "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim."
+      },
+      "stderr": "",
+      "status": "PASS"
+    },
+    {
+      "id": "shorthand",
+      "args": [
+        "#000",
+        "#FFF"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": {
+        "foreground": "#000000",
+        "background": "#ffffff",
+        "ratio": 21.0,
+        "threshold": 4.5,
+        "status": "PASS",
+        "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim."
+      },
+      "stderr": "",
+      "status": "PASS"
+    },
+    {
+      "id": "above_boundary",
+      "args": [
+        "#767676",
+        "#ffffff"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": {
+        "foreground": "#767676",
+        "background": "#ffffff",
+        "ratio": 4.542224959605253,
+        "threshold": 4.5,
+        "status": "PASS",
+        "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim."
+      },
+      "stderr": "",
+      "status": "PASS"
+    },
+    {
+      "id": "below_boundary",
+      "args": [
+        "#777777",
+        "#ffffff"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "output": {
+        "foreground": "#777777",
+        "background": "#ffffff",
+        "ratio": 4.478089453577215,
+        "threshold": 4.5,
+        "status": "FAIL",
+        "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim."
+      },
+      "stderr": "",
+      "status": "PASS"
+    },
+    {
+      "id": "threshold_custom",
+      "args": [
+        "#777777",
+        "#ffffff",
+        "--threshold",
+        "3"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output": {
+        "foreground": "#777777",
+        "background": "#ffffff",
+        "ratio": 4.478089453577215,
+        "threshold": 3.0,
+        "status": "PASS",
+        "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim."
+      },
+      "stderr": "",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_alpha",
+      "args": [
+        "#00000080",
+        "#ffffff"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "output": null,
+      "stderr": "usage: contrast.py [-h] [--threshold THRESHOLD] foreground background\ncontrast.py: error: argument foreground: use opaque #RGB or #RRGGBB; alpha is unsupported\n",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_missing_hash",
+      "args": [
+        "000000",
+        "#ffffff"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "output": null,
+      "stderr": "usage: contrast.py [-h] [--threshold THRESHOLD] foreground background\ncontrast.py: error: argument foreground: use opaque #RGB or #RRGGBB; alpha is unsupported\n",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_nan",
+      "args": [
+        "#000",
+        "#fff",
+        "--threshold",
+        "nan"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "output": null,
+      "stderr": "usage: contrast.py [-h] [--threshold THRESHOLD] foreground background\ncontrast.py: error: argument --threshold: threshold must be a finite number from 1 to 21\n",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_infinity",
+      "args": [
+        "#000",
+        "#fff",
+        "--threshold",
+        "inf"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "output": null,
+      "stderr": "usage: contrast.py [-h] [--threshold THRESHOLD] foreground background\ncontrast.py: error: argument --threshold: threshold must be a finite number from 1 to 21\n",
+      "status": "PASS"
+    },
+    {
+      "id": "reject_threshold_range",
+      "args": [
+        "#000",
+        "#fff",
+        "--threshold",
+        "22"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "output": null,
+      "stderr": "usage: contrast.py [-h] [--threshold THRESHOLD] foreground background\ncontrast.py: error: argument --threshold: threshold must be a finite number from 1 to 21\n",
+      "status": "PASS"
+    }
+  ]
+}

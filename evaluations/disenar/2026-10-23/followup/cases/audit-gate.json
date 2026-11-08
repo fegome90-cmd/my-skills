@@ -1,0 +1,10 @@
+{
+  "decision": "INCOMPLETE",
+  "totals": {
+    "PASS": 5,
+    "FAIL": 0,
+    "NOT_RUN": 2,
+    "BLOCKED": 0,
+    "NOT_APPLICABLE": 0
+  }
+}

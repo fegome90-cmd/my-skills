@@ -1,0 +1,42 @@
+[
+  {
+    "seconds": 25,
+    "talk": "Presentamos el plan de talleres para 2027 con una idea central: aprender haciendo. Es una propuesta de trabajo interno para nuestro equipo de doce personas. La intención es reservar un espacio común para trabajar sobre criterios compartidos y avanzar hacia un prototipo. Hoy recorreremos el objetivo, la organización y la decisión que necesitamos tomar para iniciar.",
+    "transition": "Para empezar, veamos qué queremos conseguir con este recorrido."
+  },
+  {
+    "seconds": 35,
+    "talk": "El objetivo tiene dos partes que debemos mantener conectadas. Primero, alinear criterios para que el equipo pueda conversar y tomar decisiones sobre una base compartida. Segundo, producir un prototipo común que permita concretar esas decisiones. En las sesiones podremos hacer explícitas las diferencias de criterio y trabajarlas juntos. El prototipo será el objeto de trabajo que nos ayude a dar forma a lo que acordemos.",
+    "transition": "Para organizar ese trabajo, proponemos tres etapas."
+  },
+  {
+    "seconds": 45,
+    "talk": "El recorrido comienza con diagnóstico, continúa con diseño y termina con prototipo. Reservamos dos sesiones para diagnóstico, dos para diseño y tres para prototipo. En diagnóstico pondremos sobre la mesa el punto de partida y los criterios que necesitamos alinear. En diseño daremos forma a una propuesta compartida. En prototipo construiremos una versión concreta de esa propuesta. La secuencia ayuda a relacionar cada etapa con la siguiente. Las cantidades de sesiones son parte del plan que estamos presentando.",
+    "transition": "Veamos cómo se distribuyen estas etapas en el calendario."
+  },
+  {
+    "seconds": 40,
+    "talk": "La primera semana corresponde a diagnóstico y la segunda a diseño. Las semanas tres y cuatro se dedican a prototipo. Este calendario expresa el orden de trabajo que proponemos. Todavía necesitamos acordar una fecha de inicio para convertir las semanas en fechas concretas. También tendremos que coordinar la disponibilidad del equipo al agendar las sesiones. La etapa de prototipo ocupa dos semanas, dentro de las cuales distribuiremos las tres sesiones previstas.",
+    "transition": "Además del calendario, necesitamos claridad sobre quién hace cada cosa."
+  },
+  {
+    "seconds": 35,
+    "talk": "La coordinación organiza el trabajo. La facilitación guía el desarrollo de las sesiones. Los participantes construyen el contenido y el prototipo compartido. Estos roles nos dan una distribución sencilla de responsabilidades para preparar y realizar los talleres. Podemos usar esta distinción al acordar las personas responsables, sin asignar nombres antes de que el equipo lo decida. La participación de las doce personas se organiza alrededor de ese trabajo común.",
+    "transition": "Para que las sesiones puedan realizarse, revisemos los recursos necesarios."
+  },
+  {
+    "seconds": 30,
+    "talk": "Los recursos previstos son una sala, un equipo de proyección y materiales de trabajo. La sala permite reunir al equipo. La proyección nos ayuda a compartir lo que estemos revisando, y los materiales permiten trabajar durante las actividades. Al preparar el inicio, conviene concretar la disponibilidad de estos recursos junto con las fechas. La lista mantiene la preparación en un nivel sencillo y manejable.",
+    "transition": "Hay tres riesgos que conviene anticipar al organizar el plan."
+  },
+  {
+    "seconds": 50,
+    "talk": "El primer riesgo es la disponibilidad del equipo. La respuesta prevista es agendar con anticipación para poder coordinar la participación. El segundo son los retrasos. Si aparecen, la respuesta es priorizar el alcance y concentrar el trabajo en lo que resulte esencial para el prototipo compartido. El tercer riesgo son las dificultades técnicas. Para ese caso, prepararemos una alternativa sencilla que nos permita continuar la actividad. Son medidas de preparación del plan. Podemos revisarlas al fijar las fechas y las responsabilidades.",
+    "transition": "Con este marco, podemos pasar a la decisión necesaria para empezar."
+  },
+  {
+    "seconds": 40,
+    "talk": "La próxima decisión es acordar la fecha de inicio y las personas responsables. Propongo cerrar esta presentación con dos preguntas al equipo: ¿qué fecha podemos comprometer para comenzar? ¿Quién asumirá la coordinación y la facilitación? Con ese acuerdo podremos organizar las sesiones y concretar la preparación. Si la fecha no puede cerrarse ahora, identifiquemos qué disponibilidad falta por confirmar. El objetivo de esta conversación es dejar claro cómo daremos el siguiente paso.",
+    "transition": "Pausa para recoger la decisión del equipo."
+  }
+]

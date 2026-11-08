@@ -1,0 +1,92 @@
+[
+  {
+    "foreground": "#172c2a",
+    "background": "#ffffff",
+    "ratio": 14.68389793561718,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Texto principal / blanco"
+  },
+  {
+    "foreground": "#516763",
+    "background": "#ffffff",
+    "ratio": 6.051636500226067,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Texto secundario / blanco"
+  },
+  {
+    "foreground": "#516763",
+    "background": "#f3f6f3",
+    "ratio": 5.558127592258625,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Texto secundario / fondo"
+  },
+  {
+    "foreground": "#516763",
+    "background": "#e8f3ee",
+    "ratio": 5.3271712214833435,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Texto secundario / selección"
+  },
+  {
+    "foreground": "#086f67",
+    "background": "#ffffff",
+    "ratio": 6.034560641552773,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Acento / blanco"
+  },
+  {
+    "foreground": "#086f67",
+    "background": "#f3f6f3",
+    "ratio": 5.542444264079545,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Acento / fondo"
+  },
+  {
+    "foreground": "#086f67",
+    "background": "#e8f3ee",
+    "ratio": 5.312139581214948,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Acento / selección"
+  },
+  {
+    "foreground": "#ffffff",
+    "background": "#086f67",
+    "ratio": 6.034560641552773,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Botón principal"
+  },
+  {
+    "foreground": "#ffffff",
+    "background": "#075d56",
+    "ratio": 7.7515041106874785,
+    "threshold": 4.5,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Botón principal hover"
+  },
+  {
+    "foreground": "#086f67",
+    "background": "#dce8e1",
+    "ratio": 4.79116023165216,
+    "threshold": 3.0,
+    "status": "PASS",
+    "scope": "Two opaque, uniform sRGB colors only; no compositing, text-size assessment or overall accessibility claim.",
+    "use": "Barra de avance / carril"
+  }
+]

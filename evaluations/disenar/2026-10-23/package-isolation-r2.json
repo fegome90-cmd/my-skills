@@ -1,0 +1,101 @@
+{
+  "status": "PASS",
+  "revision": "development-r2",
+  "candidate_fingerprint": "43408fe0c1b256ed91703b8c5139e568e6c6130a2bfe37629ff67be475000385",
+  "local_links_checked": 14,
+  "links": [
+    {
+      "from": "SKILL.md",
+      "target": "references/encargo-y-recursos.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "SKILL.md",
+      "target": "references/direccion-y-fundamentos.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "SKILL.md",
+      "target": "references/web-y-componentes.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "SKILL.md",
+      "target": "references/movimiento.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "SKILL.md",
+      "target": "references/presentaciones.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "SKILL.md",
+      "target": "references/identidad-y-grafica.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "SKILL.md",
+      "target": "references/editorial-e-impresion.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "SKILL.md",
+      "target": "references/auditoria-y-verificacion.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "SKILL.md",
+      "target": "references/fuentes.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "references/web-y-componentes.md",
+      "target": "fuentes.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "references/identidad-y-grafica.md",
+      "target": "fuentes.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "references/editorial-e-impresion.md",
+      "target": "fuentes.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "references/movimiento.md",
+      "target": "fuentes.md",
+      "exists": true,
+      "inside_package": true
+    },
+    {
+      "from": "references/presentaciones.md",
+      "target": "fuentes.md",
+      "exists": true,
+      "inside_package": true
+    }
+  ],
+  "package_files": 12,
+  "copy_byte_identical": true,
+  "helper_path_exists": true,
+  "required_private_repositories": [],
+  "external_citations_not_runtime_dependencies": true,
+  "limits": [
+    "No automatic host discovery or browser verification.",
+    "External citation verification is recorded separately in provenance-check.json."
+  ]
+}
