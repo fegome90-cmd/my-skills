@@ -1,38 +1,95 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Semantic Color Patterns",
-  "description": "Standardized semantic color definitions with built-in accessibility constraints.",
+  "description": "Candidate-selection guidance for common interface roles. These data do not generate tokens or verify contrast.",
+  "selection_guidance": "Hue and saturation ranges help an agent choose candidates; they do not generate semantic tokens or guarantee an accessible pair. Measure each selected text or link color against its declared final surface with the canonical contrast command.",
   "patterns": {
     "corporate_saas": {
-      "description": "High-trust, clean interface typical of financial or software software.",
+      "description": "Calm, high-trust candidate guidance for finance and software interfaces.",
       "tokens": {
         "primary": {
-          "semantic_meaning": "Brand identity, primary actions",
+          "semantic_meaning": "Brand identity and primary action fills",
           "hue_range": [200, 240],
           "saturation_range": [60, 90],
-          "wcag_requirements": {
-            "on_white": "AA_Large",
-            "text_color_on_primary": "#FFFFFF"
-          }
+          "roles": ["brand_fill", "primary_action_fill"]
         },
         "success": {
-          "semantic_meaning": "Positive confirmation, completion",
+          "semantic_meaning": "Positive confirmation and completion",
           "hue_range": [130, 150],
-          "saturation_range": [50, 80]
+          "saturation_range": [50, 80],
+          "roles": ["status_fill"]
         },
         "danger": {
-          "semantic_meaning": "Destructive actions, critical errors",
+          "semantic_meaning": "Destructive actions and critical errors",
           "hue_range": [0, 15],
-          "saturation_range": [70, 95]
+          "saturation_range": [70, 95],
+          "roles": ["status_fill"]
+        },
+        "canvas": {
+          "semantic_meaning": "Dominant page background; prefer a neutral",
+          "roles": ["background"]
+        },
+        "surface": {
+          "semantic_meaning": "Secondary surfaces and interface structure",
+          "roles": ["surface"]
+        },
+        "text": {
+          "semantic_meaning": "Normal text color",
+          "roles": ["text_color"],
+          "minimum_contrast_ratio": 4.5,
+          "contrast_criterion": "WCAG AA normal text",
+          "background_roles": ["canvas", "surface"]
+        },
+        "link": {
+          "semantic_meaning": "Link text color",
+          "roles": ["link_text"],
+          "minimum_contrast_ratio": 4.5,
+          "contrast_criterion": "WCAG AA normal text",
+          "background_roles": ["canvas", "surface"]
         }
       }
     },
     "creative_studio": {
-      "description": "Bold, high-energy palettes for agencies or studios.",
+      "description": "Expressive candidate guidance for high-energy creative interfaces.",
       "tokens": {
         "primary": {
+          "semantic_meaning": "Brand identity and primary action fills",
           "hue_range": [260, 290],
-          "saturation_range": [70, 100]
+          "saturation_range": [70, 100],
+          "roles": ["brand_fill", "primary_action_fill"]
+        },
+        "success": {
+          "semantic_meaning": "Positive confirmation and completion",
+          "hue_range": [130, 150],
+          "saturation_range": [50, 80],
+          "roles": ["status_fill"]
+        },
+        "danger": {
+          "semantic_meaning": "Destructive actions and critical errors",
+          "hue_range": [0, 15],
+          "saturation_range": [70, 95],
+          "roles": ["status_fill"]
+        },
+        "canvas": {
+          "semantic_meaning": "Dominant page background; prefer a neutral",
+          "roles": ["background"]
+        },
+        "surface": {
+          "semantic_meaning": "Secondary surfaces and interface structure",
+          "roles": ["surface"]
+        },
+        "text": {
+          "semantic_meaning": "Normal text color",
+          "roles": ["text_color"],
+          "minimum_contrast_ratio": 4.5,
+          "contrast_criterion": "WCAG AA normal text",
+          "background_roles": ["canvas", "surface"]
+        },
+        "link": {
+          "semantic_meaning": "Link text color",
+          "roles": ["link_text"],
+          "minimum_contrast_ratio": 4.5,
+          "contrast_criterion": "WCAG AA normal text",
+          "background_roles": ["canvas", "surface"]
         }
       }
     }

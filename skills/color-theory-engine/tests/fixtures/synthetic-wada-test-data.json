@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Fictional Blue",
+    "hex": "#123456",
+    "rgb": [18, 52, 86],
+    "swatch": 1,
+    "combinations": [7]
+  },
+  {
+    "name": "Blue",
+    "hex": "#0000FF",
+    "rgb": [0, 0, 255],
+    "swatch": 2,
+    "combinations": [7, 8]
+  },
+  {
+    "name": "Bluegreen",
+    "hex": "#00AA88",
+    "rgb": [0, 170, 136],
+    "swatch": 3,
+    "combinations": [8]
+  }
+]
